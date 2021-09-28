@@ -10,13 +10,7 @@ public class PlayerWeapon : MonoBehaviour
     private float cooltime;
     [SerializeField]
     private float curtime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(curtime <= 0)
