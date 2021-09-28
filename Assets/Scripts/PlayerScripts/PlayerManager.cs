@@ -7,6 +7,9 @@ public class PlayerManager : MonoBehaviour
     private CharAttack m_attack;
     private CharMove m_move;
     private Rigidbody2D rigid;
+    //private PlayerAnimation m_playerAnimation;
+    [SerializeField] 
+    private PlayerAnimation m_playerAnimation;
 
     [SerializeField]
     private float playerDashStamina = 10;
@@ -17,6 +20,7 @@ public class PlayerManager : MonoBehaviour
         m_attack = GetComponent<CharAttack>();
         m_move = GetComponent<CharMove>();
         rigid = GetComponent<Rigidbody2D>();
+        //m_playerAnimation = GetComponent<PlayerAnimation>();
 
         m_attack.Init(rigid);
         m_move.Init(rigid);
@@ -27,15 +31,19 @@ public class PlayerManager : MonoBehaviour
         Init();
     }
 
-    // Update is called once per frame
     void Update()
     {
         m_move.Move();
         m_attack.Attack();
         m_move.Dash(playerDashStamina);
+        //m_playerAnimation.Animator();
     }
     public void TakeDamage(float damage)
     {
         playerHp = playerHp - damage;
     }
+
+
+
+    
 }

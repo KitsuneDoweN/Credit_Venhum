@@ -11,15 +11,21 @@ public class CharMove : MonoBehaviour
 
     private float curTime;
     private float coolTime = 0.2f;
-    
+
     public float playerStamina = 100.0f;
 
+    public Animator animator;
     public void Init(Rigidbody2D rigid)
     {
         m_rigid = rigid;
     }
 
-    
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
     public void Move()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
