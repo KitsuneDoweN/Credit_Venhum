@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharMove : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = 4.0f;
+    //[SerializeField]
+    public float moveSpeed = 4.0f;
     private Rigidbody2D m_rigid;
     private Vector2 movement = new Vector2();
 
@@ -15,6 +15,9 @@ public class CharMove : MonoBehaviour
     public float playerStamina = 100.0f;
 
     public Animator animator;
+
+    private Vector3 lookDirection;
+
     public void Init(Rigidbody2D rigid)
     {
         m_rigid = rigid;
@@ -25,9 +28,14 @@ public class CharMove : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
     public void Move()
     {
+        /*float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        lookDirection = x * Vector3.forward + y * Vector3.right;
+
+        this.transform.rotation = Quaternion.LookRotation(lookDirection);
+        this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);*/
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
