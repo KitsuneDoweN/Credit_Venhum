@@ -14,7 +14,7 @@ public class CharMove : MonoBehaviour
 
     public float playerStamina = 100.0f;
 
-    public Animator animator;
+    //public Animator animator;
 
     private Vector3 lookDirection;
 
@@ -25,7 +25,7 @@ public class CharMove : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+       // animator = GetComponent<Animator>();
     }
 
     public void Move()

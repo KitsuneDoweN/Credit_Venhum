@@ -24,6 +24,10 @@ public class RangedWeapon : MonoBehaviour
             Debug.Log("damage");
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
     void Update()
     {

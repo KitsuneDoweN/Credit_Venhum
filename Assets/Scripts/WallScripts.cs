@@ -6,7 +6,7 @@ public class WallScripts : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Attack")
+        if (collision.gameObject.tag == "Interaction")
         {
             Destroy(gameObject);
         }
