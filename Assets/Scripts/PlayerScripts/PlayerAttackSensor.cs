@@ -8,7 +8,7 @@ public class PlayerAttackSensor : MonoBehaviour
     CharAttack m_attack;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "EnemyHp")
         {
             collision.gameObject.GetComponent<MonsterManager>().TakeDamage(m_attack.attackDamage);
             Debug.Log("damage");

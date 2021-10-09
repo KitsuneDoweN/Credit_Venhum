@@ -14,4 +14,6 @@ public class MonsterManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }
