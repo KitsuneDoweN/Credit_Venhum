@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - Wall
   - Interaction
+  - EnemyHp
   layers:
   - Default
   - TransparentFX

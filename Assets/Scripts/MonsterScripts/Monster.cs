@@ -40,13 +40,6 @@ public class Monster : MonoBehaviour
     {
         nextMove = Random.Range(-1, 2);
 
-        //Sprite Animation
-        //anim.SetInteger("WalkSpeed", nextMove);
-        //Flip Sprite
-       /* if (nextMove != 0)
-            spriteRenderer.flipX = nextMove == 1;*/
-
-        //Recursive
         float nextThinkTime = Random.Range(2f, 5f);
         Invoke("Think", nextThinkTime);
 
@@ -55,7 +48,6 @@ public class Monster : MonoBehaviour
     void Turn()
     {
         nextMove *= -1;
-        //spriteRenderer.flipX = nextMove == 1;
 
         CancelInvoke();
         Invoke("Think", 2);

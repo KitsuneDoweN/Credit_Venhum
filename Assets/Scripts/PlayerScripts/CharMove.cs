@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharMove : MonoBehaviour
 {
-    //[SerializeField]
     public float moveSpeed = 4.0f;
     private Rigidbody2D m_rigid;
     private Vector2 movement = new Vector2();
@@ -14,33 +13,60 @@ public class CharMove : MonoBehaviour
 
     public float playerStamina = 100.0f;
 
-    //public Animator animator;
-
     private Vector3 lookDirection;
 
+    public Transform AttackBox;
+
+    Vector3 playerDir;
+    bool isHorizontalMove;
     public void Init(Rigidbody2D rigid)
     {
         m_rigid = rigid;
     }
 
-    private void Start()
+    Vector3 v3PlayerDir // 관리하기 편하게 쓰기위함.
     {
-       // animator = GetComponent<Animator>();
+        set
+        {
+            playerDir = value;
+            //히트박스 로컬포지션
+            AttackBox.localPosition = playerDir;
+        }
+        get
+        {
+            return playerDir;
+        }
     }
+    
 
     public void Move()
     {
-        /*float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        lookDirection = x * Vector3.forward + y * Vector3.right;
-
-        this.transform.rotation = Quaternion.LookRotation(lookDirection);
-        this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);*/
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         movement.Normalize();
         m_rigid.velocity = movement * moveSpeed;
+        float hInput = Input.GetAxisRaw("Horizontal");
+        float vInput = Input.GetAxisRaw("Vertical");
+
+        if (hInput == 0 && vInput != 0)
+        {
+            isHorizontalMove = false;
+            if (vInput == 1)
+                v3PlayerDir = Vector3.up;
+            else if (vInput == -1)
+                v3PlayerDir = Vector3.down;
+        }
+        else
+        {
+            isHorizontalMove = true;
+            if (hInput == 1)
+                v3PlayerDir = Vector3.right;
+            else if (hInput == -1)
+                v3PlayerDir = Vector3.left;
+        }
+        //Debug.DrawRay(m_rigid.position, v3PlayerDir * 1.0f, Color.red);
+        //RaycastHit2D raycast = Physics2D.Raycast(m_rigid.position, v3PlayerDir * 1.0f);
     }
 
     public void Dash(float stamina)
