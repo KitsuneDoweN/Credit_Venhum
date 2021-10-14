@@ -18,7 +18,7 @@ public class RangedWeapon : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "EnemyHp")
         {
             collision.gameObject.GetComponent<MonsterManager>().TakeDamage(weaponDamage);
             Debug.Log("damage");
@@ -34,7 +34,7 @@ public class RangedWeapon : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if(ray.collider != null)
         {
-            if(ray.collider.tag == "Enemy")
+            if(ray.collider.tag == "EnemyHp")
             {
                 Debug.Log("ИэСп");
             }
