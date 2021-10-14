@@ -11,6 +11,24 @@ TextureImporter:
   - first:
       213: -7821980916906251882
     second: Benedict_right_Skillmotion_2
+  - first:
+      213: -1459523327136089067
+    second: Benedict_right&left_Skillmotion_0
+  - first:
+      213: 1440884349434434633
+    second: Benedict_right&left_Skillmotion_1
+  - first:
+      213: -5707429989291005137
+    second: Benedict_right&left_Skillmotion_2
+  - first:
+      213: -5645373862029873967
+    second: Benedict_right&left_Skillmotion_3
+  - first:
+      213: 5119842371321347933
+    second: Benedict_right&left_Skillmotion_4
+  - first:
+      213: 924148779049984940
+    second: Benedict_right&left_Skillmotion_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,64 +118,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Benedict_right_Skillmotion_0
+      name: Benedict_right&left_Skillmotion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 27
+        width: 26
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3b82ae3e90f91ed0800000000000000
-      internalID: -2442656760425444549
+      spriteID: 51c38a0544bbebbe0800000000000000
+      internalID: -1459523327136089067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Benedict_right_Skillmotion_1
+      name: Benedict_right&left_Skillmotion_1
       rect:
         serializedVersion: 2
-        x: 27
+        x: 26
         y: 0
-        width: 27
+        width: 26
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d834f2870ebf6150800000000000000
-      internalID: 5868117778958137555
+      spriteID: 94495728eac0ff310800000000000000
+      internalID: 1440884349434434633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Benedict_right_Skillmotion_2
+      name: Benedict_right&left_Skillmotion_2
       rect:
         serializedVersion: 2
-        x: 54
+        x: 52
         y: 0
-        width: 27
+        width: 26
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6992be77ccdb27390800000000000000
-      internalID: -7821980916906251882
+      spriteID: f2be5ebf9a22bc0b0800000000000000
+      internalID: -5707429989291005137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_right&left_Skillmotion_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc2f69026a97a1b0800000000000000
+      internalID: -5645373862029873967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_right&left_Skillmotion_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f3a98b2855d0740800000000000000
+      internalID: 5119842371321347933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_right&left_Skillmotion_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3a2ee0b6c33dc00800000000000000
+      internalID: 924148779049984940
       vertices: []
       indices: 
       edges: []

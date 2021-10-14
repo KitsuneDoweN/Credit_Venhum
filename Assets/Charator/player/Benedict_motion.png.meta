@@ -38,6 +38,18 @@ TextureImporter:
   - first:
       213: 4357970371578529367
     second: Benedict_motion_11
+  - first:
+      213: 4447913104009669737
+    second: Benedict_motion_12
+  - first:
+      213: 5394045839136397261
+    second: Benedict_motion_13
+  - first:
+      213: -2263630235389082304
+    second: Benedict_motion_14
+  - first:
+      213: -6043680793190246860
+    second: Benedict_motion_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -374,6 +386,90 @@ TextureImporter:
       bones: []
       spriteID: 7568d93a6fe9a7c30800000000000000
       internalID: 4357970371578529367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_motion_12
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96c2d4ce6692abd30800000000000000
+      internalID: 4447913104009669737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_motion_13
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc716ef9c108bda40800000000000000
+      internalID: 5394045839136397261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_motion_14
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045cccc4b48f590e0800000000000000
+      internalID: -2263630235389082304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_motion_15
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4365b02e658802ca0800000000000000
+      internalID: -6043680793190246860
       vertices: []
       indices: 
       edges: []
