@@ -8,12 +8,12 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private int nextMove;
     private Animator anim;
-    //private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         Think();
 
         Invoke("Think", 2);

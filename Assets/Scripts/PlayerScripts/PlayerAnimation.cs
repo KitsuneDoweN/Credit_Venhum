@@ -15,10 +15,10 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        Animator();
+        p_Animator();
     }
 
-    public void Animator()
+    public void p_Animator()
     {
         animator.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         animator.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));

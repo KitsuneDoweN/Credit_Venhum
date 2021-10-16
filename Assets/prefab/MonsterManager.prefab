@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 950952571}
   - component: {fileID: 203907866255692290}
   - component: {fileID: 950952572}
+  - component: {fileID: 5580530410159642579}
   m_Layer: 0
   m_Name: MonsterAI
   m_TagString: EnemyHp
@@ -123,6 +124,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.8}
   m_EdgeRadius: 0
+--- !u!95 &5580530410159642579
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203907866255692292}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 392181ed02476af44adf3bce7f171a35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &203907866778146095
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6b6f5935d19c242aba7622dabf0bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 5580530410159642579}
+  spriteRenderer: {fileID: 203907866255692290}
 --- !u!1 &8101169266782472636
 GameObject:
   m_ObjectHideFlags: 0

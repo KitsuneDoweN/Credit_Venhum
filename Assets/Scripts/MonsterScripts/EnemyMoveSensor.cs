@@ -10,9 +10,14 @@ public class EnemyMoveSensor : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public Animator anim;
+    public SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -37,6 +42,7 @@ public class EnemyMoveSensor : MonoBehaviour
         if(collision.tag == "Player")
         {
             target = collision.transform;
+            anim.SetBool("Walk", true);
         }
         
     }
@@ -46,6 +52,7 @@ public class EnemyMoveSensor : MonoBehaviour
         if (collision.tag == "Player")
         {
             target = null;
+            anim.SetBool("Walk", false);
         }
     }
 
