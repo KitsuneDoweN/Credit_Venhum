@@ -17,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
-                Instantiate(bullet, pos.position, transform.rotation);
+                Instantiate(bullet, pos.position, pos.rotation);
             }
             curtime = cooltime;
         }

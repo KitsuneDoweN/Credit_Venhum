@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         m_move.Move();
+        //m_move.MoveStop();
         m_attack.Attack();
         m_move.Dash(playerDashStamina);
         Interaction();
@@ -56,7 +57,6 @@ public class PlayerManager : MonoBehaviour
             {
                 g_Interaction.SetActive(true);
                 Interaction_CurTime = Interaction_coolTime;
-
             }
             else
             {

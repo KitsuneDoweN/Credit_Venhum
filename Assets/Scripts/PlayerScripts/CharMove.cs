@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharMove : MonoBehaviour
 {
     public float moveSpeed = 4.0f;
+    private bool moveSpeedControl = false;
     private Rigidbody2D m_rigid;
     private Vector2 movement = new Vector2();
 
@@ -38,9 +39,14 @@ public class CharMove : MonoBehaviour
         }
     }
     
-
     public void Move()
     {
+        if (AttackBox.gameObject.active == true)
+        {
+            m_rigid.velocity = Vector2.zero;
+            return;
+
+        }
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -65,8 +71,6 @@ public class CharMove : MonoBehaviour
             else if (hInput == -1)
                 v3PlayerDir = Vector3.left;
         }
-        //Debug.DrawRay(m_rigid.position, v3PlayerDir * 1.0f, Color.red);
-        //RaycastHit2D raycast = Physics2D.Raycast(m_rigid.position, v3PlayerDir * 1.0f);
     }
 
     public void Dash(float stamina)
@@ -84,10 +88,10 @@ public class CharMove : MonoBehaviour
                     // ´ë½¬ x
                 }
             }
-             else
-             {
+            else
+            {
                 moveSpeed = 4.0f;
-             }
+            }
         }
         else
         {

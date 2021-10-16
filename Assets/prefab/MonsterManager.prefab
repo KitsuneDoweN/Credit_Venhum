@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHp: 10
+  monster: {fileID: 203907866778146095}
 --- !u!61 &950952572
 BoxCollider2D:
   m_ObjectHideFlags: 0
