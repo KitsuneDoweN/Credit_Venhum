@@ -10,8 +10,8 @@ public class EnemyMoveSensor : MonoBehaviour
 
     Rigidbody2D rb;
 
-    public Animator anim;
-    public SpriteRenderer spriteRenderer;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -43,6 +43,7 @@ public class EnemyMoveSensor : MonoBehaviour
         {
             target = collision.transform;
             anim.SetBool("Walk", true);
+            spriteRenderer.flipX = true;
         }
         
     }
@@ -53,6 +54,8 @@ public class EnemyMoveSensor : MonoBehaviour
         {
             target = null;
             anim.SetBool("Walk", false);
+            spriteRenderer.flipX = false;
+
         }
     }
 
