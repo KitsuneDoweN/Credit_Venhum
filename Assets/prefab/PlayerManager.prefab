@@ -305,6 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6767574844296040947}
+  - component: {fileID: 3389395782940960588}
   - component: {fileID: 6767574844296040953}
   - component: {fileID: 6767574844296040950}
   - component: {fileID: 6767574844296040951}
@@ -336,6 +337,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3389395782940960588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767574844296040944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9842046acf3bfe646a415cc70879769f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!114 &6767574844296040953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +385,7 @@ MonoBehaviour:
   m_playerAnimation: {fileID: 0}
   playerDashStamina: 10
   g_Interaction: {fileID: 8098553997172785210}
-  playerHp: 0
+  playerHp: 5
 --- !u!114 &6767574844296040951
 MonoBehaviour:
   m_ObjectHideFlags: 0

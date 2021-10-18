@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public float monsterHp = 10.0f;
+    [SerializeField]
+    float monsterHp = 5.0f;
+    public float monsterAttack = 1;
     public GameObject monster;
-   
+    
+    public float monsterDeathCount = 0;
+
+    private void Update()
+    {
+        //GameClear();
+    }
+
+
     public void TakeDamage(float damage)
     {
         monsterHp = monsterHp - damage;
         if(monsterHp <= 0)
         {
             Destroy(monster);
+            monsterDeathCount += 1;
         }
     }
+
+    
 
     
 }

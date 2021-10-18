@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     private CharAttack m_attack;
     private CharMove m_move;
+    private Hp m_hp;
     private Rigidbody2D rigid;
 
     [SerializeField] 
@@ -17,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject g_Interaction;
 
-    public float playerHp = 100.0f;
+    public float playerHp = 5;
 
     private float Interaction_CurTime;
     private float Interaction_coolTime = 0.5f;
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_attack = GetComponent<CharAttack>();
         m_move = GetComponent<CharMove>();
+        m_hp = GetComponent<Hp>();
         rigid = GetComponent<Rigidbody2D>();
 
         m_attack.Init(rigid);
@@ -38,15 +40,21 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        m_hp.health = playerHp;
         m_move.Move();
-        //m_move.MoveStop();
         m_attack.Attack();
         m_move.Dash(playerDashStamina);
+        m_hp.PlayerHpUI();
         Interaction();
     }
     public void TakeDamage(float damage)
     {
         playerHp = playerHp - damage;
+        float x = transform.position.x;
+        if (x < 0)
+            x = 1;
+        else
+            x = -1;
     }
 
     private void Interaction()
