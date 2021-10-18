@@ -50,11 +50,6 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         playerHp = playerHp - damage;
-        float x = transform.position.x;
-        if (x < 0)
-            x = 1;
-        else
-            x = -1;
     }
 
     private void Interaction()
