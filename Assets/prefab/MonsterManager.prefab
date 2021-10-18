@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e146168e59948164a94c0f107c5332fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterHp: 10
+  monsterHp: 5
   monster: {fileID: 203907866778146095}
+  monsterAttack: 1
 --- !u!61 &950952572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 2.87}
+  m_Size: {x: 1.78, y: 2.87}
   m_EdgeRadius: 0
 --- !u!1 &203907866778146095
 GameObject:
@@ -101,12 +102,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203907866778146095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.44, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 203907866255692293}
-  - {fileID: 7138456206176576540}
   - {fileID: 759277685242640392}
+  - {fileID: 7138456206176576540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,13 +240,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7138456206176576540}
   - component: {fileID: 7617741953292768073}
+  - component: {fileID: 8926458134508013289}
   m_Layer: 0
   m_Name: MonsterAttack
   m_TagString: EnemyAttackSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7138456206176576540
 Transform:
   m_ObjectHideFlags: 0
@@ -253,12 +255,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8101169266782472636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.97, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.9700012, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203907866778146089}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7617741953292768073
 BoxCollider2D:
@@ -273,7 +275,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27, y: 1.46}
+  m_Offset: {x: 0, y: 1.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -284,8 +286,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &8926458134508013289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101169266782472636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed38726d3d098244eb5f1fc952041f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster_attack: {fileID: 950952571}
+  moveSensor: {fileID: 64380802}
+  animator: {fileID: 8636872384037546978}
 --- !u!1 &8278372681453302692
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759277685242640392}
   - component: {fileID: 8271934616221484943}
+  - component: {fileID: 6140011003534769572}
   m_Layer: 0
   m_Name: MonsterAttackSensor
   m_TagString: EnemyAttackSensor
@@ -315,7 +333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203907866778146089}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &8271934616221484943
 CircleCollider2D:
@@ -333,3 +351,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
   m_Radius: 2.5
+--- !u!114 &6140011003534769572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278372681453302692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a4dab34c7101242994d1c5b009d605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 8101169266782472636}

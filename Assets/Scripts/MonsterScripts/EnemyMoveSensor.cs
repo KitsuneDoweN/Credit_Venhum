@@ -24,7 +24,7 @@ public class EnemyMoveSensor : MonoBehaviour
         FollowTarget();
     }
 
-    void FollowTarget()
+    public void FollowTarget()
     {
         if (target == null)
             return;
