@@ -11,9 +11,49 @@ public class RangedWeapon : MonoBehaviour
     private float weaponDamage = 1;
     private CharAttack m_attack;
 
-    void Start()
+    private Vector2 m_dir;
+
+    [SerializeField]
+    private Rigidbody2D rigid;
+    public void Init(Vector2 dir)
     {
+        m_dir = dir;
         Invoke("DestroyBullet", 2);
+        rigid.velocity = dir * speed;
+        if(dir == Vector2.right)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
+        else if (dir == Vector2.left)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 135);
+        }
+        else if (dir == Vector2.up)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        else if (dir == Vector2.down)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -135);
+        }
+
+        //else if(dir.x > 0 && dir.y > 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, 0);
+        //}
+        //else if (dir.x > 0 && dir.y < 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, -90);
+        //}
+        //else if (dir.x < 0 && dir.y < 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, -180);
+        //}
+        //else if (dir.x < 0 && dir.y > 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, -270);
+        //}
+
     }
    
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,14 +79,6 @@ public class RangedWeapon : MonoBehaviour
                 Debug.Log("ИэСп");
             }
             Destroy(gameObject);
-        }
-        if(transform.rotation.y == 0)
-        {
-            transform.Translate(transform.right * speed * Time.deltaTime); 
-        }
-        else
-        {
-            transform.Translate(transform.right * -1 * speed * Time.deltaTime);
         }
     }
     void DestroyBullet()

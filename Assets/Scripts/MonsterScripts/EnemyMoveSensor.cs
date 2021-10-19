@@ -5,13 +5,16 @@ using UnityEngine;
 public class EnemyMoveSensor : MonoBehaviour
 {
     private float moveSpeed = 1.5f;
-    private float contactDistance = 0.8f;
     Transform target = null;
 
     Rigidbody2D rb;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+
+    private Vector2 vec;
+    [SerializeField]
+    EnemyAttackSensor monsterattackBox;
 
     private void Start()
     {
@@ -21,31 +24,51 @@ public class EnemyMoveSensor : MonoBehaviour
     }
     private void Update()
     {
+        if(monsterattackBox.eAttack != EnemyAttackSensor.AttackState.e_none)
+        {
+            anim.SetBool("Walk", false);
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         FollowTarget();
+        updateAnimation();
+        
     }
 
     public void FollowTarget()
     {
+        rb.velocity = Vector2.zero;
         if (target == null)
             return;
-        if(Vector2.Distance(transform.position, target.position) > contactDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
+        setDirection((Vector2)(target.position - transform.position).normalized);
+        rb.velocity = vec * moveSpeed;
+        //가고자하는 방향으로 애니메이션이 안움직인다
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             target = collision.transform;
-            anim.SetBool("Walk", true);
-            spriteRenderer.flipX = true;
         }
         
+    }
+    private void updateAnimation()
+    {
+        anim.SetBool("Walk", true);
+        spriteRenderer.flipX = true;
+
+        if (target == null)
+        {
+            anim.SetBool("Walk", false);
+        }
+
+        if(vec.x >= 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -53,10 +76,23 @@ public class EnemyMoveSensor : MonoBehaviour
         if (collision.tag == "Player")
         {
             target = null;
-            anim.SetBool("Walk", false);
+        }
+    }
+
+    private void setDirection(Vector2 dir)
+    {
+        vec = dir;
+        spriteRenderer.flipX = true;
+        monsterattackBox.setAttackPos(false);
+
+        if (vec.x >= 0)
+        {
             spriteRenderer.flipX = false;
+            monsterattackBox.setAttackPos(true);
 
         }
+
+
     }
 
 

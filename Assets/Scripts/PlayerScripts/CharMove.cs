@@ -17,6 +17,7 @@ public class CharMove : MonoBehaviour
     private Vector3 lookDirection;
 
     public Transform AttackBox;
+    public Transform WeaponBox;
 
     Vector3 playerDir;
     bool isHorizontalMove;
@@ -32,6 +33,7 @@ public class CharMove : MonoBehaviour
             playerDir = value;
             //히트박스 로컬포지션
             AttackBox.localPosition = playerDir;
+            WeaponBox.localPosition = playerDir;
         }
         get
         {

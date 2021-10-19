@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 203907866255692293}
   - component: {fileID: 950952571}
   - component: {fileID: 950952572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MonsterAI
   m_TagString: EnemyHp
   m_Icon: {fileID: 0}
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHp: 5
-  monster: {fileID: 203907866778146095}
   monsterAttack: 1
+  monster: {fileID: 203907866778146095}
+  monsterDeathCount: 0
 --- !u!61 &950952572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.5}
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 64380802}
   - component: {fileID: 8636872384037546978}
   m_Layer: 0
-  m_Name: MonsterManager
+  m_Name: Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6b6f5935d19c242aba7622dabf0bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterattackBox: {fileID: 6140011003534769572}
 --- !u!95 &8636872384037546978
 Animator:
   serializedVersion: 3
@@ -247,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7138456206176576540
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8101169266782472636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9700012, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203907866778146089}
@@ -275,7 +277,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.12}
+  m_Offset: {x: -0.5821321, y: 1.4288399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -286,7 +288,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.37}
+  m_Size: {x: 2.3842645, y: 3.3662696}
   m_EdgeRadius: 0
 --- !u!114 &8926458134508013289
 MonoBehaviour:
@@ -314,6 +316,7 @@ GameObject:
   - component: {fileID: 759277685242640392}
   - component: {fileID: 8271934616221484943}
   - component: {fileID: 6140011003534769572}
+  - component: {fileID: 8523631589421516439}
   m_Layer: 0
   m_Name: MonsterAttackSensor
   m_TagString: EnemyAttackSensor
@@ -364,3 +367,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 8101169266782472636}
+  eAttack: 0
+--- !u!50 &8523631589421516439
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278372681453302692}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

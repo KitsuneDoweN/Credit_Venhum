@@ -9,11 +9,15 @@ public class MonsterManager : MonoBehaviour
     public float monsterAttack = 1;
     public GameObject monster;
     
-    public float monsterDeathCount = 0;
+    public static float monsterDeathCount = 0;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
-        //GameClear();
     }
 
 
@@ -22,8 +26,8 @@ public class MonsterManager : MonoBehaviour
         monsterHp = monsterHp - damage;
         if(monsterHp <= 0)
         {
-            Destroy(monster);
             monsterDeathCount += 1;
+            Destroy(monster);
         }
     }
 

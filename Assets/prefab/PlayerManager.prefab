@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6767574843237878565}
   - component: {fileID: 6767574843237878564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerWeaponPos
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 6767574843940842927}
   - component: {fileID: 6767574843940842929}
   - component: {fileID: 6767574843940842928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6767574844014431037}
   - component: {fileID: 6767574844014431036}
   - component: {fileID: 3676448577826239571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerAttackPos
   m_TagString: Attack
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 6767574844296040946}
   - component: {fileID: 6767574844296040949}
   - component: {fileID: 6767574844296040948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerManager
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -415,6 +415,7 @@ MonoBehaviour:
   moveSpeed: 4
   playerStamina: 100
   AttackBox: {fileID: 6767574844014431034}
+  WeaponBox: {fileID: 0}
 --- !u!50 &6767574844296040949
 Rigidbody2D:
   serializedVersion: 4
@@ -462,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7699168763194010649}
   - component: {fileID: 2114676462718964900}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerInteraction
   m_TagString: Interaction
   m_Icon: {fileID: 0}
