@@ -415,7 +415,7 @@ MonoBehaviour:
   moveSpeed: 4
   playerStamina: 100
   AttackBox: {fileID: 6767574844014431034}
-  WeaponBox: {fileID: 0}
+  WeaponBox: {fileID: 6767574843237878565}
 --- !u!50 &6767574844296040949
 Rigidbody2D:
   serializedVersion: 4
