@@ -10,7 +10,6 @@ public class CharAttack : MonoBehaviour
 
     public float attackDamage = 1;
     public GameObject attackObject;
-
    
     public void Init(Rigidbody2D rigid)
     {

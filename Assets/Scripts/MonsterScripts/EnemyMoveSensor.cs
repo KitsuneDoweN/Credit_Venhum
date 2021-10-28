@@ -30,10 +30,8 @@ public class EnemyMoveSensor : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
-
         FollowTarget();
         updateAnimation();
-        
     }
 
     public void FollowTarget()

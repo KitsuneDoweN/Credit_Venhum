@@ -11,6 +11,7 @@ public class PlayerAttackSensor : MonoBehaviour
         if(collision.gameObject.tag == "EnemyHp")
         {
             collision.gameObject.GetComponent<MonsterManager>().TakeDamage(m_attack.attackDamage);
+            Debug.Log("A");
         }
     }
 }

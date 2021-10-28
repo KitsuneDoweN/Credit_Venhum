@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -9,15 +10,12 @@ public class PlayerManager : MonoBehaviour
     private Hp m_hp;
     private Rigidbody2D rigid;
 
-    [SerializeField] 
-    private PlayerAnimation m_playerAnimation;
-
     [SerializeField]
     private float playerDashStamina = 10;
 
     [SerializeField]
     private GameObject g_Interaction;
-
+    public GameObject GameOverUI;
     public float playerHp = 5;
 
     private float Interaction_CurTime;
@@ -46,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         m_move.Dash(playerDashStamina);
         m_hp.PlayerHpUI();
         Interaction();
+        GameOver();
     }
     public void TakeDamage(float damage)
     {
@@ -66,14 +65,25 @@ public class PlayerManager : MonoBehaviour
                 g_Interaction.SetActive(false);
             }
         }
-        
-        
         else
         {
             Interaction_CurTime -= Time.deltaTime;
         }
     }
 
-
+    public void GameOver()
+    {
+        if(playerHp <= 0)
+        {
+            GameOverUI.SetActive(true);
+            Time.timeScale = 1;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameOverUI.SetActive(false);
+                Time.timeScale = 0;
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
 
 }

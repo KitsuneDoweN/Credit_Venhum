@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharMove : MonoBehaviour
 {
-    public float moveSpeed = 4.0f;
+    public float moveSpeed = 5.0f;
     private bool moveSpeedControl = false;
     private Rigidbody2D m_rigid;
     private Vector2 movement = new Vector2();
@@ -92,7 +92,7 @@ public class CharMove : MonoBehaviour
             }
             else
             {
-                moveSpeed = 4.0f;
+                moveSpeed = 5.0f;
             }
         }
         else
