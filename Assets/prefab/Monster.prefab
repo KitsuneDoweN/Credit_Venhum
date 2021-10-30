@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 950952571}
   - component: {fileID: 950952572}
   m_Layer: 6
-  m_Name: MonsterAI
+  m_Name: MonsterStatus
   m_TagString: EnemyHp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterHp: 5
   monsterAttack: 1
+  monsterSpeed: 0
   monster: {fileID: 203907866778146095}
-  monsterDeathCount: 0
 --- !u!61 &950952572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 64380803}
   - component: {fileID: 64380802}
   - component: {fileID: 8636872384037546978}
+  - component: {fileID: 5831424145342243607}
+  - component: {fileID: 1221098825025465491}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Enemy
@@ -212,7 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6b6f5935d19c242aba7622dabf0bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterattackBox: {fileID: 6140011003534769572}
+  nav: {fileID: 5831424145342243607}
+  isChase: 1
 --- !u!95 &8636872384037546978
 Animator:
   serializedVersion: 3
@@ -232,6 +235,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &5831424145342243607
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203907866778146095}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.00001
+  m_BaseOffset: -1.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1221098825025465491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203907866778146095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18944d48427ce146aa49b2f66fd4aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster_hp: {fileID: 950952571}
+  monster_attack: {fileID: 8926458134508013289}
+  monster_attacksensor: {fileID: 6140011003534769572}
+  monster_movesensor: {fileID: 64380802}
 --- !u!1 &8101169266782472636
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,8 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed38726d3d098244eb5f1fc952041f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster_attack: {fileID: 950952571}
-  moveSensor: {fileID: 64380802}
   animator: {fileID: 8636872384037546978}
 --- !u!1 &8278372681453302692
 GameObject:

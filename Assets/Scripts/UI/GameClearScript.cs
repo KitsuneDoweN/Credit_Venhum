@@ -14,7 +14,7 @@ public class GameClearScript : MonoBehaviour
 
     public void GameClear()
     {
-        if (MonsterManager.monsterDeathCount == 5)
+        if (MonsterStatus.monsterDeathCount == 5)
         {
             ClearUI.SetActive(true);
             Time.timeScale = 0;
@@ -24,7 +24,7 @@ public class GameClearScript : MonoBehaviour
                 ClearUI.SetActive(false);
                 Time.timeScale = 1;
                 SceneManager.LoadScene(0);
-                MonsterManager.monsterDeathCount = 0;
+                MonsterStatus.monsterDeathCount = 0;
             }
         }
     }

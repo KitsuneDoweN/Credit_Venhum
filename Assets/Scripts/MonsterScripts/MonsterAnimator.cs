@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MonsterAnimator : MonoBehaviour
 {
-    public Animator animator;
+    private Animator animator;
     private bool b_walk = false;
     SpriteRenderer spriteRenderer;
 
-    void Start()
+    public void Init()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -17,10 +17,10 @@ public class MonsterAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_Animator();
+        Animator();
     }
 
-    public void m_Animator() 
+    public void Animator() 
     {
         animator.SetBool("Walk", true);
     }

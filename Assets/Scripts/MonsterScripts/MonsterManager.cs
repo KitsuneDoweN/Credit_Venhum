@@ -5,33 +5,22 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     [SerializeField]
-    float monsterHp = 5.0f;
-    public float monsterAttack = 1;
-    public GameObject monster;
-    
-    public static float monsterDeathCount = 0;
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-    }
-
-
-    public void TakeDamage(float damage)
-    {
-        monsterHp = monsterHp - damage;
-        if(monsterHp <= 0)
-        {
-            monsterDeathCount += 1;
-            Destroy(monster);
-        }
-    }
+    MonsterStatus monster_hp;
+    [SerializeField]
+    MonsterAttack monster_attack;
+    //[SerializeField]
+    //MonsterAnimator monster_animator;
+    [SerializeField]
+    MonsterAttackSensor monster_attacksensor;
+    [SerializeField]
+    MonsterMoveSensor monster_movesensor;
 
     
+    public void Init(Transform target)
+    {
+        //monster_animator.Init();
+        monster_movesensor.Init(target, monster_attacksensor);
+        monster_attack.Init(monster_hp, monster_movesensor);
+    }
 
-    
 }

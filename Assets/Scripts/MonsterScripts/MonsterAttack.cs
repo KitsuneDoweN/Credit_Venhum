@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class MonsterAttack : MonoBehaviour
 {
-    [SerializeField]
-    MonsterManager monster_attack;
-    [SerializeField]
-    EnemyMoveSensor moveSensor;
+    MonsterStatus monster_hp;
+    MonsterMoveSensor monster_moveSensor;
+    
     public Animator animator;
+
+    public void Init(MonsterStatus hp, MonsterMoveSensor moveSensor)
+    {
+        monster_hp = hp;
+        monster_moveSensor = moveSensor;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerManager>().TakeDamage(monster_attack.monsterAttack);
+            collision.gameObject.GetComponent<PlayerManager>().TakeDamage(monster_hp.monsterAttack);
             animator.SetBool("Attack", true);
         }
     }
@@ -22,7 +28,7 @@ public class MonsterAttack : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            moveSensor.FollowTarget();
+            monster_moveSensor.ChaseOn();
             animator.SetBool("Attack", false);
         }
     }

@@ -60,7 +60,7 @@ public class RangedWeapon : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyHp")
         {
-            collision.gameObject.GetComponent<MonsterManager>().TakeDamage(weaponDamage);
+            collision.gameObject.GetComponent<MonsterStatus>().TakeDamage(weaponDamage);
             Debug.Log("damage");
             Destroy(gameObject);
         }
