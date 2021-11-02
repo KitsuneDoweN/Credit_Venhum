@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameClearScript : MonoBehaviour
 {
     public GameObject ClearUI;
+    public MonsterAllManager monsterManager;
 
     private void Update()
     {
@@ -14,7 +15,7 @@ public class GameClearScript : MonoBehaviour
 
     public void GameClear()
     {
-        if (MonsterStatus.monsterDeathCount == 5)
+        if (monsterManager.DeathCount == 5)
         {
             ClearUI.SetActive(true);
             Time.timeScale = 0;
@@ -24,7 +25,7 @@ public class GameClearScript : MonoBehaviour
                 ClearUI.SetActive(false);
                 Time.timeScale = 1;
                 SceneManager.LoadScene(0);
-                MonsterStatus.monsterDeathCount = 0;
+                monsterManager.DeathCount = 0;
             }
         }
     }

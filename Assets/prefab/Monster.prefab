@@ -44,10 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e146168e59948164a94c0f107c5332fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterHp: 5
-  monsterAttack: 1
-  monsterSpeed: 0
-  monster: {fileID: 203907866778146095}
+  hp: 5
+  attack: 1
 --- !u!61 &950952572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87,9 +85,9 @@ GameObject:
   - component: {fileID: 203907866778146093}
   - component: {fileID: 64380803}
   - component: {fileID: 64380802}
+  - component: {fileID: 1221098825025465491}
   - component: {fileID: 8636872384037546978}
   - component: {fileID: 5831424145342243607}
-  - component: {fileID: 1221098825025465491}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Enemy
@@ -216,6 +214,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nav: {fileID: 5831424145342243607}
   isChase: 1
+  rb: {fileID: 203907866778146093}
+  anim: {fileID: 8636872384037546978}
+  lookVec: {x: 0, y: 0}
+--- !u!114 &1221098825025465491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203907866778146095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18944d48427ce146aa49b2f66fd4aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 950952571}
+  attack: {fileID: 8926458134508013289}
+  attacksensor: {fileID: 6140011003534769572}
+  movesensor: {fileID: 64380802}
+  isControl: 0
+  isTakeDamage: 0
 --- !u!95 &8636872384037546978
 Animator:
   serializedVersion: 3
@@ -245,10 +264,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 2
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 60
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -257,22 +276,6 @@ NavMeshAgent:
   m_BaseOffset: -1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1221098825025465491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203907866778146095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18944d48427ce146aa49b2f66fd4aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster_hp: {fileID: 950952571}
-  monster_attack: {fileID: 8926458134508013289}
-  monster_attacksensor: {fileID: 6140011003534769572}
-  monster_movesensor: {fileID: 64380802}
 --- !u!1 &8101169266782472636
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7138456206176576540
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8101169266782472636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 203907866778146089}
@@ -329,7 +332,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3842645, y: 3.3662696}
+  m_Size: {x: 2.62, y: 3.31}
   m_EdgeRadius: 0
 --- !u!114 &8926458134508013289
 MonoBehaviour:
@@ -355,7 +358,6 @@ GameObject:
   - component: {fileID: 759277685242640392}
   - component: {fileID: 8271934616221484943}
   - component: {fileID: 6140011003534769572}
-  - component: {fileID: 8523631589421516439}
   m_Layer: 0
   m_Name: MonsterAttackSensor
   m_TagString: EnemyAttackSensor
@@ -392,7 +394,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2
 --- !u!114 &6140011003534769572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,26 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a4dab34c7101242994d1c5b009d605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 8101169266782472636}
+  attackBox: {fileID: 8101169266782472636}
+  moveSensor: {fileID: 64380802}
   eAttack: 0
---- !u!50 &8523631589421516439
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278372681453302692}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

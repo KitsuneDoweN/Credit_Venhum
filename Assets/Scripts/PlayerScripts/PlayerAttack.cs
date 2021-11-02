@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D m_rigid;
     private float curTime;
     private float coolTime = 0.5f;
-
     public float attackDamage = 1;
     public GameObject attackObject;
    

@@ -7,6 +7,8 @@ public class MonsterAllManager : MonoBehaviour
     public List<MonsterManager> monsterManagers;
     public Transform target;
 
+    public float DeathCount = 0;
+
     void Start()
     {
         GameObject[] gameObject = GameObject.FindGameObjectsWithTag("Enemy");
@@ -19,7 +21,7 @@ public class MonsterAllManager : MonoBehaviour
         }
         foreach(MonsterManager manager in monsterManagers)
         {
-            manager.Init(target);
+            manager.Init(target, this);
         }
     }
 

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MonsterAttackSensor : MonoBehaviour
 {
-    public GameObject attack;
+    public GameObject attackBox;
     private float curTime;
     private float coolTime = 0.5f;
     private float attacktime = 0.67f;
+    [SerializeField]
+    MonsterMoveSensor moveSensor;
 
     public enum AttackState
     {
@@ -31,12 +33,12 @@ public class MonsterAttackSensor : MonoBehaviour
         }
     }
 
-    public void setAttackPos(bool isRight)
+    public void setAttackPos(bool isRight) //적용안했음
     {
-        attack.transform.localPosition = Vector2.left;
+        attackBox.transform.localPosition = Vector2.left;
 
         if (isRight == true)
-            attack.transform.localPosition = Vector2.right*2;
+            attackBox.transform.localPosition = Vector2.right*2;
         
     }
 
@@ -46,7 +48,7 @@ public class MonsterAttackSensor : MonoBehaviour
         if(coolTime <= curTime)
         {
             eAttack = AttackState.e_attack;
-            attack.SetActive(true);
+            attackBox.SetActive(true);
             curTime = 0;
         }
     }
@@ -57,14 +59,27 @@ public class MonsterAttackSensor : MonoBehaviour
         if (curTime >= attacktime)
         {
             eAttack = AttackState.e_none;
-            attack.SetActive(false);
+            attackBox.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            moveSensor.ChaseOff();
             eAttack = AttackState.e_ready;
+            curTime = 0;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            moveSensor.anim.SetBool("Walk", true);
+            moveSensor.ChaseOn();
+            eAttack = AttackState.e_none;
+            attackBox.SetActive(false);
             curTime = 0;
         }
     }

@@ -9,7 +9,7 @@ public class RangedWeapon : MonoBehaviour
     public LayerMask isLayer;
 
     private float weaponDamage = 1;
-    private CharAttack m_attack;
+    private PlayerAttack m_attack;
 
     private Vector2 m_dir;
 
@@ -60,8 +60,7 @@ public class RangedWeapon : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyHp")
         {
-            collision.gameObject.GetComponent<MonsterStatus>().TakeDamage(weaponDamage);
-            Debug.Log("damage");
+            //collision.transform.parent.GetComponent<MonsterManager>().Stiff();
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
