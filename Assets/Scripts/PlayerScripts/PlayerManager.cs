@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    private CharAttack m_attack;
-    private CharMove m_move;
+    private PlayerAttack m_attack;
+    private PlayerMove m_move;
     private Hp m_hp;
     private Rigidbody2D rigid;
+
+    [SerializeField]
+    private PlayerAnimation anim;
 
     [SerializeField]
     private float playerDashStamina = 10;
@@ -20,10 +23,13 @@ public class PlayerManager : MonoBehaviour
 
     private float Interaction_CurTime;
     private float Interaction_coolTime = 0.5f;
+
+    private float death_coolTime = 1.25f;
+    private float death_curTime;
     void Init()
     {
-        m_attack = GetComponent<CharAttack>();
-        m_move = GetComponent<CharMove>();
+        m_attack = GetComponent<PlayerAttack>();
+        m_move = GetComponent<PlayerMove>();
         m_hp = GetComponent<Hp>();
         rigid = GetComponent<Rigidbody2D>();
 
@@ -75,12 +81,17 @@ public class PlayerManager : MonoBehaviour
     {
         if(playerHp <= 0)
         {
+            death_curTime += Time.deltaTime;
+            anim.animator.SetBool("Death", true);
             GameOverUI.SetActive(true);
-            Time.timeScale = 1;
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if(death_curTime >= death_coolTime)
             {
-                GameOverUI.SetActive(false);
                 Time.timeScale = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1;
+                GameOverUI.SetActive(false);
                 SceneManager.LoadScene(0);
             }
         }

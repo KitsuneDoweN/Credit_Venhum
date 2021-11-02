@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerAttackSensor : MonoBehaviour
 {
     [SerializeField]
-    CharAttack m_attack;
+    PlayerAttack m_attack;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "EnemyHp")
         {
-            collision.gameObject.GetComponent<MonsterStatus>().TakeDamage(m_attack.attackDamage);
-            Debug.Log("A");
+            collision.transform.parent.GetComponent<MonsterManager>().TakeDamage(m_attack.attackDamage);
+            Debug.Log("P_Attack");
         }
     }
 }

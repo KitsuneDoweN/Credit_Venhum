@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MonsterAttack : MonoBehaviour
 {
-    MonsterStatus monster_hp;
+    MonsterStatus monster_status;
     MonsterMoveSensor monster_moveSensor;
     
     public Animator animator;
 
     public void Init(MonsterStatus hp, MonsterMoveSensor moveSensor)
     {
-        monster_hp = hp;
+        monster_status = hp;
         monster_moveSensor = moveSensor;
     }
 
@@ -19,7 +19,7 @@ public class MonsterAttack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerManager>().TakeDamage(monster_hp.monsterAttack);
+            collision.gameObject.GetComponent<PlayerManager>().TakeDamage(monster_status.attack);
             animator.SetBool("Attack", true);
         }
     }
