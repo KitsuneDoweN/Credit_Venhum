@@ -20,8 +20,9 @@ public class MonsterManager : MonoBehaviour
 
     private Animator anim;
     private float power = 1;
+    private float stiff_count = 0;
 
-    private float stiff_coolTime = 0.5f;
+    private float stiff_coolTime = 0.3f;
     private float stiff_curTime;
 
     public void Init(Transform target, MonsterAllManager monsterAllManager)
@@ -65,15 +66,35 @@ public class MonsterManager : MonoBehaviour
         movesensor.rb.velocity = Vector2.zero;
     }
 
-    public void Stiff()
+    public void Stiff(float count)
     {
-        stiff_curTime += Time.deltaTime;
-        movesensor.rb.velocity = Vector2.zero;
-        movesensor.ChaseOff();
-        if(stiff_curTime >= stiff_coolTime)
+        stiff_count += count;
+        Debug.Log(stiff_count);
+
+        if (stiff_count >= 5)
         {
+            anim.SetBool("Hit", true);
+            stiff_curTime += Time.deltaTime;
+            movesensor.rb.velocity = Vector2.zero;
+            movesensor.ChaseOff();
+            stiff_count = 0;
+            if (stiff_curTime >= stiff_coolTime)
+            {
+                movesensor.ChaseOn();
+                Debug.Log(stiff_count);
+            }
+        }
+        Invoke("StiffOff", 0.8f);
+    }
+
+    private void StiffOff()
+    {
+        if (stiff_count == 0)
+        {
+            anim.SetBool("Hit", false);
             movesensor.ChaseOn();
         }
     }
-
 }
+
+

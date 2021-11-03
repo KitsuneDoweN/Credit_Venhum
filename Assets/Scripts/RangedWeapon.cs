@@ -13,6 +13,8 @@ public class RangedWeapon : MonoBehaviour
 
     private Vector2 m_dir;
 
+    private float stiffCount = 1;
+
     [SerializeField]
     private Rigidbody2D rigid;
     public void Init(Vector2 dir)
@@ -60,7 +62,7 @@ public class RangedWeapon : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyHp")
         {
-            //collision.transform.parent.GetComponent<MonsterManager>().Stiff();
+            collision.transform.parent.GetComponent<MonsterManager>().Stiff(stiffCount);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Wall")
