@@ -233,6 +233,7 @@ MonoBehaviour:
   attack: {fileID: 8926458134508013289}
   attacksensor: {fileID: 6140011003534769572}
   movesensor: {fileID: 64380802}
+  attackSensor: {fileID: 8278372681453302692}
   isControl: 0
   isTakeDamage: 0
 --- !u!95 &8636872384037546978
@@ -321,7 +322,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5821321, y: 1.4288399}
+  m_Offset: {x: -0.24, y: 1.4288399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -332,7 +333,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.62, y: 3.31}
+  m_Size: {x: 2, y: 3.2}
   m_EdgeRadius: 0
 --- !u!114 &8926458134508013289
 MonoBehaviour:

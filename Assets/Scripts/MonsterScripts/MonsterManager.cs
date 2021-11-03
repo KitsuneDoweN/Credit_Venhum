@@ -15,6 +15,8 @@ public class MonsterManager : MonoBehaviour
 
     MonsterAllManager allManager;
 
+    public GameObject attackSensor;
+    
     public bool isControl;
     public bool isTakeDamage;
 
@@ -43,6 +45,7 @@ public class MonsterManager : MonoBehaviour
         status.hp -= damage;
         if (status.hp <= 0)
         {
+            attackSensor.SetActive(false);
             anim.SetBool("Die", true);
             allManager.DeathCount += 1;
             Destroy(gameObject, 1.333f);
@@ -84,7 +87,7 @@ public class MonsterManager : MonoBehaviour
                 Debug.Log(stiff_count);
             }
         }
-        Invoke("StiffOff", 0.8f);
+        Invoke("StiffOff", 0.6f);
     }
 
     private void StiffOff()
@@ -97,4 +100,5 @@ public class MonsterManager : MonoBehaviour
     }
 }
 
-
+//몬스터 밑이나 위에 게이지 형식으로 경직 스택과 체력 추가
+//(UI연결 / 경직은 원형 / 체력은 Bar)
