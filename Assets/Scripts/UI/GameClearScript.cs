@@ -10,7 +10,7 @@ public class GameClearScript : MonoBehaviour
 
     private void Update()
     {
-        GameClear();
+        //GameClear();
     }
 
     public void GameClear()

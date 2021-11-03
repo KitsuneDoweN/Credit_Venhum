@@ -76,7 +76,7 @@ public class MonsterAttackSensor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            moveSensor.anim.SetBool("Walk", true);
+            //moveSensor.anim.SetBool("Walk", true);
             moveSensor.ChaseOn();
             eAttack = AttackState.e_none;
             attackBox.SetActive(false);
