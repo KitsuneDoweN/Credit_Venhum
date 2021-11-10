@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     private float Interaction_CurTime;
     private float Interaction_coolTime = 0.5f;
 
-    private float death_coolTime = 1.25f;
+    private float death_coolTime = 1.4f;
     private float death_curTime;
     void Init()
     {
