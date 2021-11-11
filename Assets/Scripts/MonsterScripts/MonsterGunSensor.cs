@@ -33,7 +33,7 @@ public class MonsterGunSensor : MonoBehaviour
         }
     }
 
-    public void setAttackPos(bool isRight) //적용안했음
+    public void setAttackPos(bool isRight)
     {
         gunObject.transform.localPosition = Vector2.left;
 

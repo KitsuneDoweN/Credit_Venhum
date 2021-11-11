@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunObject: {fileID: 3189540674355079471}
   moveSensor: {fileID: 7085921196065252387}
-  eAttack: 0
+  eGun: 0
 --- !u!1 &3189540674355079471
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1, y: 1}

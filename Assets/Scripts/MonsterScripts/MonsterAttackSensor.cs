@@ -8,6 +8,7 @@ public class MonsterAttackSensor : MonoBehaviour
     private float curTime;
     private float coolTime = 0.5f;
     private float attacktime = 0.67f;
+
     [SerializeField]
     MonsterMoveSensor moveSensor;
 
@@ -33,13 +34,12 @@ public class MonsterAttackSensor : MonoBehaviour
         }
     }
 
-    public void setAttackPos(bool isRight) //적용안했음
+    public void setAttackPos(bool isRight)
     {
         attackBox.transform.localPosition = Vector2.left;
 
         if (isRight == true)
             attackBox.transform.localPosition = Vector2.right*2;
-        
     }
 
     private void Stay()
@@ -49,6 +49,11 @@ public class MonsterAttackSensor : MonoBehaviour
         {
             eAttack = AttackState.e_attack;
             attackBox.SetActive(true);
+            setAttackPos(false);
+            if (moveSensor.lookVec.x >= 0)
+            {
+                setAttackPos(true);
+            }
             curTime = 0;
         }
     }
@@ -56,6 +61,7 @@ public class MonsterAttackSensor : MonoBehaviour
     {
         //0.67동안 켜져있어야한다.
         curTime += Time.deltaTime;
+
         if (curTime >= attacktime)
         {
             eAttack = AttackState.e_none;

@@ -7,7 +7,10 @@ using UnityEngine.AI;
 public class MonsterMoveSensor : MonoBehaviour
 {
     private MonsterManager monsterManager;
+    private MonsterAttackSensor monsterattackBox;
+
     private Transform target;
+
     public NavMeshAgent nav;
     public bool isChase;
 
@@ -18,7 +21,6 @@ public class MonsterMoveSensor : MonoBehaviour
     private Vector2 vec;
     public Vector2 lookVec;
 
-    MonsterAttackSensor monsterattackBox;
 
     public void Init(Transform target, MonsterAttackSensor attackBox, MonsterManager manager)
     {
@@ -44,21 +46,28 @@ public class MonsterMoveSensor : MonoBehaviour
         if(isChase)
         {
             nav.SetDestination(target.position);
-            spriteRenderer.flipX = true;
-            if (lookVec.x >= 0)
+            if(monsterattackBox.eAttack != MonsterAttackSensor.AttackState.e_attack)
             {
-                spriteRenderer.flipX = false;
+                lookVecUpdate();
             }
-            //Å¸°ÙÀÇ º¤ÅÍ¿Í ¸ó½ºÅÍÀÇ º¤ÅÍ¸¦ »©ÁØ´Ù.
-            lookVec = (Vector2)target.position - (Vector2)transform.position;
-            lookVec = lookVec.normalized;
         }
-
+        
         if (monsterattackBox.eAttack != MonsterAttackSensor.AttackState.e_none)
         {
             anim.SetBool("Walk", false);
             rb.velocity = Vector2.zero;
             return;
+        }
+    }
+    private void lookVecUpdate()
+    //Å¸°ÙÀÇ º¤ÅÍ¿Í ¸ó½ºÅÍÀÇ º¤ÅÍ¸¦ »©ÁØ´Ù.
+    {
+        lookVec = (Vector2)target.position - (Vector2)transform.position;
+        lookVec = lookVec.normalized;
+        spriteRenderer.flipX = true;
+        if (lookVec.x >= 0)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
