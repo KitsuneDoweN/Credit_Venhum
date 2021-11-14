@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 3189540674355079471}
-  moveSensor: {fileID: 7085921196065252387}
+  moveSensor: {fileID: 0}
   eGun: 0
 --- !u!1 &3189540674355079471
 GameObject:
@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 4482124575016964149}
   - component: {fileID: 6954211858656997004}
   - component: {fileID: 7085921196065252386}
-  - component: {fileID: 7085921196065252387}
-  - component: {fileID: 8260737656317351730}
+  - component: {fileID: 8335408283014991558}
+  - component: {fileID: 8780077774695324902}
   - component: {fileID: 1552170002042802243}
   - component: {fileID: 3655619520274733238}
   m_Layer: 0
@@ -248,7 +248,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
   m_Radius: 5.9
---- !u!114 &7085921196065252387
+--- !u!114 &8335408283014991558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,15 +257,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6954211858656997006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c6b6f5935d19c242aba7622dabf0bf3, type: 3}
+  m_Script: {fileID: 11500000, guid: bd623040aceea204a8ea36065e363685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nav: {fileID: 3655619520274733238}
-  isChase: 1
+  isChase: 0
   rb: {fileID: 6954211858656997004}
   anim: {fileID: 1552170002042802243}
   lookVec: {x: 0, y: 0}
---- !u!114 &8260737656317351730
+--- !u!114 &8780077774695324902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,14 +274,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6954211858656997006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18944d48427ce146aa49b2f66fd4aa1, type: 3}
+  m_Script: {fileID: 11500000, guid: db8b98eab9479d1498472fc1dc59bc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 7085921195406219738}
-  attack: {fileID: 0}
-  attacksensor: {fileID: 0}
-  movesensor: {fileID: 7085921196065252387}
-  attackSensor: {fileID: 1203745188932306949}
+  gunsensor: {fileID: 2459079514666241344}
+  Gunmovesensor: {fileID: 8335408283014991558}
   isControl: 0
   isTakeDamage: 0
 --- !u!95 &1552170002042802243
@@ -294,7 +292,7 @@ Animator:
   m_GameObject: {fileID: 6954211858656997006}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 392181ed02476af44adf3bce7f171a35, type: 2}
+  m_Controller: {fileID: 9100000, guid: c29e61a1af7ab824380529c28119ea55, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
