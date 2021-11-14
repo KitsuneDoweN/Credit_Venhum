@@ -5,6 +5,10 @@ using UnityEngine;
 public class MonsterGunSensor : MonoBehaviour
 {
     public GameObject gunObject;
+
+    public GameObject monsterBullet;
+    public Transform pos;
+
     private float curTime;
     private float coolTime = 0.5f;
     private float attacktime = 0.67f;
@@ -48,7 +52,8 @@ public class MonsterGunSensor : MonoBehaviour
         if (coolTime <= curTime)
         {
             eGun = GunState.e_Gun;
-            gunObject.SetActive(true); //Bullet 날라가는 걸로 변경
+            Instantiate(monsterBullet, pos.position, transform.rotation).GetComponent<Bullet>().Init(pos.localPosition.normalized);
+            //gunObject.SetActive(true); //Bullet 날라가는 걸로 변경
             curTime = 0;
         }
     }

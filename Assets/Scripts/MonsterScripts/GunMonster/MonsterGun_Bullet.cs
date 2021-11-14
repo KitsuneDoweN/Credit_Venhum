@@ -11,7 +11,7 @@ public class MonsterGun_Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Instantiate(monsterBullet, pos.position, transform.rotation).GetComponent<RangedWeapon>().Init(pos.localPosition.normalized);
+            Instantiate(monsterBullet, pos.position, transform.rotation).GetComponent<Bullet>().Init(pos.localPosition.normalized);
         } 
     }
 
