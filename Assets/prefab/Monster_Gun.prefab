@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7556829896835826601}
   - component: {fileID: 1197376391857093678}
   - component: {fileID: 2459079514666241344}
+  - component: {fileID: 4465904044101340024}
   m_Layer: 0
   m_Name: MonsterGunSensor
   m_TagString: EnemyAttackSensor
@@ -61,8 +62,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 3189540674355079471}
-  moveSensor: {fileID: 0}
+  moveSensor: {fileID: 8335408283014991558}
   eGun: 0
+--- !u!114 &4465904044101340024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203745188932306949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f453947d75604d98547a8d6b79b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterBullet: {fileID: 3073033399267882733, guid: 3cdc834f6e4df3a41991a29e225d6e18, type: 3}
+  pos: {fileID: 3301141699472285570}
 --- !u!1 &3189540674355079471
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +122,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1, y: 1}
+  m_Offset: {x: -1, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -118,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &6954211858656997006
 GameObject:
@@ -138,7 +153,7 @@ GameObject:
   - component: {fileID: 3655619520274733238}
   m_Layer: 0
   m_Name: Monster_Gun
-  m_TagString: Enemy
+  m_TagString: Enemy_Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +351,7 @@ GameObject:
   - component: {fileID: 7085921195406219741}
   m_Layer: 6
   m_Name: MonsterStatus
-  m_TagString: EnemyHp
+  m_TagString: EnemyHp_Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,6 +11,8 @@ TagManager:
   - Interaction
   - EnemyHp
   - EnemyAttackSensor
+  - Enemy_Gun
+  - EnemyHp_Gun
   layers:
   - Default
   - TransparentFX

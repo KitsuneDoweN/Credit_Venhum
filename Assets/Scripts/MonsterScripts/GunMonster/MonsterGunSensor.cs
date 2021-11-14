@@ -9,7 +9,7 @@ public class MonsterGunSensor : MonoBehaviour
     private float coolTime = 0.5f;
     private float attacktime = 0.67f;
     [SerializeField]
-    MonsterMoveSensor moveSensor;
+    GunMonsterMoveSensor moveSensor;
 
     public enum GunState
     {

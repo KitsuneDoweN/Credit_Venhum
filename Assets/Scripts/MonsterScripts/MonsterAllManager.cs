@@ -5,6 +5,8 @@ using UnityEngine;
 public class MonsterAllManager : MonoBehaviour
 {
     public List<MonsterManager> monsterManagers;
+    public List<GunMonsterManager> gunmonsterManagers;
+
     public Transform target;
 
     public float DeathCount = 0;
@@ -23,11 +25,19 @@ public class MonsterAllManager : MonoBehaviour
         {
             manager.Init(target, this);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+        GameObject[] gameObject2 = GameObject.FindGameObjectsWithTag("Enemy_Gun");
+        gunmonsterManagers = new List<GunMonsterManager>();
+        gunmonsterManagers.Capacity = gameObject2.Length;
+        //Capacity = 리스트 전체크기
+        foreach (GameObject game2 in gameObject2)
+        {
+            gunmonsterManagers.Add(game2.GetComponent<GunMonsterManager>());
+        }
+        foreach (GunMonsterManager manager2 in gunmonsterManagers)
+        {
+            manager2.Init(target, this);
+        }
     }
 }
