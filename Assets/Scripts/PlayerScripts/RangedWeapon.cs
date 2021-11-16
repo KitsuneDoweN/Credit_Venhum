@@ -65,6 +65,11 @@ public class RangedWeapon : MonoBehaviour
             collision.transform.parent.GetComponent<MonsterManager>().Stiff(stiffCount);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "EnemyHp_Gun")
+        {
+            collision.transform.parent.GetComponent<GunMonsterManager>().Stiff(stiffCount);
+            Destroy(gameObject);
+        }
         if (collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
@@ -75,10 +80,10 @@ public class RangedWeapon : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if(ray.collider != null)
         {
-            //if(ray.collider.tag == "EnemyHp")
-            //{
-            //    Debug.Log("명중");
-            //}
+            if(ray.collider.tag == "EnemyHp")
+            {
+                Debug.Log("명중");
+            }
             Destroy(gameObject);
         }
     }

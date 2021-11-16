@@ -21,6 +21,8 @@ public class MonsterMoveSensor : MonoBehaviour
     private Vector2 vec;
     public Vector2 lookVec;
 
+    public GameObject mark;
+    public GameObject mark2;
 
     public void Init(Transform target, MonsterAttackSensor attackBox, MonsterManager manager)
     {
@@ -46,7 +48,7 @@ public class MonsterMoveSensor : MonoBehaviour
         if(isChase)
         {
             nav.SetDestination(target.position);
-            if(monsterattackBox.eAttack != MonsterAttackSensor.AttackState.e_attack)
+            if (monsterattackBox.eAttack != MonsterAttackSensor.AttackState.e_attack)
             {
                 lookVecUpdate();
             }
@@ -73,6 +75,9 @@ public class MonsterMoveSensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        mark.SetActive(false);
+        mark2.SetActive(true);
+        //Invoke("markTime", 1f);
         if (!isChase)
         {
             return;
@@ -85,6 +90,8 @@ public class MonsterMoveSensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        mark.SetActive(true);
+        mark2.SetActive(false);
         if (collision.gameObject == target.gameObject)
         {
             anim.SetBool("Walk", false);
@@ -106,4 +113,9 @@ public class MonsterMoveSensor : MonoBehaviour
         nav.isStopped = true;
         nav.velocity = Vector2.zero;
     }
+    //private void markTime()
+    //{
+    //    mark.SetActive(true);
+    //    mark2.SetActive(false);
+    //}
 }

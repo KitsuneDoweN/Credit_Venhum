@@ -17,6 +17,7 @@ public class CamaraManager : MonoBehaviour
         {
             targetPosition.Set(target.transform.position.x, target.transform.position.y);
             transform.position = Vector2.Lerp(this.transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            //Lerp = 선형보관
         }
     }
 }

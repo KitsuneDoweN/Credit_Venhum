@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10;
+    public float speed;
     public float distance;
-    public LayerMask isLayer;
-
-    MonsterStatus monster_status;
-
-    private PlayerAttack m_attack;
-
     private Vector2 m_dir;
-
     [SerializeField]
     private Rigidbody2D rigid;
     public void Init(Vector2 dir)
@@ -44,27 +37,21 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerManager>().TakeDamage(1);
-            Destroy(gameObject);
+            Bulletoff();
         }
         if (collision.gameObject.tag == "Wall")
         {
-            Destroy(gameObject);
+            Bulletoff();
         }
     }
-    void Update()
-    {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
-        if (ray.collider != null)
-        {
-            if (ray.collider.tag == "Player")
-            {
-                Debug.Log("ИэСп");
-            }
-            Destroy(gameObject);
-        }
-    }
+    
     void DestroyBullet()
     {
         Destroy(gameObject);
+    }
+
+    void Bulletoff()
+    {
+        gameObject.SetActive(false);
     }
 }

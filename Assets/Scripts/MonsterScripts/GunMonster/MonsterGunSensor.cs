@@ -12,8 +12,11 @@ public class MonsterGunSensor : MonoBehaviour
     private float curTime;
     private float coolTime = 0.5f;
     private float attacktime = 0.67f;
+
     [SerializeField]
     GunMonsterMoveSensor moveSensor;
+    [SerializeField]
+    GunMonsterManager manager;
 
     public enum GunState
     {
@@ -53,7 +56,7 @@ public class MonsterGunSensor : MonoBehaviour
         {
             eGun = GunState.e_Gun;
             Instantiate(monsterBullet, pos.position, transform.rotation).GetComponent<Bullet>().Init(pos.localPosition.normalized);
-            //gunObject.SetActive(true); //Bullet 날라가는 걸로 변경
+            manager.anim.SetBool("Attack", true);
             curTime = 0;
         }
     }
@@ -64,6 +67,8 @@ public class MonsterGunSensor : MonoBehaviour
         if (curTime >= attacktime)
         {
             eGun = GunState.e_none;
+            manager.anim.SetBool("Attack", false);
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

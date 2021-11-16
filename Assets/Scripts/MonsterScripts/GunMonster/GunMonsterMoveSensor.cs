@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class GunMonsterMoveSensor : MonoBehaviour
 {
     private GunMonsterManager gunmonsterManager;
-
+    private MonsterGunSensor gunSensor;
     private Transform target;
 
     public NavMeshAgent nav;
@@ -21,8 +21,9 @@ public class GunMonsterMoveSensor : MonoBehaviour
     public Vector2 lookVec;
 
 
-    public void Init(Transform target, GunMonsterManager manager)
+    public void Init(Transform target, MonsterGunSensor sensor, GunMonsterManager manager)
     {
+        gunSensor = sensor;
         gunmonsterManager = manager;
         this.target = target;
         nav.updateRotation = false;
@@ -44,15 +45,18 @@ public class GunMonsterMoveSensor : MonoBehaviour
         if(isChase)
         {
             nav.SetDestination(target.position);
-            lookVecUpdate();
+            if (gunSensor.eGun != MonsterGunSensor.GunState.e_Gun)
+            {
+                lookVecUpdate();
+            }
         }
-        
-        //if (monsterattackBox.eAttack != MonsterAttackSensor.AttackState.e_none)
-        //{
-        //    anim.SetBool("Walk", false);
-        //    rb.velocity = Vector2.zero;
-        //    return;
-        //}
+
+        if (gunSensor.eGun != MonsterGunSensor.GunState.e_none)
+        {
+            anim.SetBool("Walk", false);
+            rb.velocity = Vector2.zero;
+            return;
+        }
     }
     private void lookVecUpdate()
     //≈∏∞Ÿ¿« ∫§≈ÕøÕ ∏ÛΩ∫≈Õ¿« ∫§≈Õ∏¶ ª©¡ÿ¥Ÿ.

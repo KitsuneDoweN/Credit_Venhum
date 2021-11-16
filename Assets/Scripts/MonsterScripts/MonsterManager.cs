@@ -48,6 +48,7 @@ public class MonsterManager : MonoBehaviour
             attackSensor.SetActive(false);
             anim.SetBool("Die", true);
             allManager.DeathCount += 1;
+            movesensor.ChaseOff();
             Destroy(gameObject, 1.333f);
             isControl = false;
             return;
@@ -72,7 +73,6 @@ public class MonsterManager : MonoBehaviour
     public void Stiff(float count)
     {
         stiff_count += count;
-        Debug.Log(stiff_count);
 
         if (stiff_count >= 5)
         {

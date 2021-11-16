@@ -11,13 +11,11 @@ public class PlayerAttackSensor : MonoBehaviour
         if(collision.gameObject.tag == "EnemyHp")
         {
             collision.transform.parent.GetComponent<MonsterManager>().TakeDamage(m_attack.attackDamage);
-            Debug.Log("P_Attack");
         }
 
         if (collision.gameObject.tag == "EnemyHp_Gun")
         {
             collision.transform.parent.GetComponent<GunMonsterManager>().TakeDamage(m_attack.attackDamage);
-            Debug.Log("M_Attack");
         }
     }
 }

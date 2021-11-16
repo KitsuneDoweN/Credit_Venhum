@@ -16,7 +16,7 @@ public class GunMonsterManager : MonoBehaviour
     public bool isControl;
     public bool isTakeDamage;
 
-    private Animator anim;
+    public Animator anim;
     private float power = 1;
     private float stiff_count = 0;
 
@@ -28,7 +28,7 @@ public class GunMonsterManager : MonoBehaviour
         anim = GetComponent<Animator>();
         allManager = monsterAllManager;
         isControl = true;
-        Gunmovesensor.Init(target, this);
+        Gunmovesensor.Init(target, gunsensor, this);
         //attack.Init(status, movesensor);
     }
 
@@ -67,7 +67,6 @@ public class GunMonsterManager : MonoBehaviour
     public void Stiff(float count)
     {
         stiff_count += count;
-        Debug.Log(stiff_count);
 
         if (stiff_count >= 5)
         {
