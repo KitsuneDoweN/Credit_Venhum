@@ -52,11 +52,12 @@ public class MonsterGunSensor : MonoBehaviour
     private void Stay()
     {
         curTime += Time.deltaTime;
+        moveSensor.nav.isStopped = true;
+        manager.anim.SetBool("Attack", true);
         if (coolTime <= curTime)
         {
             eGun = GunState.e_Gun;
             Instantiate(monsterBullet, pos.position, transform.rotation).GetComponent<Bullet>().Init(pos.localPosition.normalized);
-            manager.anim.SetBool("Attack", true);
             Invoke("AttackTime", 0.75f);
             curTime = 0;
         }
@@ -64,11 +65,12 @@ public class MonsterGunSensor : MonoBehaviour
     private void Attack()
     {
         //0.67동안 켜져있어야한다.
+        manager.anim.SetBool("Walk", true);
         curTime += Time.deltaTime;
         if (curTime >= attacktime)
         {
+            moveSensor.nav.isStopped = false;
             eGun = GunState.e_none;
-            manager.anim.SetBool("Attack", false);
 
         }
     }
