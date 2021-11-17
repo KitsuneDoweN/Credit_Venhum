@@ -12,23 +12,23 @@ public class Bullet : MonoBehaviour
     public void Init(Vector2 dir)
     {
         m_dir = dir;
-        Invoke("DestroyBullet", 2);
+        Invoke("DestroyBullet", 3);
         rigid.velocity = dir * speed;
         if (dir == Vector2.right)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -45);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (dir == Vector2.left)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 135);
+            transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else if (dir == Vector2.up)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 45);
+            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         else if (dir == Vector2.down)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -135);
+            transform.rotation = Quaternion.Euler(0, 0, -90);
         }
     }
 

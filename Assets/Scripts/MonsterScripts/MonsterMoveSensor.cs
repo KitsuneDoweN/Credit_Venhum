@@ -75,8 +75,7 @@ public class MonsterMoveSensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        mark.SetActive(false);
-        mark2.SetActive(true);
+        
         //Invoke("markTime", 1f);
         if (!isChase)
         {
@@ -90,8 +89,7 @@ public class MonsterMoveSensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        mark.SetActive(true);
-        mark2.SetActive(false);
+        
         if (collision.gameObject == target.gameObject)
         {
             anim.SetBool("Walk", false);
@@ -103,13 +101,17 @@ public class MonsterMoveSensor : MonoBehaviour
     { //추격시스템
         if (isChase)
         {
+            mark.SetActive(false);
+            mark2.SetActive(true);
             nav.isStopped = false;
             anim.SetBool("Walk", true);
             nav.velocity = Vector2.zero;
         }
     }
-    public void ChaseOff() // 경직
+    public void ChaseOff()
     { //추격시스템
+        mark.SetActive(true);
+        mark2.SetActive(false);
         nav.isStopped = true;
         nav.velocity = Vector2.zero;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
+    public float moveSpeed = 7.0f;
     private bool moveSpeedControl = false;
     private Rigidbody2D m_rigid;
     private Vector2 movement = new Vector2();
@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                moveSpeed = 5.0f;
+                moveSpeed = 7.0f;
             }
         }
         else
