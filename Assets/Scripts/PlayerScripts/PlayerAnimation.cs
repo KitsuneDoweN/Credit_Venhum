@@ -6,6 +6,8 @@ using UnityEditor;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    private float curTime;
+    private float coolTime = 0.5f;
     private float horizontal;
 
     private void Start()
@@ -27,15 +29,32 @@ public class PlayerAnimation : MonoBehaviour
 
     public void p_Attack()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (curTime <= 0)
         {
-            animator.SetBool("Attack", true);
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                animator.SetBool("Attack", true);
+                curTime = coolTime;
+                if (curTime == coolTime && Input.GetKeyDown(KeyCode.C))
+                {
+                    animator.SetBool("Attack2", true);
+                    Invoke("isAttack2", 1);
+                }
+            }
+            else
+            {
+                animator.SetBool("Attack", false);
+            }
         }
         else
         {
-            animator.SetBool("Attack", false);
+            curTime -= Time.deltaTime;
         }
     }
-
+    private void isAttack2()
+    {
+        animator.SetBool("Attack2", false);
+    }
 
 }

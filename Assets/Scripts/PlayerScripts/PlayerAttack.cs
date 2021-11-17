@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D m_rigid;
     private float curTime;
-    private float coolTime = 0.5f;
+    private float coolTime = 0.583f;
     public float attackDamage = 1;
     public GameObject attackObject;
    
@@ -22,6 +22,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 attackObject.SetActive(true);
                 curTime = coolTime;
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    attackObject.SetActive(true);
+                }
             }
             else
             {

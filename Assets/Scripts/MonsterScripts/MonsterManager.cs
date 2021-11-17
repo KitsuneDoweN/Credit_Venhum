@@ -20,6 +20,8 @@ public class MonsterManager : MonoBehaviour
     public bool isControl;
     public bool isTakeDamage;
 
+    public ParticleSystem particle;
+
     private Animator anim;
     private float power = 1;
     private float stiff_count = 0;
@@ -32,6 +34,7 @@ public class MonsterManager : MonoBehaviour
         anim = GetComponent<Animator>();
         allManager = monsterAllManager;
         isControl = true;
+        particle.Stop();
         movesensor.Init(target, attacksensor, this);
         attack.Init(status, movesensor);
     }
@@ -55,6 +58,7 @@ public class MonsterManager : MonoBehaviour
         }
         anim.SetBool("Hit", true);
         isTakeDamage = true;
+        particle.Play();
         isControl = false;
         movesensor.ChaseOff();
         movesensor.rb.velocity = (movesensor.lookVec * -1) * power;
@@ -84,10 +88,13 @@ public class MonsterManager : MonoBehaviour
             if (stiff_curTime >= stiff_coolTime)
             {
                 movesensor.ChaseOn();
+                anim.SetBool("Hit", false);
                 Debug.Log(stiff_count);
             }
+            Invoke("StiffOff", 0.5f);
         }
-        Invoke("StiffOff", 0.6f);
+            Invoke("StiffOff", 0.5f);
+
     }
 
     private void StiffOff()
