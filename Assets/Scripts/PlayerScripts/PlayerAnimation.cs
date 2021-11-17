@@ -39,7 +39,7 @@ public class PlayerAnimation : MonoBehaviour
                 if (curTime == coolTime && Input.GetKeyDown(KeyCode.C))
                 {
                     animator.SetBool("Attack2", true);
-                    Invoke("isAttack2", 1);
+                    Invoke("isAttack2", 0.8f);
                 }
             }
             else
