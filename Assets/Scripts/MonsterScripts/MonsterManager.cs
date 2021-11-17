@@ -88,10 +88,13 @@ public class MonsterManager : MonoBehaviour
             if (stiff_curTime >= stiff_coolTime)
             {
                 movesensor.ChaseOn();
+                anim.SetBool("Hit", false);
                 Debug.Log(stiff_count);
             }
+            Invoke("StiffOff", 0.5f);
         }
-        Invoke("StiffOff", 0.6f);
+            Invoke("StiffOff", 0.5f);
+
     }
 
     private void StiffOff()
