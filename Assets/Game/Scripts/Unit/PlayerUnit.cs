@@ -9,8 +9,8 @@ public class PlayerUnit : UnitBase
     private UnitGrip m_cUnitGrip;
     [SerializeField]
     private PlayerWeapons m_cWeapons;
-
-    //private PlayerW
+    
+    
 
 
     public override Vector2 v2LookDir
@@ -33,34 +33,47 @@ public class PlayerUnit : UnitBase
         base.init();
 
         m_cUnitGrip.init(Vector2.up * 1.45f, 1.0f);
+        m_cWeapons.init(this);
 
         isControl = true;
         isMoveAble = true;
-
+        isLookAble = true;
 
         switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
     }
 
-    public override void move(Vector2 v2Dir)
+    public void moveDirUpdate(Vector2 dir)
     {
+        v2OldMoveDir = dir;
 
-        if (v2Dir != Vector2.zero && v2LookDir != v2Dir)
-            v2LookDir = v2Dir;
+        if (!isControl || !isMoveAble) return;
 
-        v2MoveDir = v2Dir;
-
-
+        v2MoveDir = v2OldMoveDir;
     }
+
+    public void lookDirUpdate(Vector2 dir)
+    {
+       
+
+        v2OldLookDir = dir;
+
+        if (!isControl || !isLookAble ||dir == Vector2.zero || v2LookDir == dir) 
+            return;
+
+        v2LookDir = v2OldLookDir;
+    }
+
+
 
     private void moveUpdate()
     {
+
         if (!isControl || !isMoveAble) return;
 
         v2Velocity = v2MoveDir * m_cStatus.fSpeed;
 
-        Debug.Log(v2LookDir + "  " + v2MoveDir);
 
-        m_cAnimation.updateMovement(v2LookDir, v2MoveDir);
+
     }
 
     public override void attack()
@@ -96,7 +109,7 @@ public class PlayerUnit : UnitBase
     public void refeshMove()
     {
         isMoveAble = true;
-        move(v2MoveDir);
+        moveDirUpdate(v2MoveDir);
     }
 
     public void switchWeapon(PlayerWeapons.E_Weapon eWeapon)
@@ -106,8 +119,19 @@ public class PlayerUnit : UnitBase
         m_cGripWeapon.transform.parent = m_cUnitGrip.transform;
         m_cGripWeapon.transform.localPosition = Vector3.zero;
 
+        m_cGripWeapon.reset();
+
+        m_cAnimation.setWeaponHandle(m_cGripWeapon);
+
         m_cUnitGrip.gripUpdate(v2LookDir);
     }
 
+    public PlayerWeapons.E_Weapon eGripWeapon
+    {
+        get
+        {
+            return m_cWeapons.eGripWeapon;
+        }
+    }
 
 }

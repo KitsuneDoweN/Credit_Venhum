@@ -12,8 +12,6 @@ public class WeaponBase : MonoBehaviour
 
     private bool m_bCoolTime;
 
-    protected int m_nCurrentCombo;
-
 
     public bool isCoolTime
     {
@@ -35,9 +33,6 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
-
-   
-
     [SerializeField]
     private WeaponData m_cWeaponData;
 
@@ -56,7 +51,7 @@ public class WeaponBase : MonoBehaviour
 
     protected UnitBase m_unitBase;
 
-    public UnitBase cGirpUnit
+    public UnitBase cUnit
     {
         get
         {
@@ -64,61 +59,137 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    protected ComboSystem m_cComboSystem;
+
+    private bool m_bAttackRun;
+
+    public bool isAttackRun
+    {
+        set
+        {
+            m_bAttackRun = value;
+            m_unitBase.isLookAble = !m_bAttackRun;
+        }
+        get
+        {
+            return m_bAttackRun;
+        }
+    }
+
+
 
 
     public virtual void init(UnitBase unitBase)
     {
         m_unitBase = unitBase;
+        m_cComboSystem.init(m_cWeaponData);
+        reset();
+    }
+
+    public virtual void attack()
+    {
+        if (isCoolTime)
+            return;
+
+
+        if (isAttackRun)
+        {
+            m_cComboSystem.combo();
+            return;
+        }
+            
+        cUnit.isMoveAble = false;
+
+        cUnit.cAnimation.attack(m_cComboSystem.nCurrentCombo);
+        isAttackRun = true;
+    }
+
+    public virtual void attackEventStart()
+    {
+
     }
 
 
-    public virtual void attackStart()
-    {
-        coolTimeer();
-    }
-
-
-    public virtual void attackStop()
+    public virtual void attackEventEnd()
     {
 
     }
 
-    public virtual void updateWeapon(Vector2 v2Dir) { }
-
-    public void coolTimeStart()
+    public virtual void attackEnd()
     {
-        coolTimeer();
+        m_cComboSystem.comboAbleEnd();
+
+        isAttackRun = false;
+
+
+        Debug.Log(cUnit.v2OldMoveDir + "  " + cUnit.v2OldLookDir);
+
+        cUnit.v2MoveDir = cUnit.v2OldMoveDir;
+
+        if (cUnit.v2OldLookDir != Vector2.zero)
+            cUnit.v2LookDir = cUnit.v2OldLookDir;
+
+        Debug.Log(cUnit.v2OldMoveDir + "  " + cUnit.v2OldLookDir);
+
+
+
+        if (!m_cComboSystem.comboChack())
+        {
+            cUnit.isMoveAble = true;
+            coolTimeEvent();
+            return;
+        }
+
+
+
+
+
+        attack();
     }
 
-    private void coolTimeer()
+    public virtual void attackImfect()
     {
-        coolTimeReset();
 
-       // m_ieCoolTimeEvent = coolTimeEvnet(m_cWeaponData.fCoolTime[nIndex]);
+    }
+
+    public void comboAbleStart()
+    {
+        m_cComboSystem.comboAbleStart();
+    }
+
+    public void reset()
+    {
+        isAttackRun = false;
+        isCoolTime = false;
+
+        m_cComboSystem.comboReset();
+    }
+
+    private void coolTimeEvent()
+    {
+
+        m_ieCoolTimeEvent = coolTimeEvnetCoroutine();
         StartCoroutine(m_ieCoolTimeEvent);
     }
 
-    private IEnumerator coolTimeEvnet(float fCoolTime)
+    private IEnumerator coolTimeEvnetCoroutine()
     {
-        float fTime = .0f;
+        isCoolTime = true; 
 
-        isCoolTime = true;
-
-        while (fTime <= fCoolTime)
-        {
-            fTime += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(m_cWeaponData.fCoolTime);
 
         isCoolTime = false;
+        m_ieCoolTimeEvent = null;
     }
 
-    public void coolTimeReset()
+    public void stopCoolTimeEvent()
     {
-        if (m_ieCoolTimeEvent != null)
-            StopCoroutine(m_ieCoolTimeEvent);
+        if (m_ieCoolTimeEvent == null)
+            return;
 
-        isCoolTime = false;
+        StopCoroutine(m_ieCoolTimeEvent);
+        isAttackRun = true;
     }
 
 }

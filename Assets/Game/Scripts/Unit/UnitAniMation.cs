@@ -7,10 +7,9 @@ public class UnitAniMation : MonoBehaviour
     [SerializeField] private Animator m_animator;
     [SerializeField] private float m_fMovement;
     [SerializeField] private float m_fDir;
+    [SerializeField] private WeaponAnimationHandle m_cWeaponAnimationHandle;
 
     private float m_fHitTime;
-
-   
 
 
     public void init()
@@ -53,11 +52,16 @@ public class UnitAniMation : MonoBehaviour
         m_animator.speed = fSpeed;
     }
 
-    public void updateMovement(Vector2 v2LookDir, Vector2 v2MoveDir)
+    public void updateMovement(Vector2 v2MoveDir)
     {
         fMovement = 0.0f;
         if (v2MoveDir.sqrMagnitude > 0.1f)
             fMovement = 1.0f;
+
+    }
+
+    public void updateDir(Vector2 v2LookDir)
+    {
 
         fDir = 0.0f;
 
@@ -65,7 +69,18 @@ public class UnitAniMation : MonoBehaviour
             fDir = 1.0f;
 
         if (v2LookDir.x > 0.0f || v2LookDir.x < 0.0f)
-            fDir = 0.75f;
+            fDir = 0.5f;
+    }
+
+    public void attack(int nIndex)
+    {
+        m_animator.SetInteger("nCombo", nIndex);
+        m_animator.SetTrigger("Attack");
+    }
+
+    public void setWeaponHandle(WeaponBase weapon)
+    {
+        m_cWeaponAnimationHandle.cWeaponBase = weapon;
     }
 
 }

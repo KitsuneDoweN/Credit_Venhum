@@ -17,6 +17,11 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private bool m_bPushAttack;
+
+    public bool isPushAttack;
+
+
     public void init(PlayerUnit cPlayer)
     {
         setPlayer(cPlayer);
@@ -34,20 +39,36 @@ public class InputManager : MonoBehaviour
     {
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
-        
-            m_cPlayer.move(context.ReadValue<Vector2>());
-        
+
+        m_cPlayer.lookDirUpdate(context.ReadValue<Vector2>());
+        m_cPlayer.moveDirUpdate(context.ReadValue<Vector2>());
+
+
     }
 
 
 
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnNomalAttack(InputAction.CallbackContext context)
     {
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
 
         if (context.started)
-        m_cPlayer.attack();
+        {
+            if(m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_SWORD)
+                m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
+            
+            m_cPlayer.attack();
+
+            isPushAttack = true;
+        }
+
+        if (context.canceled)
+        {
+            isPushAttack = false;
+        }
+
+        
     }
 
     public void OnDush(InputAction.CallbackContext context)
@@ -75,5 +96,14 @@ public class InputManager : MonoBehaviour
         //    m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_KNIF_THROW);
     }
 
+
+    private void Update()
+    {
+        if (isPushAttack)
+        {
+            m_cPlayer.attack();
+        }
+           
+    }
 
 }

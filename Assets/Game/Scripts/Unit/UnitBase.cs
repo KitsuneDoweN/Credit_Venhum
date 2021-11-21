@@ -10,8 +10,11 @@ public class UnitBase : MonoBehaviour
     [SerializeField] protected SpriteRenderer m_srModel;
 
 
-    protected Vector2 m_v2MoveDir;
-    protected Vector2 m_v2LookDir;
+    private Vector2 m_v2MoveDir;
+    private Vector2 m_v2LookDir;
+
+    private Vector2 m_v2OldLookDir;
+    private Vector2 m_v2OldMoveDir;
 
     [SerializeField] protected Dush m_cDush;
     [SerializeField] protected UnitAniMation m_cAnimation;
@@ -21,8 +24,11 @@ public class UnitBase : MonoBehaviour
 
     protected bool m_bControl;
     protected bool m_bMoveAble;
+    protected bool m_bLookAble;
 
     protected WeaponBase m_cGripWeapon;
+
+
 
 
      public virtual void init()
@@ -38,7 +44,6 @@ public class UnitBase : MonoBehaviour
 
     }
 
-    public virtual void move(Vector2 v2Dir) { }
 
 
     public Vector2 v2Velocity
@@ -54,17 +59,16 @@ public class UnitBase : MonoBehaviour
     }
 
 
-    public virtual void attack() { }
+    public virtual void attack() 
+    {
+        m_cGripWeapon.attack();
+    }
 
-    public virtual void hit(UnitBase unit, WeaponData.S_WeaponDamage[] sWeaponDamages) {
-        print("Unit: " + unit);
-
-        foreach (WeaponData.S_WeaponDamage sWeaponDamage in sWeaponDamages)
-        {
-            m_cStatus.nHp -= sWeaponDamage.nDamage ;
-        }
+    public virtual void hit(UnitBase unit, WeaponAttackData cWeaponDamage) 
+    {
 
     }
+
 
     public virtual void die() 
     {
@@ -91,10 +95,25 @@ public class UnitBase : MonoBehaviour
         set
         {
             m_bMoveAble = value;
+            if (!m_bMoveAble)
+                v2Velocity = Vector2.zero;
         }
         get
         {
             return m_bMoveAble;
+        }
+    }
+
+    public bool isLookAble
+    {
+        set
+        {
+            m_bLookAble = value;
+
+        }
+        get
+        {
+            return m_bLookAble;
         }
     }
 
@@ -129,6 +148,7 @@ public class UnitBase : MonoBehaviour
         {
             m_v2LookDir = value.normalized;
             lookSprite(m_v2LookDir);
+            m_cAnimation.updateDir(v2LookDir);
         }
         get
         {
@@ -141,7 +161,7 @@ public class UnitBase : MonoBehaviour
         set
         {
             m_v2MoveDir = value.normalized;
-
+            m_cAnimation.updateMovement(m_v2MoveDir);
         }
         get
         {
@@ -201,5 +221,39 @@ public class UnitBase : MonoBehaviour
             return m_cGripWeapon;
         }
     }
+
+    public UnitAniMation cAnimation
+    {
+        get
+        {
+            return m_cAnimation;
+        }
+    }
+
+    public Vector2 v2OldLookDir
+    {
+        set
+        {
+            m_v2OldLookDir = value;
+        }
+        get
+        {
+            return m_v2OldLookDir;
+        }
+    }
+
+    public Vector2 v2OldMoveDir
+    {
+        set
+        {
+            m_v2OldMoveDir = value;
+        }
+        get
+        {
+            return m_v2OldMoveDir;
+        }
+    }
+
+    
 
 }

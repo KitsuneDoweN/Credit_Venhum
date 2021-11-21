@@ -30,9 +30,7 @@ public class UnitWeapons : MonoBehaviour
 
 
         m_cGripWeapon = weapons[nGripWeaponIndex];
-        m_cGripWeapon.coolTimeReset();
-
-        
+ 
     }
 
     

@@ -8,23 +8,43 @@ public class WeaponNomalSworld : WeaponBase
     [SerializeField] private int m_nAttackLayer;
 
 
-    private IEnumerator m_ieAttackCoroutine;
-
-
-
 
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
         gameObject.layer = m_nNotAttackLayer;
-        m_nCurrentCombo = 0;
     }
 
-    public override void attackStart()
+    public override void attack()
     {
-        base.attackStart();
+        base.attack();
+    }
+
+    public override void attackEventStart()
+    {
+        base.attackEventStart();
+
         gameObject.layer = m_nAttackLayer;
     }
+
+    public override void attackEventEnd()
+    {
+        base.attackEventEnd();
+        gameObject.layer = m_nNotAttackLayer;
+    }
+
+    public override void attackEnd()
+    {
+        base.attackEnd();
+    }
+
+    public override void attackImfect()
+    {
+        base.attackImfect();
+    }
+
+
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,16 +52,13 @@ public class WeaponNomalSworld : WeaponBase
 
         if((nTargetMask & maskTarget) != 0)
         {
-            collision.GetComponent<UnitBase>().hit(m_unitBase, cWeaponData.sWeaponData.sDamages);
+            collision.GetComponent<UnitBase>().hit(m_unitBase, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
         }
     }
 
 
 
-    public override void attackStop()
-    {
-        gameObject.layer = m_nNotAttackLayer;
-    }
+
 
 
 

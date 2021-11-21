@@ -6,88 +6,33 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "WeaponDatas/WeaponData", order = 1)]
 public class WeaponData : ScriptableObject
 {
-    [Serializable]
-    public struct S_WeaponDamage
-    {
-        public enum E_DamageType
-        {
-            E_NOMAL, E_FAINT
-        }
 
 
+    [SerializeField]
+    private WeaponAttackData[] m_cWeaponDamages;
 
-        public int nDamage;
-        public E_DamageType eDamageType;
+    [SerializeField]
+    private float m_fCoolTime;
 
-    }
-
-    [Serializable]
-    public struct S_WeaponData
-    {
-
-        public float [] fCollTimes;
-        public S_WeaponDamage[] sDamages;
-
-        public enum E_WeaponType
-        {
-            E_NONE = -1, E_SWORD, E_BOW,E_BIGSPIKES,E_RUSH,
-
-
-
-            E_TOTAL
-        }
-        public E_WeaponType eWeaponType;
-        public float fRange;
-    }
-
-
-
-    [SerializeField] private S_WeaponData m_sWeaponData;
-
-    [SerializeField] private int m_maxCombo;
-
-
-
-    public S_WeaponData sWeaponData
+    public int nMaxCombo
     {
         get
         {
-            return m_sWeaponData;
+            return m_cWeaponDamages.Length;
         }
     }
 
-    public S_WeaponDamage[] sDamages
+    public float fCoolTime
     {
         get
         {
-            return m_sWeaponData.sDamages;
+            return m_fCoolTime;
         }
     }
 
-    public S_WeaponData.E_WeaponType eWeaponType
+    public WeaponAttackData getWeaponAttackData(int nIndex)
     {
-        get
-        {
-            return m_sWeaponData.eWeaponType;
-        }
+        return m_cWeaponDamages[nIndex];
     }
-
-    public float fRange
-    {
-        get
-        {
-            return m_sWeaponData.fRange;
-        }
-    }
-
-    public float[] fCoolTime
-    {
-        get
-        {
-            return m_sWeaponData.fCollTimes;
-        }
-    }
-
-
-
 }
+

@@ -49,7 +49,7 @@ public class Throw : MonoBehaviour
 
         if ((nTargetMask & m_cWeapon.maskTarget) != 0)
         {
-            collision.GetComponent<UnitBase>().hit(m_cWeapon.cGirpUnit, m_cWeapon.cWeaponData.sDamages);
+           // collision.GetComponent<UnitBase>().hit(m_cWeapon.cGirpUnit, m_cWeapon.cWeaponData.sDamages);
             m_fLifeTime = 0.0f;
         }
 

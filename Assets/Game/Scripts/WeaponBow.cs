@@ -13,9 +13,9 @@ public class WeaponBow : WeaponBase
         base.init(unitBase);
     }
 
-    public override void attackStart()
+    public override void attackEventStart()
     {
-        base.attackStart();
+        base.attackEventStart();
 
         GameObject goThrow = Instantiate(m_goThrow);
         goThrow.transform.position = m_trFirePoint.position;
