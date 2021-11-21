@@ -1,0 +1,205 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UnitBase : MonoBehaviour
+{
+    [SerializeField] protected Status m_cStatus;
+
+    [SerializeField] protected Rigidbody2D m_rigidbody2D;
+    [SerializeField] protected SpriteRenderer m_srModel;
+
+
+    protected Vector2 m_v2MoveDir;
+    protected Vector2 m_v2LookDir;
+
+    [SerializeField] protected Dush m_cDush;
+    [SerializeField] protected UnitAniMation m_cAnimation;
+    [SerializeField] protected UnitHitSpriteTweenImfect m_cImfect;
+
+    private BoxCollider2D m_collider;
+
+    protected bool m_bControl;
+    protected bool m_bMoveAble;
+
+    protected WeaponBase m_cGripWeapon;
+
+
+     public virtual void init()
+    {
+        m_collider = GetComponent<BoxCollider2D>();
+
+
+        m_cStatus.init();
+        m_cDush.init(this, m_cStatus.fDushPower, m_cStatus.fDushTime);
+        m_cAnimation.init();
+        m_cImfect.init(m_srModel);
+
+
+    }
+
+    public virtual void move(Vector2 v2Dir) { }
+
+
+    public Vector2 v2Velocity
+    {
+        set
+        {
+            m_rigidbody2D.velocity = value;
+        }
+        get
+        {
+            return m_rigidbody2D.velocity;
+        }
+    }
+
+
+    public virtual void attack() { }
+
+    public virtual void hit(UnitBase unit, WeaponData.S_WeaponDamage[] sWeaponDamages) {
+        print("Unit: " + unit);
+
+        foreach (WeaponData.S_WeaponDamage sWeaponDamage in sWeaponDamages)
+        {
+            m_cStatus.nHp -= sWeaponDamage.nDamage ;
+        }
+
+    }
+
+    public virtual void die() 
+    {
+        print(gameObject.name + " is die");
+        Destroy(gameObject);
+    }
+
+
+    public virtual bool isControl
+    {
+        set
+        {
+            m_bControl = value;
+        }
+
+        get
+        {
+            return m_bControl;
+        }
+    }
+
+    public bool isMoveAble
+    {
+        set
+        {
+            m_bMoveAble = value;
+        }
+        get
+        {
+            return m_bMoveAble;
+        }
+    }
+
+    public Rigidbody2D rig2D
+    {
+        get
+        {
+            return m_rigidbody2D;
+        }
+    }
+
+    public bool isDie
+    {
+        get
+        {
+            if (m_cStatus.nHp <= 0) return true;
+            return false;
+        }
+    }
+
+    public Vector2 v2UnitPos
+    {
+        get
+        {
+            return (Vector2)transform.position;
+        }
+    }
+
+    public virtual Vector2 v2LookDir
+    {
+        set
+        {
+            m_v2LookDir = value.normalized;
+            lookSprite(m_v2LookDir);
+        }
+        get
+        {
+            return m_v2LookDir;
+        }
+
+    }
+    public  Vector2 v2MoveDir
+    {
+        set
+        {
+            m_v2MoveDir = value.normalized;
+
+        }
+        get
+        {
+            return m_v2MoveDir;
+        }
+    }
+    private void lookSprite(Vector2 v2LookDir)
+    {
+        m_srModel.flipX = false;
+        if (v2LookDir.x < 0)
+            m_srModel.flipX = true;
+    }
+
+   
+
+
+    protected void knockBack(Vector2 v2Dir, float fPower,float fTime)
+    {
+        m_cDush.dushDetail(v2Dir, fPower, fTime);
+    }
+
+
+
+    
+    public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime)
+    {
+        m_cDush.dushDetail(v2Dir, fPower, fDushTime);
+    }
+
+    protected void dush(Vector2 v2Dir)
+    {
+        m_cDush.dush(v2Dir);
+    }
+    
+
+    public void dushStop()
+    {
+        m_cDush.dushStop();
+    }
+
+    public BoxCollider2D collider
+    {
+        get
+        {
+            return m_collider;
+        }
+    }
+
+    protected WeaponBase cGripWeapon
+    {
+        set
+        {
+            m_cGripWeapon = value;
+        }
+        get
+        {
+            return m_cGripWeapon;
+        }
+    }
+
+}
