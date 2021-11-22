@@ -19,7 +19,6 @@ public class UnitWeapons : MonoBehaviour
         foreach (WeaponBase weapon in weapons)
         {
             weapon.init(unit);
-            weapon.gameObject.SetActive(false);
         }
     }
 

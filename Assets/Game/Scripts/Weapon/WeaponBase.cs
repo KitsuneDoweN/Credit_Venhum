@@ -49,7 +49,7 @@ public class WeaponBase : MonoBehaviour
     }
 
 
-    protected UnitBase m_unitBase;
+    private UnitBase m_unitBase;
 
     public UnitBase cUnit
     {
@@ -63,6 +63,8 @@ public class WeaponBase : MonoBehaviour
     protected ComboSystem m_cComboSystem;
 
     private bool m_bAttackRun;
+
+
 
     public bool isAttackRun
     {
@@ -125,27 +127,12 @@ public class WeaponBase : MonoBehaviour
 
         Debug.Log(cUnit.v2OldMoveDir + "  " + cUnit.v2OldLookDir);
 
+
         cUnit.v2MoveDir = cUnit.v2OldMoveDir;
-
-        if (cUnit.v2OldLookDir != Vector2.zero)
-            cUnit.v2LookDir = cUnit.v2OldLookDir;
-
-        Debug.Log(cUnit.v2OldMoveDir + "  " + cUnit.v2OldLookDir);
+        cUnit.v2LookDir = cUnit.v2OldLookDir;
 
 
 
-        if (!m_cComboSystem.comboChack())
-        {
-            cUnit.isMoveAble = true;
-            coolTimeEvent();
-            return;
-        }
-
-
-
-
-
-        attack();
     }
 
     public virtual void attackImfect()
@@ -166,7 +153,7 @@ public class WeaponBase : MonoBehaviour
         m_cComboSystem.comboReset();
     }
 
-    private void coolTimeEvent()
+    protected void coolTimeEvent()
     {
 
         m_ieCoolTimeEvent = coolTimeEvnetCoroutine();
@@ -190,6 +177,14 @@ public class WeaponBase : MonoBehaviour
 
         StopCoroutine(m_ieCoolTimeEvent);
         isAttackRun = true;
+    }
+
+    public int nCurrentCombo
+    {
+        get
+        {
+            return m_cComboSystem.nCurrentCombo;
+        }
     }
 
 }

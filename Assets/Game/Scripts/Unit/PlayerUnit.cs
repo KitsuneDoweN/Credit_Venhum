@@ -42,26 +42,7 @@ public class PlayerUnit : UnitBase
         switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
     }
 
-    public void moveDirUpdate(Vector2 dir)
-    {
-        v2OldMoveDir = dir;
 
-        if (!isControl || !isMoveAble) return;
-
-        v2MoveDir = v2OldMoveDir;
-    }
-
-    public void lookDirUpdate(Vector2 dir)
-    {
-       
-
-        v2OldLookDir = dir;
-
-        if (!isControl || !isLookAble ||dir == Vector2.zero || v2LookDir == dir) 
-            return;
-
-        v2LookDir = v2OldLookDir;
-    }
 
 
 
@@ -103,7 +84,7 @@ public class PlayerUnit : UnitBase
 
 
         isMoveAble = false;
-        dush(v2LookDir);
+        dush(v2LookDir, true);
     }
 
     public void refeshMove()

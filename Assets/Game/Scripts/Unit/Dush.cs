@@ -9,6 +9,21 @@ public class Dush : MonoBehaviour
 
     private IEnumerator m_ieDushCoroutine;
 
+    private IEnumerator ieDushCoroutine
+    {
+        set
+        {
+            if (m_ieDushCoroutine != null)
+                StopCoroutine(m_ieDushCoroutine);
+
+            m_ieDushCoroutine = value;
+        }
+        get
+        {
+            return m_ieDushCoroutine;
+        }
+    }
+
     [SerializeField]
     private UnityEvent m_dushEndEvent;
 
@@ -63,30 +78,29 @@ public class Dush : MonoBehaviour
     }
 
 
-    public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime)
-    {
-        if (!m_cUnit.isControl)
-            return;
-
-        if (!isDushAble)
-            return;
-
-        m_ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fDushTime);
-        StartCoroutine(m_ieDushCoroutine);
-    }
-
-    public void dush(Vector2 v2Dir)
+    public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
         if (!isDushAble)
             return;
 
-        m_ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fTime);
+        ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fDushTime, bEndEvent);
         StartCoroutine(m_ieDushCoroutine);
     }
 
-    private IEnumerator dushEvnet(Rigidbody2D rigidbody2D, Vector2 v2Dir, float fPower, float fDushTime)
+    public void dush(Vector2 v2Dir, bool bEndEvent)
+    {
+        if (!isDushAble)
+            return;
+
+        ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fTime, bEndEvent);
+        StartCoroutine(m_ieDushCoroutine);
+    }
+
+    private IEnumerator dushEvnet(Rigidbody2D rigidbody2D, Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
         float fTime = 0.0f;
+
+        bool bControl = m_cUnit.isControl;
 
         m_cUnit.isControl = false;
 
@@ -99,9 +113,10 @@ public class Dush : MonoBehaviour
         }
 
         m_cUnit.v2Velocity = Vector2.zero;
-        m_cUnit.isControl = true;
+        m_cUnit.isControl = bControl;
 
-        m_dushEndEvent.Invoke();
+        if (bEndEvent)
+            m_dushEndEvent.Invoke();
 
 
         m_ieDushCoroutine = null;

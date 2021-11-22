@@ -178,22 +178,22 @@ public class UnitBase : MonoBehaviour
    
 
 
-    protected void knockBack(Vector2 v2Dir, float fPower,float fTime)
+    protected void knockBack(Vector2 v2Dir, float fPower,float fTime, bool bEndEvent)
     {
-        m_cDush.dushDetail(v2Dir, fPower, fTime);
+        m_cDush.dushDetail(v2Dir, fPower, fTime, bEndEvent);
     }
 
 
 
     
-    public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime)
+    public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
-        m_cDush.dushDetail(v2Dir, fPower, fDushTime);
+        m_cDush.dushDetail(v2Dir, fPower, fDushTime, bEndEvent);
     }
 
-    protected void dush(Vector2 v2Dir)
+    protected void dush(Vector2 v2Dir, bool bEndEvent)
     {
-        m_cDush.dush(v2Dir);
+        m_cDush.dush(v2Dir, bEndEvent);
     }
     
 
@@ -201,6 +201,31 @@ public class UnitBase : MonoBehaviour
     {
         m_cDush.dushStop();
     }
+
+    public void moveDirUpdate(Vector2 dir)
+    {
+        v2OldMoveDir = dir;
+
+        if (!isControl || !isMoveAble) return;
+
+        v2MoveDir = v2OldMoveDir;
+    }
+
+    public void lookDirUpdate(Vector2 dir)
+    {
+
+        if (dir != Vector2.zero)
+            v2OldLookDir = dir;
+
+        if (!isControl || !isLookAble || dir == Vector2.zero || v2LookDir == dir)
+            return;
+
+        v2LookDir = v2OldLookDir;
+
+
+        Debug.Log("LOOK " + v2LookDir + " Old" + v2OldLookDir);
+    }
+
 
     public BoxCollider2D collider
     {
