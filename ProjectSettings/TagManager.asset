@@ -44,8 +44,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Attack
+  - NotAttack
   m_SortingLayers:
   - name: Default
     uniqueID: 0
