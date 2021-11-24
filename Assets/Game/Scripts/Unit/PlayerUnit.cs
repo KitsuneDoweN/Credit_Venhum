@@ -20,6 +20,8 @@ public class PlayerUnit : UnitBase
 
 
         m_cWeapons.init(this);
+
+        switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
         cGrip.init(cGripWeapon.cWeaponData.fRange);
 
 
@@ -27,7 +29,6 @@ public class PlayerUnit : UnitBase
         isMoveAble = true;
         isLookAble = true;
 
-        switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
 
         hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
     }
@@ -113,7 +114,7 @@ public class PlayerUnit : UnitBase
 
     public void switchWeapon(PlayerWeapons.E_Weapon eWeapon)
     {
-        if (!m_cWeapons.switchWeapon(eWeapon,  cGripWeapon))
+        if (!m_cWeapons.switchWeapon(eWeapon,  ref m_cGripWeapon))
             return;
 
         cGripWeapon.transform.parent = cGrip.transform;

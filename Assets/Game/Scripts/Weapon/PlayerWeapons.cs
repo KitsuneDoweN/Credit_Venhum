@@ -23,7 +23,7 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    public bool switchWeapon(E_Weapon eSwitchWeapon, WeaponBase switchWeapon)
+    public bool switchWeapon(E_Weapon eSwitchWeapon, ref WeaponBase switchWeapon)
     {
         if (switchWeapon != null && switchWeapon.isAttackRun)
             return false;

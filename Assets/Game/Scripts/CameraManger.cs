@@ -29,8 +29,7 @@ public class CameraManger : MonoBehaviour
     private float m_fCurrentZoom;
     private float m_fCurrentZoomVelocity;
 
-    private float m_fRoomInEventTime = 0.5f;
-    private float m_fRoomInEventTick = 0.0f;
+
 
 
     [SerializeField] private float m_fSmoothTime;

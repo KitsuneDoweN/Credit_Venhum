@@ -27,6 +27,7 @@ public class UnitHitSpriteTweenImfect : MonoBehaviour
     public void hitimfect()
     {
         stop();
+
         m_imfectTween = m_model.DOColor(m_hitColor, m_fHitTick).SetLoops(-1, LoopType.Yoyo);
         play();
     }
