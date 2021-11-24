@@ -8,6 +8,7 @@ public class UnitEnemyBase : UnitBase
 
     [SerializeField] private NavMeshAgent m_navAgent;
 
+    [SerializeField]
     protected float m_fAttackRange;
     
     private UnitBase m_cTargetUnit;
@@ -28,13 +29,21 @@ public class UnitEnemyBase : UnitBase
     {
         base.init();
 
+        isControl = true;
+        isMoveAble = true;
+        isLookAble = true;
 
-        setTarget(GameManager.instance.cStageManager.cPlayer);
 
+
+        m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();
+        m_cGripWeapon.init(this);
+
+        cGrip.init(cGripWeapon.cWeaponData.fRange);
+
+        m_navAgent.speed = m_cStatus.fSpeed;
         m_navAgent.updateRotation = false;
         m_navAgent.updateUpAxis = false;
 
-        m_fAttackRange = cGripWeapon.cWeaponData.fRange;
         cAnimation.init();
     }
 
@@ -42,8 +51,6 @@ public class UnitEnemyBase : UnitBase
     public override void hit(UnitBase unit, WeaponAttackData cAttackDatas)
     {
         base.hit(unit, cAttackDatas);
-
-
     }
 
     public virtual void handleSpawn()
@@ -56,6 +63,7 @@ public class UnitEnemyBase : UnitBase
         m_navAgent.isStopped = true;
         m_navAgent.velocity = Vector3.zero;
         v2MoveDir = Vector2.zero;
+        v2Velocity = Vector2.zero;
     }
 
     protected void navTrackingReStart()
@@ -65,9 +73,18 @@ public class UnitEnemyBase : UnitBase
 
 
 
-    protected void setTargetDestination()
+    protected virtual void setTargetDestination()
     {
         m_navAgent.SetDestination(cTargetUnit.transform.position);
+
+        Vector2 v2Dir = cTargetUnit.v2UnitPos - v2UnitPos;
+
+        v2OldMoveDir = v2Dir;
+        v2OldLookDir = v2Dir;
+
+        movementUpdate();
+
+
     }
 
     public void setTarget(UnitBase cTargetUnit)

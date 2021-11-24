@@ -8,8 +8,14 @@ public class NomalEnemy : UnitEnemyBase
     private float m_fSerchRange;
     [SerializeField]
     private LayerMask m_targetLayer;
-
+    [SerializeField]
     private float m_fAttakWaitTime;
+    [SerializeField]
+    private UnitBloodImfect m_cBloodImfect;
+    [SerializeField]
+    private EnemySerchIcon m_cSerchIcon;
+
+
 
     private enum E_EnemyState
     {
@@ -37,7 +43,10 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-
+    private void Start()
+    {
+        init();
+    }
 
     public override void init()
     {
@@ -45,11 +54,21 @@ public class NomalEnemy : UnitEnemyBase
 
         m_cGripWeapon.init(this);
 
-        m_bControl = true;
+        cAnimation.setWeaponHandle(m_cGripWeapon);
 
-        setTarget(GameManager.instance.cStageManager.cPlayer);
+        cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
+        cGrip.gripUpdate(v2LookDir);
 
-         m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
+        m_cBloodImfect.init();
+
+        isControl = true;
+        isMoveAble = true;
+        isLookAble = true;
+
+        m_cSerchIcon.init();
+
+
+        m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
 
         m_delAI[(int)E_EnemyState.E_NONE] = noneEvent;
         m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
@@ -60,6 +79,9 @@ public class NomalEnemy : UnitEnemyBase
 
 
     }
+
+
+
 
 
 
@@ -74,12 +96,18 @@ public class NomalEnemy : UnitEnemyBase
         if (isDie)
             return;
 
+        cAnimation.hit();
+
         if (m_ieAttackWaitEventCoroutine != null)
         {
             StopCoroutine(m_ieAttackWaitEventCoroutine);
             m_ieAttackWaitEventCoroutine = null;
         }
-            
+
+        Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos ;
+        v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
+
+        m_cBloodImfect.bloodImfect(v2UnitToHitUnitDir);
 
 
        eEnemyState = E_EnemyState.E_WAIT;
@@ -148,8 +176,12 @@ public class NomalEnemy : UnitEnemyBase
         {
             m_eEnemyState = value;
 
+
             if (m_eEnemyState == E_EnemyState.E_WAIT || m_eEnemyState == E_EnemyState.E_ATTACK)
             {
+                if (m_eEnemyState == E_EnemyState.E_WAIT)
+                    setTarget(null);
+
                 m_fWaitTime = .0f;
                 navTrackingStop();
             }
@@ -157,6 +189,7 @@ public class NomalEnemy : UnitEnemyBase
             if(m_eEnemyState == E_EnemyState.E_TRACKING)
             {
                 navTrackingReStart();
+
             }
             
             
@@ -177,12 +210,6 @@ public class NomalEnemy : UnitEnemyBase
             return;
 
 
-        if(cTargetUnit != null)
-        {
-            v2LookDir = (cTargetUnit.v2UnitPos - v2UnitPos);
-            v2MoveDir = v2LookDir;
-        }
-
         m_delAI[(int)eEnemyState]();
 
 
@@ -200,7 +227,7 @@ public class NomalEnemy : UnitEnemyBase
         }
 
         eEnemyState = E_EnemyState.E_TRACKING;
-
+        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_ON);
 
     }
 
@@ -209,9 +236,10 @@ public class NomalEnemy : UnitEnemyBase
     private void trackingEvent()
     {
 
-        if(cTargetUnit == null)
+        if(cTargetUnit == null || !inRange(m_fSerchRange))
         {
             eEnemyState = E_EnemyState.E_WAIT;
+            m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
             return;
         }
 
@@ -220,26 +248,34 @@ public class NomalEnemy : UnitEnemyBase
         setTargetDestination();
 
 
-
         if (inRange(m_fAttackRange))
         {
              
             eEnemyState = E_EnemyState.E_ATTACK;
+            return;
         }
 
     }
 
 
 
+
+
     private void OnDrawGizmos()
     {
+        //Attack
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, m_fAttackRange);
 
-        Gizmos.color = Color.black;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, m_fSerchRange);
+
+        Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)v2LookDir);
     }
 
+
+    
 
 
 }

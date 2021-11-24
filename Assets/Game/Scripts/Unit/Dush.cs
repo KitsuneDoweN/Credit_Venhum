@@ -103,6 +103,9 @@ public class Dush : MonoBehaviour
         bool bControl = m_cUnit.isControl;
 
         m_cUnit.isControl = false;
+        m_cUnit.isMoveAble = false;
+        m_cUnit.isLookAble = false;
+
 
         m_cUnit.v2Velocity = v2Dir * fPower;
 
@@ -114,6 +117,10 @@ public class Dush : MonoBehaviour
 
         m_cUnit.v2Velocity = Vector2.zero;
         m_cUnit.isControl = bControl;
+
+        m_cUnit.isMoveAble = bControl;
+        m_cUnit.isLookAble = bControl;
+
 
         if (bEndEvent)
             m_dushEndEvent.Invoke();

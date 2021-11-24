@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc2b839c159643458d9e4093fd6f142, type: 3}
   m_Name: Player_Sword
   m_EditorClassIdentifier: 
-  m_fStamina: 5
+  m_fStamina: 0
   m_cWeaponDamages:
   - m_cDamageData:
     - m_eDamageType: 1
@@ -21,3 +21,4 @@ MonoBehaviour:
     - m_eDamageType: 1
       m_nDamge: 0
   m_fCoolTime: 0
+  m_fRange: 1.5

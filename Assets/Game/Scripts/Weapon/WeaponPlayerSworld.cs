@@ -11,7 +11,7 @@ public class WeaponPlayerSworld : WeaponBase
     {
         base.init(unitBase);
         gameObject.layer = m_nNotAttackLayer;
-        strAttackTrigger = "AttackSword";
+        strAttackTrigger = "attackSword";
     }
 
     public override void attack()
@@ -29,6 +29,8 @@ public class WeaponPlayerSworld : WeaponBase
 
         cUnit.fStamina -= cWeaponData.fStamina;
         cUnit.isMoveAble = false;
+        cUnit.isLookAble = false;
+         
 
         cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
         isAttackRun = true;
@@ -50,6 +52,8 @@ public class WeaponPlayerSworld : WeaponBase
     public override void attackEnd()
     {
         base.attackEnd();
+
+        cUnit.lookDirUpdate();
 
         m_cComboSystem.comboAbleEnd();
 

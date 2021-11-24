@@ -11,9 +11,6 @@ public class PlayerUnit : UnitBase
 
 
 
-
-
-
     public override void init()
     {
         base.init();
@@ -30,7 +27,7 @@ public class PlayerUnit : UnitBase
         isLookAble = true;
 
 
-        hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
+        //hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
     }
 
 
@@ -40,9 +37,6 @@ public class PlayerUnit : UnitBase
         { 
             base.isControl = value;
 
-            v2MoveDir = v2OldMoveDir;
-            v2LookDir = v2OldLookDir;
-
         }
         get
         {
@@ -51,15 +45,18 @@ public class PlayerUnit : UnitBase
     }
 
 
-    private void moveUpdate()
+
+
+
+    public override void moveDirUpdate()
     {
+        base.moveDirUpdate();
 
-        if (!isControl || !isMoveAble) return;
+    }
 
-        v2Velocity = v2MoveDir * m_cStatus.fSpeed;
-
-
-
+    public override void lookDirUpdate()
+    {
+        base.lookDirUpdate();
     }
 
 
@@ -67,7 +64,7 @@ public class PlayerUnit : UnitBase
     {
         base.hit(unit, cAttackData);
 
-        m_cAnimation.trigger("Hit");
+        cAnimation.hit();
 
         m_cImfect.hitimfect();
         m_cImfect.godImfect();
@@ -88,7 +85,7 @@ public class PlayerUnit : UnitBase
 
     private void Update()
     {
-        moveUpdate();
+        movementUpdate();
     }
 
     public void dushAction()
@@ -101,21 +98,19 @@ public class PlayerUnit : UnitBase
 
         fStamina -= cStatus.fDushStamina;
 
+        isLookAble = true;
 
-        isMoveAble = false;
+        lookDirUpdate();
+        
         dush(v2LookDir, true);
     }
 
-    public void refeshMove()
-    {
-        isMoveAble = true;
-        moveDirUpdate(v2MoveDir);
-    }
 
-    public void switchWeapon(PlayerWeapons.E_Weapon eWeapon)
+
+    public bool switchWeapon(PlayerWeapons.E_Weapon eWeapon)
     {
-        if (!m_cWeapons.switchWeapon(eWeapon,  ref m_cGripWeapon))
-            return;
+        if (!m_cWeapons.switchWeapon(eWeapon, ref m_cGripWeapon))
+            return false ;
 
         cGripWeapon.transform.parent = cGrip.transform;
         cGripWeapon.transform.localPosition = Vector3.zero;
@@ -126,6 +121,8 @@ public class PlayerUnit : UnitBase
 
         cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
         cGrip.gripUpdate(v2LookDir);
+
+        return true;
     }
 
     public PlayerWeapons.E_Weapon eGripWeapon

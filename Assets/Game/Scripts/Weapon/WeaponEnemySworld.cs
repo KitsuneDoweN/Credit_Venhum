@@ -14,7 +14,7 @@ public class WeaponEnemySworld : WeaponBase
     {
         base.init(unitBase);
         gameObject.layer = m_nNotAttackLayer;
-        strAttackTrigger = "AttackSword";
+        strAttackTrigger = "attack";
     }
 
     public override void attack()
@@ -45,6 +45,11 @@ public class WeaponEnemySworld : WeaponBase
     public override void attackImfect()
     {
         base.attackImfect();
+    }
+
+    public override void attackEnd()
+    {
+        base.attackEnd();
     }
 
 

@@ -122,9 +122,8 @@ public class WeaponBase : MonoBehaviour
     public virtual void attackEnd()
     {
         isAttackRun = false;
-
-        cUnit.v2MoveDir = cUnit.v2OldMoveDir;
-        cUnit.v2LookDir = cUnit.v2OldLookDir;
+        cUnit.isMoveAble = true;
+        cUnit.isLookAble = true;
     }
 
     public virtual void attackImfect()
@@ -140,6 +139,10 @@ public class WeaponBase : MonoBehaviour
     public void reset()
     {
         m_cComboSystem.comboReset();
+        isAttackRun = false;
+
+
+
     }
 
     protected void coolTimeEvent()

@@ -9,7 +9,7 @@ public class UnitAniMation : MonoBehaviour
     [SerializeField] private float m_fDir;
     [SerializeField] private WeaponAnimationHandle m_cWeaponAnimationHandle;
 
-    private float m_fHitTime;
+
 
 
     public void init()
@@ -39,10 +39,9 @@ public class UnitAniMation : MonoBehaviour
 
 
 
-    public void hit(ref float fMotionTime)
+    public void hit()
     {
-        trigger("HitTriger");
-        fMotionTime = m_fHitTime;
+        trigger("hit");
     }
 
 
