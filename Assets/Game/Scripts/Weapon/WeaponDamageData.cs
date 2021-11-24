@@ -15,7 +15,7 @@ public class WeaponDamageData
     [SerializeField]
     private DamageType m_eDamageType;
     [SerializeField]
-    private float m_fDamge;
+    private int m_nDamge;
 
     public DamageType eDamageType
     {
@@ -25,11 +25,11 @@ public class WeaponDamageData
         }
     }
 
-    public float fDamge
+    public int nDamge
     {
         get
         {
-            return m_fDamge;
+            return m_nDamge;
         }
     }
 }

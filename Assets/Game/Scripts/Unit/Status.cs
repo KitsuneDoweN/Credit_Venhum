@@ -60,12 +60,15 @@ public class Status
 
     [SerializeField] private float m_fMaxStamina;
     private float m_fStamina;
+    [SerializeField] protected float m_fStaminaHealingTick;
+    [SerializeField] protected float m_fStaminaHealingTickTime;
 
 
     [SerializeField] private float m_fDushPower;
     [SerializeField] private float m_fDushTime;
     [SerializeField] private float m_fDushStamina;
 
+    [SerializeField] private float m_fGodTime;
     public float fDushPower
     {
         get
@@ -95,7 +98,7 @@ public class Status
     {
         get
         {
-            return m_fDushStamina;
+            return m_fMaxStamina;
         }
     }
 
@@ -111,16 +114,38 @@ public class Status
         }
     }
 
+    public float fStatminaHealingTick
+    {
+        get
+        {
+            return m_fStaminaHealingTick;
+        }
+    }
+
+    public float fStatminaHealingTickTime
+    {
+        get
+        {
+            return m_fStaminaHealingTickTime;
+        }
+    }
+
 
     public void init()
     {
-        m_nHp = m_nMaxHp;
-        m_fSpeed = m_fMaxSpeed;
-        m_fStamina = m_fMaxStamina;
+        nHp = nMaxHp;
+        fSpeed = fMaxSpeed;
+        fStamina = fMaxStamina;
     }
 
    
-
+    public float fGodTime
+    {
+        get
+        {
+            return m_fGodTime;
+        }
+    }
 
 
 

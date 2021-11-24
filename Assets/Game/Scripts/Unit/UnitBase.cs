@@ -9,6 +9,9 @@ public class UnitBase : MonoBehaviour
     [SerializeField] protected Rigidbody2D m_rigidbody2D;
     [SerializeField] protected SpriteRenderer m_srModel;
 
+    [SerializeField]
+    private UnitGrip m_cUnitGrip;
+
 
     private Vector2 m_v2MoveDir;
     private Vector2 m_v2LookDir;
@@ -29,9 +32,13 @@ public class UnitBase : MonoBehaviour
     protected WeaponBase m_cGripWeapon;
 
 
+    private IEnumerator m_ieHealingEventCoroutine;
+
+    [SerializeField] private int m_nDefaultlayer;
+    private int m_nGodLayer;
 
 
-     public virtual void init()
+    public virtual void init()
     {
         m_collider = GetComponent<BoxCollider2D>();
 
@@ -41,7 +48,7 @@ public class UnitBase : MonoBehaviour
         m_cAnimation.init();
         m_cImfect.init(m_srModel);
 
-
+        m_nGodLayer = 10;
     }
 
 
@@ -61,12 +68,17 @@ public class UnitBase : MonoBehaviour
 
     public virtual void attack() 
     {
+        if(fStamina >= m_cGripWeapon.cWeaponData.fStamina)
         m_cGripWeapon.attack();
     }
 
-    public virtual void hit(UnitBase unit, WeaponAttackData cWeaponDamage) 
+    public virtual void hit(UnitBase unit, WeaponAttackData cAttackData) 
     {
-
+        foreach(WeaponDamageData data in cAttackData.getWeaponDamageData())
+        {
+            if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
+                cStatus.nHp -= data.nDamge;
+        }
     }
 
 
@@ -82,6 +94,7 @@ public class UnitBase : MonoBehaviour
         set
         {
             m_bControl = value;
+
         }
 
         get
@@ -149,6 +162,7 @@ public class UnitBase : MonoBehaviour
             m_v2LookDir = value.normalized;
             lookSprite(m_v2LookDir);
             m_cAnimation.updateDir(v2LookDir);
+            cGrip.gripUpdate(v2LookDir);
         }
         get
         {
@@ -223,7 +237,7 @@ public class UnitBase : MonoBehaviour
         v2LookDir = v2OldLookDir;
 
 
-        Debug.Log("LOOK " + v2LookDir + " Old" + v2OldLookDir);
+       // Debug.Log("LOOK " + v2LookDir + " Old" + v2OldLookDir);
     }
 
 
@@ -279,6 +293,78 @@ public class UnitBase : MonoBehaviour
         }
     }
 
-    
+    public float fStamina
+    {
+        set
+        {
+            cStatus.fStamina = value;
+            cStatus.fStamina = Mathf.Clamp(fStamina, 0.0f, cStatus.fMaxStamina);
+
+            if(cStatus.fStamina < cStatus.fMaxStamina)
+            {
+                staminaHeilingEventStart();
+            }
+
+            Debug.Log("S: " + fStamina + "MAX S: " + cStatus.fMaxStamina);
+
+        }
+        get
+        {
+            return cStatus.fStamina;
+        }
+    }
+
+    private void staminaHeilingEventStart()
+    {
+        if (m_ieHealingEventCoroutine != null)
+            return;
+
+        m_ieHealingEventCoroutine = healingEventCoroutine();
+        StartCoroutine(m_ieHealingEventCoroutine);
+    }
+
+
+    private IEnumerator healingEventCoroutine()
+    {
+        while(fStamina < cStatus.fMaxStamina)
+        {
+            yield return new WaitForSeconds(cStatus.fStatminaHealingTickTime);
+            fStamina += cStatus.fStatminaHealingTick;
+        }
+
+        m_ieHealingEventCoroutine = null;
+    }
+
+    protected Status cStatus
+    {
+        get
+        {
+            return m_cStatus;
+        }
+    }
+
+    public void godMode()
+    {
+        gameObject.layer = m_nGodLayer;
+        m_cImfect.stop();
+        m_cImfect.godImfect();
+        m_cImfect.play();
+
+        Invoke("godModeEnd", cStatus.fGodTime);
+    }
+
+    private void godModeEnd()
+    {
+        m_cImfect.stop();
+        gameObject.layer = m_nDefaultlayer;
+    }
+
+    protected UnitGrip cGrip
+    {
+        get
+        {
+            return m_cUnitGrip;
+        }
+    }
 
 }

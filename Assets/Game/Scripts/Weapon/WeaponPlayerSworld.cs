@@ -7,18 +7,31 @@ public class WeaponPlayerSworld : WeaponBase
     [SerializeField] private int m_nNotAttackLayer;
     [SerializeField] private int m_nAttackLayer;
 
-    [SerializeField] private float fSpeed;
-    [SerializeField] private float fTime;
-
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
         gameObject.layer = m_nNotAttackLayer;
+        strAttackTrigger = "AttackSword";
     }
 
     public override void attack()
     {
-        base.attack();
+
+        if (isCoolTime)
+            return;
+
+
+        if (isAttackRun)
+        {
+            m_cComboSystem.combo();
+            return;
+        }
+
+        cUnit.fStamina -= cWeaponData.fStamina;
+        cUnit.isMoveAble = false;
+
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        isAttackRun = true;
     }
 
     public override void attackEventStart()
@@ -37,6 +50,8 @@ public class WeaponPlayerSworld : WeaponBase
     public override void attackEnd()
     {
         base.attackEnd();
+
+        m_cComboSystem.comboAbleEnd();
 
         if (!m_cComboSystem.comboChack())
         {

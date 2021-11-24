@@ -80,20 +80,24 @@ public class InputManager : MonoBehaviour
     }
 
 
-    public void OnSwitchWeapon_1(InputAction.CallbackContext context)
+    public void OnThrowAttack(InputAction.CallbackContext context)
     {
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
         if (context.started)
-            m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
-    }
+        {
+            if (m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_KNIF_THROW)
+                m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_KNIF_THROW);
 
-    public void OnSwitchWeapon_2(InputAction.CallbackContext context)
-    {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+            m_cPlayer.attack();
 
-        //if (context.started)
-        //    m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_KNIF_THROW);
+            isPushAttack = true;
+        }
+
+        if (context.canceled)
+        {
+            isPushAttack = false;
+        }
     }
 
 

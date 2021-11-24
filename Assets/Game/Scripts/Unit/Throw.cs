@@ -6,7 +6,7 @@ public class Throw : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D m_rig2D;
     [SerializeField] private float m_fLifeTime;
-    [SerializeField] private float m_fPower;
+     private float m_fPower;
 
 
     private WeaponBase m_cWeapon;
@@ -24,6 +24,7 @@ public class Throw : MonoBehaviour
 
     public void shoot()
     {
+        m_rig2D.velocity = m_v2PowerDir * m_fPower;
         StartCoroutine(ThrowEvent());
     }
 
@@ -35,7 +36,6 @@ public class Throw : MonoBehaviour
 
         while(fTime < m_fLifeTime)
         {
-            m_rig2D.velocity = m_v2PowerDir * m_fPower;
             yield return null;
             fTime += Time.deltaTime;
         }

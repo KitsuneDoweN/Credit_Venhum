@@ -10,6 +10,8 @@ public class WeaponBase : MonoBehaviour
 
     private IEnumerator m_ieCoolTimeEvent;
 
+    private string m_strAttackTrigger;
+
     private bool m_bCoolTime;
 
 
@@ -51,6 +53,8 @@ public class WeaponBase : MonoBehaviour
 
     private UnitBase m_unitBase;
 
+
+
     public UnitBase cUnit
     {
         get
@@ -64,7 +68,17 @@ public class WeaponBase : MonoBehaviour
 
     private bool m_bAttackRun;
 
-
+    protected string strAttackTrigger
+    {
+        set
+        {
+            m_strAttackTrigger = value;
+        }
+        get
+        {
+            return m_strAttackTrigger;
+        }
+    }
 
     public bool isAttackRun
     {
@@ -91,20 +105,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void attack()
     {
-        if (isCoolTime)
-            return;
 
-
-        if (isAttackRun)
-        {
-            m_cComboSystem.combo();
-            return;
-        }
-            
-        cUnit.isMoveAble = false;
-
-        cUnit.cAnimation.attack(m_cComboSystem.nCurrentCombo);
-        isAttackRun = true;
     }
 
     public virtual void attackEventStart()
@@ -120,19 +121,10 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void attackEnd()
     {
-        m_cComboSystem.comboAbleEnd();
-
         isAttackRun = false;
-
-
-        Debug.Log(cUnit.v2OldMoveDir + "  " + cUnit.v2OldLookDir);
-
 
         cUnit.v2MoveDir = cUnit.v2OldMoveDir;
         cUnit.v2LookDir = cUnit.v2OldLookDir;
-
-
-
     }
 
     public virtual void attackImfect()
@@ -147,9 +139,6 @@ public class WeaponBase : MonoBehaviour
 
     public void reset()
     {
-        isAttackRun = false;
-        isCoolTime = false;
-
         m_cComboSystem.comboReset();
     }
 
@@ -162,7 +151,9 @@ public class WeaponBase : MonoBehaviour
 
     private IEnumerator coolTimeEvnetCoroutine()
     {
-        isCoolTime = true; 
+        isCoolTime = true;
+
+        Debug.Log("CoolTimeEvent Run");
 
         yield return new WaitForSeconds(m_cWeaponData.fCoolTime);
 
