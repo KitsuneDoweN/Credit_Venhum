@@ -38,20 +38,25 @@ public class Utility
         return  str.Split(cSplit);
     }
 
-    public static void killSequence(ref Sequence sequence)
+    public static void KillTween(Tween tween)
     {
-        if (sequence == null) return;
-        sequence.Kill();
-        sequence = null;
+        if (tween == null) return;
+        tween.Kill();
+        tween = null;
     } 
 
-    public static void resetColorSequence(ref Sequence sequence, Color resetColor, SpriteRenderer spriteRenderer)
+
+
+    public static float getHorizontalAtBetweenAngle(Vector2 v2Dir)
     {
-        if (spriteRenderer == null) return;
+        float fResult;
+        float fDot = Vector2.Dot(v2Dir, Vector2.right);
+        int nReverse = 1;
+        if (v2Dir.y < 0)
+            nReverse *= -1;
 
-        killSequence(ref sequence);
-        sequence = DOTween.Sequence();
-        spriteRenderer.color = resetColor;
+        fResult = Mathf.Acos(fDot) * Mathf.Rad2Deg * nReverse;
+
+        return fResult;
     }
-
 }

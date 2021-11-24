@@ -23,8 +23,12 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    public void switchWeapon(E_Weapon eSwitchWeapon,ref WeaponBase switchWeapon)
+    public bool switchWeapon(E_Weapon eSwitchWeapon, ref WeaponBase switchWeapon)
     {
+        if (switchWeapon != null && switchWeapon.isAttackRun)
+            return false;
+
+
         if(switchWeapon != null)
         {
             switchWeapon.transform.SetParent(transform);
@@ -35,6 +39,8 @@ public class PlayerWeapons : MonoBehaviour
         switchWeapon = m_cWeapons[(int)eSwitchWeapon];
         switchWeapon.gameObject.SetActive(true);
         m_eGripWeapon = eSwitchWeapon;
+
+        return true;
     }
 
     public E_Weapon eGripWeapon

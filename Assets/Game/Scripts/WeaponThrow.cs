@@ -6,39 +6,53 @@ public class WeaponThrow : WeaponBase
 {
     [SerializeField] private GameObject m_goThrow;
     [SerializeField] private Transform m_trFirePoint;
-
+    [SerializeField] private float m_fThrowPower;
 
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
+        strAttackTrigger = "AttackThrow";
     }
 
     public override void attackEventStart()
     {
         base.attackEventStart();
 
-        GameObject goThrow = Instantiate(m_goThrow);
-        goThrow.transform.position = m_trFirePoint.position;
-        goThrow.transform.rotation = m_trFirePoint.rotation;
-        Vector2 v2FireDir = m_trFirePoint.position - transform.position;
-        v2FireDir = v2FireDir.normalized;
+        Vector2 v2FireDir = cUnit.v2LookDir;
 
-        goThrow.GetComponent<Throw>().init(this, v2FireDir, 20.0f);
+        float fRotaionAngle = Utility.getHorizontalAtBetweenAngle(v2FireDir);
+
+        GameObject goThrow = Instantiate(m_goThrow);
+        
+        goThrow.transform.position = m_trFirePoint.position;
+        goThrow.transform.rotation = Quaternion.Euler(.0f,.0f,fRotaionAngle);
+        
+
+        goThrow.GetComponent<Throw>().init(this, v2FireDir, m_fThrowPower);
         goThrow.GetComponent<Throw>().shoot();
     }
 
 
     public override void attack()
     {
-        base.attack();
+        if (isCoolTime)
+            return;
 
-        cUnit.isMoveAble = true;
+        cUnit.fStamina -= cWeaponData.fStamina;
+
+        cUnit.isMoveAble = false;
+
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        isAttackRun = true;
+
         coolTimeEvent();
     }
 
     public override void attackEnd()
     {
         base.attackEnd();
+
+        cUnit.isMoveAble = true;
     }
 
 }

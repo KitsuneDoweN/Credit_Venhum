@@ -5,45 +5,50 @@ using UnityEngine.InputSystem;
 using DG.Tweening;
 public class PlayerUnit : UnitBase
 {
-    [SerializeField]
-    private UnitGrip m_cUnitGrip;
+
     [SerializeField]
     private PlayerWeapons m_cWeapons;
-    
-    
 
 
-    public override Vector2 v2LookDir
-    {
 
-        set
-        {
-            base.v2LookDir = value;
-            m_cUnitGrip.gripUpdate(v2LookDir);
-        }
-        get
-        {
-            return base.v2LookDir;
-        }
-    }
+
 
 
     public override void init()
     {
         base.init();
 
-        m_cUnitGrip.init(Vector2.up * 1.45f, 1.0f);
+
         m_cWeapons.init(this);
+
+        switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
+        cGrip.init(cGripWeapon.cWeaponData.fRange);
+
 
         isControl = true;
         isMoveAble = true;
         isLookAble = true;
 
-        switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
+
+        hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
     }
 
 
+    public override bool isControl
+    {
+        set 
+        { 
+            base.isControl = value;
 
+            v2MoveDir = v2OldMoveDir;
+            v2LookDir = v2OldLookDir;
+
+        }
+        get
+        {
+            return base.isControl;
+        }
+    }
 
 
     private void moveUpdate()
@@ -56,6 +61,20 @@ public class PlayerUnit : UnitBase
 
 
     }
+
+
+    public override void hit(UnitBase unit, WeaponAttackData cAttackData)
+    {
+        base.hit(unit, cAttackData);
+
+        m_cAnimation.trigger("Hit");
+
+        m_cImfect.hitimfect();
+        m_cImfect.godImfect();
+
+
+    }
+
 
     public override void attack()
     {
@@ -77,10 +96,10 @@ public class PlayerUnit : UnitBase
         if (!isControl)
             return;
 
-        if (m_cStatus.fStamina < m_cStatus.fDushStamina)
+        if (fStamina < cStatus.fDushStamina)
             return;
 
-        m_cStatus.fStamina -= m_cStatus.fDushStamina;
+        fStamina -= cStatus.fDushStamina;
 
 
         isMoveAble = false;
@@ -95,16 +114,18 @@ public class PlayerUnit : UnitBase
 
     public void switchWeapon(PlayerWeapons.E_Weapon eWeapon)
     {
-        m_cWeapons.switchWeapon(eWeapon, ref m_cGripWeapon);
+        if (!m_cWeapons.switchWeapon(eWeapon,  ref m_cGripWeapon))
+            return;
 
-        m_cGripWeapon.transform.parent = m_cUnitGrip.transform;
-        m_cGripWeapon.transform.localPosition = Vector3.zero;
+        cGripWeapon.transform.parent = cGrip.transform;
+        cGripWeapon.transform.localPosition = Vector3.zero;
 
-        m_cGripWeapon.reset();
+        cGripWeapon.reset();
 
-        m_cAnimation.setWeaponHandle(m_cGripWeapon);
+        cAnimation.setWeaponHandle(m_cGripWeapon);
 
-        m_cUnitGrip.gripUpdate(v2LookDir);
+        cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
+        cGrip.gripUpdate(v2LookDir);
     }
 
     public PlayerWeapons.E_Weapon eGripWeapon
@@ -114,5 +135,7 @@ public class PlayerUnit : UnitBase
             return m_cWeapons.eGripWeapon;
         }
     }
+
+    
 
 }

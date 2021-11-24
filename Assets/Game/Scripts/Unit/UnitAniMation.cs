@@ -14,7 +14,6 @@ public class UnitAniMation : MonoBehaviour
 
     public void init()
     {
-        Utility.getClipLenth(m_animator, "hit", out m_fHitTime);
        
     }
 
@@ -42,7 +41,7 @@ public class UnitAniMation : MonoBehaviour
 
     public void hit(ref float fMotionTime)
     {
-        m_animator.SetTrigger("HitTriger");
+        trigger("HitTriger");
         fMotionTime = m_fHitTime;
     }
 
@@ -72,15 +71,20 @@ public class UnitAniMation : MonoBehaviour
             fDir = 0.5f;
     }
 
-    public void attack(int nIndex)
+    public void attack(string attackTrigger,int nIndex)
     {
         m_animator.SetInteger("nCombo", nIndex);
-        m_animator.SetTrigger("Attack");
+        trigger(attackTrigger);
     }
 
     public void setWeaponHandle(WeaponBase weapon)
     {
         m_cWeaponAnimationHandle.cWeaponBase = weapon;
+    }
+
+    public void trigger(string Trigger)
+    {
+        m_animator.SetTrigger(Trigger);
     }
 
 }

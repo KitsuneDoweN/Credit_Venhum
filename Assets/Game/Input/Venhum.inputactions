@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "DaggerAttack",
+                    "name": "ThrowAttack",
                     "type": "Button",
                     "id": "8ad76eaa-0317-4410-8f30-c4fb2d12ddbc",
                     "expectedControlType": "Button",
@@ -134,7 +134,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DaggerAttack",
+                    "action": "ThrowAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

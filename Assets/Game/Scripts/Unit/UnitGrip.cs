@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class UnitGrip : MonoBehaviour
 {
+    [SerializeField]
     private Vector2 m_v2LocalPivot;
 
     private float m_fDistance;
 
 
-    public void init(Vector2 v2LocalPivot, float fDistance)
+    public void init(float fDistance)
     {
-        gripSetting(v2LocalPivot, fDistance);
+        gripSetting(fDistance);
     }
 
 
@@ -25,9 +26,8 @@ public class UnitGrip : MonoBehaviour
         transform.localPosition += v3GripVector;
     }
 
-    public void gripSetting(Vector2 v2LocalPivot, float fDistance)
+    public void gripSetting( float fDistance)
     {
-        m_v2LocalPivot = v2LocalPivot;
         m_fDistance = fDistance;
     }
 

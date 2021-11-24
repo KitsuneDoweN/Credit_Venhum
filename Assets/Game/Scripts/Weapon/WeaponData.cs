@@ -15,6 +15,16 @@ public class WeaponData : ScriptableObject
     [SerializeField]
     private float m_fCoolTime;
 
+    [SerializeField]
+    private float m_fRange;
+
+    public float fRange
+    {
+        get
+        {
+            return m_fRange;
+        }
+    }
 
     public float fStamina
     {
