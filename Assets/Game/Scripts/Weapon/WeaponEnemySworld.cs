@@ -52,7 +52,11 @@ public class WeaponEnemySworld : WeaponBase
         base.attackEnd();
     }
 
-
+    public override void reset()
+    {
+        base.reset();
+        gameObject.layer = m_nNotAttackLayer;
+    }
 
 
     public void OnTriggerEnter2D(Collider2D collision)

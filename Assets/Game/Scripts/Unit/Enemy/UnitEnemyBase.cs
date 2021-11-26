@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class UnitEnemyBase : UnitBase
 {
@@ -12,6 +13,27 @@ public class UnitEnemyBase : UnitBase
     protected float m_fAttackRange;
     
     private UnitBase m_cTargetUnit;
+
+    public UnityEvent hitEndEvent;
+
+    public UnityEvent attackEndEvent;
+
+
+
+
+    public override Vector2 v2Velocity
+    {
+        set
+        {
+            m_navAgent.velocity = value;
+        }
+        get
+        {
+            return m_navAgent.velocity;
+        }
+
+    }
+
 
     protected UnitBase cTargetUnit
     {
@@ -62,8 +84,11 @@ public class UnitEnemyBase : UnitBase
     {
         m_navAgent.isStopped = true;
         m_navAgent.velocity = Vector3.zero;
-        v2MoveDir = Vector2.zero;
-        v2Velocity = Vector2.zero;
+
+        v2NextMoveDir = Vector2.zero;
+
+        moveDirUpdate();
+
     }
 
     protected void navTrackingReStart()
@@ -79,13 +104,15 @@ public class UnitEnemyBase : UnitBase
 
         Vector2 v2Dir = cTargetUnit.v2UnitPos - v2UnitPos;
 
-        v2OldMoveDir = v2Dir;
-        v2OldLookDir = v2Dir;
+        v2NextMoveDir = v2Dir;
+        v2NextLookDir = v2Dir;
 
         movementUpdate();
 
 
     }
+
+
 
     public void setTarget(UnitBase cTargetUnit)
     {
@@ -112,5 +139,16 @@ public class UnitEnemyBase : UnitBase
         return bResult;
     }
 
+    protected void goPoint(Vector2 point)
+    {
+        m_navAgent.SetDestination((Vector3)point);
+
+        Vector2 v2Dir = point - v2UnitPos;
+
+        v2NextMoveDir = v2Dir;
+        v2NextLookDir = v2Dir;
+
+        movementUpdate();
+    }
 
 }

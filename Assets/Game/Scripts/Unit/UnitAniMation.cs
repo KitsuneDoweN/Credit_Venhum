@@ -44,6 +44,11 @@ public class UnitAniMation : MonoBehaviour
         trigger("hit");
     }
 
+    public void die()
+    {
+        trigger("die");
+    }
+
 
     public void setAnimationSpeed(float fSpeed)
     {

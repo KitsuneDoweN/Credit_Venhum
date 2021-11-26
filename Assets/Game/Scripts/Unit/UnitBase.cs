@@ -6,7 +6,7 @@ public class UnitBase : MonoBehaviour
 {
     [SerializeField] protected Status m_cStatus;
 
-    [SerializeField] protected Rigidbody2D m_rigidbody2D;
+
     [SerializeField] protected SpriteRenderer m_srModel;
 
     [SerializeField]
@@ -19,7 +19,7 @@ public class UnitBase : MonoBehaviour
 
     [SerializeField] protected Dush m_cDush;
     [SerializeField] protected UnitAniMation m_cAnimation;
-    [SerializeField] protected UnitHitSpriteTweenImfect m_cImfect;
+    [SerializeField] protected UnitSpriteTweenImfect m_cImfect;
 
     private BoxCollider2D m_collider;
 
@@ -35,33 +35,33 @@ public class UnitBase : MonoBehaviour
     [SerializeField] private int m_nDefaultlayer;
     private int m_nGodLayer;
 
-    private Vector2 m_v2OldLookDir;
-    private Vector2 m_v2OldMoveDir;
+    private Vector2 m_v2NextLookDir;
+    private Vector2 m_v2NextMoveDir;
 
-    public Vector2 v2OldLookDir
+    public Vector2 v2NextLookDir
     {
         set
         {
             if (value == Vector2.zero)
                 return;
 
-            m_v2OldLookDir = value;
+            m_v2NextLookDir = value.normalized;
         }
         get
         {
-            return m_v2OldLookDir;
+            return m_v2NextLookDir;
         }
     }
 
-    public Vector2 v2OldMoveDir
+    public Vector2 v2NextMoveDir
     {
         set
         {
-            m_v2OldMoveDir = value;
+            m_v2NextMoveDir = value.normalized;
         }
         get
         {
-            return m_v2OldMoveDir;
+            return m_v2NextMoveDir;
         }
     }
 
@@ -69,15 +69,21 @@ public class UnitBase : MonoBehaviour
     {
         if (!isControl || !isLookAble) return;
 
-        v2LookDir = v2OldLookDir;
+        v2LookDir = v2NextLookDir;
+
+        lookSprite(v2LookDir);
+        m_cAnimation.updateDir(v2LookDir);
+        cGrip.gripUpdate(v2LookDir);
+
     }
 
     public virtual void moveDirUpdate()
     {
         if (!isControl || !isMoveAble) return;
-        v2MoveDir = v2OldMoveDir;
 
+        v2MoveDir = v2NextMoveDir;
         v2Velocity = v2MoveDir * m_cStatus.fSpeed;
+        m_cAnimation.updateMovement(m_v2MoveDir);
     }
 
 
@@ -97,15 +103,15 @@ public class UnitBase : MonoBehaviour
 
 
 
-    public Vector2 v2Velocity
+    public virtual Vector2 v2Velocity
     {
         set
         {
-            m_rigidbody2D.velocity = value;
+
         }
         get
         {
-            return m_rigidbody2D.velocity;
+            return Vector2.zero;
         }
     }
 
@@ -124,6 +130,8 @@ public class UnitBase : MonoBehaviour
         {
             if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
                 cStatus.nHp -= data.nDamge;
+            if (data.eDamageType == WeaponDamageData.DamageType.E_STIFFEN)
+                nStiffness += data.nDamge;
         }
     }
 
@@ -176,13 +184,7 @@ public class UnitBase : MonoBehaviour
         }
     }
 
-    public Rigidbody2D rig2D
-    {
-        get
-        {
-            return m_rigidbody2D;
-        }
-    }
+
 
     public bool isDie
     {
@@ -203,14 +205,9 @@ public class UnitBase : MonoBehaviour
 
     public virtual Vector2 v2LookDir
     {
-        set
+        private set
         {
-            m_v2LookDir = value.normalized;
-
-           
-            lookSprite(m_v2LookDir);
-            m_cAnimation.updateDir(v2LookDir);
-            cGrip.gripUpdate(v2LookDir);
+            m_v2LookDir = value;
         }
         get
         {
@@ -220,11 +217,9 @@ public class UnitBase : MonoBehaviour
     }
     public  Vector2 v2MoveDir
     {
-        set
+        private set
         {
-            m_v2MoveDir = value.normalized;
-  
-           m_cAnimation.updateMovement(m_v2MoveDir);
+            m_v2MoveDir = value;
         }
         get
         {
@@ -238,7 +233,17 @@ public class UnitBase : MonoBehaviour
             m_srModel.flipX = true;
     }
 
-   
+   protected virtual int nStiffness
+    {
+        set
+        {
+            m_cStatus.nCurrentStiffness = value;
+        }
+        get
+        {
+            return m_cStatus.nCurrentStiffness;
+        }
+    }
 
 
     protected void knockBack(Vector2 v2Dir, float fPower,float fTime, bool bEndEvent)
@@ -309,7 +314,7 @@ public class UnitBase : MonoBehaviour
                 staminaHeilingEventStart();
             }
 
-            Debug.Log("S: " + fStamina + "MAX S: " + cStatus.fMaxStamina);
+            //Debug.Log("S: " + fStamina + "MAX S: " + cStatus.fMaxStamina);
 
         }
         get

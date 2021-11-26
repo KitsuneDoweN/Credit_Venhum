@@ -15,6 +15,9 @@ public class NomalEnemy : UnitEnemyBase
     [SerializeField]
     private EnemySerchIcon m_cSerchIcon;
 
+    private bool m_bDelayImfect;
+
+    private Vector2 m_v2RecallPoint;
 
 
     private enum E_EnemyState
@@ -22,7 +25,13 @@ public class NomalEnemy : UnitEnemyBase
         E_NONE,
         E_WAIT,
         E_TRACKING,
+        E_ATTACKDELAY,
         E_ATTACK,
+        E_ATTACKWAIT,
+        E_STIFFNESS,
+        E_RECALL,
+        
+        E_DIE,
 
         E_TOTAL
     }
@@ -30,17 +39,15 @@ public class NomalEnemy : UnitEnemyBase
     [SerializeField]  private E_EnemyState m_eEnemyState;
 
 
-
-
-
-
     private delegate void EnemyEvent();
     private EnemyEvent[] m_delAI;
 
-    private IEnumerator m_ieAttackWaitEventCoroutine;
 
-    private float m_fWaitTime;
 
+
+    private float m_fAttackDelayTime;
+    private float m_fTrackingTime;
+    private float m_fStiffnessTime;
 
 
     private void Start()
@@ -65,15 +72,26 @@ public class NomalEnemy : UnitEnemyBase
         isMoveAble = true;
         isLookAble = true;
 
+        m_bDelayImfect = false;
+
         m_cSerchIcon.init();
+
+        m_v2RecallPoint = v2UnitPos;
 
 
         m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
 
         m_delAI[(int)E_EnemyState.E_NONE] = noneEvent;
-        m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
         m_delAI[(int)E_EnemyState.E_WAIT] = waitEvent;
         m_delAI[(int)E_EnemyState.E_TRACKING] = trackingEvent;
+
+        m_delAI[(int)E_EnemyState.E_ATTACKDELAY] = attackDelayEvent;
+        m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
+        m_delAI[(int)E_EnemyState.E_ATTACKWAIT] = attackWaitEvent;
+        m_delAI[(int)E_EnemyState.E_STIFFNESS] = stiffnessEvent;
+        m_delAI[(int)E_EnemyState.E_RECALL] = recallEvent;
+        m_delAI[(int)E_EnemyState.E_DIE] = dieEvent;
+
 
         eEnemyState = E_EnemyState.E_WAIT;
 
@@ -81,94 +99,105 @@ public class NomalEnemy : UnitEnemyBase
     }
 
 
-
-
-
-
     public override void die()
     {
         base.die();
     }
 
-    public override void hit(UnitBase unit, WeaponAttackData cAttackDatas)
+    public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
-        base.hit(unit, cAttackDatas);
+
+
+        base.hit(unit, cAttackData);
+
+
+        
         if (isDie)
-            return;
-
-        cAnimation.hit();
-
-        if (m_ieAttackWaitEventCoroutine != null)
         {
-            StopCoroutine(m_ieAttackWaitEventCoroutine);
-            m_ieAttackWaitEventCoroutine = null;
+            eEnemyState = E_EnemyState.E_DIE;
+            return;
         }
+            
 
-        Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos ;
+        Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
         v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
 
         m_cBloodImfect.bloodImfect(v2UnitToHitUnitDir);
 
 
-       eEnemyState = E_EnemyState.E_WAIT;
+        if (eEnemyState != E_EnemyState.E_WAIT && eEnemyState != E_EnemyState.E_TRACKING )
+            return;
 
-        
+        cAnimation.hit();
+
+
+
+        Debug.Log(v2UnitToHitUnitDir);
+        dushDetail(v2UnitToHitUnitDir, 10, 0.1f, false);
+
+      
     }
+
+    public void hitEndEvent()
+    {
+        eEnemyState = E_EnemyState.E_WAIT;
+    }
+
+    public void attackEndEvent()
+    {
+        eEnemyState = E_EnemyState.E_TRACKING;
+    }
+
+
 
     private void noneEvent()
     {
 
     }
 
+    private void attackWaitEvent()
+    {
+
+    }
+
+    private void attackDelayEvent()
+    {
+        m_fAttackDelayTime += Time.deltaTime;
+
+        if (m_fAttackDelayTime > 1.5f)
+        {
+            eEnemyState = E_EnemyState.E_ATTACK;
+            return;
+        }
+
+        if(m_fAttackDelayTime > 0.5f && !m_bDelayImfect)
+        {
+            m_bDelayImfect = true;
+            m_cImfect.freshImfect();
+        }
+    }
+
 
     private void attackEvent()
     {
-        if (m_ieAttackWaitEventCoroutine != null)
-            return;
-
-        m_fWaitTime += Time.deltaTime;
-
-        if (m_fWaitTime < 1.0f)
-            return;
-
         attack();
 
+        eEnemyState = E_EnemyState.E_ATTACKWAIT;
+    }
 
+
+    protected void dieEvent()
+    {
+        isControl = false;
+        gameObject.layer = 11;
+        m_cSerchIcon.die();
+        cAnimation.die();
     }
 
     public override void attack()
     {
         base.attack();
-
-        m_ieAttackWaitEventCoroutine = attackWaitEventCoroutine();
-        StartCoroutine(m_ieAttackWaitEventCoroutine);
     }
-
-    IEnumerator attackWaitEventCoroutine()
-    {
-        
-
-        float fTime = .0f;
-
-        while(fTime < m_fAttakWaitTime && isControl)
-        {
-            fTime += Time.deltaTime;
-            yield return null;
-        }
-
-        m_ieAttackWaitEventCoroutine = null;
-
-        if (!isControl)
-            yield break ;
-
-        
-        eEnemyState = E_EnemyState.E_TRACKING;
-    }
-
-
- 
-
-
 
     private E_EnemyState eEnemyState
     {
@@ -177,21 +206,44 @@ public class NomalEnemy : UnitEnemyBase
             m_eEnemyState = value;
 
 
-            if (m_eEnemyState == E_EnemyState.E_WAIT || m_eEnemyState == E_EnemyState.E_ATTACK)
-            {
-                if (m_eEnemyState == E_EnemyState.E_WAIT)
-                    setTarget(null);
 
-                m_fWaitTime = .0f;
+            if(m_eEnemyState == E_EnemyState.E_WAIT)
+            {
+                setTarget(null);
                 navTrackingStop();
             }
+
+            if(m_eEnemyState == E_EnemyState.E_ATTACKDELAY)
+            {
+                navTrackingStop();
+                m_fAttackDelayTime = .0f;
+                m_bDelayImfect = false;
+            }
+
+            if(m_eEnemyState == E_EnemyState.E_STIFFNESS)
+            {
+                m_cAnimation.trigger("stiffness");
+                navTrackingStop();
+                m_fStiffnessTime = .0f;
+            }
+
 
             if(m_eEnemyState == E_EnemyState.E_TRACKING)
             {
                 navTrackingReStart();
-
+                m_fTrackingTime = .0f;
             }
-            
+
+            if(m_eEnemyState == E_EnemyState.E_RECALL)
+            {
+                navTrackingReStart();
+                goPoint(m_v2RecallPoint);
+            }
+
+            if(m_eEnemyState == E_EnemyState.E_DIE)
+            {
+                navTrackingStop();
+            }
             
         }
         get
@@ -200,13 +252,29 @@ public class NomalEnemy : UnitEnemyBase
         }
 
     }
+    protected override int nStiffness
+    {
+        set
+        {
+            base.nStiffness = value;
+            if(nStiffness >= cStatus.nMaxStiffness)
+            {
+                eEnemyState = E_EnemyState.E_STIFFNESS;
+                nStiffness = 0;
+            }
+
+        }
+        get
+        {
+            return base.nStiffness;
+        }
+    }
+
 
 
     private void Update()
     {
-        
-
-        if (!isControl || !isMoveAble )
+        if (!isControl)
             return;
 
 
@@ -236,13 +304,23 @@ public class NomalEnemy : UnitEnemyBase
     private void trackingEvent()
     {
 
-        if(cTargetUnit == null || !inRange(m_fSerchRange))
+        if(cTargetUnit == null)
         {
-            eEnemyState = E_EnemyState.E_WAIT;
+            eEnemyState = E_EnemyState.E_RECALL;
             m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
             return;
         }
-
+        else if(!inRange(m_fSerchRange))
+        {
+            m_fTrackingTime += Time.deltaTime;
+            if(m_fTrackingTime >= 3.0f)
+            {
+                eEnemyState = E_EnemyState.E_RECALL;
+                m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
+            }
+            return;
+        }
+        m_fTrackingTime = .0f;
 
 
         setTargetDestination();
@@ -251,14 +329,32 @@ public class NomalEnemy : UnitEnemyBase
         if (inRange(m_fAttackRange))
         {
              
-            eEnemyState = E_EnemyState.E_ATTACK;
+            eEnemyState = E_EnemyState.E_ATTACKDELAY;
             return;
         }
 
     }
 
 
+    private void stiffnessEvent()
+    {
+        m_fStiffnessTime += Time.deltaTime;
 
+        if (m_fStiffnessTime >= 1.0f)
+        {
+            eEnemyState = E_EnemyState.E_TRACKING;
+            m_cAnimation.trigger("movement");
+            return;
+        }
+            
+
+    }
+
+    private void recallEvent()
+    {
+        if (Vector2.Distance(v2UnitPos, m_v2RecallPoint) <= 0.1f)
+            eEnemyState = E_EnemyState.E_WAIT;
+    }
 
 
     private void OnDrawGizmos()

@@ -10,7 +10,6 @@ public class WeaponAttackData
     private WeaponDamageData[] m_cDamageData;
 
 
-
     public WeaponDamageData[] getWeaponDamageData()
     {
         return m_cDamageData;

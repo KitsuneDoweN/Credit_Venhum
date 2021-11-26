@@ -13,12 +13,13 @@ public class ComboSystem : MonoBehaviour
 
     public void init(WeaponData weaponData)
     {
-        comboReset();
+        reset();
         m_nMaxCombo = weaponData.nMaxCombo;
     }
 
-    public void comboReset()
+    public void reset()
     {
+        comboAbleEnd();
         m_nCurrentCombo = 0;
     }
 
