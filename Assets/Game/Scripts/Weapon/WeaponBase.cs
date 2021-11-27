@@ -86,6 +86,8 @@ public class WeaponBase : MonoBehaviour
         {
             m_bAttackRun = value;
             m_unitBase.isLookAble = !m_bAttackRun;
+
+            //Debug.Log("isAttackRun: " + m_bAttackRun);
         }
         get
         {
@@ -136,12 +138,9 @@ public class WeaponBase : MonoBehaviour
         m_cComboSystem.comboAbleStart();
     }
 
-    public void reset()
+    public virtual void reset()
     {
-        m_cComboSystem.comboReset();
         isAttackRun = false;
-
-
 
     }
 

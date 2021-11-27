@@ -83,7 +83,7 @@ public class Dush : MonoBehaviour
         if (!isDushAble)
             return;
 
-        ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fDushTime, bEndEvent);
+        ieDushCoroutine = dushEvnet(v2Dir, fPower, fDushTime, bEndEvent);
         StartCoroutine(m_ieDushCoroutine);
     }
 
@@ -92,19 +92,18 @@ public class Dush : MonoBehaviour
         if (!isDushAble)
             return;
 
-        ieDushCoroutine = dushEvnet(m_cUnit.rig2D, v2Dir, fPower, fTime, bEndEvent);
+        ieDushCoroutine = dushEvnet(v2Dir, fPower, fTime, bEndEvent);
         StartCoroutine(m_ieDushCoroutine);
     }
 
-    private IEnumerator dushEvnet(Rigidbody2D rigidbody2D, Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
+    private IEnumerator dushEvnet(Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
         float fTime = 0.0f;
 
         bool bControl = m_cUnit.isControl;
 
         m_cUnit.isControl = false;
-        m_cUnit.isMoveAble = false;
-        m_cUnit.isLookAble = false;
+
 
 
         m_cUnit.v2Velocity = v2Dir * fPower;
@@ -116,10 +115,10 @@ public class Dush : MonoBehaviour
         }
 
         m_cUnit.v2Velocity = Vector2.zero;
+
         m_cUnit.isControl = bControl;
 
-        m_cUnit.isMoveAble = bControl;
-        m_cUnit.isLookAble = bControl;
+
 
 
         if (bEndEvent)

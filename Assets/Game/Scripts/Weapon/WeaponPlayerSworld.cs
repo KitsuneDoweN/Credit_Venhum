@@ -6,6 +6,7 @@ public class WeaponPlayerSworld : WeaponBase
 {
     [SerializeField] private int m_nNotAttackLayer;
     [SerializeField] private int m_nAttackLayer;
+    [SerializeField] private float m_fMovePower;
 
     public override void init(UnitBase unitBase)
     {
@@ -28,6 +29,7 @@ public class WeaponPlayerSworld : WeaponBase
         }
 
         cUnit.fStamina -= cWeaponData.fStamina;
+
         cUnit.isMoveAble = false;
         cUnit.isLookAble = false;
          
@@ -63,15 +65,17 @@ public class WeaponPlayerSworld : WeaponBase
             return;
         }
 
+
         attack();
     }
 
     public override void attackImfect()
     {
         base.attackImfect();
+        cUnit.dushDetail(cUnit.v2LookDir, m_fMovePower, 0.1f, false);
     }
 
-
+    
 
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -85,6 +89,16 @@ public class WeaponPlayerSworld : WeaponBase
     }
 
 
+    public override void reset()
+    {
+        base.reset();
+
+        gameObject.layer = m_nNotAttackLayer;
+        cUnit.dushStop();
+
+        m_cComboSystem.reset();
+
+    }
 
 
 

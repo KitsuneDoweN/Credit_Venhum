@@ -8,7 +8,29 @@ public class PlayerUnit : UnitBase
 
     [SerializeField]
     private PlayerWeapons m_cWeapons;
+    
+    [SerializeField]
+    private Rigidbody2D m_rigidbody2D;
 
+    public Rigidbody2D rig2D
+    {
+        get
+        {
+            return m_rigidbody2D;
+        }
+    }
+
+    public override Vector2 v2Velocity
+    {
+        set
+        {
+            rig2D.velocity = value;
+        }
+        get
+        {
+            return rig2D.velocity;
+        }
+    }
 
 
     public override void init()
@@ -52,6 +74,7 @@ public class PlayerUnit : UnitBase
     {
         base.moveDirUpdate();
 
+
     }
 
     public override void lookDirUpdate()
@@ -63,6 +86,11 @@ public class PlayerUnit : UnitBase
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
         base.hit(unit, cAttackData);
+
+        Debug.Log("hit");
+
+        isControl = false;
+
 
         cAnimation.hit();
 

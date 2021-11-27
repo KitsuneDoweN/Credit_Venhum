@@ -14,7 +14,7 @@ public class Status
     {
         set
         {
-            m_nHp = Mathf.Clamp(value, 0, m_nMaxHp);
+            m_nHp = value;
         }
 
         get
@@ -69,6 +69,12 @@ public class Status
     [SerializeField] private float m_fDushStamina;
 
     [SerializeField] private float m_fGodTime;
+
+    [SerializeField] private int m_nMaxStiffness;
+
+    private int m_nCurrentStiffness;
+
+
     public float fDushPower
     {
         get
@@ -130,12 +136,34 @@ public class Status
         }
     }
 
+    public int nMaxStiffness
+    {
+        get
+        {
+            return m_nMaxStiffness;
+        }
+    }
+
+    public int nCurrentStiffness
+    {
+        set
+        {
+            m_nCurrentStiffness = value;
+        }
+        get
+        {
+            return m_nCurrentStiffness;
+        }
+    }
+
+
 
     public void init()
     {
         nHp = nMaxHp;
         fSpeed = fMaxSpeed;
         fStamina = fMaxStamina;
+        nCurrentStiffness = 0;
     }
 
    

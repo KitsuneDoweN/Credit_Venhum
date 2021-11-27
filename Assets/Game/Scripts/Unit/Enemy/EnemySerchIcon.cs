@@ -25,6 +25,11 @@ public class EnemySerchIcon : MonoBehaviour
         m_goDraw.SetActive(true);
     }
 
+    public void die()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void init()
     {
         foreach(GameObject go in m_goIcons)
