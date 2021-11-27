@@ -27,6 +27,8 @@ public class WeaponPlayerSworld : WeaponBase
             m_cComboSystem.combo();
             return;
         }
+        
+
 
         cUnit.fStamina -= cWeaponData.fStamina;
 
@@ -61,6 +63,7 @@ public class WeaponPlayerSworld : WeaponBase
 
         if (!m_cComboSystem.comboChack())
         {
+            reset();
             cUnit.isMoveAble = true;
             return;
         }

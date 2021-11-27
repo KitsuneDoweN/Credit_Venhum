@@ -106,7 +106,7 @@ public class NomalEnemy : UnitEnemyBase
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
-
+        int nOldStiffness = cStatus.nCurrentStiffness;
 
         base.hit(unit, cAttackData);
 
@@ -125,11 +125,11 @@ public class NomalEnemy : UnitEnemyBase
         m_cBloodImfect.bloodImfect(v2UnitToHitUnitDir);
 
 
-        if (eEnemyState != E_EnemyState.E_WAIT && eEnemyState != E_EnemyState.E_TRACKING )
+        if (eEnemyState != E_EnemyState.E_WAIT && eEnemyState != E_EnemyState.E_TRACKING
+            && nOldStiffness == cStatus.nCurrentStiffness)
             return;
 
         cAnimation.hit();
-
 
 
         Debug.Log(v2UnitToHitUnitDir);
@@ -140,7 +140,14 @@ public class NomalEnemy : UnitEnemyBase
 
     public void hitEndEvent()
     {
+        if(eEnemyState == E_EnemyState.E_ATTACKDELAY)
+        {
+            eEnemyState = E_EnemyState.E_STIFFNESS;
+            return;
+        }
+
         eEnemyState = E_EnemyState.E_WAIT;
+
     }
 
     public void attackEndEvent()
@@ -257,6 +264,8 @@ public class NomalEnemy : UnitEnemyBase
         set
         {
             base.nStiffness = value;
+
+
             if(nStiffness >= cStatus.nMaxStiffness)
             {
                 eEnemyState = E_EnemyState.E_STIFFNESS;
