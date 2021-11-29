@@ -34,11 +34,17 @@ public class WeaponPlayerSworld : WeaponBase
 
         cUnit.isMoveAble = false;
         cUnit.isLookAble = false;
-         
 
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+
+        attackAnimation();
+
         isAttackRun = true;
     }
+    protected override void attackAnimation()
+    {
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+    }
+
 
     public override void attackEventStart()
     {
@@ -87,7 +93,15 @@ public class WeaponPlayerSworld : WeaponBase
 
         if((nTargetMask & maskTarget) != 0)
         {
-            collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+            if(collision.tag == "HitConnet")
+            {
+                collision.GetComponent<UnitHitConnet>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+            }
+            else
+            {
+                collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+            }
+            
         }
     }
 

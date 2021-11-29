@@ -23,8 +23,14 @@ public class WeaponEnemySworld : WeaponBase
 
         cUnit.isMoveAble = false;
 
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        attackAnimation();
+       
         isAttackRun = true;
+    }
+
+    protected override void attackAnimation()
+    {
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
     }
 
     public override void attackEventStart()

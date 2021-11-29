@@ -10,9 +10,12 @@ public class UnitGrip : MonoBehaviour
     private float m_fDistance;
 
 
+
     public void init(float fDistance)
     {
         gripSetting(fDistance);
+
+
     }
 
 
@@ -25,6 +28,8 @@ public class UnitGrip : MonoBehaviour
 
         transform.localPosition += v3GripVector;
     }
+
+
 
     public void gripSetting( float fDistance)
     {

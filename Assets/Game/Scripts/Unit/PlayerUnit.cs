@@ -129,9 +129,19 @@ public class PlayerUnit : UnitBase
         isLookAble = true;
 
         lookDirUpdate();
-        
+
+
+        godMode();
+
         dush(v2LookDir, true);
     }
+
+    public void dushActionEnd()
+    {
+        godModeEnd();
+    }
+
+
 
 
 

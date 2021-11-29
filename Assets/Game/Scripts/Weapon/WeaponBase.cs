@@ -163,6 +163,12 @@ public class WeaponBase : MonoBehaviour
         m_ieCoolTimeEvent = null;
     }
 
+    protected virtual void attackAnimation()
+    {
+
+    }
+
+
     public void stopCoolTimeEvent()
     {
         if (m_ieCoolTimeEvent == null)

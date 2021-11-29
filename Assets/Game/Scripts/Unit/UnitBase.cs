@@ -129,7 +129,7 @@ public class UnitBase : MonoBehaviour
         foreach(WeaponDamageData data in cAttackData.getWeaponDamageData())
         {
             if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
-                cStatus.nHp -= data.nDamge;
+                 cStatus.nHp -= data.nDamge;
             if (data.eDamageType == WeaponDamageData.DamageType.E_STIFFEN)
                 nStiffness += data.nDamge;
         }
@@ -355,20 +355,19 @@ public class UnitBase : MonoBehaviour
     public void godMode()
     {
         gameObject.layer = m_nGodLayer;
-        m_cImfect.stop();
         m_cImfect.godImfect();
-        m_cImfect.play();
+   
 
         Invoke("godModeEnd", cStatus.fGodTime);
     }
 
-    private void godModeEnd()
+    protected void godModeEnd()
     {
         m_cImfect.stop();
         gameObject.layer = m_nDefaultlayer;
     }
 
-    protected UnitGrip cGrip
+    public UnitGrip cGrip
     {
         get
         {
