@@ -57,11 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8046153233719658882, guid: b36253f2a09a21a46a546cd45125c0e9, type: 3}
       propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046153233719658882, guid: b36253f2a09a21a46a546cd45125c0e9, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36253f2a09a21a46a546cd45125c0e9, type: 3}
