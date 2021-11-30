@@ -63,6 +63,8 @@ public class UnitEnemyBase : UnitBase
 
         cGrip.init(cGripWeapon.cWeaponData.fGripRange);
 
+
+
         m_navAgent.speed = m_cStatus.fSpeed;
         m_navAgent.updateRotation = false;
         m_navAgent.updateUpAxis = false;
@@ -84,7 +86,6 @@ public class UnitEnemyBase : UnitBase
     protected void navTrackingStop()
     {
         m_navAgent.isStopped = true;
-        m_navAgent.velocity = Vector3.zero;
 
         v2NextMoveDir = Vector2.zero;
 
