@@ -161,6 +161,9 @@ public class BossTheCosastofHand : UnitBase
 
         m_v2GripReturnPoint = (Vector2)cGrip.transform.position;
 
+        isControl = false;
+
+
 
         HandleWakeUp(GameManager.instance.cStageManager.cPlayer);
     }
@@ -309,7 +312,11 @@ public class BossTheCosastofHand : UnitBase
                 if (m_nChoppingPointCurrentIndex < m_v2ChoppingPoints.Length)
                     eBossState = E_BossState.E_ATTACK_CHOPPING;
                 else
+                {
+                    m_nChoppingPointCurrentIndex = 0;
                     eBossState = E_BossState.E_ATTACK_CHOPPING_AFTER;
+                }
+                    
 
             });
         }

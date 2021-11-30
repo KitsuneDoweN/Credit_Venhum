@@ -18,6 +18,7 @@ public class UnitEnemyBase : UnitBase
 
     public UnityEvent attackEndEvent;
 
+    [SerializeField] private UnityEvent m_dieEvent;
 
 
 
@@ -124,6 +125,7 @@ public class UnitEnemyBase : UnitBase
     {
         navTrackingStop();
         base.die();
+        m_dieEvent.Invoke();
     }
 
     protected bool inRange(float fRange)

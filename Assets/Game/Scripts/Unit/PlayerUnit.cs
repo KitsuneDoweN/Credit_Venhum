@@ -49,7 +49,7 @@ public class PlayerUnit : UnitBase
         isLookAble = true;
 
 
-        //hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
+        GameManager.instance.cUIManager.cUI_InGame.cUI_HpManager.drawHp(cStatus.nHp);
     }
 
 
@@ -85,17 +85,30 @@ public class PlayerUnit : UnitBase
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
+        if (isDie) 
+            return;
+
         base.hit(unit, cAttackData);
 
         Debug.Log("hit");
 
-        isControl = false;
+        GameManager.instance.cUIManager.cUI_InGame.cUI_HpManager.drawHp(cStatus.nHp);
 
+        if (!isDie)
+        {
+            isControl = false;
 
-        cAnimation.hit();
+            cAnimation.hit();
 
-        m_cImfect.hitimfect();
-        m_cImfect.godImfect();
+            m_cImfect.hitimfect();
+            m_cImfect.godImfect();
+        }
+        else
+        {
+            die();
+        }
+        
+
 
 
     }
@@ -109,6 +122,9 @@ public class PlayerUnit : UnitBase
     public override void die()
     {
         base.die();
+        isControl = false;
+        cAnimation.die();
+        Debug.Log("Die");
     }
 
     private void Update()

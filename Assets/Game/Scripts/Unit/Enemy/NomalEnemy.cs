@@ -50,10 +50,7 @@ public class NomalEnemy : UnitEnemyBase
     private float m_fStiffnessTime;
 
 
-    private void Start()
-    {
-        init();
-    }
+
 
     public override void init()
     {
@@ -199,6 +196,8 @@ public class NomalEnemy : UnitEnemyBase
         gameObject.layer = 11;
         m_cSerchIcon.die();
         cAnimation.die();
+
+        die();
     }
 
     public override void attack()

@@ -127,11 +127,23 @@ public class InputManager : MonoBehaviour
 
     }
 
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+
+        if (context.started)
+        {
+            if (GameManager.instance.cInteraction == null)
+                return;
+            GameManager.instance.cInteraction.interactionEvent.Invoke();
+
+        }
+    }
+
+
 
     private void Update()
     {
-
-
         if (m_cPlayer.isControl && isPushAttack)
         {
             m_cPlayer.attack();

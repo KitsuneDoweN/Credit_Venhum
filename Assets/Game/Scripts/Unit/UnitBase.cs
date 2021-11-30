@@ -139,7 +139,6 @@ public class UnitBase : MonoBehaviour
     public virtual void die() 
     {
         print(gameObject.name + " is die");
-        Destroy(gameObject);
     }
 
 

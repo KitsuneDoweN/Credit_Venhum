@@ -10,13 +10,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UI_GameLoading m_cUI_GameLoading;
     [SerializeField] private UI_Gameover m_cUI_Gameover;
     [SerializeField] private UI_GameClear m_cUI_GameClear;
+    [SerializeField] private UI_Dynamic m_cUI_Dynamic;
+
+
+
     public void init()
     {
         m_cUI_Ingame.init();
-        m_cUI_Title.init();
-        m_cUI_GameLoading.init();
-        m_cUI_Gameover.init();
-        m_cUI_GameClear.init();
+        //m_cUI_Title.init();
+        //m_cUI_GameLoading.init();
+        //m_cUI_Gameover.init();
+        //m_cUI_GameClear.init();
+        m_cUI_Dynamic.init();
     }
 
     public UI_Ingame cUI_InGame
@@ -59,10 +64,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public UI_Dynamic cUI_Dynamic
+    {
+        get
+        {
+            return m_cUI_Dynamic;
+        }
+    }
 
     public void gameStart()
     {
-        m_cUI_Ingame.toggle(true);
         m_cUI_Ingame.ingameStart();
     }
 
@@ -73,6 +84,7 @@ public class UIManager : MonoBehaviour
         cUI_GameLoading.toggle(false);
         cUI_Gameover.toggle(false);
         cUI_GameClear.toggle(false);
+        cUI_Dynamic.toggle(false);
     }
 
 }
