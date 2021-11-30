@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: 151858598395945242
     second: obj_corrider_2
+  - first:
+      213: 1739634700523476168
+    second: Obj_corrider_0
+  - first:
+      213: 1770564364853271111
+    second: Obj_corrider_1
+  - first:
+      213: -140640597426270620
+    second: Obj_corrider_2
+  - first:
+      213: -4474644798523671378
+    second: Obj_corrider_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,64 +112,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: obj_corrider_0
+      name: Obj_corrider_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 32
-        width: 30
-        height: 16
+        y: 37
+        width: 32
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0085141542394c130800000000000000
-      internalID: 3586152987485100032
+      spriteID: 8c415ab0b8c642810800000000000000
+      internalID: 1739634700523476168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: obj_corrider_1
+      name: Obj_corrider_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 11
-        height: 31
+        x: 43
+        y: 22
+        width: 13
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84e21fcf1a34f23b0800000000000000
-      internalID: -5535131054002590136
+      spriteID: 74a5b03b8ee429810800000000000000
+      internalID: 1770564364853271111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: obj_corrider_2
+      name: Obj_corrider_2
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 14
-        height: 26
+        x: 4
+        y: 6
+        width: 16
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a11aa7537928b1200800000000000000
-      internalID: 151858598395945242
+      spriteID: 46e886d2f185c0ef0800000000000000
+      internalID: -140640597426270620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obj_corrider_3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 2
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac72ff634ed6e1c0800000000000000
+      internalID: -4474644798523671378
       vertices: []
       indices: 
       edges: []
