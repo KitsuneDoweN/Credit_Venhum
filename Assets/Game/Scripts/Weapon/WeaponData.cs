@@ -16,13 +16,13 @@ public class WeaponData : ScriptableObject
     private float m_fCoolTime;
 
     [SerializeField]
-    private float m_fRange;
+    private float m_fGripRange;
 
-    public float fRange
+    public float fGripRange
     {
         get
         {
-            return m_fRange;
+            return m_fGripRange;
         }
     }
 

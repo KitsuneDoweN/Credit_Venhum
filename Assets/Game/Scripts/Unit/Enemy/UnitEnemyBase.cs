@@ -61,7 +61,7 @@ public class UnitEnemyBase : UnitBase
         m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();
         m_cGripWeapon.init(this);
 
-        cGrip.init(cGripWeapon.cWeaponData.fRange);
+        cGrip.init(cGripWeapon.cWeaponData.fGripRange);
 
         m_navAgent.speed = m_cStatus.fSpeed;
         m_navAgent.updateRotation = false;

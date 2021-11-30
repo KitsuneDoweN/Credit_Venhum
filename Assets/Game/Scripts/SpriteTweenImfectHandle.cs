@@ -23,4 +23,9 @@ public class SpriteTweenImfectHandle : MonoBehaviour
         m_cImfectTween.dieImfect();
     }
 
+    public void freshImfect()
+    {
+        m_cImfectTween.freshImfect();
+    }
+
 }

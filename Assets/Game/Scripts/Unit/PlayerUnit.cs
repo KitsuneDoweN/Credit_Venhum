@@ -41,7 +41,7 @@ public class PlayerUnit : UnitBase
         m_cWeapons.init(this);
 
         switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
-        cGrip.init(cGripWeapon.cWeaponData.fRange);
+        cGrip.init(cGripWeapon.cWeaponData.fGripRange);
 
 
         isControl = true;
@@ -173,7 +173,7 @@ public class PlayerUnit : UnitBase
 
         cAnimation.setWeaponHandle(m_cGripWeapon);
 
-        cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
+        cGrip.gripSetting(cGripWeapon.cWeaponData.fGripRange);
         cGrip.gripUpdate(v2LookDir);
 
         return true;

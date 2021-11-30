@@ -127,7 +127,7 @@ public class BossTheCosastofHand : UnitBase
         m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();
         m_cGripWeapon.init(this);
 
-        cGrip.init(cGripWeapon.cWeaponData.fRange);
+        cGrip.init(cGripWeapon.cWeaponData.fGripRange);
 
         m_cRangeHit.init();
 

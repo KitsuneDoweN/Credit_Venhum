@@ -25,7 +25,6 @@ public class NomalEnemy : UnitEnemyBase
         E_NONE,
         E_WAIT,
         E_TRACKING,
-        E_ATTACKDELAY,
         E_ATTACK,
         E_ATTACKWAIT,
         E_STIFFNESS,
@@ -45,7 +44,7 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-    private float m_fAttackDelayTime;
+
     private float m_fTrackingTime;
     private float m_fStiffnessTime;
 
@@ -60,7 +59,7 @@ public class NomalEnemy : UnitEnemyBase
 
         cAnimation.setWeaponHandle(m_cGripWeapon);
 
-        cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
+        cGrip.gripSetting(cGripWeapon.cWeaponData.fGripRange);
         cGrip.gripUpdate(v2LookDir);
 
         m_cBloodImfect.init();
@@ -82,7 +81,6 @@ public class NomalEnemy : UnitEnemyBase
         m_delAI[(int)E_EnemyState.E_WAIT] = waitEvent;
         m_delAI[(int)E_EnemyState.E_TRACKING] = trackingEvent;
 
-        m_delAI[(int)E_EnemyState.E_ATTACKDELAY] = attackDelayEvent;
         m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
         m_delAI[(int)E_EnemyState.E_ATTACKWAIT] = attackWaitEvent;
         m_delAI[(int)E_EnemyState.E_STIFFNESS] = stiffnessEvent;
@@ -137,7 +135,7 @@ public class NomalEnemy : UnitEnemyBase
 
     public void hitEndEvent()
     {
-        if(eEnemyState == E_EnemyState.E_ATTACKDELAY)
+        if(eEnemyState == E_EnemyState.E_ATTACK)
         {
             eEnemyState = E_EnemyState.E_STIFFNESS;
             return;
@@ -164,22 +162,6 @@ public class NomalEnemy : UnitEnemyBase
 
     }
 
-    private void attackDelayEvent()
-    {
-        m_fAttackDelayTime += Time.deltaTime;
-
-        if (m_fAttackDelayTime > 1.5f)
-        {
-            eEnemyState = E_EnemyState.E_ATTACK;
-            return;
-        }
-
-        if(m_fAttackDelayTime > 0.5f && !m_bDelayImfect)
-        {
-            m_bDelayImfect = true;
-            m_cImfect.freshImfect();
-        }
-    }
 
 
     private void attackEvent()
@@ -219,11 +201,9 @@ public class NomalEnemy : UnitEnemyBase
                 navTrackingStop();
             }
 
-            if(m_eEnemyState == E_EnemyState.E_ATTACKDELAY)
+            if(m_eEnemyState == E_EnemyState.E_ATTACK)
             {
                 navTrackingStop();
-                m_fAttackDelayTime = .0f;
-                m_bDelayImfect = false;
             }
 
             if(m_eEnemyState == E_EnemyState.E_STIFFNESS)
@@ -320,6 +300,7 @@ public class NomalEnemy : UnitEnemyBase
         }
         else if(!inRange(m_fSerchRange))
         {
+            navTrackingStop();
             m_fTrackingTime += Time.deltaTime;
             if(m_fTrackingTime >= 3.0f)
             {
@@ -337,7 +318,7 @@ public class NomalEnemy : UnitEnemyBase
         if (inRange(m_fAttackRange))
         {
              
-            eEnemyState = E_EnemyState.E_ATTACKDELAY;
+            eEnemyState = E_EnemyState.E_ATTACK;
             return;
         }
 

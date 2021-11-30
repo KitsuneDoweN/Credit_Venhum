@@ -27,13 +27,13 @@ AnimationClip:
       value: {fileID: -208808315731048301, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
     - time: 0.25
       value: {fileID: -731939305798968737, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
-    - time: 0.33333334
+    - time: 1.25
       value: {fileID: -4242949543623042678, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
-    - time: 0.41666666
+    - time: 1.3333334
       value: {fileID: 5967870950018174874, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
-    - time: 0.5
+    - time: 1.4166666
       value: {fileID: -4838460485859526004, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
-    - time: 0.5833333
+    - time: 1.5
       value: {fileID: -2947627911310860008, guid: 99d5187a19f6af74ebbfc634e1777a4b, type: 3}
     attribute: m_Sprite
     path: 
@@ -67,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 1.5833334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,28 +87,35 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.33333334
+  - time: 0.9166667
+    functionName: freshImfect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.25
     functionName: attackEventStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 1.5
     functionName: attackEventEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 1.5
     functionName: attackEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 1.5
     functionName: attackEndEvent
     data: 
     objectReferenceParameter: {fileID: 0}
