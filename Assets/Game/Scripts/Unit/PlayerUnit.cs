@@ -129,6 +129,9 @@ public class PlayerUnit : UnitBase
 
     private void Update()
     {
+        if (!isControl)
+            return;
+
         movementUpdate();
     }
 
@@ -187,6 +190,10 @@ public class PlayerUnit : UnitBase
         }
     }
 
-    
+    public void stop()
+    {
+        v2NextMoveDir = Vector2.zero;
+        movementUpdate();
+    }
 
 }

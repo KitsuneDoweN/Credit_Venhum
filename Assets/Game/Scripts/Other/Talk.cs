@@ -21,7 +21,12 @@ public class Talk : MonoBehaviour
     public void talkEvnet()
     {
         m_bToggle = true;
+
+        GameManager.instance.cStageManager.cPlayer.stop();
+
+
         GameManager.instance.cStageManager.cPlayer.isControl = false;
+
 
 
         if (m_nIndex >= m_cTalkDatas.Length)
