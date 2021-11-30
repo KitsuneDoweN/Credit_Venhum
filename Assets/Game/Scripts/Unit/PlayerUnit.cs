@@ -96,7 +96,7 @@ public class PlayerUnit : UnitBase
 
         if (!isDie)
         {
-            isControl = false;
+
 
             cAnimation.hit();
 
@@ -122,6 +122,7 @@ public class PlayerUnit : UnitBase
     public override void die()
     {
         base.die();
+        stop();
         isControl = false;
         cAnimation.die();
         Debug.Log("Die");
