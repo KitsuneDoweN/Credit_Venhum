@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cStatus:
-    m_nMaxHp: 1
+    m_nMaxHp: 5
     m_fMaxSpeed: 10
     m_fMaxStamina: 99
     m_fStaminaHealingTick: 0.5
