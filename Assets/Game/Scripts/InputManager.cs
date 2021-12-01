@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     private bool m_bPushMove;
 
+    
+
     public bool isPushMove
     {
         get
@@ -133,10 +135,26 @@ public class InputManager : MonoBehaviour
 
         if (context.started)
         {
-            if (GameManager.instance.cInteraction == null)
-                return;
-            GameManager.instance.cInteraction.interactionEvent.Invoke();
+            if (GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.getToggle())
+            {
+                GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(false);
+            }
 
+            if (GameManager.instance.cInteraction != null)
+            GameManager.instance.interActionEvent();
+
+
+
+        }
+    }
+
+    public void OnOption(InputAction.CallbackContext context)
+    {
+        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+
+        if (context.started)
+        {
+            GameManager.instance.cUIManager.cUI_Option.toggle(true);
         }
     }
 

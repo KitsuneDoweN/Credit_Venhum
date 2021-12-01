@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponBase : MonoBehaviour
 {
@@ -13,6 +14,21 @@ public class WeaponBase : MonoBehaviour
     private string m_strAttackTrigger;
 
     private bool m_bCoolTime;
+
+    private float m_fCoolTimeTick;
+
+    [SerializeField]
+    private UnityEvent m_coolTimeEvent;
+
+
+    public float fCoolTimeTick
+    {
+
+        get
+        {
+            return m_fCoolTimeTick;
+        }
+    }
 
 
     public bool isCoolTime
@@ -149,15 +165,21 @@ public class WeaponBase : MonoBehaviour
 
         m_ieCoolTimeEvent = coolTimeEvnetCoroutine();
         StartCoroutine(m_ieCoolTimeEvent);
+
     }
 
     private IEnumerator coolTimeEvnetCoroutine()
     {
         isCoolTime = true;
+        m_fCoolTimeTick = 0.0f;
 
-        Debug.Log("CoolTimeEvent Run");
+        m_coolTimeEvent.Invoke();
 
-        yield return new WaitForSeconds(m_cWeaponData.fCoolTime);
+        while (fCoolTimeTick < m_cWeaponData.fCoolTime)
+        {
+            m_fCoolTimeTick += Time.deltaTime;
+            yield return null;
+        }
 
         isCoolTime = false;
         m_ieCoolTimeEvent = null;

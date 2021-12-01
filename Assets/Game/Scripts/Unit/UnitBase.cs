@@ -118,8 +118,11 @@ public class UnitBase : MonoBehaviour
 
     public virtual void attack() 
     {
-        if(fStamina >= m_cGripWeapon.cWeaponData.fStamina)
-        m_cGripWeapon.attack();
+        if(fStamina >= m_cGripWeapon.cWeaponData.fStamina )
+        {
+            m_cGripWeapon.attack();
+        }
+
     }
 
     public virtual void hit(UnitBase unit, WeaponAttackData cAttackData) 
@@ -129,9 +132,9 @@ public class UnitBase : MonoBehaviour
         foreach(WeaponDamageData data in cAttackData.getWeaponDamageData())
         {
             if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
-                 cStatus.nHp -= data.nDamge;
+                nHP -= data.nDamge;
             if (data.eDamageType == WeaponDamageData.DamageType.E_STIFFEN)
-                nStiffness += data.nDamge;
+                fStamina += data.nDamge;
         }
     }
 
@@ -189,7 +192,7 @@ public class UnitBase : MonoBehaviour
     {
         get
         {
-            if (m_cStatus.nHp <= 0) return true;
+            if (nHP <= 0) return true;
             return false;
         }
     }
@@ -301,7 +304,7 @@ public class UnitBase : MonoBehaviour
 
 
 
-    public float fStamina
+    public virtual float fStamina
     {
         set
         {
@@ -381,4 +384,19 @@ public class UnitBase : MonoBehaviour
         lookDirUpdate();
 
     }
+
+    public virtual int nHP
+    {
+        set
+        {
+            m_cStatus.nHp = value;
+        }
+        get
+        {
+            return m_cStatus.nHp;
+        }
+    }
+
+
+
 }

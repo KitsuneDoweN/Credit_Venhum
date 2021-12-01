@@ -20,6 +20,38 @@ public class PlayerUnit : UnitBase
         }
     }
 
+    public override int nHP
+    {
+        set
+        {
+            base.nHP = value;
+
+            float fFillAmount = nHP / m_cStatus.nMaxHp ;
+            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_HP, fFillAmount);
+        }
+        get
+        {
+            return base.nHP;
+        }
+    }
+
+    public override float fStamina
+    {
+        set
+        {
+            base.fStamina = value;
+            float fFillAmount = fStamina / m_cStatus.fMaxStamina;
+            Debug.Log(fStamina + "  " + m_cStatus.fMaxStamina);
+            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_STATMINA, fFillAmount);
+        }
+        get
+        {
+            return base.fStamina; 
+        }
+    }
+
+
+
     public override Vector2 v2Velocity
     {
         set
@@ -43,13 +75,12 @@ public class PlayerUnit : UnitBase
         switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
         cGrip.init(cGripWeapon.cWeaponData.fGripRange);
 
+        nHP = nHP;
+
 
         isControl = true;
         isMoveAble = true;
         isLookAble = true;
-
-
-        GameManager.instance.cUIManager.cUI_InGame.cUI_HpManager.drawHp(cStatus.nHp);
     }
 
 
@@ -92,12 +123,11 @@ public class PlayerUnit : UnitBase
 
         Debug.Log("hit");
 
-        GameManager.instance.cUIManager.cUI_InGame.cUI_HpManager.drawHp(cStatus.nHp);
 
         if (!isDie)
         {
 
-
+            stop();
             cAnimation.hit();
 
             m_cImfect.hitimfect();
@@ -122,7 +152,6 @@ public class PlayerUnit : UnitBase
     public override void die()
     {
         base.die();
-        stop();
         isControl = false;
         cAnimation.die();
         Debug.Log("Die");
@@ -190,6 +219,7 @@ public class PlayerUnit : UnitBase
             return m_cWeapons.eGripWeapon;
         }
     }
+
 
     public void stop()
     {

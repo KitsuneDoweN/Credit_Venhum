@@ -231,6 +231,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool m_bPauseControl;
+
+    public void pause()
+    {
+        if (m_eGameState != E_GAMESTATE.E_INGAME)
+            return;
+
+        Time.timeScale = 0;
+
+        m_bPauseControl = cStageManager.cPlayer.isControl;
+        cStageManager.cPlayer.isControl = false;
+    }
+
+    public void resume()
+    {
+        if (m_eGameState != E_GAMESTATE.E_INGAME)
+            return;
+
+        Time.timeScale = 1;
+
+        cStageManager.cPlayer.isControl = m_bPauseControl;
+
+    }
+
+    public void interActionEvent()
+    {
+        m_cInteraction.interactionEvent.Invoke();
+    }
 
 
 }

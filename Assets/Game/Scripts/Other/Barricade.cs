@@ -7,9 +7,17 @@ public class Barricade : MonoBehaviour
     private bool m_bInteraction = false;
     [SerializeField] private Interaction m_cInteraction;
 
+    [SerializeField] private string m_strInteraction;
+
+    public void Start()
+    {
+        eventOn();
+    }
+
     public void eventOn()
     {
         m_bInteraction = true;
+
     }
 
 
@@ -27,6 +35,7 @@ public class Barricade : MonoBehaviour
         Debug.Log("BarricadeOff");
         gameObject.SetActive(false);
         GameManager.instance.cInteraction = null;
-
+        GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(true);
+        GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.draw(m_strInteraction);
     }
 }

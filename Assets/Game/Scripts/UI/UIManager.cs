@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UI_Gameover m_cUI_Gameover;
     [SerializeField] private UI_GameClear m_cUI_GameClear;
     [SerializeField] private UI_Dynamic m_cUI_Dynamic;
-
+    [SerializeField] private UI_Option m_cUI_Option;
 
 
     public void init()
@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
         //m_cUI_Gameover.init();
         //m_cUI_GameClear.init();
         m_cUI_Dynamic.init();
+        m_cUI_Option.init();
     }
 
     public UI_Ingame cUI_InGame
@@ -29,6 +30,14 @@ public class UIManager : MonoBehaviour
         get
         {
             return m_cUI_Ingame;
+        }
+    }
+
+    public UI_Option cUI_Option
+    {
+        get
+        {
+            return m_cUI_Option;
         }
     }
 

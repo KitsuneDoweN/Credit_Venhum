@@ -19,12 +19,15 @@ public class WeaponEnemySworld : WeaponBase
 
     public override void attack()
     {
+        if (isCoolTime)
+            return;
+
         cUnit.fStamina -= cWeaponData.fStamina;
 
         cUnit.isMoveAble = false;
 
         attackAnimation();
-       
+
         isAttackRun = true;
     }
 

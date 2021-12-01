@@ -13,6 +13,11 @@ public class UI_Talk : MonoBehaviour
     [SerializeField]
     private Image m_image;
 
+    public void init()
+    {
+        toggle(false);
+    }
+
     public void toggle(bool bToggle)
     {
         gameObject.SetActive(bToggle);

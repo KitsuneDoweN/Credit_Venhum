@@ -37,6 +37,8 @@ public class WeaponThrow : WeaponBase
     {
         if (isCoolTime)
             return;
+        if (isAttackRun)
+            return;
 
         cUnit.fStamina -= cWeaponData.fStamina;
 
@@ -47,6 +49,8 @@ public class WeaponThrow : WeaponBase
         isAttackRun = true;
 
         coolTimeEvent();
+
+
     }
 
     protected override void attackAnimation()

@@ -23,8 +23,6 @@ public class Talk : MonoBehaviour
         m_bToggle = true;
 
         GameManager.instance.cStageManager.cPlayer.stop();
-
-
         GameManager.instance.cStageManager.cPlayer.isControl = false;
 
 

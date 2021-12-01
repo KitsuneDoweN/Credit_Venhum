@@ -5,27 +5,32 @@ using UnityEngine;
 public class UI_Ingame : UI_View
 {
     [SerializeField]
-    private UI_HpManager m_cUI_HPManager;
+    private UI_PlayerInfo m_cUI_PlayerInfo;
     //[SerializeField]
     //private UI_BossHp m_cUI_BossHp;
     [SerializeField]
     private UI_Talk m_cUI_Talk;
 
+    [SerializeField]
+    private UI_InteractionText m_cUI_InteractionText;
+
     public override void init()
     {
         base.init();
-       // m_cUI_BossHp.init();
+        // m_cUI_BossHp.init();
 
-        toggle(false);
+
+        cUI_InteractionText.init();
+        cUI_Talk.init();
     }
 
     public void ingameStart()
     {
         toggle(true);
 
-        cUI_HpManager.toggle(true);
+        cUI_PlayerInfo.toggle(true);
         cUI_Talk.toggle(false);
-
+        cUI_InteractionText.toggle(false);
         //m_cUI_BossHp.toggle(false);
     }
 
@@ -44,11 +49,11 @@ public class UI_Ingame : UI_View
     //    m_cUI_BossHp.toggle(bToggle);
     //}
 
-    public UI_HpManager cUI_HpManager
+    public UI_PlayerInfo cUI_PlayerInfo
     {
         get
         {
-            return m_cUI_HPManager;
+            return m_cUI_PlayerInfo;
         }
     }
 
@@ -65,6 +70,14 @@ public class UI_Ingame : UI_View
         get
         {
             return m_cUI_Talk;
+        }
+    }
+
+    public UI_InteractionText cUI_InteractionText
+    {
+        get
+        {
+            return m_cUI_InteractionText;
         }
     }
 }
