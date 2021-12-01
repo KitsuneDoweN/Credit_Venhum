@@ -1,0 +1,504 @@
+fileFormatVersion: 2
+guid: 39d9a5d06d9dcf8448c409b064239969
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7911513949636036872
+    second: Benedict_ die_F_Retouch_0
+  - first:
+      213: 7239508339355223186
+    second: Benedict_ die_F_Retouch_1
+  - first:
+      213: -2984386734619924649
+    second: Benedict_ die_F_Retouch_2
+  - first:
+      213: 6691943592923046100
+    second: Benedict_ die_F_Retouch_3
+  - first:
+      213: 7100039411140347143
+    second: Benedict_ die_F_Retouch_4
+  - first:
+      213: -5810192020165944584
+    second: Benedict_ die_F_Retouch_5
+  - first:
+      213: -6357219161436844607
+    second: Benedict_ die_F_Retouch_6
+  - first:
+      213: 4067982176457918678
+    second: Benedict_ die_F_Retouch_7
+  - first:
+      213: -2631783622257752299
+    second: Benedict_ die_F_Retouch_8
+  - first:
+      213: -2927762257804733227
+    second: Benedict_ die_F_Retouch_9
+  - first:
+      213: -5999227536949123299
+    second: Benedict_ die_F_Retouch_10
+  - first:
+      213: 2256376461550648765
+    second: Benedict_ die_F_Retouch_11
+  - first:
+      213: -7433209839423679799
+    second: Benedict_ die_F_Retouch_12
+  - first:
+      213: -1803937787360553727
+    second: Benedict_ die_F_Retouch_13
+  - first:
+      213: 5712855086733755853
+    second: Benedict_ die_F_Retouch_14
+  - first:
+      213: 5595856393356453824
+    second: Benedict_ die_F_Retouch_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.50815517, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f67564daf7a43290800000000000000
+      internalID: -7911513949636036872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2940fb36a76e77460800000000000000
+      internalID: 7239508339355223186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.46738014, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757679aa3145596d0800000000000000
+      internalID: -2984386734619924649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.4673803, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d021290e3f8edc50800000000000000
+      internalID: 6691943592923046100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_4
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.42660552, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7054b401a38688260800000000000000
+      internalID: 7100039411140347143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_5
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.44291538, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa1331342d0e5fa0800000000000000
+      internalID: -5810192020165944584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_6
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 52
+        height: 58
+      alignment: 9
+      pivot: {x: 0.4200187, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd004bcade96c7a0800000000000000
+      internalID: -6357219161436844607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_7
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.37767658, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d805648c30647830800000000000000
+      internalID: 4067982176457918678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_8
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.37767598, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517c2a54db60a7bd0800000000000000
+      internalID: -2631783622257752299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_9
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.35321105, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4d0cc0dbf7e57d0800000000000000
+      internalID: -2927762257804733227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_10
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.31243658, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17e76527567ebca0800000000000000
+      internalID: -5999227536949123299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_11
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.3042818, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd774edf62405f10800000000000000
+      internalID: 2256376461550648765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_12
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.28797224, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2963ca80fe7d890800000000000000
+      internalID: -7433209839423679799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_13
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.3042818, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 105587bd32027f6e0800000000000000
+      internalID: -1803937787360553727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_14
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 0
+        width: 51
+        height: 58
+      alignment: 9
+      pivot: {x: 0.3287461, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc58c02fe63284f40800000000000000
+      internalID: 5712855086733755853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benedict_ die_F_Retouch_15
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 0
+        width: 39
+        height: 58
+      alignment: 9
+      pivot: {x: 0.38269514, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c72c1cddb978ad40800000000000000
+      internalID: 5595856393356453824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

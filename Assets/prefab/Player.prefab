@@ -48,6 +48,9 @@ MonoBehaviour:
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 64
+  m_coolTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   m_cWeaponData: {fileID: 11400000, guid: f66873249f7d20849a59bfdae35b3f30, type: 2}
   m_cComboSystem: {fileID: 5689073691015574318}
   m_nNotAttackLayer: 31
@@ -102,6 +105,7 @@ GameObject:
   - component: {fileID: 5689073691393891057}
   - component: {fileID: 5689073691393891056}
   - component: {fileID: 5689073691393891063}
+  - component: {fileID: 1559301391}
   m_Layer: 0
   m_Name: Player_Knif_Throw
   m_TagString: Untagged
@@ -138,6 +142,21 @@ MonoBehaviour:
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 64
+  m_coolTimeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559301391}
+        m_TargetAssemblyTypeName: SecondaryWeaponUIConnetter, Assembly-CSharp
+        m_MethodName: coolTimeEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_cWeaponData: {fileID: 11400000, guid: 7978aef67f841f344bf7c84e49b07ab6, type: 2}
   m_cComboSystem: {fileID: 5689073691393891063}
   m_goThrow: {fileID: 3073033399267882733, guid: 3cdc834f6e4df3a41991a29e225d6e18, type: 3}
@@ -155,6 +174,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb530c7f04ab424bba9e441fbf70ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1559301391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689073691393891058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b72a97b7d153ec44a8e6c02e83bd1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cWeapon: {fileID: 5689073691393891056}
 --- !u!1 &5689073691426790761
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,9 +279,9 @@ MonoBehaviour:
     m_nMaxHp: 5
     m_fMaxSpeed: 10
     m_fMaxStamina: 99
-    m_fStaminaHealingTick: 0.5
+    m_fStaminaHealingTick: 2
     m_fStaminaHealingTickTime: 1
-    m_fDushPower: 50
+    m_fDushPower: 30
     m_fDushTime: 0.2
     m_fDushStamina: 10
     m_fGodTime: 2
