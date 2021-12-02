@@ -9,10 +9,6 @@ public class Barricade : MonoBehaviour
 
     [SerializeField] private string m_strInteraction;
 
-    public void Start()
-    {
-        eventOn();
-    }
 
     public void eventOn()
     {
