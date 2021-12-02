@@ -10,9 +10,12 @@ public class UnitGrip : MonoBehaviour
     private float m_fDistance;
 
 
+
     public void init(float fDistance)
     {
         gripSetting(fDistance);
+
+
     }
 
 
@@ -21,10 +24,12 @@ public class UnitGrip : MonoBehaviour
     {
         Vector3 v3GripVector = (Vector3)(v2Dir * m_fDistance);
 
-        transform.localPosition = m_v2LocalPivot;
+        transform.localPosition = (Vector3)m_v2LocalPivot;
 
         transform.localPosition += v3GripVector;
     }
+
+
 
     public void gripSetting( float fDistance)
     {

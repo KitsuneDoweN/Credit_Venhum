@@ -12,6 +12,7 @@ public class UI_View : MonoBehaviour
     {
         m_rootRect = GetComponent<RectTransform>();
         m_v3OriginRectPos = m_rootRect.localPosition;
+        toggle(false);
     }
 
     public virtual void toggle(bool bToggle)

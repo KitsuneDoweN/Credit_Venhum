@@ -14,17 +14,26 @@ public class WeaponEnemySworld : WeaponBase
     {
         base.init(unitBase);
         gameObject.layer = m_nNotAttackLayer;
-        strAttackTrigger = "AttackSword";
+        strAttackTrigger = "attack";
     }
 
     public override void attack()
     {
+        if (isCoolTime)
+            return;
+
         cUnit.fStamina -= cWeaponData.fStamina;
 
         cUnit.isMoveAble = false;
 
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        attackAnimation();
+
         isAttackRun = true;
+    }
+
+    protected override void attackAnimation()
+    {
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
     }
 
     public override void attackEventStart()
@@ -47,7 +56,16 @@ public class WeaponEnemySworld : WeaponBase
         base.attackImfect();
     }
 
+    public override void attackEnd()
+    {
+        base.attackEnd();
+    }
 
+    public override void reset()
+    {
+        base.reset();
+        gameObject.layer = m_nNotAttackLayer;
+    }
 
 
     public void OnTriggerEnter2D(Collider2D collision)

@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     private bool m_bPushMove;
 
+    
+
     public bool isPushMove
     {
         get
@@ -19,7 +21,18 @@ public class InputManager : MonoBehaviour
 
     private bool m_bPushAttack;
 
-    public bool isPushAttack;
+    public bool isPushAttack
+    {
+        set
+        {
+            m_bPushAttack = value;
+            //Debug.Log("Push: " + isPushAttack);
+        }
+        get
+        {
+            return m_bPushAttack;
+        }
+    }
 
 
     public void init(PlayerUnit cPlayer)
@@ -40,9 +53,8 @@ public class InputManager : MonoBehaviour
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
 
-        m_cPlayer.lookDirUpdate(context.ReadValue<Vector2>());
-        m_cPlayer.moveDirUpdate(context.ReadValue<Vector2>());
-
+        m_cPlayer.v2NextLookDir = context.ReadValue<Vector2>();
+        m_cPlayer.v2NextMoveDir = context.ReadValue<Vector2>();
 
     }
 
@@ -53,19 +65,25 @@ public class InputManager : MonoBehaviour
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
 
-        if (context.started)
-        {
-            if(m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_SWORD)
-                m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
-            
-            m_cPlayer.attack();
-
-            isPushAttack = true;
-        }
 
         if (context.canceled)
         {
             isPushAttack = false;
+        }
+
+        if (!m_cPlayer.isControl)
+            return;
+
+        if (context.started)
+        {
+            if (m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_SWORD)
+                isPushAttack = m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
+            else
+                isPushAttack = true;
+
+            m_cPlayer.attack();
+
+  
         }
 
         
@@ -74,6 +92,9 @@ public class InputManager : MonoBehaviour
     public void OnDush(InputAction.CallbackContext context)
     {
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (!m_cPlayer.isControl)
+            return;
+
 
         if (context.started)
             m_cPlayer.dushAction();
@@ -84,30 +105,67 @@ public class InputManager : MonoBehaviour
     {
         if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
-        if (context.started)
-        {
-            if (m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_KNIF_THROW)
-                m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_KNIF_THROW);
-
-            m_cPlayer.attack();
-
-            isPushAttack = true;
-        }
 
         if (context.canceled)
         {
             isPushAttack = false;
         }
+
+        if (!m_cPlayer.isControl)
+            return;
+
+
+        if (context.started)
+        {
+            if (m_cPlayer.eGripWeapon != PlayerWeapons.E_Weapon.E_KNIF_THROW)
+                isPushAttack = m_cPlayer.switchWeapon(PlayerWeapons.E_Weapon.E_KNIF_THROW);
+            else
+                isPushAttack = true;
+
+            m_cPlayer.attack();
+
+            
+        }
+
     }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+
+        if (context.started)
+        {
+            if (GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.getToggle())
+            {
+                GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(false);
+            }
+
+            if (GameManager.instance.cInteraction != null)
+            GameManager.instance.interActionEvent();
+
+
+
+        }
+    }
+
+    public void OnOption(InputAction.CallbackContext context)
+    {
+        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+
+        if (context.started)
+        {
+            GameManager.instance.cUIManager.cUI_Option.toggle(true);
+        }
+    }
+
 
 
     private void Update()
     {
-        if (isPushAttack)
+        if (m_cPlayer.isControl && isPushAttack)
         {
             m_cPlayer.attack();
         }
-           
     }
 
 }

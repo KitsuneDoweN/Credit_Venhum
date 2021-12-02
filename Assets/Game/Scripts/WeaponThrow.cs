@@ -11,7 +11,7 @@ public class WeaponThrow : WeaponBase
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
-        strAttackTrigger = "AttackThrow";
+        strAttackTrigger = "attackThrow";
     }
 
     public override void attackEventStart()
@@ -37,15 +37,25 @@ public class WeaponThrow : WeaponBase
     {
         if (isCoolTime)
             return;
+        if (isAttackRun)
+            return;
 
         cUnit.fStamina -= cWeaponData.fStamina;
 
         cUnit.isMoveAble = false;
 
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        attackAnimation();
+
         isAttackRun = true;
 
         coolTimeEvent();
+
+
+    }
+
+    protected override void attackAnimation()
+    {
+        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
     }
 
     public override void attackEnd()

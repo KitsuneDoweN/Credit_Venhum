@@ -8,10 +8,61 @@ public class PlayerUnit : UnitBase
 
     [SerializeField]
     private PlayerWeapons m_cWeapons;
+    
+    [SerializeField]
+    private Rigidbody2D m_rigidbody2D;
+
+    public Rigidbody2D rig2D
+    {
+        get
+        {
+            return m_rigidbody2D;
+        }
+    }
+
+    public override int nHP
+    {
+        set
+        {
+            base.nHP = value;
+
+            float fFillAmount = nHP / m_cStatus.nMaxHp ;
+            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_HP, fFillAmount);
+        }
+        get
+        {
+            return base.nHP;
+        }
+    }
+
+    public override float fStamina
+    {
+        set
+        {
+            base.fStamina = value;
+            float fFillAmount = fStamina / m_cStatus.fMaxStamina;
+            Debug.Log(fStamina + "  " + m_cStatus.fMaxStamina);
+            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_STATMINA, fFillAmount);
+        }
+        get
+        {
+            return base.fStamina; 
+        }
+    }
 
 
 
-
+    public override Vector2 v2Velocity
+    {
+        set
+        {
+            rig2D.velocity = value;
+        }
+        get
+        {
+            return rig2D.velocity;
+        }
+    }
 
 
     public override void init()
@@ -22,15 +73,14 @@ public class PlayerUnit : UnitBase
         m_cWeapons.init(this);
 
         switchWeapon(PlayerWeapons.E_Weapon.E_SWORD);
-        cGrip.init(cGripWeapon.cWeaponData.fRange);
+        cGrip.init(cGripWeapon.cWeaponData.fGripRange);
+
+        nHP = nHP;
 
 
         isControl = true;
         isMoveAble = true;
         isLookAble = true;
-
-
-        hit(this, cGripWeapon.cWeaponData.getWeaponAttackData(0));
     }
 
 
@@ -40,9 +90,6 @@ public class PlayerUnit : UnitBase
         { 
             base.isControl = value;
 
-            v2MoveDir = v2OldMoveDir;
-            v2LookDir = v2OldLookDir;
-
         }
         get
         {
@@ -51,26 +98,47 @@ public class PlayerUnit : UnitBase
     }
 
 
-    private void moveUpdate()
+
+
+
+    public override void moveDirUpdate()
     {
-
-        if (!isControl || !isMoveAble) return;
-
-        v2Velocity = v2MoveDir * m_cStatus.fSpeed;
+        base.moveDirUpdate();
 
 
+    }
 
+    public override void lookDirUpdate()
+    {
+        base.lookDirUpdate();
     }
 
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
+        if (isDie) 
+            return;
+
         base.hit(unit, cAttackData);
 
-        m_cAnimation.trigger("Hit");
+        Debug.Log("hit");
 
-        m_cImfect.hitimfect();
-        m_cImfect.godImfect();
+
+        if (!isDie)
+        {
+
+            stop();
+            cAnimation.hit();
+
+            m_cImfect.hitimfect();
+            m_cImfect.godImfect();
+        }
+        else
+        {
+            die();
+        }
+        
+
 
 
     }
@@ -84,11 +152,17 @@ public class PlayerUnit : UnitBase
     public override void die()
     {
         base.die();
+        isControl = false;
+        cAnimation.die();
+        Debug.Log("Die");
     }
 
     private void Update()
     {
-        moveUpdate();
+        if (!isControl)
+            return;
+
+        movementUpdate();
     }
 
     public void dushAction()
@@ -101,21 +175,29 @@ public class PlayerUnit : UnitBase
 
         fStamina -= cStatus.fDushStamina;
 
+        isLookAble = true;
 
-        isMoveAble = false;
+        lookDirUpdate();
+
+
+        godMode();
+
         dush(v2LookDir, true);
     }
 
-    public void refeshMove()
+    public void dushActionEnd()
     {
-        isMoveAble = true;
-        moveDirUpdate(v2MoveDir);
+        godModeEnd();
     }
 
-    public void switchWeapon(PlayerWeapons.E_Weapon eWeapon)
+
+
+
+
+    public bool switchWeapon(PlayerWeapons.E_Weapon eWeapon)
     {
-        if (!m_cWeapons.switchWeapon(eWeapon,  ref m_cGripWeapon))
-            return;
+        if (!m_cWeapons.switchWeapon(eWeapon, ref m_cGripWeapon))
+            return false ;
 
         cGripWeapon.transform.parent = cGrip.transform;
         cGripWeapon.transform.localPosition = Vector3.zero;
@@ -124,8 +206,10 @@ public class PlayerUnit : UnitBase
 
         cAnimation.setWeaponHandle(m_cGripWeapon);
 
-        cGrip.gripSetting(cGripWeapon.cWeaponData.fRange);
+        cGrip.gripSetting(cGripWeapon.cWeaponData.fGripRange);
         cGrip.gripUpdate(v2LookDir);
+
+        return true;
     }
 
     public PlayerWeapons.E_Weapon eGripWeapon
@@ -136,6 +220,11 @@ public class PlayerUnit : UnitBase
         }
     }
 
-    
+
+    public void stop()
+    {
+        v2NextMoveDir = Vector2.zero;
+        movementUpdate();
+    }
 
 }

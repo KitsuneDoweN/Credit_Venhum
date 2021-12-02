@@ -5,26 +5,33 @@ using UnityEngine;
 public class UI_Ingame : UI_View
 {
     [SerializeField]
-    private UI_HpManager m_cUI_HPManager;
+    private UI_PlayerInfo m_cUI_PlayerInfo;
+    //[SerializeField]
+    //private UI_BossHp m_cUI_BossHp;
     [SerializeField]
-    private UI_BossHp m_cUI_BossHp;
+    private UI_Talk m_cUI_Talk;
 
+    [SerializeField]
+    private UI_InteractionText m_cUI_InteractionText;
 
     public override void init()
     {
         base.init();
+        // m_cUI_BossHp.init();
 
-        m_cUI_HPManager.init();
-        m_cUI_BossHp.init();
 
-        toggle(false);
+        cUI_InteractionText.init();
+        cUI_Talk.init();
     }
 
     public void ingameStart()
     {
         toggle(true);
-        m_cUI_HPManager.toggle(true);
-        m_cUI_BossHp.toggle(false);
+
+        cUI_PlayerInfo.toggle(true);
+        cUI_Talk.toggle(false);
+        cUI_InteractionText.toggle(false);
+        //m_cUI_BossHp.toggle(false);
     }
 
 
@@ -34,29 +41,43 @@ public class UI_Ingame : UI_View
         base.toggle(bToggle);
     }
 
-    public void playerHpToggle(bool bToggle)
-    {
-        m_cUI_HPManager.toggle(bToggle);
-    }
 
-    public void boosHpToggle(bool bToggle)
-    {
-        m_cUI_BossHp.toggle(bToggle);
-    }
 
-    public UI_HpManager cUI_HpManager
+
+    //public void boosHpToggle(bool bToggle)
+    //{
+    //    m_cUI_BossHp.toggle(bToggle);
+    //}
+
+    public UI_PlayerInfo cUI_PlayerInfo
     {
         get
         {
-            return m_cUI_HPManager;
+            return m_cUI_PlayerInfo;
         }
     }
 
-    public UI_BossHp cUI_BossHp
+    //public UI_BossHp cUI_BossHp
+    //{
+    //    get
+    //    {
+    //        return m_cUI_BossHp;
+    //    }
+    //}
+
+    public UI_Talk cUI_Talk
     {
         get
         {
-            return m_cUI_BossHp;
+            return m_cUI_Talk;
+        }
+    }
+
+    public UI_InteractionText cUI_InteractionText
+    {
+        get
+        {
+            return m_cUI_InteractionText;
         }
     }
 }

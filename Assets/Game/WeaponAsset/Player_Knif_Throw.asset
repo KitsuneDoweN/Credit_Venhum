@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc2b839c159643458d9e4093fd6f142, type: 3}
   m_Name: Player_Knif_Throw
   m_EditorClassIdentifier: 
-  m_fStamina: 4
+  m_fStamina: 1
   m_cWeaponDamages:
   - m_cDamageData:
-    - m_eDamageType: 1
-      m_nDamge: 0
+    - m_eDamageType: 2
+      m_nDamge: 1
   - m_cDamageData:
     - m_eDamageType: 1
       m_nDamge: 0
   m_fCoolTime: 1
+  m_fGripRange: 1

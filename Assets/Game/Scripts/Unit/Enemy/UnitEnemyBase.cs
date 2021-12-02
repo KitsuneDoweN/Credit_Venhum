@@ -2,15 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class UnitEnemyBase : UnitBase
 {
 
     [SerializeField] private NavMeshAgent m_navAgent;
 
+    [SerializeField]
     protected float m_fAttackRange;
     
     private UnitBase m_cTargetUnit;
+
+    public UnityEvent hitEndEvent;
+
+    public UnityEvent attackEndEvent;
+
+    [SerializeField] private UnityEvent m_dieEvent;
+
+
+
+    public override Vector2 v2Velocity
+    {
+        set
+        {
+            m_navAgent.velocity = value;
+        }
+        get
+        {
+            return m_navAgent.velocity;
+        }
+
+    }
+
 
     protected UnitBase cTargetUnit
     {
@@ -28,13 +52,23 @@ public class UnitEnemyBase : UnitBase
     {
         base.init();
 
+        isControl = true;
+        isMoveAble = true;
+        isLookAble = true;
 
-        setTarget(GameManager.instance.cStageManager.cPlayer);
 
+
+        m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();
+        m_cGripWeapon.init(this);
+
+        cGrip.init(cGripWeapon.cWeaponData.fGripRange);
+
+
+
+        m_navAgent.speed = m_cStatus.fSpeed;
         m_navAgent.updateRotation = false;
         m_navAgent.updateUpAxis = false;
 
-        m_fAttackRange = cGripWeapon.cWeaponData.fRange;
         cAnimation.init();
     }
 
@@ -42,8 +76,6 @@ public class UnitEnemyBase : UnitBase
     public override void hit(UnitBase unit, WeaponAttackData cAttackDatas)
     {
         base.hit(unit, cAttackDatas);
-
-
     }
 
     public virtual void handleSpawn()
@@ -54,8 +86,11 @@ public class UnitEnemyBase : UnitBase
     protected void navTrackingStop()
     {
         m_navAgent.isStopped = true;
-        m_navAgent.velocity = Vector3.zero;
-        v2MoveDir = Vector2.zero;
+
+        v2NextMoveDir = Vector2.zero;
+
+        moveDirUpdate();
+
     }
 
     protected void navTrackingReStart()
@@ -65,10 +100,21 @@ public class UnitEnemyBase : UnitBase
 
 
 
-    protected void setTargetDestination()
+    protected virtual void setTargetDestination()
     {
         m_navAgent.SetDestination(cTargetUnit.transform.position);
+
+        Vector2 v2Dir = cTargetUnit.v2UnitPos - v2UnitPos;
+
+        v2NextMoveDir = v2Dir;
+        v2NextLookDir = v2Dir;
+
+        movementUpdate();
+
+
     }
+
+
 
     public void setTarget(UnitBase cTargetUnit)
     {
@@ -80,6 +126,7 @@ public class UnitEnemyBase : UnitBase
     {
         navTrackingStop();
         base.die();
+        m_dieEvent.Invoke();
     }
 
     protected bool inRange(float fRange)
@@ -95,5 +142,16 @@ public class UnitEnemyBase : UnitBase
         return bResult;
     }
 
+    protected void goPoint(Vector2 point)
+    {
+        m_navAgent.SetDestination((Vector3)point);
+
+        Vector2 v2Dir = point - v2UnitPos;
+
+        v2NextMoveDir = v2Dir;
+        v2NextLookDir = v2Dir;
+
+        movementUpdate();
+    }
 
 }

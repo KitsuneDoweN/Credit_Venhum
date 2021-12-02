@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     private string m_strNextStageName;
 
+    private Interaction m_cInteraction;
+
+
     public enum E_GAMESTATE
     {
         E_NONE = -1, E_TITLE, E_LODE , E_INGAME, E_OVER, E_CLEAR, E_TOTAL
@@ -65,14 +68,18 @@ public class GameManager : MonoBehaviour
         m_delGameEvent[(int)E_GAMESTATE.E_OVER] = gameOverEvent;
         m_delGameEvent[(int)E_GAMESTATE.E_CLEAR] = gameClearEvent;
 
-        eGameState = E_GAMESTATE.E_INGAME;
+
 
         init();
+
+        eGameState = E_GAMESTATE.E_INGAME;
+
+
     }
 
     private void init()
     {
-        //m_UIManager.init();
+        cUIManager.init();
 
         setStageManager(GameObject.FindObjectOfType<StageManager>());
     }
@@ -181,7 +188,7 @@ public class GameManager : MonoBehaviour
 
     protected void inGameEvent()
     {
-
+        cUIManager.cUI_InGame.ingameStart();
     }
 
 
@@ -200,6 +207,58 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
+    public Interaction cInteraction
+    {
+        set
+        {
+            m_cInteraction = value;
+            if (value == null)
+            {
+                cUIManager.cUI_Dynamic.toggle(false);
+                return;
+            }
+               
+
+            cUIManager.cUI_Dynamic.toggle(true);
+            cUIManager.cUI_Dynamic.drawInteractionIncon(m_cInteraction.trIcon.position);
+
+        }
+        get
+        {
+            return m_cInteraction;
+        }
+    }
+
+    private bool m_bPauseControl;
+
+    public void pause()
+    {
+        if (m_eGameState != E_GAMESTATE.E_INGAME)
+            return;
+
+        Time.timeScale = 0;
+
+        m_bPauseControl = cStageManager.cPlayer.isControl;
+        cStageManager.cPlayer.isControl = false;
+    }
+
+    public void resume()
+    {
+        if (m_eGameState != E_GAMESTATE.E_INGAME)
+            return;
+
+        Time.timeScale = 1;
+
+        cStageManager.cPlayer.isControl = m_bPauseControl;
+
+    }
+
+    public void interActionEvent()
+    {
+        m_cInteraction.interactionEvent.Invoke();
+    }
 
 
 }
