@@ -17,10 +17,10 @@ public class UIManager : MonoBehaviour
     public void init()
     {
         m_cUI_Ingame.init();
-        //m_cUI_Title.init();
-        //m_cUI_GameLoading.init();
-        //m_cUI_Gameover.init();
-        //m_cUI_GameClear.init();
+        m_cUI_Title.init();
+        m_cUI_GameLoading.init();
+        m_cUI_Gameover.init();
+        m_cUI_GameClear.init();
         m_cUI_Dynamic.init();
         m_cUI_Option.init();
     }
@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void gameStart()
+    public void ingameStart()
     {
         m_cUI_Ingame.ingameStart();
     }
@@ -95,5 +95,7 @@ public class UIManager : MonoBehaviour
         cUI_GameClear.toggle(false);
         cUI_Dynamic.toggle(false);
     }
+
+
 
 }

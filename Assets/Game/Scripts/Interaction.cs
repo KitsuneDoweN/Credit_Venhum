@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] private UnityEvent m_cInteractionEvent;
+    [SerializeField] private UnityEvent m_interactionEvent;
     [SerializeField] private Transform m_trIcon;
 
 
@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour
     {
         get
         {
-            return m_cInteractionEvent;
+            return m_interactionEvent;
         }
     }
 
@@ -24,6 +24,8 @@ public class Interaction : MonoBehaviour
             return m_trIcon;
         }
     }
+
+
 
 
 }

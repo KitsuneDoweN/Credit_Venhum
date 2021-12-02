@@ -113,6 +113,7 @@ public class CameraManger : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
         m_delCameraEvent[(int)m_eState]();
     }
 
@@ -175,6 +176,15 @@ public class CameraManger : MonoBehaviour
         m_camCamera.orthographicSize = m_fDefalutZoom;
     }
 
+    public void setStatePivot(Transform trPivot, float fZoom)
+    {
+        setTarget(trPivot);
+        setTargetZoom(fZoom);
+
+        m_eState = E_CameraState.E_TRACKING;
+    }
+
+
 
     private void setTargetZoom(float fZoom)
     {
@@ -187,8 +197,6 @@ public class CameraManger : MonoBehaviour
         m_fCurrentZoom = Mathf.SmoothDamp(m_fCurrentZoom, m_fTargetZoom, ref m_fCurrentZoomVelocity, 0.5f);
     }
 
-    [SerializeField]
-    private Transform[] test;
 
     private void processedBounds()
     {
@@ -200,8 +208,7 @@ public class CameraManger : MonoBehaviour
         //    "Zero " + m_v2BoundZero +
         //    "One " + m_v2BoundOne);
 
-        test[0].position = m_v2BoundZero;
-        test[1].position = m_v2BoundOne;
+
 
         m_v2CurrentPos = m_CamClamp.clamp(
     (Vector2)transform.position,

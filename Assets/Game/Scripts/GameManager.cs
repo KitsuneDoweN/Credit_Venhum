@@ -17,13 +17,23 @@ public class GameManager : MonoBehaviour
 
     private Interaction m_cInteraction;
 
+    [SerializeField] private bool m_bTestGame;
 
     public enum E_GAMESTATE
     {
         E_NONE = -1, E_TITLE, E_LODE , E_INGAME, E_OVER, E_CLEAR, E_TOTAL
     }
 
+    
     private E_GAMESTATE m_eGameState;
+
+    private enum E_GAMESCENE
+    {
+        E_NONE = -1, E_TITLE, E_STAGE_0
+    }
+
+    private E_GAMESCENE m_eNextGameScene;
+
 
     public E_GAMESTATE eGameState
     {
@@ -72,16 +82,17 @@ public class GameManager : MonoBehaviour
 
         init();
 
-        eGameState = E_GAMESTATE.E_INGAME;
 
+        if(!m_bTestGame)
+        eGameState = E_GAMESTATE.E_TITLE;
+        else
+            eGameState = E_GAMESTATE.E_INGAME;
 
     }
 
     private void init()
     {
         cUIManager.init();
-
-        setStageManager(GameObject.FindObjectOfType<StageManager>());
     }
 
 
@@ -115,33 +126,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void gameStart(string strStageName)
-    {
-        m_strNextStageName = strStageName;
-        eGameState = E_GAMESTATE.E_LODE;
-    }
 
-    public void goTitle()
-    {
-        StartCoroutine(goTitleProcess());
-    }
 
-    private IEnumerator goTitleProcess()
-    {
-        cUIManager.allClear();
-        cUIManager.cUI_GameLoading.toggle(true);
-
-        cUIManager.cUI_GameLoading.startLoadAnimaiton();
-
-        AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
-        yield return sceneLoadAsync;
-
-        cUIManager.cUI_GameLoading.stopLoadAnimation();
-
-        cUIManager.cUI_GameLoading.toggle(false);
-
-        eGameState = E_GAMESTATE.E_TITLE;
-    }
 
         public void setStageManager(StageManager cStageManager)
     {
@@ -159,54 +145,72 @@ public class GameManager : MonoBehaviour
 
     public void LoadEvent()
     {
-        StartCoroutine(inGameProcess());
+        StartCoroutine(loadProcess());
     }
 
-    private IEnumerator inGameProcess()
+    private IEnumerator loadProcess()
     {
         cUIManager.allClear();
         cUIManager.cUI_GameLoading.toggle(true);
 
         cUIManager.cUI_GameLoading.startLoadAnimaiton();
 
-         AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync(m_strNextStageName, LoadSceneMode.Single);
+
+         AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eNextGameScene, LoadSceneMode.Single);
         yield return sceneLoadAsync;
+
+        yield return new WaitForSeconds(1.0f);
 
         cUIManager.cUI_GameLoading.stopLoadAnimation();
 
         cUIManager.cUI_GameLoading.toggle(false);
-        cUIManager.cUI_InGame.ingameStart();
 
+        if (m_eNextGameScene == E_GAMESCENE.E_TITLE)
+        {
+            eGameState = E_GAMESTATE.E_TITLE;
+            yield break;
+        }
 
-       setStageManager(GameObject.FindObjectOfType<StageManager>());
+        eGameState = E_GAMESTATE.E_INGAME;
 
-        m_cStageManger.init();
-        m_cInputManager.setPlayer(cStageManager.cPlayer);
-        m_eGameState = E_GAMESTATE.E_LODE;
     }
 
 
     protected void inGameEvent()
     {
-        cUIManager.cUI_InGame.ingameStart();
+        cUIManager.allClear();
+
+        setStageManager(GameObject.FindObjectOfType<StageManager>());
+        cUIManager.ingameStart();
     }
 
 
 
     private void gameOverEvent()
     {
-        cUIManager.allClear();
         m_UIManager.cUI_Gameover.toggle(true);
+        Invoke("goTitle", 3.0f);
     }
 
     private void gameClearEvent()
     {
-        cUIManager.allClear();
+
         cUIManager.cUI_GameClear.toggle(true);
+        Invoke("goTitle", 3.0f);
+    }
+
+    public void goTitle()
+    {
+        m_eNextGameScene = E_GAMESCENE.E_TITLE;
+        eGameState = E_GAMESTATE.E_LODE;
     }
 
 
-
+    public void goIngame()
+    {
+        m_eNextGameScene = E_GAMESCENE.E_STAGE_0;
+        eGameState = E_GAMESTATE.E_LODE;
+    }
 
 
     public Interaction cInteraction

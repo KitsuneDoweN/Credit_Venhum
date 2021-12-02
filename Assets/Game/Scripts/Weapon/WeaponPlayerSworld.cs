@@ -85,7 +85,7 @@ public class WeaponPlayerSworld : WeaponBase
         cUnit.dushDetail(cUnit.v2LookDir, m_fMovePower, 0.1f, false);
     }
 
-    
+
 
 
     public void OnTriggerEnter2D(Collider2D collision)

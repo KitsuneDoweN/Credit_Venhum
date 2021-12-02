@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AreaEnemyManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class AreaEnemyManager : MonoBehaviour
     [SerializeField] Barricade m_cBarricade;
 
     [SerializeField] Transform m_trEnemys;
+
+    [SerializeField]
+    private UnityEvent m_cDieProcessEvent;
 
 
     private void Start()
@@ -41,6 +45,8 @@ public class AreaEnemyManager : MonoBehaviour
 
     public void unitDieProcessed(UnitEnemyBase unit)
     {
+        m_cDieProcessEvent.Invoke();
+
         m_cAreaEnemyDieList.Add(unit);
 
         if(m_cAreaEnemyDieList.Count == m_cAreaEnemyList.Count)

@@ -7,8 +7,9 @@ public class Dush : MonoBehaviour
 {
     private UnitBase m_cUnit;
 
-    private IEnumerator m_ieDushCoroutine;
+    private LayerMask m_wallLayerMask;
 
+    private IEnumerator m_ieDushCoroutine;
     private IEnumerator ieDushCoroutine
     {
         set
@@ -27,6 +28,8 @@ public class Dush : MonoBehaviour
     [SerializeField]
     private UnityEvent m_dushEndEvent;
 
+    [SerializeField]
+    private float m_fCollisionDistance;
 
 
     private float m_fTime;
@@ -64,6 +67,8 @@ public class Dush : MonoBehaviour
     {
         m_cUnit = unit;
         m_ieDushCoroutine = null;
+
+        m_wallLayerMask = LayerMask.GetMask("Wall");
 
         setDushInfo(fPower, fTime);
     }
@@ -111,6 +116,9 @@ public class Dush : MonoBehaviour
         while (fTime < fDushTime)
         {
             fTime += Time.deltaTime;
+
+            wallCollision(v2Dir, m_fCollisionDistance);
+
             yield return null;
         }
 
@@ -149,6 +157,28 @@ public class Dush : MonoBehaviour
         m_cUnit.isControl = true;
     }
 
+
+
+    private void wallCollision(Vector2 v2Dir, float fCollisionDistance)
+    {
+        RaycastHit2D hit2D = Physics2D.Raycast(m_cUnit.v2UnitPos, v2Dir, fCollisionDistance, m_wallLayerMask);
+
+        if (!hit2D)
+            return;
+
+        m_cUnit.v2Velocity = Vector2.zero;
+
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        if (m_cUnit == null)
+            return;
+
+        Gizmos.DrawLine(m_cUnit.v2UnitPos, m_cUnit.v2UnitPos + (m_cUnit.v2LookDir * m_fCollisionDistance));
+    }
 
 }
 

@@ -26,7 +26,7 @@ public class PlayerUnit : UnitBase
         {
             base.nHP = value;
 
-            float fFillAmount = nHP / m_cStatus.nMaxHp ;
+            float fFillAmount = (float)nHP / (float)m_cStatus.nMaxHp ;
             GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_HP, fFillAmount);
         }
         get
@@ -128,10 +128,9 @@ public class PlayerUnit : UnitBase
         {
 
             stop();
+
             cAnimation.hit();
 
-            m_cImfect.hitimfect();
-            m_cImfect.godImfect();
         }
         else
         {
@@ -152,6 +151,7 @@ public class PlayerUnit : UnitBase
     public override void die()
     {
         base.die();
+        stop();
         isControl = false;
         cAnimation.die();
         Debug.Log("Die");

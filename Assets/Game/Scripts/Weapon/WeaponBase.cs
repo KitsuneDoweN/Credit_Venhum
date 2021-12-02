@@ -191,6 +191,8 @@ public class WeaponBase : MonoBehaviour
     }
 
 
+
+
     public void stopCoolTimeEvent()
     {
         if (m_ieCoolTimeEvent == null)
@@ -207,5 +209,6 @@ public class WeaponBase : MonoBehaviour
             return m_cComboSystem.nCurrentCombo;
         }
     }
+
 
 }

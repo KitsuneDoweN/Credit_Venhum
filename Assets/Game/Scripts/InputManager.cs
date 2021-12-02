@@ -162,6 +162,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME)
+            return;
+
         if (m_cPlayer.isControl && isPushAttack)
         {
             m_cPlayer.attack();

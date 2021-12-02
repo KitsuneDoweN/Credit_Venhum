@@ -31,4 +31,14 @@ public class UnitTalk : MonoBehaviour
         }
     }
 
+    public void talkEvent()
+    {
+        m_cTalk.talkEvnet();
+    }
+
+    public void changeTalk(Talk cTalk)
+    {
+        m_cTalk = cTalk;
+    }
+
 }

@@ -165,7 +165,7 @@ public class BossTheCosastofHand : UnitBase
 
 
 
-        HandleWakeUp(GameManager.instance.cStageManager.cPlayer);
+       
     }
 
     public void HandleWakeUp(UnitBase cPlayer)

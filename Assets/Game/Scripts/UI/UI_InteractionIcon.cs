@@ -46,7 +46,7 @@ public class UI_InteractionIcon : MonoBehaviour
 
     private void Update()
     {
-        if (m_bDraw)
+        if (m_bDraw && GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
             draw();
     }
 }

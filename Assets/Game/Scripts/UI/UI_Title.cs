@@ -16,10 +16,16 @@ public class UI_Title : UI_View
     }
 
 
-    public void gameStart(string stageName)
+    public void gameStart()
     {
-        GameManager.instance.gameStart(stageName);
+        GameManager.instance.goIngame();
     }
+
+    public void option()
+    {
+        GameManager.instance.cUIManager.cUI_Option.toggle(true);
+    }
+
 
     public void exit()
     {

@@ -10,8 +10,7 @@ public class NomalEnemy : UnitEnemyBase
     private LayerMask m_targetLayer;
     [SerializeField]
     private float m_fAttakWaitTime;
-    [SerializeField]
-    private UnitBloodImfect m_cBloodImfect;
+
     [SerializeField]
     private EnemySerchIcon m_cSerchIcon;
 
@@ -62,7 +61,7 @@ public class NomalEnemy : UnitEnemyBase
         cGrip.gripSetting(cGripWeapon.cWeaponData.fGripRange);
         cGrip.gripUpdate(v2LookDir);
 
-        m_cBloodImfect.init();
+
 
         isControl = true;
         isMoveAble = true;
@@ -117,7 +116,7 @@ public class NomalEnemy : UnitEnemyBase
         Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
         v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
 
-        m_cBloodImfect.bloodImfect(v2UnitToHitUnitDir);
+
 
 
         if (eEnemyState != E_EnemyState.E_WAIT && eEnemyState != E_EnemyState.E_TRACKING

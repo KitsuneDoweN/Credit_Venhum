@@ -44,4 +44,9 @@ public class WeaponAnimationHandle : MonoBehaviour
         m_cWeaponBase.comboAbleStart();
     }
 
+    public void reset()
+    {
+        m_cWeaponBase.reset();
+    }
+
 }
