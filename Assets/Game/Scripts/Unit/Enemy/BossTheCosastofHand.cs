@@ -160,7 +160,8 @@ public class BossTheCosastofHand : UnitBase
     private Vector2 m_v2HandColliderSizeDefault;
 
 
-
+    [SerializeField]
+    private Sprite m_bossIcon;
 
     private void Start()
     {
@@ -254,6 +255,11 @@ public class BossTheCosastofHand : UnitBase
         isLookAble = true;
         isMoveAble = false;
 
+
+        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(true);
+        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
+
+
         eBossState = E_BossState.E_WAIT;
     }
 
@@ -261,7 +267,9 @@ public class BossTheCosastofHand : UnitBase
     {
         base.hit(unit, cAttackData);
 
-        if(!isBerserkerMode && nHP <= nBerserkerHp)
+        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
+
+        if (!isBerserkerMode && nHP <= nBerserkerHp)
         {
             isBerserkerMode = true;
         }

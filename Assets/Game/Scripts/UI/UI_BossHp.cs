@@ -11,11 +11,11 @@ public class UI_BossHp : MonoBehaviour
     private Image m_icon;
 
     [SerializeField]
-    private Slider m_slider;
+    private Image m_hpImage;
 
     public void init()
     {
-        
+        toggle(false);
     }
 
 
@@ -26,7 +26,7 @@ public class UI_BossHp : MonoBehaviour
 
         float fHpPercent = (float)nHP / (float)nMaxHp ;
 
-        m_slider.value = fHpPercent;
+        m_hpImage.fillAmount = fHpPercent;
     }
 
     public void toggle(bool bToggle)
