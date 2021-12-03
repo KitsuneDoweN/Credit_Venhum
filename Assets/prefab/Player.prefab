@@ -161,7 +161,7 @@ MonoBehaviour:
   m_cComboSystem: {fileID: 5689073691393891063}
   m_goThrow: {fileID: 3073033399267882733, guid: 3cdc834f6e4df3a41991a29e225d6e18, type: 3}
   m_trFirePoint: {fileID: 5689073691393891057}
-  m_fThrowPower: 10
+  m_fThrowPower: 20
 --- !u!114 &5689073691393891063
 MonoBehaviour:
   m_ObjectHideFlags: 0
