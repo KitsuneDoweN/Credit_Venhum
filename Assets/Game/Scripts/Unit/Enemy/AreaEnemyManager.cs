@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class AreaEnemyManager : MonoBehaviour
 {
     private  List<UnitEnemyBase> m_cAreaEnemyList;
-    private List<UnitEnemyBase> m_cAreaEnemyDieList;
+    private int m_nAreaEnemyDieCount;
 
 
     [SerializeField] Barricade m_cBarricade;
@@ -30,10 +30,10 @@ public class AreaEnemyManager : MonoBehaviour
     private void setAreaEnemys()
     {
         m_cAreaEnemyList = new List<UnitEnemyBase>();
-        m_cAreaEnemyDieList = new List<UnitEnemyBase>();
+        m_nAreaEnemyDieCount = 0;
 
         m_cAreaEnemyList.Capacity = m_trEnemys.childCount;
-        m_cAreaEnemyDieList.Capacity = m_cAreaEnemyList.Capacity;
+
 
         for (int i = 0; i < m_cAreaEnemyList.Capacity; i++)
         {
@@ -43,13 +43,13 @@ public class AreaEnemyManager : MonoBehaviour
         }
     }
 
-    public void unitDieProcessed(UnitEnemyBase unit)
+    public void unitDieProcessed()
     {
         m_cDieProcessEvent.Invoke();
 
-        m_cAreaEnemyDieList.Add(unit);
+        m_nAreaEnemyDieCount++;
 
-        if(m_cAreaEnemyDieList.Count == m_cAreaEnemyList.Count)
+        if (m_nAreaEnemyDieCount == m_cAreaEnemyList.Count)
         {
             m_cBarricade.eventOn();
         }

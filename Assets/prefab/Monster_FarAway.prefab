@@ -163,13 +163,24 @@ MonoBehaviour:
         m_CallState: 2
   m_dieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AreaEnemyManager, Assembly-CSharp
+        m_MethodName: unitDieProcessed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_fSerchRange: 10
   m_targetLayer:
     serializedVersion: 2
     m_Bits: 1152
   m_fAttakWaitTime: 1
-  m_cBloodImfect: {fileID: 5367632915599186011}
   m_cSerchIcon: {fileID: 5367632916419714169}
   m_eEnemyState: 0
 --- !u!114 &5367632915107424234
@@ -187,6 +198,7 @@ MonoBehaviour:
   m_dushEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  m_fCollisionDistance: 0
 --- !u!114 &5367632915107424233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +660,9 @@ MonoBehaviour:
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 128
+  m_coolTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   m_cWeaponData: {fileID: 11400000, guid: 380d64cca48afdd4a9263e2cb820cca9, type: 2}
   m_cComboSystem: {fileID: 5367632916931007819}
   m_goThrow: {fileID: 3073033399267882733, guid: 7ef3cff32c09b7c4f8a0082b6980ddef, type: 3}

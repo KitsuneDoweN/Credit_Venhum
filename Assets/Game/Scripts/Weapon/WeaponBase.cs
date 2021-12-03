@@ -20,6 +20,17 @@ public class WeaponBase : MonoBehaviour
     [SerializeField]
     private UnityEvent m_coolTimeEvent;
 
+    [SerializeField]
+    private SpriteRenderer m_srModel;
+
+    public SpriteRenderer srModel
+    {
+        get
+        {
+            return m_srModel;
+        }
+    }
+
 
     public float fCoolTimeTick
     {

@@ -126,6 +126,8 @@ public class UnitEnemyBase : UnitBase
     {
         navTrackingStop();
         base.die();
+
+
         m_dieEvent.Invoke();
     }
 
