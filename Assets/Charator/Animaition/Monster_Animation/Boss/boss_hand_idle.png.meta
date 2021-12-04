@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: 3112388983748731137
     second: boss_hand_idle_7
+  - first:
+      213: -4186688701819983962
+    second: boss_hand_idle_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -278,6 +281,27 @@ TextureImporter:
       bones: []
       spriteID: 101ae236a4d613b20800000000000000
       internalID: 3112388983748731137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_hand_idle_8
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 0
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7e0e6cec4e5e5c0800000000000000
+      internalID: -4186688701819983962
       vertices: []
       indices: 
       edges: []
