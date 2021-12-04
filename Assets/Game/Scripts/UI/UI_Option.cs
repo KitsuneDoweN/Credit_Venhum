@@ -25,6 +25,47 @@ public class UI_Option : UI_View
 
     private float m_fVacUIVolume;
 
+    private float fVacGamePlayVolume
+    {
+        set
+        {
+            m_fVacGamePlayVolume = value;
+            m_masterVoulume.value = m_fVacGamePlayVolume;
+        }
+        get
+        {
+            return m_fVacGamePlayVolume;
+        }
+    }
+
+    private float fVacMusicVolume
+    {
+        set
+        {
+            m_fVacMusicVolume = value;
+            m_bgumVoulume.value = m_fVacMusicVolume;
+        }
+        get
+        {
+            return m_fVacMusicVolume;
+        }
+    }
+
+    private float fVacUIVolume
+    {
+        set
+        {
+            m_fVacUIVolume = value;
+            m_sfxVoulume.value = m_fVacUIVolume;
+        }
+        get
+        {
+            return m_fVacUIVolume;
+        }
+    }
+
+
+
     [SerializeField]
     private Slider m_masterVoulume;
     [SerializeField]
@@ -42,11 +83,11 @@ public class UI_Option : UI_View
 
         m_vacGamePlayController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strGamePlay_sfx);
         m_vacMusicController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strMusic);
-        m_vacUIController = FMODUnity.RuntimeManager.GetVCA("vca/" + m_strUI_sfx);
+        m_vacUIController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strUI_sfx);
 
-        m_fVacGamePlayVolume = 0.0f;
-        m_fVacMusicVolume = 0.0f;
-        m_fVacUIVolume = 0.0f;
+        fVacGamePlayVolume = 1.0f;
+        fVacMusicVolume = 1.0f;
+        fVacUIVolume = 1.0f;
 
         setGamePlayVoulume();
         setMusicVoulume();
@@ -61,9 +102,9 @@ public class UI_Option : UI_View
         {
             GameManager.instance.pause();
 
-            m_masterVoulume.value = m_fVacGamePlayVolume;
-            m_bgumVoulume.value = m_fVacMusicVolume;
-            m_sfxVoulume.value = m_fVacUIVolume;
+            m_masterVoulume.value = fVacGamePlayVolume;
+            m_bgumVoulume.value = fVacMusicVolume;
+            m_sfxVoulume.value = fVacUIVolume;
 
         }
         else
@@ -83,12 +124,12 @@ public class UI_Option : UI_View
     public void setMusicVoulume()
     {
         m_vacMusicController.setVolume(m_bgumVoulume.value);
-        m_vacMusicController.getVolume(out m_fVacGamePlayVolume);
+        m_vacMusicController.getVolume(out m_fVacMusicVolume);
     }
     public void setUIVoulume()
     {
         m_vacUIController.setVolume(m_sfxVoulume.value);
-        m_vacUIController.getVolume(out m_fVacGamePlayVolume);
+        m_vacUIController.getVolume(out m_fVacUIVolume);
     }
 
 
