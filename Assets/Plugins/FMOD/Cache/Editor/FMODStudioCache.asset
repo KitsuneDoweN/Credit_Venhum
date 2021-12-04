@@ -22,6 +22,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 968
+--- !u!114 &-8622092768457334562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/get hit/hitmat
+  m_EditorClassIdentifier: 
+  Name: hitmat
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-8567092383726668814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +109,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 3028701283136937335}
+  - {fileID: 6525417924455327598}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -149,7 +171,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637741817865667260
+  lastModified: 637742299991079875
   FileSizes:
   - Name: Desktop
     Value: 337728
@@ -192,7 +214,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637741817864056897
+  lastModified: 637742299991058031
   FileSizes:
   - Name: Desktop
     Value: 1304
@@ -212,7 +234,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637741817864046896
+  lastModified: 637742299991048026
   FileSizes:
   - Name: Desktop
     Value: 1012
@@ -250,7 +272,7 @@ MonoBehaviour:
   - {fileID: -474661820386265120}
   StringsBanks:
   - {fileID: -2444350203914838406}
-  stringsBankWriteTime: 637741817864056897
+  stringsBankWriteTime: 637742299991058031
   cacheVersion: 8
 --- !u!114 &19521039150144482
 MonoBehaviour:
@@ -272,10 +294,32 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -8567092383726668814}
+  - {fileID: 316886843183561784}
   MinDistance: 0
   MaxDistance: 0
   Length: 3886
+--- !u!114 &316886843183561784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/hit/mode
+  m_EditorClassIdentifier: 
+  Name: mode
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &1255076015974644098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +335,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 637741817865717275
+  lastModified: 637742299991048026
   FileSizes:
   - Name: Desktop
     Value: 482
@@ -384,7 +428,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 6150292095879546032}
+  - {fileID: -8622092768457334562}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -433,6 +477,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2300
+--- !u!114 &6525417924455327598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/melee/mode
+  m_EditorClassIdentifier: 
+  Name: mode
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &8593994646935001591
 MonoBehaviour:
   m_ObjectHideFlags: 0
