@@ -308,7 +308,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &1416292362805028696
 MonoBehaviour:
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_coolTimeEvent:
     m_PersistentCalls:
       m_Calls: []
+  m_srModel: {fileID: 0}
   m_cWeaponData: {fileID: 11400000, guid: 5cc31ce529361de4ca1e768b5322bb01, type: 2}
   m_cComboSystem: {fileID: 1416292362805028696}
   m_nNotAttackLayer: 31
@@ -547,7 +548,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1152
   m_fAttakWaitTime: 1
-  m_cBloodImfect: {fileID: 0}
   m_cSerchIcon: {fileID: 1416292361696709914}
   m_eEnemyState: 0
 --- !u!70 &8271747892240849152
@@ -624,6 +624,7 @@ MonoBehaviour:
   m_dushEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  m_fCollisionDistance: 0
 --- !u!114 &8271747892240849165
 MonoBehaviour:
   m_ObjectHideFlags: 0
