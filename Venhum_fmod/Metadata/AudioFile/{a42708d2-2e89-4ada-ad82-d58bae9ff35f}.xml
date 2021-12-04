@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{a42708d2-2e89-4ada-ad82-d58bae9ff35f}">
+		<property name="assetPath">
+			<value>STEPS Pudle, Walk 02, Single Impact.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.37299319727891156</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b72444b-a930-4f94-879f-3a6d74318e23}</destination>
+		</relationship>
+	</object>
+</objects>
