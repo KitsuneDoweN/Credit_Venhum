@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5314002483970653627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3339122515571997443}
+  - component: {fileID: 7210687908515913136}
+  m_Layer: 6
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3339122515571997443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314002483970653627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5367632915107424247}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7210687908515913136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314002483970653627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27534ed12ba07a94f8dc78199f6f721a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_strHit: event:/monster/hit
+  m_strDeath: event:/monster/death
+  m_strAttack: event:/monster/gun atk
+  m_strFootStep: event:/monster/footsteps
 --- !u!1 &5367632915107424239
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +84,7 @@ Transform:
   - {fileID: 5367632915790948334}
   - {fileID: 5367632916467266059}
   - {fileID: 5367632916419714170}
+  - {fileID: 3339122515571997443}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,6 +297,7 @@ GameObject:
   - component: {fileID: 5367632915790948332}
   - component: {fileID: 5367632915790948323}
   - component: {fileID: 5367632915790948328}
+  - component: {fileID: 5096616411383324440}
   m_Layer: 0
   m_Name: model
   m_TagString: Untagged
@@ -392,6 +441,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cUnit: {fileID: 5367632915107424235}
+--- !u!114 &5096616411383324440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367632915790948321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8135171bf23ada4f93de430488153d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cEnemySound: {fileID: 7210687908515913136}
 --- !u!1 &5367632916419714168
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,7 +83,15 @@ public class UnitEnemyBase : UnitBase
         init();
     }
 
-    protected void navTrackingStop()
+    protected bool isStop
+    {
+        get
+        {
+            return m_navAgent.isStopped;
+        }
+    }
+
+    protected virtual void navTrackingStop()
     {
         m_navAgent.isStopped = true;
 
@@ -93,7 +101,7 @@ public class UnitEnemyBase : UnitBase
 
     }
 
-    protected void navTrackingReStart()
+    protected virtual void navTrackingReStart()
     {
         m_navAgent.isStopped = false;
     }

@@ -49,10 +49,11 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-
     public override void init()
     {
         base.init();
+
+
 
         m_cGripWeapon.init(this);
 
@@ -93,9 +94,16 @@ public class NomalEnemy : UnitEnemyBase
     }
 
 
+
+
+
+
+
+
     public override void die()
     {
         base.die();
+
     }
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
@@ -111,7 +119,9 @@ public class NomalEnemy : UnitEnemyBase
             eEnemyState = E_EnemyState.E_DIE;
             return;
         }
-            
+
+
+
 
         Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
         v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
@@ -129,7 +139,6 @@ public class NomalEnemy : UnitEnemyBase
         Debug.Log(v2UnitToHitUnitDir);
         dushDetail(v2UnitToHitUnitDir, 10, 0.1f, false);
 
-      
     }
 
     public void hitEndEvent()
@@ -184,6 +193,7 @@ public class NomalEnemy : UnitEnemyBase
     public override void attack()
     {
         base.attack();
+
     }
 
     private E_EnemyState eEnemyState
@@ -194,7 +204,7 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-            if(m_eEnemyState == E_EnemyState.E_WAIT)
+            if (m_eEnemyState == E_EnemyState.E_WAIT)
             {
                 setTarget(null);
                 navTrackingStop();
@@ -216,6 +226,7 @@ public class NomalEnemy : UnitEnemyBase
             if(m_eEnemyState == E_EnemyState.E_TRACKING)
             {
                 navTrackingReStart();
+
                 m_fTrackingTime = .0f;
             }
 
@@ -312,7 +323,7 @@ public class NomalEnemy : UnitEnemyBase
 
 
         setTargetDestination();
-
+       // m_cSound.footStepPlayOnce();
 
         if (inRange(m_fAttackRange))
         {
