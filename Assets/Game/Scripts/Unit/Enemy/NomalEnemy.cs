@@ -54,6 +54,11 @@ public class NomalEnemy : UnitEnemyBase
     [SerializeField]
     private UnitSound m_cSound;
 
+
+
+
+
+
     public override void init()
     {
         base.init();
