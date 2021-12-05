@@ -16,6 +16,7 @@ public class DirectionTalk : MonoBehaviour
 
     public void directionStart()
     {
+
         GameManager.instance.cInteraction = m_cInteraction;
         GameManager.instance.cInteraction.interactionEvent.Invoke();
     }
@@ -24,7 +25,9 @@ public class DirectionTalk : MonoBehaviour
 
     public void directionEvent()
     {
-        if (!m_cTalk.talkEvnet())
+
+
+        if (GameManager.instance.nClearGrogress != 0 || !m_cTalk.talkEvnet())
         {
             GameManager.instance.cStageManager.cPlayer.isControl = false;
             GameManager.instance.cUIManager.cUI_FadeInOut.fadeInOut(false, m_directionEndEvent);

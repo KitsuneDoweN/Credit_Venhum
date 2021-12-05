@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 4801080752785565485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21, y: 30, z: 0}
-  m_LocalScale: {x: 1.23, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_Children:
   - {fileID: 4801080752587285693}
   - {fileID: 4801080751426005893}
@@ -213,9 +213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cInteraction: {fileID: 4801080752785565484}
-  m_strInteraction: Open the door
+  m_strInteraction: ' '
   m_offSprite: {fileID: 2203468854987907051, guid: 3dfea8e7c2593624eb6f5dd720b000b5, type: 3}
   m_srModel: {fileID: 4801080752587285692}
+  m_baricadeCollider:
+  - {fileID: 4801080752785565486}
+  - {fileID: 4801080752785565481}
 --- !u!114 &4801080752785565484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +237,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4801080752785565487}
         m_TargetAssemblyTypeName: Barricade, Assembly-CSharp
         m_MethodName: offEvent
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
