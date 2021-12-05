@@ -18,6 +18,10 @@ public class NomalEnemy : UnitEnemyBase
 
     private Vector2 m_v2RecallPoint;
 
+    [SerializeField]
+    private float m_fWallSensorDistance;
+    [SerializeField]
+    private LayerMask m_wallLayer;
 
     private enum E_EnemyState
     {
@@ -47,7 +51,8 @@ public class NomalEnemy : UnitEnemyBase
     private float m_fTrackingTime;
     private float m_fStiffnessTime;
 
-
+    [SerializeField]
+    private UnitSound m_cSound;
 
     public override void init()
     {
@@ -64,16 +69,14 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-        isControl = true;
-        isMoveAble = true;
-        isLookAble = true;
-
         m_bDelayImfect = false;
 
         m_cSerchIcon.init();
 
         m_v2RecallPoint = v2UnitPos;
 
+
+        isControl = false;
 
         m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
 
@@ -121,7 +124,7 @@ public class NomalEnemy : UnitEnemyBase
         }
 
 
-
+        m_cSound.hitPlayOnce();
 
         Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
         v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
@@ -302,7 +305,7 @@ public class NomalEnemy : UnitEnemyBase
     private void trackingEvent()
     {
 
-        if(cTargetUnit == null)
+        if(cTargetUnit == null || wallChack())
         {
             eEnemyState = E_EnemyState.E_RECALL;
             m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
@@ -320,6 +323,7 @@ public class NomalEnemy : UnitEnemyBase
             return;
         }
         m_fTrackingTime = .0f;
+
 
 
         setTargetDestination();
@@ -367,9 +371,23 @@ public class NomalEnemy : UnitEnemyBase
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)v2LookDir);
+
+        if (isControl)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, transform.position + ((Vector3)v2LookDir * m_fWallSensorDistance));
+        }
+
     }
 
+    private bool wallChack()
+    {
+        bool isWallCheck = Physics2D.Raycast(v2UnitPos, v2LookDir, m_fWallSensorDistance, m_wallLayer);
 
+        Debug.Log(isWallCheck);
+
+        return isWallCheck;
+    }
     
 
 

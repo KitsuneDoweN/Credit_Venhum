@@ -12,6 +12,9 @@ public class PlayerUnit : UnitBase
     [SerializeField]
     private Rigidbody2D m_rigidbody2D;
 
+    [SerializeField]
+    private UnitSound m_cSound;
+
     public Rigidbody2D rig2D
     {
         get
@@ -128,6 +131,17 @@ public class PlayerUnit : UnitBase
         {
 
             stop();
+
+            if(unit.cGripWeapon.cWeaponData.eType == WeaponData.E_Type.E_ALMOST)
+            {
+                m_cSound.hitPlayOnceIndex(0.0f);
+            }
+
+            if (unit.cGripWeapon.cWeaponData.eType == WeaponData.E_Type.E_TROW)
+            {
+                m_cSound.hitPlayOnceIndex(1.0f);
+            }
+
 
             cAnimation.hit();
 

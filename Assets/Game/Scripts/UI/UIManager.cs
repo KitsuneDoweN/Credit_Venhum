@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UI_GameClear m_cUI_GameClear;
     [SerializeField] private UI_Dynamic m_cUI_Dynamic;
     [SerializeField] private UI_Option m_cUI_Option;
+    [SerializeField] private UI_FadeInOut m_cUI_FadeInOut;
+    [SerializeField] private UI_Talk m_cUI_Talk;
 
 
     public void init()
@@ -23,6 +26,16 @@ public class UIManager : MonoBehaviour
         m_cUI_GameClear.init();
         m_cUI_Dynamic.init();
         m_cUI_Option.init();
+        m_cUI_FadeInOut.init();
+        m_cUI_Talk.init();
+    }
+
+    public UI_Talk cUI_Talk
+    {
+        get
+        {
+            return m_cUI_Talk;
+        }
     }
 
     public UI_Ingame cUI_InGame
@@ -80,10 +93,18 @@ public class UIManager : MonoBehaviour
             return m_cUI_Dynamic;
         }
     }
+    public UI_FadeInOut cUI_FadeInOut
+    {
+        get
+        {
+            return m_cUI_FadeInOut;
+        }
+    }
 
     public void ingameStart()
     {
-        m_cUI_Ingame.ingameStart();
+        cUI_InGame.ingameStart();
+
     }
 
     public void allClear()
@@ -95,6 +116,7 @@ public class UIManager : MonoBehaviour
         cUI_GameClear.toggle(false);
         cUI_Dynamic.toggle(false);
     }
+
 
 
 

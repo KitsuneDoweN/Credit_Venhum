@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class UI_Talk : MonoBehaviour
+public class UI_Talk : UI_View
 {
     [SerializeField]
     private TextMeshProUGUI m_nameText;
@@ -13,15 +13,17 @@ public class UI_Talk : MonoBehaviour
     [SerializeField]
     private Image m_image;
 
-    public void init()
+    public override void init()
     {
-        toggle(false);
+        base.init();
     }
 
-    public void toggle(bool bToggle)
+    public override void toggle(bool bToggle)
     {
-        gameObject.SetActive(bToggle);
+        base.toggle(bToggle);
     }
+
+
 
     public void draw(string strName, string strTalk, Sprite sprite)
     {
