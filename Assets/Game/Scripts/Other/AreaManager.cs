@@ -16,6 +16,28 @@ public class AreaManager : MonoBehaviour
 
         m_cAreaEnemys[0].enemyWakeUp();
         m_cAreaEnemys[1].enemyWakeUp();
+
+
+        for (int i = 0; i < m_cAreaEnemys.Length; i++)
+        {
+            if (GameManager.instance.nClearGrogress > m_cAreaEnemys[i].nClear)
+            {
+                m_cAreaEnemys[i].skip();
+            }
+        }
+
+      
+
+
+
+    }
+
+    public void handleWakeUp(int nIndex)
+    {
+        if (m_cAreaEnemys[nIndex].isSkip)
+            return;
+
+        m_cAreaEnemys[nIndex].enemyWakeUp();
     }
 
 

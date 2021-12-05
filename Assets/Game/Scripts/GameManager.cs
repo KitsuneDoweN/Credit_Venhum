@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     private delegate void gameEvent();
     private gameEvent[] m_delGameEvent;
 
+    private string m_strClearGrogress = "ClearGrogress";
 
 
 
@@ -67,6 +68,11 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
+
+        nClearGrogress = 0;
+
+
+
 
         DOTween.defaultAutoPlay = AutoPlay.None;
         DontDestroyOnLoad(this);
@@ -203,7 +209,7 @@ public class GameManager : MonoBehaviour
     private void gameOverEvent()
     {
         m_UIManager.cUI_Gameover.toggle(true);
-        Invoke("goTitle", 3.0f);
+        Invoke("goIngame", 1.0f);
     }
 
     private void gameClearEvent()
@@ -296,6 +302,21 @@ public class GameManager : MonoBehaviour
         m_cInteraction.interactionEvent.Invoke();
     }
 
+    private void saveClearGrogress(int nData)
+    {
+        PlayerPrefs.SetInt(m_strClearGrogress, 0);
+    }
 
+    public int nClearGrogress
+    {
+        set
+        {
+            PlayerPrefs.SetInt(m_strClearGrogress, value);
+        }
+        get
+        {
+            return PlayerPrefs.GetInt(m_strClearGrogress);
+        }
+    }
 
 }
