@@ -278,6 +278,12 @@ public class BossTheCosastofHand : UnitBase
         m_cImfect.hitimfect();
 
         Debug.Log("Boss hit");
+
+        if(isDie)
+        {
+            eBossState = E_BossState.E_DIE;
+        }
+
     }
 
 
@@ -506,7 +512,11 @@ public class BossTheCosastofHand : UnitBase
     }
     private void dieEvent()
     {
+        isControl = false;
 
+        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(false);
+
+        GameManager.instance.eGameState = GameManager.E_GAMESTATE.E_CLEAR;
     }
 
     private void Update()
