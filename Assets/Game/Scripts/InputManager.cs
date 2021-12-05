@@ -50,7 +50,9 @@ public class InputManager : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+            return;
 
 
         m_cPlayer.v2NextLookDir = context.ReadValue<Vector2>();
@@ -62,7 +64,9 @@ public class InputManager : MonoBehaviour
 
     public void OnNomalAttack(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+            return;
 
 
 
@@ -91,7 +95,9 @@ public class InputManager : MonoBehaviour
 
     public void OnDush(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+            return;
         if (!m_cPlayer.isControl)
             return;
 
@@ -103,8 +109,9 @@ public class InputManager : MonoBehaviour
 
     public void OnThrowAttack(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
-
+        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+            return;
 
         if (context.canceled)
         {
@@ -162,7 +169,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME)
+        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
 
         if (m_cPlayer.isControl && isPushAttack)

@@ -164,9 +164,11 @@ public class BossTheCosastofHand : UnitBase
     [SerializeField]
     private Sprite m_bossIcon;
 
-    
 
-
+    [SerializeField]
+    private GameObject m_imfect;
+    [SerializeField]
+    private Sprite m_BrokenSprite;
 
     private void Start()
     {
@@ -519,10 +521,23 @@ public class BossTheCosastofHand : UnitBase
     {
         isControl = false;
 
+
+        cGrip.gameObject.SetActive(false);
+
+        m_imfect.SetActive(true);
+
+
+
         GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(false);
+
+        m_srModel.sprite = m_BrokenSprite;
 
         GameManager.instance.eGameState = GameManager.E_GAMESTATE.E_CLEAR;
     }
+
+
+
+
 
     private void Update()
     {
