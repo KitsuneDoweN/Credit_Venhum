@@ -8,8 +8,7 @@ public class UI_Ingame : UI_View
     private UI_PlayerInfo m_cUI_PlayerInfo;
     [SerializeField]
     private UI_BossHp m_cUI_BossHp;
-    [SerializeField]
-    private UI_Talk m_cUI_Talk;
+
 
     [SerializeField]
     private UI_InteractionText m_cUI_InteractionText;
@@ -19,7 +18,7 @@ public class UI_Ingame : UI_View
         base.init();
         cUI_BossHp.init();
         cUI_InteractionText.init();
-        cUI_Talk.init();
+
     }
 
     public void ingameStart()
@@ -27,7 +26,7 @@ public class UI_Ingame : UI_View
         toggle(true);
 
         cUI_PlayerInfo.toggle(true);
-        cUI_Talk.toggle(false);
+
         cUI_InteractionText.toggle(false);
         cUI_BossHp.toggle(false);
     }
@@ -57,13 +56,7 @@ public class UI_Ingame : UI_View
         }
     }
 
-    public UI_Talk cUI_Talk
-    {
-        get
-        {
-            return m_cUI_Talk;
-        }
-    }
+
 
     public UI_InteractionText cUI_InteractionText
     {

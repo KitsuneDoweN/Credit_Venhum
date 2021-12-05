@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StageManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] private CameraManger m_cCameraManager;
 
+    [SerializeField]
+    private DirectionTalk m_cDirectionTalk;
 
     public PlayerUnit cPlayer
     {
@@ -27,6 +30,15 @@ public class StageManager : MonoBehaviour
 
 
     }
+
+    public DirectionTalk cDirectionTalk
+    {
+        get
+        {
+            return m_cDirectionTalk;
+        }
+    }
+
 
     public CameraManger cCameraManager
     {

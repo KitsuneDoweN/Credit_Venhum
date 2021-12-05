@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7262706217792234201, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_bTestGame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7262706217792234202, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -317,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 7262706218303836785, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575050689788384928, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
