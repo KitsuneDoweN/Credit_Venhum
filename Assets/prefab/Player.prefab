@@ -330,12 +330,12 @@ MonoBehaviour:
   m_cStatus:
     m_nMaxHp: 10
     m_fMaxSpeed: 10
-    m_fMaxStamina: 99
-    m_fStaminaHealingTick: 2
-    m_fStaminaHealingTickTime: 0.5
+    m_fMaxStamina: 100
+    m_fStaminaHealingTick: 4
+    m_fStaminaHealingTickTime: 1
     m_fDushPower: 30
     m_fDushTime: 0.2
-    m_fDushStamina: 10
+    m_fDushStamina: 20
     m_fGodTime: 2
     m_nMaxStiffness: 0
   m_srModel: {fileID: 5689073691698327755}
