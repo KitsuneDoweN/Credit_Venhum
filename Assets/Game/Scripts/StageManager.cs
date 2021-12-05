@@ -18,6 +18,14 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private OneSound m_cBgm;
 
+    public OneSound cBGM
+    {
+        get
+        {
+            return m_cBgm;
+        }
+    }
+
     public AreaManager cAreaManager
     {
         get

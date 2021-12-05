@@ -25,4 +25,9 @@ public class OneSound : MonoBehaviour
     {
         m_sound.start();
     }
+
+    public void stop()
+    {
+        m_sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

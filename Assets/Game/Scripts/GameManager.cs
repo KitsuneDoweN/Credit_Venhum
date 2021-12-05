@@ -208,13 +208,14 @@ public class GameManager : MonoBehaviour
 
     private void gameOverEvent()
     {
+        cStageManager.cBGM.stop();
         m_UIManager.cUI_Gameover.toggle(true);
         Invoke("goIngame", 1.0f);
     }
 
     private void gameClearEvent()
     {
-
+        cStageManager.cBGM.stop();
         StartCoroutine(clearEventCoroutine(0.1f, 0.5f));
 
     }
