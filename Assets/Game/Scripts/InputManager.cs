@@ -154,7 +154,7 @@ public class InputManager : MonoBehaviour
 
         if (context.started)
         {
-            GameManager.instance.cUIManager.cUI_Option.toggle(true);
+            GameManager.instance.cUIManager.cUI_Option.toggle(!GameManager.instance.cUIManager.cUI_Option.isToggle);
         }
     }
 
