@@ -1571,6 +1571,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1586960550}
+        m_TargetAssemblyTypeName: OneSound, Assembly-CSharp
+        m_MethodName: playOnce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7262706216601206808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1805,7 @@ GameObject:
   - component: {fileID: 7262706216630042636}
   - component: {fileID: 7262706216630042637}
   - component: {fileID: 7262706216630042626}
+  - component: {fileID: 1586960550}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -1911,6 +1924,19 @@ MonoBehaviour:
   m_cUI_Option: {fileID: 7262706217822666260}
   m_cUI_FadeInOut: {fileID: 3865536840770555489}
   m_cUI_Talk: {fileID: 4988865163493428110}
+--- !u!114 &1586960550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7262706216630042639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3fca6bd6b9dd043a64015ead28fbf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_strSound: event:/UI/button
 --- !u!1 &7262706216724351945
 GameObject:
   m_ObjectHideFlags: 0

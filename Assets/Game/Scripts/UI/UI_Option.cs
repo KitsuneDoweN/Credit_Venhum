@@ -25,6 +25,20 @@ public class UI_Option : UI_View
 
     private float m_fSFX_Volume;
 
+    private bool m_bToggle;
+
+    public bool isToggle
+    {
+        set
+        {
+            m_bToggle = value;
+        }
+        get
+        {
+            return m_bToggle;
+        }
+    }
+
     private float fMaster_Volume
     {
         set
@@ -98,7 +112,9 @@ public class UI_Option : UI_View
     {
         base.toggle(bToggle);
 
-        if (bToggle)
+        isToggle = bToggle;
+
+        if (isToggle)
         {
             GameManager.instance.pause();
 

@@ -208,12 +208,28 @@ public class GameManager : MonoBehaviour
 
     private void gameClearEvent()
     {
+
+        StartCoroutine(clearEventCoroutine(0.1f, 0.5f));
+
+    }
+
+    private IEnumerator clearEventCoroutine(float fTimeScale , float fTime)
+    {
+        Time.timeScale = fTimeScale;
+
+        yield return new WaitForSecondsRealtime(fTime);
+        Time.timeScale = 1.0f;
+        yield return new WaitForSeconds(10.0f);
+
+
         cStageManager.cPlayer.stop();
         cStageManager.cPlayer.isControl = false;
 
         cUIManager.cUI_GameClear.toggle(true);
         Invoke("goTitle", 3.0f);
     }
+
+
 
     public void goTitle()
     {
