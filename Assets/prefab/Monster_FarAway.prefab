@@ -40,12 +40,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5314002483970653627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27534ed12ba07a94f8dc78199f6f721a, type: 3}
+  m_Script: {fileID: 11500000, guid: de3c0e626df089e4392bc1a203d1dce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_strHit: event:/monster/hit
   m_strDeath: event:/monster/death
-  m_strAttack: event:/monster/gun atk
+  m_strAttack:
+  - event:/monster/gun atk
   m_strFootStep: event:/monster/footsteps
 --- !u!1 &5367632915107424239
 GameObject:
@@ -229,7 +230,12 @@ MonoBehaviour:
     m_Bits: 1152
   m_fAttakWaitTime: 1
   m_cSerchIcon: {fileID: 5367632916419714169}
+  m_fWallSensorDistance: 1.5
+  m_wallLayer:
+    serializedVersion: 2
+    m_Bits: 512
   m_eEnemyState: 0
+  m_cSound: {fileID: 7210687908515913136}
 --- !u!114 &5367632915107424234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8135171bf23ada4f93de430488153d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cEnemySound: {fileID: 7210687908515913136}
+  m_cUnitSound: {fileID: 7210687908515913136}
 --- !u!1 &5367632916419714168
 GameObject:
   m_ObjectHideFlags: 0

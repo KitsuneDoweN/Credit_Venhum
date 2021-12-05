@@ -214,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cInteraction: {fileID: 4801080752785565484}
   m_strInteraction: Open the door
+  m_offSprite: {fileID: 2203468854987907051, guid: 3dfea8e7c2593624eb6f5dd720b000b5, type: 3}
+  m_srModel: {fileID: 4801080752587285692}
 --- !u!114 &4801080752785565484
 MonoBehaviour:
   m_ObjectHideFlags: 0
