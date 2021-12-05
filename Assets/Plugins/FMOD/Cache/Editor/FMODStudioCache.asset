@@ -346,7 +346,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637743215690172676
+  lastModified: 637743216798193987
   FileSizes:
   - Name: Desktop
     Value: 1820
@@ -410,7 +410,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637743215690162674
+  lastModified: 637743216798193987
   FileSizes:
   - Name: Desktop
     Value: 2402
@@ -495,7 +495,7 @@ MonoBehaviour:
   - {fileID: -474661820386265120}
   StringsBanks:
   - {fileID: -2444350203914838406}
-  stringsBankWriteTime: 637743215690172676
+  stringsBankWriteTime: 637743216798193987
   cacheVersion: 8
 --- !u!114 &19521039150144482
 MonoBehaviour:

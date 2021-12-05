@@ -99,6 +99,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{febc427f-9abb-4d64-9851-4037b637ec95}" />
 	<object class="SingleSound" id="{ee808423-fb6d-4ec0-92c7-a43deae95db2}">
+		<property name="isAsync">
+			<value>true</value>
+		</property>
 		<property name="length">
 			<value>0.9597959183673469</value>
 		</property>
@@ -127,6 +130,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{98171769-50ee-405c-b255-9b0e665743b4}">
+		<property name="isCutoff">
+			<value>true</value>
+		</property>
 		<property name="start">
 			<value>1</value>
 		</property>
