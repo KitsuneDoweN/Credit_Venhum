@@ -17,10 +17,6 @@ public class AreaEnemyManager : MonoBehaviour
     private UnityEvent m_cDieProcessEvent;
 
 
-    private void Start()
-    {
-        init();
-    }
 
     public void init()
     {
@@ -42,6 +38,17 @@ public class AreaEnemyManager : MonoBehaviour
             m_cAreaEnemyList.Add(enemyUnit);
         }
     }
+
+
+
+    public void enemyWakeUp()
+    {
+        foreach(UnitEnemyBase unit in m_cAreaEnemyList)
+        {
+            unit.isControl = true;
+        }
+    }
+
 
     public void unitDieProcessed()
     {

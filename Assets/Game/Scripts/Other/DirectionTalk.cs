@@ -28,11 +28,13 @@ public class DirectionTalk : MonoBehaviour
         {
             GameManager.instance.cStageManager.cPlayer.isControl = false;
             GameManager.instance.cUIManager.cUI_FadeInOut.fadeInOut(false, m_directionEndEvent);
+            GameManager.instance.cInteraction = null;
         }
     }
 
     public void directionEndEvent()
     {
+
         GameManager.instance.cStageManager.cPlayer.isControl = true;
     }
 

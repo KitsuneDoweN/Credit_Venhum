@@ -12,6 +12,17 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private DirectionTalk m_cDirectionTalk;
 
+    [SerializeField]
+    private AreaManager m_cAreaManager;
+
+    public AreaManager cAreaManager
+    {
+        get
+        {
+            return m_cAreaManager;
+        }
+    }
+
     public PlayerUnit cPlayer
     {
         get
@@ -25,7 +36,7 @@ public class StageManager : MonoBehaviour
         
 
         m_cPlayer.init();
-
+        cAreaManager.init();
         m_cCameraManager.init(m_cPlayer.transform);
 
 

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Talk : MonoBehaviour
 {
     [SerializeField] TalkData[] m_cTalkDatas;
-
+    [SerializeField]
+    private UnityEvent m_TalkEndEvent;
 
 
     private int m_nIndex;
@@ -38,7 +40,11 @@ public class Talk : MonoBehaviour
         GameManager.instance.cUIManager.cUI_Talk.toggle(m_bToggle);
 
         if (!m_bToggle)
+        {
+            m_TalkEndEvent.Invoke();
             return m_bToggle;
+        }
+
 
         TalkData cData = m_cTalkDatas[m_nIndex];
         GameManager.instance.cUIManager.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);

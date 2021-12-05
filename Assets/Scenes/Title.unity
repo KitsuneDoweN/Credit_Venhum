@@ -318,6 +318,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7262706218062449582, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -802.467
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262706218062449582, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -401.23352
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262706218062449583, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7262706218303836785, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

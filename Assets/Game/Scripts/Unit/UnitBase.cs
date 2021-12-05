@@ -282,7 +282,7 @@ public class UnitBase : MonoBehaviour
         }
     }
 
-    protected WeaponBase cGripWeapon
+    public WeaponBase cGripWeapon
     {
         set
         {
