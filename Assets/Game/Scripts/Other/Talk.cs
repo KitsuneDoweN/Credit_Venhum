@@ -18,7 +18,7 @@ public class Talk : MonoBehaviour
     }
 
 
-    public void talkEvnet()
+    public bool talkEvnet()
     {
         m_bToggle = true;
 
@@ -35,14 +35,16 @@ public class Talk : MonoBehaviour
         }
            
 
-        GameManager.instance.cUIManager.cUI_InGame.cUI_Talk.toggle(m_bToggle);
+        GameManager.instance.cUIManager.cUI_Talk.toggle(m_bToggle);
 
         if (!m_bToggle)
-            return;
+            return m_bToggle;
 
         TalkData cData = m_cTalkDatas[m_nIndex];
-        GameManager.instance.cUIManager.cUI_InGame.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);
+        GameManager.instance.cUIManager.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);
 
         m_nIndex++;
+
+        return m_bToggle;
     }
 }
