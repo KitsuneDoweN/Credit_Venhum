@@ -14,13 +14,10 @@ public class Barricade : MonoBehaviour
     [SerializeField]
     private SpriteRenderer m_srModel;
     
+    [SerializeField]
     private BoxCollider2D[] m_baricadeCollider;
 
 
-    private void Start()
-    {
-        m_baricadeCollider = gameObject.GetComponents<BoxCollider2D>();
-    }
 
     public void eventOn()
     {
@@ -38,16 +35,24 @@ public class Barricade : MonoBehaviour
 
     }
 
-    public void offEvent()
+    public void offEvent(bool bSkip)
     {
         Debug.Log("BarricadeOff");
-        
+
         m_srModel.sprite = m_offSprite;
 
-        foreach(Collider2D coll in m_baricadeCollider)
+        foreach (Collider2D coll in m_baricadeCollider)
         {
             coll.enabled = false;
         }
+
+        if (bSkip)
+            return;
+      
+        GameManager.instance.nClearGrogress++;
+
+
+
 
 
         GameManager.instance.cInteraction = null;

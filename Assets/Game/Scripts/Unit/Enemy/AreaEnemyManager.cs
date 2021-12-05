@@ -16,10 +16,35 @@ public class AreaEnemyManager : MonoBehaviour
     [SerializeField]
     private UnityEvent m_cDieProcessEvent;
 
+    [SerializeField]
+    private int m_nClear;
 
+    private bool m_bSkip;
+
+    public bool isSkip
+    {
+        set
+        {
+            m_bSkip = value;
+        }
+        get
+        {
+            return m_bSkip;
+        }
+    }
+
+    public int nClear
+    {
+        get
+        {
+            return m_nClear;
+        }
+    }
 
     public void init()
     {
+
+        isSkip = false;
         setAreaEnemys();
     }
 
@@ -61,5 +86,21 @@ public class AreaEnemyManager : MonoBehaviour
             m_cBarricade.eventOn();
         }
     }
+
+    public void skip()
+    {
+
+        m_cBarricade.offEvent(true);
+        foreach (UnitEnemyBase unit in m_cAreaEnemyList)
+        {
+            unit.gameObject.SetActive(false);
+        }
+        isSkip = true;
+
+
+    }
+
+   
+
 
 }
