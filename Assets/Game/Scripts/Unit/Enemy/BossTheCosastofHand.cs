@@ -170,6 +170,8 @@ public class BossTheCosastofHand : UnitBase
     [SerializeField]
     private Sprite m_BrokenSprite;
 
+    [SerializeField]
+    private UnitSound m_cSound;
     private void Start()
     {
         init();
@@ -289,7 +291,10 @@ public class BossTheCosastofHand : UnitBase
         if(isDie)
         {
             eBossState = E_BossState.E_DIE;
+            return;
         }
+
+        m_cSound.hitPlayOnce();
 
     }
 
@@ -359,6 +364,8 @@ public class BossTheCosastofHand : UnitBase
 
         handAttackAnimation(E_AttackPattern.E_RAKE);
 
+        m_cSound.attackPlayOnce(0);
+
         m_attackTween = cGrip.transform.DOLocalMove(m_v2RakeAttackLocalPoint, 0.5f).OnComplete(()=>
         {
             isControl = true;
@@ -413,7 +420,7 @@ public class BossTheCosastofHand : UnitBase
 
 
             handAttackAnimation(E_AttackPattern.E_CHOPPING);
-
+            m_cSound.attackPlayOnce(1);
             m_attackTween = cGrip.transform.DOLocalMove(m_v2ChoppingAttackPoints[m_nChoppingPointCurrentIndex], m_fChoppingTime).OnComplete(() =>
             {
                 isControl = true;
@@ -483,7 +490,7 @@ public class BossTheCosastofHand : UnitBase
             v2LocalMovePos = m_v2SweepPoints[(int)E_Sweep.Right];
 
         handAttackAnimation(E_AttackPattern.E_SWEEP);
-
+        m_cSound.attackPlayOnce(2);
         m_attackTween = cGrip.transform.DOLocalMove(v2LocalMovePos, 1.0f).OnComplete(() =>
         {
             isControl = true;
@@ -521,7 +528,7 @@ public class BossTheCosastofHand : UnitBase
     {
         isControl = false;
 
-
+        m_cSound.deathPlayOnce();
         cGrip.gameObject.SetActive(false);
 
         m_imfect.SetActive(true);

@@ -15,6 +15,9 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private AreaManager m_cAreaManager;
 
+    [SerializeField]
+    private OneSound m_cBgm;
+
     public AreaManager cAreaManager
     {
         get
@@ -38,7 +41,8 @@ public class StageManager : MonoBehaviour
         m_cPlayer.init();
         cAreaManager.init();
         m_cCameraManager.init(m_cPlayer.transform);
-
+        m_cBgm.init();
+        m_cBgm.play();
 
     }
 
