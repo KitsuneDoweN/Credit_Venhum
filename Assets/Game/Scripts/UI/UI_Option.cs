@@ -9,19 +9,19 @@ public class UI_Option : UI_View
 
 
     //SoundImfect
-    private FMOD.Studio.VCA m_vacGamePlayController;
+    private FMOD.Studio.VCA m_vacMaster;
     //BGM
-    private FMOD.Studio.VCA m_vacMusicController;
+    private FMOD.Studio.VCA m_vacMusic;
     //
-    private FMOD.Studio.VCA m_vacUIController;
+    private FMOD.Studio.VCA m_vacSFX;
 
     private string m_strMaster;
-    private string m_strBGM;
+    private string m_strMusic;
     private string m_strSFX;
 
     private float m_fMaster_Volume;
 
-    private float m_fBGM_Volume;
+    private float m_fMusic_Volume;
 
     private float m_fSFX_Volume;
 
@@ -38,16 +38,16 @@ public class UI_Option : UI_View
         }
     }
 
-    private float fBGM_Volume
+    private float fMusic_Volume
     {
         set
         {
-            m_fBGM_Volume = value;
-            m_bgumVoulume.value = m_fBGM_Volume;
+            m_fMusic_Volume = value;
+            m_musicVoulume.value = m_fMusic_Volume;
         }
         get
         {
-            return m_fBGM_Volume;
+            return m_fMusic_Volume;
         }
     }
 
@@ -69,7 +69,7 @@ public class UI_Option : UI_View
     [SerializeField]
     private Slider m_masterVoulume;
     [SerializeField]
-    private Slider m_bgumVoulume;
+    private Slider m_musicVoulume;
     [SerializeField]
     private Slider m_sfxVoulume;
 
@@ -77,21 +77,21 @@ public class UI_Option : UI_View
     public override void init()
     {
         base.init();
-        m_strMaster = "gameplay_sfx";
-        m_strBGM = "music";
-        m_strSFX = "ui_sfx";
+        m_strMaster = "Master";
+        m_strMusic = "Music";
+        m_strSFX = "SFX";
 
-        m_vacGamePlayController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strMaster);
-        m_vacMusicController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strBGM);
-        m_vacUIController = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strSFX);
+        m_vacMaster = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strMaster);
+        m_vacMusic = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strMusic);
+        m_vacSFX = FMODUnity.RuntimeManager.GetVCA("vca:/" + m_strSFX);
 
         fMaster_Volume = 1.0f;
-        fBGM_Volume = 1.0f;
+        fMusic_Volume = 1.0f;
         fSFX_Volume = 1.0f;
 
-        setGamePlayVoulume();
-        setMusicVoulume();
-        setUIVoulume();
+        setMaster();
+        setMusic();
+        setSFX();
     }
 
     public override void toggle(bool bToggle)
@@ -103,7 +103,7 @@ public class UI_Option : UI_View
             GameManager.instance.pause();
 
             m_masterVoulume.value = fMaster_Volume;
-            m_bgumVoulume.value = fBGM_Volume;
+            m_musicVoulume.value = fMusic_Volume;
             m_sfxVoulume.value = fSFX_Volume;
 
         }
@@ -115,21 +115,21 @@ public class UI_Option : UI_View
 
 
 
-    public void setGamePlayVoulume()
+    public void setMaster()
     {
-        m_vacGamePlayController.setVolume(m_masterVoulume.value);
-        m_vacGamePlayController.getVolume(out m_fMaster_Volume);
+        m_vacMaster.setVolume(m_masterVoulume.value);
+        m_vacMaster.getVolume(out m_fMaster_Volume);
     }
 
-    public void setMusicVoulume()
+    public void setMusic()
     {
-        m_vacMusicController.setVolume(m_bgumVoulume.value);
-        m_vacMusicController.getVolume(out m_fBGM_Volume);
+        m_vacMusic.setVolume(m_musicVoulume.value);
+        m_vacMusic.getVolume(out m_fMusic_Volume);
     }
-    public void setUIVoulume()
+    public void setSFX()
     {
-        m_vacUIController.setVolume(m_sfxVoulume.value);
-        m_vacUIController.getVolume(out m_fSFX_Volume);
+        m_vacSFX.setVolume(m_sfxVoulume.value);
+        m_vacSFX.getVolume(out m_fSFX_Volume);
     }
 
 

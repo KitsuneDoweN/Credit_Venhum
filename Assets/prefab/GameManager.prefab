@@ -657,7 +657,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7262706217822666260}
         m_TargetAssemblyTypeName: UI_Option, Assembly-CSharp
-        m_MethodName: setMusicVoulume
+        m_MethodName: setMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1691,7 +1691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7262706216768977027}
   m_Layer: 5
-  m_Name: BackGroundVoulume
+  m_Name: MusicVoulume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BackGroundVoulume
+  m_text: Music Voulume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3818,7 +3818,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7262706217822666260}
         m_TargetAssemblyTypeName: UI_Option, Assembly-CSharp
-        m_MethodName: setGamePlayVoulume
+        m_MethodName: setMaster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4329,7 +4329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_masterVoulume: {fileID: 7262706217620199605}
-  m_bgumVoulume: {fileID: 7262706216296473616}
+  m_musicVoulume: {fileID: 7262706216296473616}
   m_sfxVoulume: {fileID: 7262706217931122828}
 --- !u!1 &7262706217830475999
 GameObject:
@@ -4341,7 +4341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7262706217830475998}
   m_Layer: 5
-  m_Name: ImfectVoulume
+  m_Name: SFXVoulume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4610,7 +4610,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7262706217822666260}
         m_TargetAssemblyTypeName: UI_Option, Assembly-CSharp
-        m_MethodName: setMusicVoulume
+        m_MethodName: setSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5954,7 +5954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ImfectVoulume
+  m_text: SFX Voulume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
