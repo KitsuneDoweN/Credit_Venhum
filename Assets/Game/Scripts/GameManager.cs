@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
-        nClearGrogress = 1;
+        nClearGrogress = 0;
 
 
 
