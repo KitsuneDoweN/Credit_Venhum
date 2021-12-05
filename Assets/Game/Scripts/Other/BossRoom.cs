@@ -12,30 +12,30 @@ public class BossRoom : MonoBehaviour
     [SerializeField]
     private BossTheCosastofHand m_cBoss;
 
+    public bool isRoomIn
+    {
+        set
+        {
+            m_bRoomIn = value;
+        }
+        get
+        {
+            return m_bRoomIn;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         m_bRoomIn = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void roomIn(UnitBase unit)
     {
-        
+        GameManager.instance.cStageManager.cCameraManager.setStatePivot(m_trPivot, m_fZoom);
+        isRoomIn = true;
+        m_cBoss.HandleWakeUp(unit);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (m_bRoomIn)
-            return;
 
-        if (collision.tag == "Player")
-        {
-            GameManager.instance.cStageManager.cCameraManager.setStatePivot(m_trPivot, m_fZoom);
-            m_bRoomIn = true;
-            m_cBoss.HandleWakeUp(collision.GetComponent<UnitBase>());
-        }
-            
-
-    }
 }

@@ -208,6 +208,8 @@ public class GameManager : MonoBehaviour
 
     private void gameClearEvent()
     {
+        cStageManager.cPlayer.stop();
+        cStageManager.cPlayer.isControl = false;
 
         cUIManager.cUI_GameClear.toggle(true);
         Invoke("goTitle", 3.0f);
