@@ -8,8 +8,26 @@ public class OneSound : MonoBehaviour
     [SerializeField]
     private string m_strSound;
 
+    private FMOD.Studio.EventInstance m_sound;
+
+    public void init()
+    {
+        m_sound = FMODUnity.RuntimeManager.CreateInstance(m_strSound);
+    }
+
+
     public void playOnce()
     {
         FMODUnity.RuntimeManager.PlayOneShot(m_strSound, transform.position);
+    }
+
+    public void play()
+    {
+        m_sound.start();
+    }
+
+    public void stop()
+    {
+        m_sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }
