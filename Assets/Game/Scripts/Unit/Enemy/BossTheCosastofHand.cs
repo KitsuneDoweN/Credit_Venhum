@@ -108,6 +108,7 @@ public class BossTheCosastofHand : UnitBase
 
     [SerializeField] private BossAttackRangeHit m_cRangeHit;
 
+
     [SerializeField] private Vector2[] m_v2ChoppingAttackPoints;
     [SerializeField] private Vector2[] m_v2ChoppingPoints;
 
@@ -127,8 +128,8 @@ public class BossTheCosastofHand : UnitBase
 
     private Vector2 m_v2GripReturnPoint;
 
-    [SerializeField]
-    private UnitHitConnet m_cUnitHitConnnet;
+    //[SerializeField]
+    //private UnitHitConnet m_cUnitHitConnnet;
 
     [SerializeField]
     private float m_fBerserkerSpeed;
@@ -162,6 +163,10 @@ public class BossTheCosastofHand : UnitBase
 
     [SerializeField]
     private Sprite m_bossIcon;
+
+    
+
+
 
     private void Start()
     {
@@ -222,7 +227,7 @@ public class BossTheCosastofHand : UnitBase
 
         isBerserkerMode = false;
 
-        m_cUnitHitConnnet.init(this);
+       // m_cUnitHitConnnet.init(this);
 
         m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();
         m_cGripWeapon.init(this);
@@ -299,7 +304,7 @@ public class BossTheCosastofHand : UnitBase
 
     private void attackChoiceEvent()
     {
-        m_cUnitHitConnnet.isHitAble = false;
+       // m_cUnitHitConnnet.isHitAble = false;
 
         if (m_nChoiceAttack == 0)
             eBossState = E_BossState.E_ATTACK_RAKE_DELAY;
@@ -345,7 +350,7 @@ public class BossTheCosastofHand : UnitBase
     {
         isControl = false;
 
-        m_v2RakeAttackLocalPoint = new Vector2(cGrip.transform.localPosition.x, cGrip.transform.localPosition.y - 10.0f );
+        m_v2RakeAttackLocalPoint = new Vector2(cGrip.transform.localPosition.x, -15.0f );
         m_cGripWeapon.attackEventStart();
 
         Utility.KillTween(m_attackTween);
@@ -505,7 +510,7 @@ public class BossTheCosastofHand : UnitBase
         m_attackTween = cGrip.transform.DOMove(m_v2GripReturnPoint, 1.0f).OnComplete(() => 
         {
             isControl = true;
-            m_cUnitHitConnnet.isHitAble = true;
+           // m_cUnitHitConnnet.isHitAble = true;
             eBossState = E_BossState.E_WAIT;
         });
 
@@ -559,4 +564,6 @@ public class BossTheCosastofHand : UnitBase
             m_fCurrentAttackSweepTimes[i] = calaculatePatternTime(m_fAttackSweepTimes[i]);
         }
     }
+
+
 }
