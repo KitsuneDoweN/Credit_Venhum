@@ -109,7 +109,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -2217684039790081614}
+  - {fileID: -755236949578151444}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5683877176890452952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +158,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 192
+--- !u!114 &-5574978562041726942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/hit/mode
+  m_EditorClassIdentifier: 
+  Name: mode
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-5364506271873298519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +201,7 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5196914078079578188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +259,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637742435432037879
+  lastModified: 637743215693823503
   FileSizes:
   - Name: Desktop
     Value: 559232
@@ -263,7 +285,7 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-4113816382898229546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,12 +346,34 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637742435432016877
+  lastModified: 637743215690172676
   FileSizes:
   - Name: Desktop
-    Value: 1772
+    Value: 1820
   Exists: 1
---- !u!114 &-2217684039790081614
+--- !u!114 &-2441833083428548629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/get hit/hitmat
+  m_EditorClassIdentifier: 
+  Name: hitmat
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Exists: 1
+--- !u!114 &-755236949578151444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,28 +384,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/melee/mode
-  m_EditorClassIdentifier: 
-  Name: mode
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 0
-  IsGlobal: 0
-  Exists: 1
---- !u!114 &-1561834851419630767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/hit/mode
   m_EditorClassIdentifier: 
   Name: mode
   Min: 0
@@ -388,10 +410,10 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637742435432006872
+  lastModified: 637743215690162674
   FileSizes:
   - Name: Desktop
-    Value: 2230
+    Value: 2402
   Exists: 1
 --- !u!114 &-257114005911475989
 MonoBehaviour:
@@ -473,7 +495,7 @@ MonoBehaviour:
   - {fileID: -474661820386265120}
   StringsBanks:
   - {fileID: -2444350203914838406}
-  stringsBankWriteTime: 637742435432016877
+  stringsBankWriteTime: 637743215690172676
   cacheVersion: 8
 --- !u!114 &19521039150144482
 MonoBehaviour:
@@ -495,11 +517,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -1561834851419630767}
+  - {fileID: -5574978562041726942}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &1116364703237311061
+--- !u!114 &1254704342634965933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,7 +542,7 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &1255076015974644098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +558,7 @@ MonoBehaviour:
   Path: Venhum_fmod/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 637742299991048026
+  lastModified: 637743215690132683
   FileSizes:
   - Name: Desktop
     Value: 482
@@ -578,28 +600,6 @@ MonoBehaviour:
   Name: mode
   Min: 0
   Max: 10
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 0
-  IsGlobal: 0
-  Exists: 1
---- !u!114 &2875558270104663695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/get hit/hitmat
-  m_EditorClassIdentifier: 
-  Name: hitmat
-  Min: 0
-  Max: 2
   Default: 0
   ID:
     data1: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 7839750696974328339}
+  - {fileID: -2441833083428548629}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Exists: 0
---- !u!114 &6694842543116077831
+--- !u!114 &7115717059192763718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -832,8 +832,8 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
---- !u!114 &7839750696974328339
+  Exists: 0
+--- !u!114 &7131703701667091017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -854,7 +854,7 @@ MonoBehaviour:
     data2: 0
   Type: 0
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &8593994646935001591
 MonoBehaviour:
   m_ObjectHideFlags: 0
