@@ -9,6 +9,18 @@ public class Barricade : MonoBehaviour
 
     [SerializeField] private string m_strInteraction;
 
+    [SerializeField]
+    private Sprite m_offSprite;
+    [SerializeField]
+    private SpriteRenderer m_srModel;
+    
+    private BoxCollider2D[] m_baricadeCollider;
+
+
+    private void Start()
+    {
+        m_baricadeCollider = gameObject.GetComponents<BoxCollider2D>();
+    }
 
     public void eventOn()
     {
@@ -29,7 +41,15 @@ public class Barricade : MonoBehaviour
     public void offEvent()
     {
         Debug.Log("BarricadeOff");
-        gameObject.SetActive(false);
+        
+        m_srModel.sprite = m_offSprite;
+
+        foreach(Collider2D coll in m_baricadeCollider)
+        {
+            coll.enabled = false;
+        }
+
+
         GameManager.instance.cInteraction = null;
         GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(true);
         GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.draw(m_strInteraction);

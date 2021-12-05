@@ -6,6 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "WeaponDatas/WeaponData", order = 1)]
 public class WeaponData : ScriptableObject
 {
+    public enum E_Type
+    {
+        E_NONE = -1 , E_ALMOST, E_TROW
+    }
+
+
     [SerializeField]
     private float m_fStamina;
 
@@ -17,6 +23,17 @@ public class WeaponData : ScriptableObject
 
     [SerializeField]
     private float m_fGripRange;
+
+    [SerializeField]
+    private E_Type m_eType;
+
+    public E_Type eType
+    {
+        get
+        {
+            return m_eType;
+        }
+    }
 
     public float fGripRange
     {

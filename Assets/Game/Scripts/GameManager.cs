@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,10 +22,10 @@ public class GameManager : MonoBehaviour
 
     public enum E_GAMESTATE
     {
-        E_NONE = -1, E_TITLE, E_LODE , E_INGAME, E_OVER, E_CLEAR, E_TOTAL
+        E_NONE = -1, E_TITLE, E_LODE, E_INGAME, E_OVER, E_CLEAR, E_TOTAL,
     }
 
-    
+
     private E_GAMESTATE m_eGameState;
 
     private enum E_GAMESCENE
@@ -55,16 +56,18 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
         instance = this;
-        
+
         DOTween.defaultAutoPlay = AutoPlay.None;
         DontDestroyOnLoad(this);
 
@@ -83,8 +86,8 @@ public class GameManager : MonoBehaviour
         init();
 
 
-        if(!m_bTestGame)
-        eGameState = E_GAMESTATE.E_TITLE;
+        if (!m_bTestGame)
+            eGameState = E_GAMESTATE.E_TITLE;
         else
             eGameState = E_GAMESTATE.E_INGAME;
 
@@ -129,7 +132,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        public void setStageManager(StageManager cStageManager)
+    public void setStageManager(StageManager cStageManager)
     {
         m_cStageManger = cStageManager;
         m_cStageManger.init();
@@ -156,7 +159,7 @@ public class GameManager : MonoBehaviour
         cUIManager.cUI_GameLoading.startLoadAnimaiton();
 
 
-         AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eNextGameScene, LoadSceneMode.Single);
+        AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eNextGameScene, LoadSceneMode.Single);
         yield return sceneLoadAsync;
 
         yield return new WaitForSeconds(1.0f);
@@ -164,6 +167,9 @@ public class GameManager : MonoBehaviour
         cUIManager.cUI_GameLoading.stopLoadAnimation();
 
         cUIManager.cUI_GameLoading.toggle(false);
+
+
+
 
         if (m_eNextGameScene == E_GAMESCENE.E_TITLE)
         {
@@ -181,7 +187,15 @@ public class GameManager : MonoBehaviour
         cUIManager.allClear();
 
         setStageManager(GameObject.FindObjectOfType<StageManager>());
+
         cUIManager.ingameStart();
+
+
+        cUIManager.cUI_FadeInOut.toggle(true);
+        cUIManager.cUI_FadeInOut.draw(true);
+
+        cStageManager.cPlayer.isControl = false;
+        cStageManager.cDirectionTalk.directionStart();
     }
 
 
@@ -218,12 +232,12 @@ public class GameManager : MonoBehaviour
         set
         {
             m_cInteraction = value;
-            if (value == null)
+            if (value == null || m_cInteraction.trIcon == null)
             {
                 cUIManager.cUI_Dynamic.toggle(false);
                 return;
             }
-               
+
 
             cUIManager.cUI_Dynamic.toggle(true);
             cUIManager.cUI_Dynamic.drawInteractionIncon(m_cInteraction.trIcon.position);
@@ -263,6 +277,7 @@ public class GameManager : MonoBehaviour
     {
         m_cInteraction.interactionEvent.Invoke();
     }
+
 
 
 }
