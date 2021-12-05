@@ -262,8 +262,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.72203314, y: 2.956006}
+  m_Offset: {x: 0, y: -0.66}
+  m_Size: {x: 0.84, y: 1.39}
   m_Direction: 0
 --- !u!114 &5689073691426790767
 MonoBehaviour:
@@ -282,7 +282,7 @@ MonoBehaviour:
     m_fMaxSpeed: 10
     m_fMaxStamina: 99
     m_fStaminaHealingTick: 2
-    m_fStaminaHealingTickTime: 1
+    m_fStaminaHealingTickTime: 0.5
     m_fDushPower: 30
     m_fDushTime: 0.2
     m_fDushStamina: 10
