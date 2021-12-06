@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UIManager m_UIManager;
     [SerializeField] private InputManager m_cInputManager;
+    [SerializeField] private OneSound m_cBgmSound;
+
 
     private StageManager m_cStageManger;
 
@@ -73,7 +75,6 @@ public class GameManager : MonoBehaviour
 
 
 
-
         DOTween.defaultAutoPlay = AutoPlay.None;
         DontDestroyOnLoad(this);
 
@@ -101,6 +102,8 @@ public class GameManager : MonoBehaviour
 
     private void init()
     {
+
+        m_cBgmSound.init();
         cUIManager.init();
     }
 
@@ -196,6 +199,7 @@ public class GameManager : MonoBehaviour
 
         cUIManager.ingameStart();
 
+        bgmSound.play();
 
         cUIManager.cUI_FadeInOut.toggle(true);
         cUIManager.cUI_FadeInOut.draw(true);
@@ -208,14 +212,14 @@ public class GameManager : MonoBehaviour
 
     private void gameOverEvent()
     {
-        cStageManager.cBGM.stop();
+        bgmSound.stop();
         m_UIManager.cUI_Gameover.toggle(true);
         Invoke("goIngame", 1.0f);
     }
 
     private void gameClearEvent()
     {
-        cStageManager.cBGM.stop();
+        bgmSound.stop();
         StartCoroutine(clearEventCoroutine(0.1f, 0.5f));
 
     }
@@ -317,6 +321,14 @@ public class GameManager : MonoBehaviour
         get
         {
             return PlayerPrefs.GetInt(m_strClearGrogress);
+        }
+    }
+
+    public OneSound bgmSound
+    {
+        get
+        {
+            return m_cBgmSound;
         }
     }
 
