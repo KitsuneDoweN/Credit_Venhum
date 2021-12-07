@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001E794B95518 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000170A99268B8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -23,14 +23,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 566624
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 32352
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004B1699F3C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000239E1F368
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB7F260E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB7F260B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB7F261B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB7F26270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001E846BFC478
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB5CB60E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB5CB60B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB5CB61B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB5CB6270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000016FF8A07988
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='STEPS Concrete, Run 11', format=5, channels=1, frequency=48000, lengthbytes=1824, lengthpcm=8634, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.087463.
@@ -39,14 +39,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 566624
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 32352
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004B1699F3C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000239E1F368
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB7F260E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB7F260B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB7F261B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB7F26270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001E846BFC478
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB5CB60E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB5CB60B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB5CB61B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB5CB6270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000016FF8A07988
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='STEPS Concrete, Run 13', format=5, channels=1, frequency=48000, lengthbytes=1984, lengthpcm=9240, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.236816.
@@ -55,14 +55,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 566624
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 32352
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004B1699F3C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000239E1F368
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB7F260E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB7F260B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB7F261B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB7F26270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001E846BFC478
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB5CB60E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB5CB60B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB5CB61B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB5CB6270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000016FF8A07988
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='STEPS Concrete, Run 14', format=5, channels=1, frequency=48000, lengthbytes=1632, lengthpcm=7592, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.335358.
@@ -71,14 +71,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 566624
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 32352
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004B1699F3C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000239E1F368
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB7F260E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB7F260B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB7F261B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB7F26270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001E846BFC478
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB5CB60E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB5CB60B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB5CB61B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB5CB6270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000016FF8A07988
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='STEPS Concrete, Run 12', format=5, channels=1, frequency=48000, lengthbytes=1696, lengthpcm=7241, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.064209.
@@ -87,84 +87,88 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 566624
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 32352
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004B1699F3C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000239E1F368
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB7F260E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB7F260B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB7F261B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB7F26270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001E846BFC478
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCB5CB60E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCB5CB60B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCB5CB61B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCB5CB6270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000016FF8A07988
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='STEPS Concrete, Run 15', format=5, channels=1, frequency=48000, lengthbytes=1824, lengthpcm=8157, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.303802.
-[LOG] SoundI::release                          :  (000001E7BB1B96F8)
-[LOG] SoundI::release                          :     STEPS Concrete, Run 15 (000001E791B53198)
-[LOG] SoundI::release                          :  (000001E7BB1B7198)
-[LOG] SoundI::release                          :     STEPS Concrete, Run 11 (000001E791B541D8)
-[LOG] SoundI::release                          :  (000001E7BB1B6BD8)
-[LOG] SoundI::release                          :     STEPS Concrete, Run 12 (000001E791B52FF8)
-[LOG] SoundI::release                          :  (000001E7BB1B7BA8)
-[LOG] SoundI::release                          :     STEPS Concrete, Run 13 (000001E791B53E98)
-[LOG] SoundI::release                          :  (000001E7BB1B68F8)
-[LOG] SoundI::release                          :     STEPS Concrete, Run 14 (000001E791B52978)
-[LOG] SoundI::release                          :  (000001E8468F4C98)
-[LOG] SoundI::release                          :     flesh_stabs_melee_weapon_02_8 (000001E84D528038)
-[LOG] SoundI::release                          :  (000001E8468F53C8)
-[LOG] SoundI::release                          :     40.Bullet Hit   Body (10) by FilmmakersManual Id-522313 (000001E84D5274D8)
-[LOG] SoundI::release                          :  (000001E8468F6398)
-[LOG] SoundI::release                          :     body_punches_01_3 (000001E84D527E98)
-[LOG] SoundI::release                          :  (000001E8468EBCD8)
-[LOG] SoundI::release                          :     mob_voice_pain_1 (000001E84D529BD8)
-[LOG] SoundI::release                          : cancion-triste-1502 (000001E846F3E7E8)
-[LOG] SoundI::release                          :     cancion-triste-1502 (000001E84D527678)
-[LOG] SoundI::release                          :     cancion-triste-1502 (000001E846F45088)
-[LOG] SoundI::release                          :  (000001E8468F3B58)
-[LOG] SoundI::release                          :     mob_voice_pain_1_2 (000001E84D529D78)
-[LOG] SoundI::release                          :  (000001E8468F7EE8)
-[LOG] SoundI::release                          :     Stab 1_1 (000001E84D5279B8)
-[LOG] SoundI::release                          :  (000001E8468F5258)
-[LOG] SoundI::release                          :     Stab 1_2 (000001E84D529F18)
-[LOG] SoundI::release                          :  (000001E8468F7648)
-[LOG] SoundI::release                          :     body_punches_01_6 (000001E84D5289F8)
-[LOG] SoundI::release                          :  (000001E8468EC858)
-[LOG] SoundI::release                          :     Stab 2_1 (000001E791B54858)
-[LOG] SoundI::release                          :  (000001E8468EB438)
-[LOG] SoundI::release                          :     Stab 2_2 (000001E84D529218)
-[LOG] SoundI::release                          :  (000001E8468E8ED8)
-[LOG] SoundI::release                          :     mob_voice_pain_2 (000001E791B515F8)
-[LOG] SoundI::release                          :  (000001E8468F5818)
-[LOG] SoundI::release                          :     mob_voice_pain_2_2 (000001E84D5296F8)
-[LOG] SoundI::release                          :  (000001E8468EDC78)
-[LOG] SoundI::release                          :     mob_voice_atk_3 (000001E84D529898)
-[LOG] SoundI::release                          :  (000001E8468F7928)
-[LOG] SoundI::release                          :     Whoosh 6_1 (000001E84D528ED8)
-[LOG] SoundI::release                          :  (000001E8468F39E8)
-[LOG] SoundI::release                          :     Whoosh 7_1 (000001E84D5293B8)
-[LOG] SoundI::release                          :  (000001E8468F77B8)
-[LOG] SoundI::release                          :     Whoosh 8_1 (000001E84D52A0B8)
-[LOG] SoundI::release                          :  (000001E8468F74D8)
-[LOG] SoundI::release                          :     Metal Weapon Swing 1_3 (000001E84D528858)
-[LOG] SoundI::release                          :  (000001E8468EC578)
-[LOG] SoundI::release                          :     mob_voice_atk_1 (000001E84D529A38)
-[LOG] SoundI::release                          :  (000001E8468F4118)
-[LOG] SoundI::release                          :     Cymatics - Gunshot Beefy_2 (000001E84D5286B8)
-[LOG] SoundI::release                          :  (000001E8468F43F8)
-[LOG] SoundI::release                          :     bearger_dustpoof_1 (000001E84D529558)
-[LOG] SoundI::release                          :  (000001E8468E8D68)
-[LOG] SoundI::release                          :     431019__camomano__stone-hit (000001E791B54038)
-[LOG] SoundI::release                          :  (000001E8468EE3A8)
-[LOG] SoundI::release                          :     bearger_dustpoof_4 (000001E791B522F8)
-[LOG] SoundI::release                          :  (000001E8468E91B8)
-[LOG] SoundI::release                          :     bearger_swhoosh_1 (000001E791B527D8)
-[LOG] SoundI::release                          :  (000001E8468F6F18)
-[LOG] SoundI::release                          :     Metal Weapon Swing 1_1 (000001E84D52A258)
-[LOG] SoundI::release                          :  (000001E8468ED0F8)
-[LOG] SoundI::release                          :     Metal Weapon Swing 2_1 (000001E791B52CB8)
-[LOG] SoundI::release                          :  (000001E8468F56A8)
-[LOG] SoundI::release                          :     Metal Weapon Swing 1_2 (000001E84D529078)
-[LOG] SoundI::release                          :  (000001E8468F46D8)
-[LOG] SoundI::release                          :     Metal Weapon Swing 2_2 (000001E84D528D38)
+[LOG] SystemI::mixerSuspend                    : Suspending output.
+[LOG] SystemI::mixerResume                     : Resuming output.
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000170A96AA308
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000170A96AA308
+[LOG] SoundI::release                          :  (0000016FF0BE09F8)
+[LOG] SoundI::release                          :     STEPS Concrete, Run 15 (0000016FF56A7C18)
+[LOG] SoundI::release                          :  (000001701E5E3578)
+[LOG] SoundI::release                          :     STEPS Concrete, Run 11 (0000016FF56A6BD8)
+[LOG] SoundI::release                          :  (000001701E5E8D28)
+[LOG] SoundI::release                          :     STEPS Concrete, Run 12 (0000016FF56A7A78)
+[LOG] SoundI::release                          :  (000001701E5E85F8)
+[LOG] SoundI::release                          :     STEPS Concrete, Run 13 (0000016FF56A7738)
+[LOG] SoundI::release                          :  (000001701E5E8A48)
+[LOG] SoundI::release                          :     STEPS Concrete, Run 14 (0000016FF56A6F18)
+[LOG] SoundI::release                          :  (00000170A49E0C18)
+[LOG] SoundI::release                          :     flesh_stabs_melee_weapon_02_8 (0000016FF0EE1B68)
+[LOG] SoundI::release                          :  (00000170A49DEDE8)
+[LOG] SoundI::release                          :     40.Bullet Hit   Body (10) by FilmmakersManual Id-522313 (0000016FF0EE2388)
+[LOG] SoundI::release                          :  (00000170A49DDF88)
+[LOG] SoundI::release                          :     body_punches_01_3 (0000016FF0EE26C8)
+[LOG] SoundI::release                          :  (00000170A49E21A8)
+[LOG] SoundI::release                          :     mob_voice_pain_1 (0000016FF0EE2A08)
+[LOG] SoundI::release                          : cancion-triste-1502 (0000016FF68C95D8)
+[LOG] SoundI::release                          :     cancion-triste-1502 (0000016FF0EE04A8)
+[LOG] SoundI::release                          :     cancion-triste-1502 (00000170A96AA308)
+[LOG] SoundI::release                          :  (00000170A49DEC78)
+[LOG] SoundI::release                          :     mob_voice_pain_1_2 (0000016FF0EDFFC8)
+[LOG] SoundI::release                          :  (00000170A49DDCA8)
+[LOG] SoundI::release                          :     Stab 1_1 (0000016FF0EDF7A8)
+[LOG] SoundI::release                          :  (00000170A49DE828)
+[LOG] SoundI::release                          :     Stab 1_2 (0000016FF0EE0E68)
+[LOG] SoundI::release                          :  (00000170A49E2E98)
+[LOG] SoundI::release                          :     body_punches_01_6 (0000016FF0EE1EA8)
+[LOG] SoundI::release                          :  (00000170A49E1D58)
+[LOG] SoundI::release                          :     Stab 2_1 (0000016FF0EE2528)
+[LOG] SoundI::release                          :  (00000170A49E1BE8)
+[LOG] SoundI::release                          :     Stab 2_2 (0000016FF0EE11A8)
+[LOG] SoundI::release                          :  (00000170A49E4598)
+[LOG] SoundI::release                          :     mob_voice_pain_2 (0000016FF0EDF948)
+[LOG] SoundI::release                          :  (00000170A49E2038)
+[LOG] SoundI::release                          :     mob_voice_pain_2_2 (0000016FF0EE2868)
+[LOG] SoundI::release                          :  (00000170A49E4878)
+[LOG] SoundI::release                          :     mob_voice_atk_3 (0000016FF0EE1688)
+[LOG] SoundI::release                          :  (00000170A49E5B28)
+[LOG] SoundI::release                          :     Whoosh 6_1 (0000016FF0EE0B28)
+[LOG] SoundI::release                          :  (00000170A49E0098)
+[LOG] SoundI::release                          :     Whoosh 7_1 (0000016FF0EE1D08)
+[LOG] SoundI::release                          :  (00000170A49E3008)
+[LOG] SoundI::release                          :     Whoosh 8_1 (0000016FF0EE0308)
+[LOG] SoundI::release                          :  (00000170A49E2A48)
+[LOG] SoundI::release                          :     Metal Weapon Swing 1_3 (0000016FF0EDF2C8)
+[LOG] SoundI::release                          :  (00000170A49E35C8)
+[LOG] SoundI::release                          :     mob_voice_atk_1 (0000016FF0EE2048)
+[LOG] SoundI::release                          :  (00000170A49E56D8)
+[LOG] SoundI::release                          :     Cymatics - Gunshot Beefy_2 (0000016FF0EE0988)
+[LOG] SoundI::release                          :  (00000170A49E5848)
+[LOG] SoundI::release                          :     bearger_dustpoof_1 (0000016FF0EDFE28)
+[LOG] SoundI::release                          :  (00000170A49E3A18)
+[LOG] SoundI::release                          :     431019__camomano__stone-hit (0000016FF0EDF468)
+[LOG] SoundI::release                          :  (000001701E5DB588)
+[LOG] SoundI::release                          :     bearger_dustpoof_4 (0000016FF56A66F8)
+[LOG] SoundI::release                          :  (00000170A49E4708)
+[LOG] SoundI::release                          :     bearger_swhoosh_1 (0000016FF0EDFC88)
+[LOG] SoundI::release                          :  (00000170A49DC438)
+[LOG] SoundI::release                          :     Metal Weapon Swing 1_1 (0000016FF0EDF128)
+[LOG] SoundI::release                          :  (00000170A49E38A8)
+[LOG] SoundI::release                          :     Metal Weapon Swing 2_1 (0000016FF0EE2D48)
+[LOG] SoundI::release                          :  (00000170A49E5C98)
+[LOG] SoundI::release                          :     Metal Weapon Swing 1_2 (0000016FF0EE0CC8)
+[LOG] SoundI::release                          :  (00000170A49E59B8)
+[LOG] SoundI::release                          :     Metal Weapon Swing 2_2 (0000016FF0EE0168)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -175,3 +179,7 @@
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6

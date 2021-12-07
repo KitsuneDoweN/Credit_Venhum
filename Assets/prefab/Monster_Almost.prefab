@@ -548,7 +548,7 @@ MonoBehaviour:
     m_fMaxStamina: 9999
     m_fStaminaHealingTick: 0
     m_fStaminaHealingTickTime: 0
-    m_fDushPower: 10
+    m_fDushPower: 8
     m_fDushTime: 0
     m_fDushStamina: 0
     m_fGodTime: 0
