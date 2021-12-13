@@ -29,6 +29,11 @@ public class UnitAnimationHandle : MonoBehaviour
         m_cUnitBase.godMode();
     }
 
+    public void setAnimationSpeed(float fSpeed)
+    {
+        m_cUnitBase.cAnimation.setAnimationSpeed(fSpeed);
+    }
+
 
 
 }

@@ -52,7 +52,6 @@ public class ComboSystem : MonoBehaviour
             
             if (m_nCurrentCombo >= m_nMaxCombo)
                 m_nCurrentCombo = 0;
-            //Debug.Log(m_nCurrentCombo + "  " + m_nMaxCombo);
 
             comboAbleEnd();
         }

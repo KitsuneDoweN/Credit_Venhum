@@ -7,63 +7,14 @@ using UnityEngine.Events;
 public class WeaponBase : MonoBehaviour
 {
 
-    [SerializeField] private LayerMask m_maskTarget;
-
-    private IEnumerator m_ieCoolTimeEvent;
-
-    private string m_strAttackTrigger;
-
-    private bool m_bCoolTime;
-
-    private float m_fCoolTimeTick;
-
-    [SerializeField]
-    private UnityEvent m_coolTimeEvent;
-
-    [SerializeField]
-    private SpriteRenderer m_srModel;
-
-    public SpriteRenderer srModel
-    {
-        get
-        {
-            return m_srModel;
-        }
-    }
-
-
-    public float fCoolTimeTick
-    {
-
-        get
-        {
-            return m_fCoolTimeTick;
-        }
-    }
-
-
-    public bool isCoolTime
-    {
-        set
-        {
-            m_bCoolTime = value;
-        }
-        get
-        {
-            return m_bCoolTime;
-        }
-    }
-
-    public LayerMask maskTarget
-    {
-        get
-        {
-            return m_maskTarget;
-        }
-    }
 
     [SerializeField]
     private WeaponData m_cWeaponData;
+    [SerializeField]
+    private ComboSystem m_cComboSystem;
+    [SerializeField]
+    private CoolTime m_cCoolTime;
+
 
     public WeaponData cWeaponData
     {
@@ -76,6 +27,43 @@ public class WeaponBase : MonoBehaviour
             return m_cWeaponData;
         }
     }
+
+    public ComboSystem cComboSystem
+    {
+        get
+        {
+            return m_cComboSystem;
+        }
+    }
+
+    public CoolTime cCoolTime
+    {
+        get
+        {
+            return m_cCoolTime;
+        }
+    }
+
+
+    [SerializeField] private LayerMask m_maskTarget;
+
+
+
+
+    private string m_strAttackTrigger;
+
+
+
+    public LayerMask maskTarget
+    {
+        get
+        {
+            return m_maskTarget;
+        }
+    }
+
+
+
 
 
     private UnitBase m_unitBase;
@@ -90,8 +78,6 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    protected ComboSystem m_cComboSystem;
 
     private bool m_bAttackRun;
 
@@ -113,8 +99,6 @@ public class WeaponBase : MonoBehaviour
         {
             m_bAttackRun = value;
             m_unitBase.isLookAble = !m_bAttackRun;
-
-            //Debug.Log("isAttackRun: " + m_bAttackRun);
         }
         get
         {
@@ -123,12 +107,10 @@ public class WeaponBase : MonoBehaviour
     }
 
 
-
-
     public virtual void init(UnitBase unitBase)
     {
         m_unitBase = unitBase;
-        m_cComboSystem.init(m_cWeaponData);
+        cComboSystem.init(cWeaponData);
         reset();
     }
 
@@ -142,7 +124,6 @@ public class WeaponBase : MonoBehaviour
 
     }
 
-
     public virtual void attackEventEnd()
     {
 
@@ -155,45 +136,14 @@ public class WeaponBase : MonoBehaviour
         cUnit.isLookAble = true;
     }
 
-    public virtual void attackImfect()
+    public virtual void attackAction()
     {
 
-    }
-
-    public void comboAbleStart()
-    {
-        m_cComboSystem.comboAbleStart();
     }
 
     public virtual void reset()
     {
         isAttackRun = false;
-
-    }
-
-    protected void coolTimeEvent()
-    {
-
-        m_ieCoolTimeEvent = coolTimeEvnetCoroutine();
-        StartCoroutine(m_ieCoolTimeEvent);
-
-    }
-
-    private IEnumerator coolTimeEvnetCoroutine()
-    {
-        isCoolTime = true;
-        m_fCoolTimeTick = 0.0f;
-
-        m_coolTimeEvent.Invoke();
-
-        while (fCoolTimeTick < m_cWeaponData.fCoolTime)
-        {
-            m_fCoolTimeTick += Time.deltaTime;
-            yield return null;
-        }
-
-        isCoolTime = false;
-        m_ieCoolTimeEvent = null;
     }
 
     protected virtual void attackAnimation()
@@ -201,25 +151,9 @@ public class WeaponBase : MonoBehaviour
 
     }
 
-
-
-
-    public void stopCoolTimeEvent()
+    public virtual void comboAbleStart()
     {
-        if (m_ieCoolTimeEvent == null)
-            return;
-
-        StopCoroutine(m_ieCoolTimeEvent);
-        isAttackRun = true;
+        cComboSystem.comboAbleStart();
     }
-
-    public int nCurrentCombo
-    {
-        get
-        {
-            return m_cComboSystem.nCurrentCombo;
-        }
-    }
-
 
 }

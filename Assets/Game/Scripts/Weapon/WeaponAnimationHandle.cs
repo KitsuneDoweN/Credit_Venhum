@@ -36,7 +36,7 @@ public class WeaponAnimationHandle : MonoBehaviour
 
     public  void attackImfect()
     {
-        m_cWeaponBase.attackImfect();
+        m_cWeaponBase.attackAction();
     }
 
     public void comboAbleStart()
@@ -48,5 +48,7 @@ public class WeaponAnimationHandle : MonoBehaviour
     {
         m_cWeaponBase.reset();
     }
+
+    
 
 }

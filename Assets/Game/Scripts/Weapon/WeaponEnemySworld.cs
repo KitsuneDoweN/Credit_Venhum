@@ -18,8 +18,6 @@ public class WeaponEnemySworld : WeaponBase
 
     public override void attack()
     {
-        if (isCoolTime)
-            return;
 
         cUnit.fStamina -= cWeaponData.fStamina;
 
@@ -32,7 +30,7 @@ public class WeaponEnemySworld : WeaponBase
 
     protected override void attackAnimation()
     {
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        cUnit.cAnimation.attack(strAttackTrigger, cComboSystem.nCurrentCombo);
     }
 
     public override void attackEventStart()
@@ -50,9 +48,9 @@ public class WeaponEnemySworld : WeaponBase
 
 
 
-    public override void attackImfect()
+    public override void attackAction()
     {
-        base.attackImfect();
+        base.attackAction();
     }
 
     public override void attackEnd()
@@ -73,7 +71,7 @@ public class WeaponEnemySworld : WeaponBase
 
         if((nTargetMask & maskTarget) != 0)
         {
-            collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+            collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(0));
         }
     }
 

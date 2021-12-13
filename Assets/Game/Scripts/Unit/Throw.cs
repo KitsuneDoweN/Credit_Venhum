@@ -19,7 +19,7 @@ public class Throw : MonoBehaviour
         m_v2PowerDir = v2PowerDir;
         m_cWeapon = cWeapon;
         m_fPower = fPower;
-        m_cAttackData = m_cWeapon.cWeaponData.getWeaponAttackData(m_cWeapon.nCurrentCombo);
+        m_cAttackData = m_cWeapon.cWeaponData.getWeaponAttackData(m_cWeapon.cComboSystem.nCurrentCombo);
     }
 
     public void shoot()

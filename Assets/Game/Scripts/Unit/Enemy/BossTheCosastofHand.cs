@@ -172,6 +172,11 @@ public class BossTheCosastofHand : UnitBase
 
     [SerializeField]
     private UnitSound m_cSound;
+
+    [SerializeField]
+    private SpriteRenderer m_srGirpWeapon;
+
+
     private void Start()
     {
         init();
@@ -577,7 +582,7 @@ public class BossTheCosastofHand : UnitBase
     private void berserkerModeOn()
     {
 
-        cGripWeapon.srModel.color = Color.red;
+        m_srGirpWeapon.color = Color.red;
 
         for (int i = 0; i < (int)E_AttackTimeState.E_TOTAL; i++)
         {

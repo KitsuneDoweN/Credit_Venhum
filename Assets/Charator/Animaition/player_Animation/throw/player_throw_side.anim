@@ -88,6 +88,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0
+    functionName: setAnimationSpeed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 4
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: attackEventStart
     data: 
@@ -100,5 +107,12 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: setAnimationSpeed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1
     intParameter: 0
     messageOptions: 0

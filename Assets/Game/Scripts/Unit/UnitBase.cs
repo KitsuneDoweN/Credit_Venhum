@@ -116,20 +116,20 @@ public class UnitBase : MonoBehaviour
     }
 
 
-    public virtual void attack() 
+    public virtual void attack()
     {
-        if(fStamina >= m_cGripWeapon.cWeaponData.fStamina )
+        if (fStamina >= m_cGripWeapon.cWeaponData.fStamina)
         {
             m_cGripWeapon.attack();
         }
 
     }
 
-    public virtual void hit(UnitBase unit, WeaponAttackData cAttackData) 
+    public virtual void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
         cGripWeapon.reset();
 
-        foreach(WeaponDamageData data in cAttackData.getWeaponDamageData())
+        foreach (WeaponDamageData data in cAttackData.getWeaponDamageData())
         {
             if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
                 nHP -= data.nDamge;
@@ -139,7 +139,7 @@ public class UnitBase : MonoBehaviour
     }
 
 
-    public virtual void die() 
+    public virtual void die()
     {
         print(gameObject.name + " is die");
     }
@@ -150,7 +150,7 @@ public class UnitBase : MonoBehaviour
         set
         {
             m_bControl = value;
-            
+
         }
 
         get
@@ -217,7 +217,7 @@ public class UnitBase : MonoBehaviour
         }
 
     }
-    public  Vector2 v2MoveDir
+    public Vector2 v2MoveDir
     {
         private set
         {
@@ -235,7 +235,7 @@ public class UnitBase : MonoBehaviour
             m_srModel.flipX = true;
     }
 
-   protected virtual int nStiffness
+    protected virtual int nStiffness
     {
         set
         {
@@ -248,14 +248,14 @@ public class UnitBase : MonoBehaviour
     }
 
 
-    protected void knockBack(Vector2 v2Dir, float fPower,float fTime, bool bEndEvent)
+    protected void knockBack(Vector2 v2Dir, float fPower, float fTime, bool bEndEvent)
     {
         m_cDush.dushDetail(v2Dir, fPower, fTime, bEndEvent);
     }
 
 
 
-    
+
     public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
         m_cDush.dushDetail(v2Dir, fPower, fDushTime, bEndEvent);
@@ -265,7 +265,7 @@ public class UnitBase : MonoBehaviour
     {
         m_cDush.dush(v2Dir, bEndEvent);
     }
-    
+
 
     public void dushStop()
     {
@@ -311,7 +311,7 @@ public class UnitBase : MonoBehaviour
             cStatus.fStamina = value;
             cStatus.fStamina = Mathf.Clamp(fStamina, 0.0f, cStatus.fMaxStamina);
 
-            if(cStatus.fStamina < cStatus.fMaxStamina)
+            if (cStatus.fStamina < cStatus.fMaxStamina)
             {
                 staminaHeilingEventStart();
             }
@@ -337,7 +337,7 @@ public class UnitBase : MonoBehaviour
 
     private IEnumerator healingEventCoroutine()
     {
-        while(fStamina < cStatus.fMaxStamina)
+        while (fStamina < cStatus.fMaxStamina)
         {
             yield return new WaitForSeconds(cStatus.fStatminaHealingTickTime);
             fStamina += cStatus.fStatminaHealingTick;
@@ -358,7 +358,7 @@ public class UnitBase : MonoBehaviour
     {
         gameObject.layer = m_nGodLayer;
         m_cImfect.godImfect();
-   
+
 
         Invoke("godModeEnd", cStatus.fGodTime);
     }

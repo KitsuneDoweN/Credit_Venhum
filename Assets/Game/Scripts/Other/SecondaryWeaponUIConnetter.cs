@@ -26,9 +26,9 @@ public class SecondaryWeaponUIConnetter : MonoBehaviour
     private IEnumerator collTimeEvetn()
     {
         float fFillAmount = .0f;
-        while (m_cWeapon.isCoolTime)
+        while (m_cWeapon.cCoolTime.isCoolTime)
         {
-            fFillAmount = m_cWeapon.fCoolTimeTick / m_cWeapon.cWeaponData.fCoolTime;
+            fFillAmount = m_cWeapon.cCoolTime.fTick / m_cWeapon.cWeaponData.fCoolTime;
             GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(
                 UI_PlayerInfo.E_INFO.E_SECONDARYWEAPON, fFillAmount);
             yield return null;

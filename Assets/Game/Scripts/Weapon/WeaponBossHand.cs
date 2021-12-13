@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponBossHand : WeaponBase
 {
+
+
+
     [SerializeField] private int m_nNotAttackLayer;
     [SerializeField] private int m_nAttackLayer;
 
@@ -11,6 +14,9 @@ public class WeaponBossHand : WeaponBase
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
+
+
+
         gameObject.layer = m_nNotAttackLayer;
         strAttackTrigger = "attack";
     }
@@ -31,9 +37,9 @@ public class WeaponBossHand : WeaponBase
 
 
 
-    public override void attackImfect()
+    public override void attackAction()
     {
-        base.attackImfect();
+        base.attackAction();
     }
 
     public override void attackEnd()
@@ -54,7 +60,7 @@ public class WeaponBossHand : WeaponBase
 
         if ((nTargetMask & maskTarget) != 0)
         {
-            collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+            collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(0));
         }
     }
 

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class WeaponPlayerSworld : WeaponBase
 {
+
+
+
     [SerializeField] private int m_nNotAttackLayer;
     [SerializeField] private int m_nAttackLayer;
     [SerializeField] private float m_fMovePower;
+    [SerializeField] private float m_fAttackActionTime;
 
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
+
         gameObject.layer = m_nNotAttackLayer;
         strAttackTrigger = "attackSword";
     }
@@ -18,13 +23,10 @@ public class WeaponPlayerSworld : WeaponBase
     public override void attack()
     {
 
-        if (isCoolTime)
-            return ;
-
 
         if (isAttackRun)
         {
-            m_cComboSystem.combo();
+            cComboSystem.combo();
             return ;
         }
         
@@ -43,7 +45,7 @@ public class WeaponPlayerSworld : WeaponBase
     }
     protected override void attackAnimation()
     {
-        cUnit.cAnimation.attack(strAttackTrigger, m_cComboSystem.nCurrentCombo);
+        cUnit.cAnimation.attack(strAttackTrigger, cComboSystem.nCurrentCombo);
     }
 
 
@@ -66,9 +68,9 @@ public class WeaponPlayerSworld : WeaponBase
 
         cUnit.lookDirUpdate();
 
-        m_cComboSystem.comboAbleEnd();
+        cComboSystem.comboAbleEnd();
 
-        if (!m_cComboSystem.comboChack())
+        if (!cComboSystem.comboChack())
         {
             reset();
             cUnit.isMoveAble = true;
@@ -79,10 +81,10 @@ public class WeaponPlayerSworld : WeaponBase
         attack();
     }
 
-    public override void attackImfect()
+    public override void attackAction()
     {
-        base.attackImfect();
-        cUnit.dushDetail(cUnit.v2LookDir, m_fMovePower, 0.1f, false);
+        base.attackAction();
+        cUnit.dushDetail(cUnit.v2LookDir, m_fMovePower, m_fAttackActionTime, false);
     }
 
 
@@ -96,11 +98,11 @@ public class WeaponPlayerSworld : WeaponBase
         {
             if(collision.tag == "HitConnet")
             {
-                collision.GetComponent<UnitHitConnet>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+                collision.GetComponent<UnitHitConnet>().hit(cUnit, cWeaponData.getWeaponAttackData(cComboSystem.nOldCombo));
             }
             else
             {
-                collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(m_cComboSystem.nOldCombo));
+                collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(cComboSystem.nOldCombo));
             }
             
         }
@@ -114,7 +116,7 @@ public class WeaponPlayerSworld : WeaponBase
         gameObject.layer = m_nNotAttackLayer;
         cUnit.dushStop();
 
-        m_cComboSystem.reset();
+        cComboSystem.reset();
 
     }
 

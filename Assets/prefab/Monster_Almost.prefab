@@ -348,15 +348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e768c6a3cac703144997e10a2cac84ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cWeaponData: {fileID: 11400000, guid: 5cc31ce529361de4ca1e768b5322bb01, type: 2}
+  m_cComboSystem: {fileID: 1416292362805028696}
+  m_cCoolTime: {fileID: 0}
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 128
-  m_coolTimeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_srModel: {fileID: 0}
-  m_cWeaponData: {fileID: 11400000, guid: 5cc31ce529361de4ca1e768b5322bb01, type: 2}
-  m_cComboSystem: {fileID: 1416292362805028696}
   m_nNotAttackLayer: 31
   m_nAttackLayer: 30
 --- !u!1 &1655544517837844499
