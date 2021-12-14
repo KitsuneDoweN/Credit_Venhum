@@ -41,6 +41,7 @@ public class WeaponPlayerSworld : WeaponBase
         attackAnimation();
 
         isAttackRun = true;
+      
 
     }
     protected override void attackAnimation()
@@ -64,7 +65,8 @@ public class WeaponPlayerSworld : WeaponBase
 
     public override void attackEnd()
     {
-        base.attackEnd();
+        isAttackRun = false;
+        cUnit.isLookAble = true;
 
         cUnit.lookDirUpdate();
 
@@ -73,7 +75,6 @@ public class WeaponPlayerSworld : WeaponBase
         if (!cComboSystem.comboChack())
         {
             reset();
-            cUnit.isMoveAble = true;
             return;
         }
 
@@ -103,6 +104,7 @@ public class WeaponPlayerSworld : WeaponBase
             else
             {
                 collision.GetComponent<UnitBase>().hit(cUnit, cWeaponData.getWeaponAttackData(cComboSystem.nOldCombo));
+                Debug.Log("HIT  " + cComboSystem.nCurrentCombo);
             }
             
         }
@@ -118,6 +120,8 @@ public class WeaponPlayerSworld : WeaponBase
 
         cComboSystem.reset();
 
+        cUnit.isMoveAble = true;
+        cUnit.isLookAble = true;
     }
 
 

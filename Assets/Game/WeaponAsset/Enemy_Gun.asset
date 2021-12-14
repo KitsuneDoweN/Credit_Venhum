@@ -17,6 +17,6 @@ MonoBehaviour:
   - m_cDamageData:
     - m_eDamageType: 1
       m_nDamge: 1
-  m_fCoolTime: 0
+  m_fCoolTime: 3.5
   m_fGripRange: 1.5
   m_eType: 1

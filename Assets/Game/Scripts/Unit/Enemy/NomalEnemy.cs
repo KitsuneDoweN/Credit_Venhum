@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+
 public class NomalEnemy : UnitEnemyBase
 {
     [SerializeField]
@@ -28,8 +30,11 @@ public class NomalEnemy : UnitEnemyBase
         E_NONE,
         E_WAIT,
         E_TRACKING,
+
         E_ATTACK,
-        E_ATTACKWAIT,
+        E_ATTACKINGSTOP,
+        E_ATTACKINGLOOK,
+
         E_STIFFNESS,
         E_RECALL,
         
@@ -56,7 +61,8 @@ public class NomalEnemy : UnitEnemyBase
 
 
 
-
+    [SerializeField]
+    private bool m_bAttackingLook;
 
 
     public override void init()
@@ -90,7 +96,9 @@ public class NomalEnemy : UnitEnemyBase
         m_delAI[(int)E_EnemyState.E_TRACKING] = trackingEvent;
 
         m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
-        m_delAI[(int)E_EnemyState.E_ATTACKWAIT] = attackWaitEvent;
+        m_delAI[(int)E_EnemyState.E_ATTACKINGSTOP] = attackingStop;
+        m_delAI[(int)E_EnemyState.E_ATTACKINGLOOK] = attackingLook;
+
         m_delAI[(int)E_EnemyState.E_STIFFNESS] = stiffnessEvent;
         m_delAI[(int)E_EnemyState.E_RECALL] = recallEvent;
         m_delAI[(int)E_EnemyState.E_DIE] = dieEvent;
@@ -116,7 +124,6 @@ public class NomalEnemy : UnitEnemyBase
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
-        int nOldStiffness = cStatus.nCurrentStiffness;
 
         base.hit(unit, cAttackData);
 
@@ -134,9 +141,8 @@ public class NomalEnemy : UnitEnemyBase
 
         if(cStatus.nCurrentStiffness >= cStatus.nMaxStiffness)
         {
+            cGripWeapon.reset();
             eEnemyState = E_EnemyState.E_STIFFNESS;
-            
-           
             cStatus.nCurrentStiffness = 0;
         }
 
@@ -144,7 +150,7 @@ public class NomalEnemy : UnitEnemyBase
         if (eEnemyState == E_EnemyState.E_WAIT || eEnemyState == E_EnemyState.E_TRACKING)
         {
             cAnimation.hit();
-
+            cGripWeapon.reset();
 
             Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
             v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
@@ -159,6 +165,9 @@ public class NomalEnemy : UnitEnemyBase
 
     public void hitEndEvent()
     {
+        isMoveAble = true;
+        isLookAble = true;
+
         eEnemyState = E_EnemyState.E_WAIT;
     }
 
@@ -174,18 +183,39 @@ public class NomalEnemy : UnitEnemyBase
 
     }
 
-    private void attackWaitEvent()
+    private void attackingStop()
     {
 
     }
+
+    private void attackingLook()
+    {
+        setTargetDestination();
+
+        m_cGripWeapon.attackDrawHit(v2LookDir, true);
+    }
+
+
+
 
 
 
     private void attackEvent()
     {
+        if (cGripWeapon.cCoolTime.isCoolTime)
+            return;
+
         attack();
 
-        eEnemyState = E_EnemyState.E_ATTACKWAIT;
+        if (m_bAttackingLook)
+        {
+            eEnemyState = E_EnemyState.E_ATTACKINGLOOK;
+        }
+        else
+        {
+            eEnemyState = E_EnemyState.E_ATTACKINGSTOP;
+        }
+
     }
 
 
@@ -195,6 +225,7 @@ public class NomalEnemy : UnitEnemyBase
         gameObject.layer = 11;
         m_cSerchIcon.die();
         cAnimation.die();
+        cGripWeapon.attackDrawHit(Vector2.zero, false);
 
         die();
     }
@@ -351,9 +382,13 @@ public class NomalEnemy : UnitEnemyBase
 
         if (m_fStiffnessTime >= 1.0f)
         {
+            isMoveAble = true;
+            isLookAble = true;
+
             eEnemyState = E_EnemyState.E_TRACKING;
             m_srModel.color = Color.white;
             m_cAnimation.trigger("movement");
+
             return;
         }
             
@@ -390,7 +425,6 @@ public class NomalEnemy : UnitEnemyBase
     {
         bool isWallCheck = Physics2D.Raycast(v2UnitPos, v2LookDir, m_fWallSensorDistance, m_wallLayer);
 
-        Debug.Log(isWallCheck);
 
         return isWallCheck;
     }

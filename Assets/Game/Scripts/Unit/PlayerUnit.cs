@@ -129,10 +129,10 @@ public class PlayerUnit : UnitBase
 
         if (!isDie)
         {
-
+            cGripWeapon.reset();
             stop();
 
-            if(unit.cGripWeapon.cWeaponData.eType == WeaponData.E_Type.E_ALMOST)
+            if (unit.cGripWeapon.cWeaponData.eType == WeaponData.E_Type.E_ALMOST)
             {
                 m_cSound.hitPlayOnceIndex(0.0f);
             }

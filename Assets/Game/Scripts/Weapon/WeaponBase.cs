@@ -98,7 +98,7 @@ public class WeaponBase : MonoBehaviour
         set
         {
             m_bAttackRun = value;
-            m_unitBase.isLookAble = !m_bAttackRun;
+
         }
         get
         {
@@ -154,6 +154,11 @@ public class WeaponBase : MonoBehaviour
     public virtual void comboAbleStart()
     {
         cComboSystem.comboAbleStart();
+    }
+
+    public virtual void attackDrawHit(Vector2 v2Dir, bool isDraw)
+    {
+
     }
 
 }

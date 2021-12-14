@@ -22,6 +22,7 @@ public class WeaponEnemySworld : WeaponBase
         cUnit.fStamina -= cWeaponData.fStamina;
 
         cUnit.isMoveAble = false;
+        cUnit.isLookAble = false;
 
         attackAnimation();
 
@@ -43,6 +44,7 @@ public class WeaponEnemySworld : WeaponBase
     public override void attackEventEnd()
     {
         base.attackEventEnd();
+
         gameObject.layer = m_nNotAttackLayer;
     }
 
@@ -56,6 +58,8 @@ public class WeaponEnemySworld : WeaponBase
     public override void attackEnd()
     {
         base.attackEnd();
+
+
     }
 
     public override void reset()

@@ -127,7 +127,7 @@ public class UnitBase : MonoBehaviour
 
     public virtual void hit(UnitBase unit, WeaponAttackData cAttackData)
     {
-        cGripWeapon.reset();
+
 
         foreach (WeaponDamageData data in cAttackData.getWeaponDamageData())
         {

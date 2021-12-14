@@ -7,11 +7,34 @@ public class WeaponThrow : WeaponBase
     [SerializeField] private GameObject m_goThrow;
     [SerializeField] private Transform m_trFirePoint;
     [SerializeField] private float m_fThrowPower;
+    [SerializeField] private LineRenderer m_aimmingLine;
+
+
+    [SerializeField]
+    private bool m_bDrawHitLineEvent;
+
+    private bool m_bDrawHitLine;
+
+    private bool isDrawHitLine
+    {
+        set
+        {
+            m_bDrawHitLine = value;
+        }
+        get
+        {
+            if (!m_bDrawHitLineEvent)
+                return false;
+            return m_bDrawHitLine;
+        }
+    }
+
 
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
         strAttackTrigger = "attackThrow";
+        isDrawHitLine = false;
     }
 
     public override void attackEventStart()
@@ -30,6 +53,8 @@ public class WeaponThrow : WeaponBase
 
         goThrow.GetComponent<Throw>().init(this, v2FireDir, m_fThrowPower);
         goThrow.GetComponent<Throw>().shoot();
+
+        isDrawHitLine = false;
     }
 
 
@@ -51,6 +76,7 @@ public class WeaponThrow : WeaponBase
         cCoolTime.startCoolTime(cWeaponData.fCoolTime);
 
 
+        isDrawHitLine = true;
     }
 
     protected override void attackAnimation()
@@ -63,6 +89,33 @@ public class WeaponThrow : WeaponBase
         base.attackEnd();
 
         cUnit.isMoveAble = true;
+
     }
+
+    public override void reset()
+    {
+        base.reset();
+    }
+
+
+    public override void attackEventEnd()
+    {
+        base.attackEventEnd();
+    }
+
+    public  override void attackDrawHit(Vector2 v2Dir, bool isDraw)
+    {
+        if (isDrawHitLine && isDraw)
+        {
+            m_aimmingLine.SetPosition(0, (Vector2)transform.position);
+            m_aimmingLine.SetPosition(1, (Vector2)transform.position + (v2Dir * 10.0f));
+        }
+        else
+        {
+            m_aimmingLine.SetPosition(0, Vector2.zero);
+            m_aimmingLine.SetPosition(1, Vector2.zero);
+        }
+    }
+
 
 }

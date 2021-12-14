@@ -307,10 +307,6 @@ public class GameManager : MonoBehaviour
         m_cInteraction.interactionEvent.Invoke();
     }
 
-    private void saveClearGrogress(int nData)
-    {
-        PlayerPrefs.SetInt(m_strClearGrogress, 0);
-    }
 
     public int nClearGrogress
     {
