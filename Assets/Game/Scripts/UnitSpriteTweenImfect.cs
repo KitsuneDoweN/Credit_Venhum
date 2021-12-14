@@ -65,7 +65,7 @@ public class UnitSpriteTweenImfect : MonoBehaviour
 
 
 
-    public void play()
+    private void play()
     {
         m_imfectTween.Play();
     }

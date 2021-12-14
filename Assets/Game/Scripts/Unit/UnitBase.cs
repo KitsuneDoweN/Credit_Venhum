@@ -134,9 +134,18 @@ public class UnitBase : MonoBehaviour
             if (data.eDamageType == WeaponDamageData.DamageType.E_NOMAL)
                 nHP -= data.nDamge;
             if (data.eDamageType == WeaponDamageData.DamageType.E_STIFFEN)
-                fStamina += data.nDamge;
+                cStatus.nCurrentStiffness += data.nDamge;
         }
+
+
+
     }
+
+    protected virtual void stiffness()
+    {
+
+    }
+
 
 
     public virtual void die()

@@ -19,7 +19,6 @@ public class PlayerWeapons : MonoBehaviour
        foreach(WeaponBase weapon in m_cWeapons)
         {
             weapon.init(player);
-            weapon.gameObject.SetActive(false);
         }
     }
 
@@ -33,11 +32,9 @@ public class PlayerWeapons : MonoBehaviour
         {
             switchWeapon.transform.SetParent(transform);
             switchWeapon.transform.localPosition = Vector3.zero;
-            switchWeapon.gameObject.SetActive(false);
         }
 
         switchWeapon = m_cWeapons[(int)eSwitchWeapon];
-        switchWeapon.gameObject.SetActive(true);
         m_eGripWeapon = eSwitchWeapon;
 
         return true;

@@ -170,7 +170,7 @@ MonoBehaviour:
     m_fDushTime: 0
     m_fDushStamina: 0
     m_fGodTime: 0
-    m_nMaxStiffness: 5
+    m_nMaxStiffness: 1
   m_srModel: {fileID: 5367632915790948333}
   m_cUnitGrip: {fileID: 5367632916467266058}
   m_cDush: {fileID: 5367632915107424234}
@@ -679,15 +679,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009e3b65e9432f945a7300209fdbef45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cWeaponData: {fileID: 11400000, guid: 380d64cca48afdd4a9263e2cb820cca9, type: 2}
+  m_cComboSystem: {fileID: 5367632916931007819}
+  m_cCoolTime: {fileID: 0}
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 128
-  m_coolTimeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_srModel: {fileID: 0}
-  m_cWeaponData: {fileID: 11400000, guid: 380d64cca48afdd4a9263e2cb820cca9, type: 2}
-  m_cComboSystem: {fileID: 5367632916931007819}
   m_goThrow: {fileID: 3073033399267882733, guid: 7ef3cff32c09b7c4f8a0082b6980ddef, type: 3}
   m_trFirePoint: {fileID: 5367632916931007818}
   m_fThrowPower: 10

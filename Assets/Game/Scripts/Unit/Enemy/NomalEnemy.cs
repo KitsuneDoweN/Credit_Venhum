@@ -131,34 +131,35 @@ public class NomalEnemy : UnitEnemyBase
 
         m_cSound.hitPlayOnce();
 
-        Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
-        v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
+
+        if(cStatus.nCurrentStiffness >= cStatus.nMaxStiffness)
+        {
+            eEnemyState = E_EnemyState.E_STIFFNESS;
+            
+           
+            cStatus.nCurrentStiffness = 0;
+        }
+
+
+        if (eEnemyState == E_EnemyState.E_WAIT || eEnemyState == E_EnemyState.E_TRACKING)
+        {
+            cAnimation.hit();
+
+
+            Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
+            v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
+
+            knockBack(v2UnitToHitUnitDir, 10, 0.1f, false);
+        }
 
 
 
-
-        if (eEnemyState != E_EnemyState.E_WAIT && eEnemyState != E_EnemyState.E_TRACKING
-            && nOldStiffness == cStatus.nCurrentStiffness)
-            return;
-
-        cAnimation.hit();
-
-
-        Debug.Log(v2UnitToHitUnitDir);
-        dushDetail(v2UnitToHitUnitDir, 10, 0.1f, false);
 
     }
 
     public void hitEndEvent()
     {
-        if(eEnemyState == E_EnemyState.E_ATTACK)
-        {
-            eEnemyState = E_EnemyState.E_STIFFNESS;
-            return;
-        }
-
         eEnemyState = E_EnemyState.E_WAIT;
-
     }
 
     public void attackEndEvent()
@@ -351,11 +352,11 @@ public class NomalEnemy : UnitEnemyBase
         if (m_fStiffnessTime >= 1.0f)
         {
             eEnemyState = E_EnemyState.E_TRACKING;
+            m_srModel.color = Color.white;
             m_cAnimation.trigger("movement");
             return;
         }
             
-
     }
 
     private void recallEvent()

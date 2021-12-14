@@ -549,7 +549,7 @@ MonoBehaviour:
     m_fDushTime: 0
     m_fDushStamina: 0
     m_fGodTime: 0
-    m_nMaxStiffness: 5
+    m_nMaxStiffness: 1
   m_srModel: {fileID: 1416292361044121834}
   m_cUnitGrip: {fileID: 1416292362366412239}
   m_cDush: {fileID: 8271747892240849154}
