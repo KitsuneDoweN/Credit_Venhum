@@ -50,9 +50,6 @@ public class WeaponBase : MonoBehaviour
 
 
 
-    private string m_strAttackTrigger;
-
-
 
     public LayerMask maskTarget
     {
@@ -83,13 +80,9 @@ public class WeaponBase : MonoBehaviour
 
     protected string strAttackTrigger
     {
-        set
-        {
-            m_strAttackTrigger = value;
-        }
         get
         {
-            return m_strAttackTrigger;
+            return cWeaponData.strTriggerName;
         }
     }
 

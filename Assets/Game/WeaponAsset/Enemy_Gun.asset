@@ -19,4 +19,5 @@ MonoBehaviour:
       m_nDamge: 1
   m_fCoolTime: 3.5
   m_fGripRange: 1.5
+  m_strTriggerName: shoot
   m_eType: 1

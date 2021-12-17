@@ -19,4 +19,5 @@ MonoBehaviour:
       m_nDamge: 1
   m_fCoolTime: 0
   m_fGripRange: 1
+  m_strTriggerName: axe
   m_eType: 0

@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 5689073691015574312}
   - component: {fileID: 5689073691015574319}
   - component: {fileID: 5689073691015574318}
+  - component: {fileID: 440228038606630278}
   m_Layer: 31
   m_Name: Player_Sword
   m_TagString: Untagged
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cWeaponData: {fileID: 11400000, guid: f66873249f7d20849a59bfdae35b3f30, type: 2}
   m_cComboSystem: {fileID: 5689073691015574318}
-  m_cCoolTime: {fileID: 0}
+  m_cCoolTime: {fileID: 440228038606630278}
   m_maskTarget:
     serializedVersion: 2
     m_Bits: 64
@@ -142,6 +143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb530c7f04ab424bba9e441fbf70ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &440228038606630278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689073691015574314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbe839da3f63444b97d101c21a241b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5689073691393891058
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +215,7 @@ MonoBehaviour:
   m_trFirePoint: {fileID: 5689073691393891057}
   m_fThrowPower: 20
   m_aimmingLine: {fileID: 5495614193759258693}
+  m_bDrawHitLineEvent: 0
 --- !u!114 &5689073691393891063
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -276,8 +276,8 @@ GameObject:
   - component: {fileID: 1416292362805028699}
   - component: {fileID: 1416292362805028697}
   - component: {fileID: 1416292362805028696}
-  - component: {fileID: 1416292362805028702}
   - component: {fileID: 1424561618345958518}
+  - component: {fileID: 2569043806899156709}
   m_Layer: 31
   m_Name: EnemySowrd
   m_TagString: Untagged
@@ -337,26 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb530c7f04ab424bba9e441fbf70ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1416292362805028702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416292362805028698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e768c6a3cac703144997e10a2cac84ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_cWeaponData: {fileID: 11400000, guid: 5cc31ce529361de4ca1e768b5322bb01, type: 2}
-  m_cComboSystem: {fileID: 1416292362805028696}
-  m_cCoolTime: {fileID: 1424561618345958518}
-  m_maskTarget:
-    serializedVersion: 2
-    m_Bits: 128
-  m_nNotAttackLayer: 31
-  m_nAttackLayer: 30
 --- !u!114 &1424561618345958518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +352,28 @@ MonoBehaviour:
   m_event:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2569043806899156709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416292362805028698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e88715c95e47d643a60cba51fa2d308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cWeaponData: {fileID: 11400000, guid: 5cc31ce529361de4ca1e768b5322bb01, type: 2}
+  m_cComboSystem: {fileID: 1416292362805028696}
+  m_cCoolTime: {fileID: 1424561618345958518}
+  m_maskTarget:
+    serializedVersion: 2
+    m_Bits: 128
+  m_nNotAttackLayer: 31
+  m_nAttackLayer: 30
+  m_fMovePower: 0
+  m_fAttackActionTime: 0
 --- !u!1 &1655544517837844499
 GameObject:
   m_ObjectHideFlags: 0

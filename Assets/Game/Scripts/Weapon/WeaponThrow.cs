@@ -33,7 +33,6 @@ public class WeaponThrow : WeaponBase
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
-        strAttackTrigger = "attackThrow";
         isDrawHitLine = false;
     }
 

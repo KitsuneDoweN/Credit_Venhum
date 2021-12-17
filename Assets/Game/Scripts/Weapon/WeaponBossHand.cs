@@ -14,11 +14,7 @@ public class WeaponBossHand : WeaponBase
     public override void init(UnitBase unitBase)
     {
         base.init(unitBase);
-
-
-
         gameObject.layer = m_nNotAttackLayer;
-        strAttackTrigger = "attack";
     }
 
 

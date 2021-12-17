@@ -22,3 +22,5 @@ MonoBehaviour:
       m_nDamge: 0
   m_fCoolTime: 1
   m_fGripRange: 1
+  m_strTriggerName: throwKnif
+  m_eType: 0

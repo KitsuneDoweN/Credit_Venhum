@@ -25,6 +25,10 @@ public class WeaponData : ScriptableObject
     private float m_fGripRange;
 
     [SerializeField]
+    private string m_strTriggerName;
+
+
+    [SerializeField]
     private E_Type m_eType;
 
     public E_Type eType
@@ -64,6 +68,14 @@ public class WeaponData : ScriptableObject
         get
         {
             return m_fCoolTime;
+        }
+    }
+
+    public string strTriggerName
+    {
+        get
+        {
+            return m_strTriggerName;
         }
     }
 
