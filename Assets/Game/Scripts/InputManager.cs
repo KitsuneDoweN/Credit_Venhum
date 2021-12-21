@@ -113,7 +113,7 @@ public class InputManager : MonoBehaviour, IUpdate
 
 
         if (context.started)
-            m_cPlayer.dushAction();
+            m_cPlayer.dashAction();
     }
 
 

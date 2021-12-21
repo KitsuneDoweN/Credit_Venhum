@@ -176,15 +176,15 @@ public class PlayerUnit : UnitBase , IUpdate
 
 
 
-    public void dushAction()
+    public void dashAction()
     {
         if (!isControl)
             return;
 
-        if (fStamina < cStatus.fDushStamina)
+        if (fStamina < cStatus.fDashStamina)
             return;
 
-        fStamina -= cStatus.fDushStamina;
+        fStamina -= cStatus.fDashStamina;
 
         isLookAble = true;
 
@@ -193,10 +193,10 @@ public class PlayerUnit : UnitBase , IUpdate
 
         godMode();
 
-        dush(v2LookDir, true);
+        dash(v2LookDir, true);
     }
 
-    public void dushActionEnd()
+    public void dashActionEndEvent()
     {
         godModeEnd();
     }

@@ -66,7 +66,7 @@ MonoBehaviour:
   Path: Assets/Venhum_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637743475796742306
+  lastModified: 637756987616798637
   FileSizes:
   - Name: Desktop
     Value: 80864
@@ -110,7 +110,7 @@ MonoBehaviour:
   Path: Assets/Venhum_fmod/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 637743475796502246
+  lastModified: 637756987616779082
   FileSizes:
   - Name: Desktop
     Value: 5599456
@@ -453,7 +453,7 @@ MonoBehaviour:
   - {fileID: -8397182415451338929}
   StringsBanks:
   - {fileID: 2071452685578444909}
-  cacheTime: 637743475797272424
+  cacheTime: 637756987616857262
   cacheVersion: 10
 --- !u!114 &258251127407401329
 MonoBehaviour:
@@ -497,7 +497,7 @@ MonoBehaviour:
   Path: Assets/Venhum_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637743475796752302
+  lastModified: 637756987616808409
   FileSizes:
   - Name: Desktop
     Value: 2112
@@ -677,7 +677,7 @@ MonoBehaviour:
   Path: Assets/Venhum_fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637743475797272424
+  lastModified: 637756987616857262
   FileSizes:
   - Name: Desktop
     Value: 598976

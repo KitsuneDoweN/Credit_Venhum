@@ -92,7 +92,7 @@ public class Status
         }
     }
 
-    public float fDushStamina
+    public float fDashStamina
     {
         get
         {

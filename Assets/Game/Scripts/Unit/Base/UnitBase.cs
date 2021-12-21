@@ -270,7 +270,7 @@ public class UnitBase : MonoBehaviour
         m_cDash.dushDetail(v2Dir, fPower, fDushTime, bEndEvent);
     }
 
-    protected void dush(Vector2 v2Dir, bool bEndEvent)
+    protected void dash(Vector2 v2Dir, bool bEndEvent)
     {
         m_cDash.dush(v2Dir, bEndEvent);
     }

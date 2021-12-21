@@ -378,9 +378,9 @@ GameObject:
   - component: {fileID: 5689073691426790755}
   - component: {fileID: 5689073691426790754}
   - component: {fileID: 5689073691426790767}
-  - component: {fileID: 5689073691426790764}
   - component: {fileID: 5689073691426790765}
   - component: {fileID: 5689073691426790766}
+  - component: {fileID: 5583092193409438726}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -468,41 +468,13 @@ MonoBehaviour:
     m_nMaxStiffness: 0
   m_srModel: {fileID: 5689073691698327755}
   m_cUnitGrip: {fileID: 5689073691861872048}
-  m_cDush: {fileID: 5689073691426790764}
+  m_cDash: {fileID: 0}
   m_cAnimation: {fileID: 5689073691426790765}
   m_cImfect: {fileID: 5689073691426790766}
   m_nDefaultlayer: 7
   m_cWeapons: {fileID: 5689073691893165377}
   m_rigidbody2D: {fileID: 5689073691426790755}
   m_cSound: {fileID: 2650900131138729170}
---- !u!114 &5689073691426790764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5689073691426790761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b206021e2d76234590d2a1e85e32c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_dushEndEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5689073691426790767}
-        m_TargetAssemblyTypeName: PlayerUnit, Assembly-CSharp
-        m_MethodName: dushActionEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_fCollisionDistance: 1.2
 --- !u!114 &5689073691426790765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +511,34 @@ MonoBehaviour:
   m_fGodTick: 0.01
   m_fdieTime: 0
   m_fFreshTick: 0
+--- !u!114 &5583092193409438726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689073691426790761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c4233a618e4e5489da636524482344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dushEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5689073691426790767}
+        m_TargetAssemblyTypeName: PlayerUnit, Assembly-CSharp
+        m_MethodName: dashActionEndEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_fCollisionDistance: 0
 --- !u!1 &5689073691698327798
 GameObject:
   m_ObjectHideFlags: 0
