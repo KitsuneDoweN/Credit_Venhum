@@ -136,10 +136,10 @@ public class UnitEnemyBase : UnitBase
     }
 
 
-    public override void die()
+    public override void dieEvent()
     {
         navTrackingStop();
-        base.die();
+        base.dieEvent();
 
 
         m_dieEvent.Invoke();

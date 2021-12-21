@@ -10,6 +10,7 @@ public class UI_Dynamic : UI_View
     public override void init()
     {
         base.init();
+        m_cInterIcon.init();
     }
 
     public override void toggle(bool bToggle)

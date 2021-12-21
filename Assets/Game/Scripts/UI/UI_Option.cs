@@ -116,7 +116,7 @@ public class UI_Option : UI_View
 
         if (isToggle)
         {
-            GameManager.instance.pause();
+            GameManager.Instance.pause();
 
             m_masterVoulume.value = fMaster_Volume;
             m_musicVoulume.value = fMusic_Volume;
@@ -125,7 +125,7 @@ public class UI_Option : UI_View
         }
         else
         {
-            GameManager.instance.resume();
+            GameManager.Instance.resume();
         }
     }
 

@@ -31,7 +31,7 @@ public class Barricade : MonoBehaviour
         if (!m_bInteraction) return;
 
         if (collision.tag == "Player")
-            GameManager.instance.cInteraction = m_cInteraction;
+            GameManager.Instance.cInteraction = m_cInteraction;
 
     }
 
@@ -49,14 +49,14 @@ public class Barricade : MonoBehaviour
         if (bSkip)
             return;
       
-        GameManager.instance.nClearGrogress++;
+        GameManager.Instance.nClearGrogress++;
 
 
 
 
 
-        GameManager.instance.cInteraction = null;
-        GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(true);
-        GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.draw(m_strInteraction);
+        GameManager.Instance.cInteraction = null;
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(true);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.draw(m_strInteraction);
     }
 }

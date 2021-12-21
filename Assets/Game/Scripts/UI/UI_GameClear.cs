@@ -16,7 +16,7 @@ public class UI_GameClear : UI_View
 
     public void goTitle()
     {
-        GameManager.instance.goTitle();
+        GameManager.Instance.goTitle();
     }
 
 }

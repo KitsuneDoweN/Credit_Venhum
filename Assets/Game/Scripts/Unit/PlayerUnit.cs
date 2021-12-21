@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
-public class PlayerUnit : UnitBase
+public class PlayerUnit : UnitBase , IUpdate
 {
 
     [SerializeField]
@@ -30,7 +30,7 @@ public class PlayerUnit : UnitBase
             base.nHP = value;
 
             float fFillAmount = (float)nHP / (float)m_cStatus.nMaxHp ;
-            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_HP, fFillAmount);
+            GameManager.Instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_HP, fFillAmount);
         }
         get
         {
@@ -45,7 +45,7 @@ public class PlayerUnit : UnitBase
             base.fStamina = value;
             float fFillAmount = fStamina / m_cStatus.fMaxStamina;
             Debug.Log(fStamina + "  " + m_cStatus.fMaxStamina);
-            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_STATMINA, fFillAmount);
+            GameManager.Instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_STATMINA, fFillAmount);
         }
         get
         {
@@ -84,6 +84,8 @@ public class PlayerUnit : UnitBase
         isControl = true;
         isMoveAble = true;
         isLookAble = true;
+
+        UpdateManager.Instance.addProcesses(this);
     }
 
 
@@ -148,7 +150,7 @@ public class PlayerUnit : UnitBase
         }
         else
         {
-            die();
+            dieEvent();
         }
         
 
@@ -162,22 +164,17 @@ public class PlayerUnit : UnitBase
         base.attack();
     }
 
-    public override void die()
+    public override void dieEvent()
     {
-        base.die();
+        base.dieEvent();
         stop();
         isControl = false;
         cAnimation.die();
         Debug.Log("Die");
+        UpdateManager.Instance.removeProcesses(this);
     }
 
-    private void Update()
-    {
-        if (!isControl)
-            return;
 
-        movementUpdate();
-    }
 
     public void dushAction()
     {
@@ -234,6 +231,13 @@ public class PlayerUnit : UnitBase
         }
     }
 
+    public string id
+    {
+        get
+        {
+            return gameObject.name;
+        }
+    }
 
     public void stop()
     {
@@ -241,4 +245,11 @@ public class PlayerUnit : UnitBase
         movementUpdate();
     }
 
+    public void updateProcesses()
+    {
+        if (!isControl)
+            return;
+
+        movementUpdate();
+    }
 }

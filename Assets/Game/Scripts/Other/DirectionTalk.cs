@@ -17,8 +17,8 @@ public class DirectionTalk : MonoBehaviour
     public void directionStart()
     {
 
-        GameManager.instance.cInteraction = m_cInteraction;
-        GameManager.instance.cInteraction.interactionEvent.Invoke();
+        GameManager.Instance.cInteraction = m_cInteraction;
+        GameManager.Instance.cInteraction.interactionEvent.Invoke();
     }
 
 
@@ -27,18 +27,18 @@ public class DirectionTalk : MonoBehaviour
     {
 
 
-        if (GameManager.instance.nClearGrogress != 0 || !m_cTalk.talkEvnet())
+        if (GameManager.Instance.nClearGrogress != 0 || !m_cTalk.talkEvnet())
         {
-            GameManager.instance.cStageManager.cPlayer.isControl = false;
-            GameManager.instance.cUIManager.cUI_FadeInOut.fadeInOut(false, m_directionEndEvent);
-            GameManager.instance.cInteraction = null;
+            GameManager.Instance.cStageManager.cPlayer.isControl = false;
+            GameManager.Instance.cUIManager.cUI_FadeInOut.fadeInOut(false, m_directionEndEvent);
+            GameManager.Instance.cInteraction = null;
         }
     }
 
     public void directionEndEvent()
     {
 
-        GameManager.instance.cStageManager.cPlayer.isControl = true;
+        GameManager.Instance.cStageManager.cPlayer.isControl = true;
     }
 
 

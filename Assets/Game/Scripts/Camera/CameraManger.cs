@@ -79,7 +79,7 @@ public class CameraManger : MonoBehaviour
         m_v2BoundZero = (Vector2)m_camCamera.ViewportToWorldPoint(Vector2.zero) - (Vector2)transform.position;
 
 
-        setStateTrackingUnit(GameManager.instance.cStageManager.cPlayer);
+        setStateTrackingUnit(GameManager.Instance.cStageManager.cPlayer);
 
 
 
@@ -113,7 +113,7 @@ public class CameraManger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
+        if(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
         m_delCameraEvent[(int)m_eState]();
     }
 

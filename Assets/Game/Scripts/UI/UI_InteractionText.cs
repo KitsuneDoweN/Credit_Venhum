@@ -16,14 +16,14 @@ public class UI_InteractionText : MonoBehaviour
     {
         gameObject.SetActive(bToggle);
 
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME)
+        if (GameManager.Instance.eGameState != GameManager.E_GAMESTATE.E_INGAME)
             return;
 
         if (bToggle)
         {
-            GameManager.instance.cStageManager.cPlayer.stop();
+            GameManager.Instance.cStageManager.cPlayer.stop();
         }
-        GameManager.instance.cStageManager.cPlayer.isControl = !bToggle;
+        GameManager.Instance.cStageManager.cPlayer.isControl = !bToggle;
 
     }
 

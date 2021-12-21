@@ -32,7 +32,7 @@ public class BossRoom : MonoBehaviour
 
     public void roomIn(UnitBase unit)
     {
-        GameManager.instance.cStageManager.cCameraManager.setStatePivot(m_trPivot, m_fZoom);
+        GameManager.Instance.cStageManager.cCameraManager.setStatePivot(m_trPivot, m_fZoom);
         isRoomIn = true;
         m_cBoss.HandleWakeUp(unit);
     }

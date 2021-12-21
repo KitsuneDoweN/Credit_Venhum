@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class OneSound : MonoBehaviour
 {
-    [FMODUnity.EventRef]
+
+
+    //[FMODUnity.EventRef]
     [SerializeField]
-    private string m_strSound;
+    private FMODUnity.EventReference m_soundReference;
+
 
     private FMOD.Studio.EventInstance m_sound;
 
     public void init()
     {
-        m_sound = FMODUnity.RuntimeManager.CreateInstance(m_strSound);
+        m_sound = FMODUnity.RuntimeManager.CreateInstance(m_soundReference);
     }
 
 
     public void playOnce()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(m_strSound, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(m_soundReference, transform.position);
     }
 
     public void play()

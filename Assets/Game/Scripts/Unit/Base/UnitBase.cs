@@ -17,7 +17,7 @@ public class UnitBase : MonoBehaviour
     private Vector2 m_v2LookDir;
 
 
-    [SerializeField] protected Dush m_cDush;
+    [SerializeField] protected Dash m_cDash;
     [SerializeField] protected UnitAniMation m_cAnimation;
     [SerializeField] protected UnitSpriteTweenImfect m_cImfect;
 
@@ -94,7 +94,7 @@ public class UnitBase : MonoBehaviour
 
 
         m_cStatus.init();
-        m_cDush.init(this, m_cStatus.fDushPower, m_cStatus.fDushTime);
+        m_cDash.init(this, m_cStatus.fDushPower, m_cStatus.fDushTime);
         m_cAnimation.init();
         m_cImfect.init(m_srModel);
 
@@ -148,7 +148,7 @@ public class UnitBase : MonoBehaviour
 
 
 
-    public virtual void die()
+    public virtual void dieEvent()
     {
         print(gameObject.name + " is die");
     }
@@ -259,7 +259,7 @@ public class UnitBase : MonoBehaviour
 
     protected void knockBack(Vector2 v2Dir, float fPower, float fTime, bool bEndEvent)
     {
-        m_cDush.dushDetail(v2Dir, fPower, fTime, bEndEvent);
+        m_cDash.dushDetail(v2Dir, fPower, fTime, bEndEvent);
     }
 
 
@@ -267,18 +267,18 @@ public class UnitBase : MonoBehaviour
 
     public void dushDetail(Vector2 v2Dir, float fPower, float fDushTime, bool bEndEvent)
     {
-        m_cDush.dushDetail(v2Dir, fPower, fDushTime, bEndEvent);
+        m_cDash.dushDetail(v2Dir, fPower, fDushTime, bEndEvent);
     }
 
     protected void dush(Vector2 v2Dir, bool bEndEvent)
     {
-        m_cDush.dush(v2Dir, bEndEvent);
+        m_cDash.dush(v2Dir, bEndEvent);
     }
 
 
     public void dushStop()
     {
-        m_cDush.dushStop();
+        m_cDash.dushStop();
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class NomalEnemy : UnitEnemyBase
+public class NomalEnemy : UnitEnemyBase , IUpdate
 {
     [SerializeField]
     private float m_fSerchRange;
@@ -64,11 +64,14 @@ public class NomalEnemy : UnitEnemyBase
     [SerializeField]
     private bool m_bAttackingLook;
 
+    private string m_id;
+
 
     public override void init()
     {
         base.init();
 
+       
 
 
         m_cGripWeapon.init(this);
@@ -107,19 +110,24 @@ public class NomalEnemy : UnitEnemyBase
         eEnemyState = E_EnemyState.E_WAIT;
 
 
+        m_id = gameObject.name;
+
+        UpdateManager.Instance.addProcesses(this);
     }
 
-
-
-
-
-
-
-
-    public override void die()
+    public override void dieEvent()
     {
-        base.die();
+        base.dieEvent();
 
+
+        isControl = false;
+        gameObject.layer = 11;
+        m_cSerchIcon.die();
+        cAnimation.die();
+        cGripWeapon.attackDrawHit(Vector2.zero, false);
+
+
+        UpdateManager.Instance.removeProcesses(this);
     }
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
@@ -219,16 +227,7 @@ public class NomalEnemy : UnitEnemyBase
     }
 
 
-    protected void dieEvent()
-    {
-        isControl = false;
-        gameObject.layer = 11;
-        m_cSerchIcon.die();
-        cAnimation.die();
-        cGripWeapon.attackDrawHit(Vector2.zero, false);
 
-        die();
-    }
 
     public override void attack()
     {
@@ -308,18 +307,15 @@ public class NomalEnemy : UnitEnemyBase
         }
     }
 
-
-
-    private void Update()
+    public string id
     {
-        if (!isControl)
-            return;
-
-
-        m_delAI[(int)eEnemyState]();
-
+        get
+        {
+            return m_id;
+        }
 
     }
+
 
     private void waitEvent()
     {
@@ -428,7 +424,13 @@ public class NomalEnemy : UnitEnemyBase
 
         return isWallCheck;
     }
-    
+
+    public void updateProcesses()
+    {
+        if (!isControl)
+            return;
 
 
+        m_delAI[(int)eEnemyState]();
+    }
 }

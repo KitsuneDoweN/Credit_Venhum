@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{3dfebe32-7bba-4944-903d-98173d160b0d}">
+		<property name="assetPath">
+			<value>flesh_stabs_melee_weapon_02_8.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.9979138321995467</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b72444b-a930-4f94-879f-3a6d74318e23}</destination>
+		</relationship>
+	</object>
+</objects>

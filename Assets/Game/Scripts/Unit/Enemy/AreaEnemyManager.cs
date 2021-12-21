@@ -59,6 +59,7 @@ public class AreaEnemyManager : MonoBehaviour
         for (int i = 0; i < m_cAreaEnemyList.Capacity; i++)
         {
             UnitEnemyBase enemyUnit = m_trEnemys.GetChild(i).GetComponent<UnitEnemyBase>();
+            enemyUnit.name = m_trEnemys.parent.name + "_" + gameObject.name + "_" + i.ToString();
             enemyUnit.init();
             m_cAreaEnemyList.Add(enemyUnit);
         }

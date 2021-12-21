@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class InputManager : MonoBehaviour, IUpdate
 {
     private PlayerUnit m_cPlayer = null;
 
@@ -34,11 +34,21 @@ public class InputManager : MonoBehaviour
         }
     }
 
+   
 
-    public void init(PlayerUnit cPlayer)
+    public string id
     {
-        setPlayer(cPlayer);
+        get
+        {
+            return gameObject.name;
+        }
+    }
+
+    public void init()
+    {
+        m_cPlayer = null;
         m_bPushMove = false;
+        UpdateManager.Instance.addProcesses(this);
     }
 
     public void setPlayer(PlayerUnit cPlayer)
@@ -50,8 +60,8 @@ public class InputManager : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
-            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+        if (!(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
 
 
@@ -64,8 +74,8 @@ public class InputManager : MonoBehaviour
 
     public void OnNomalAttack(InputAction.CallbackContext context)
     {
-        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
-            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+        if (!(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
 
 
@@ -95,8 +105,8 @@ public class InputManager : MonoBehaviour
 
     public void OnDush(InputAction.CallbackContext context)
     {
-        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
-            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+        if (!(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
         if (!m_cPlayer.isControl)
             return;
@@ -109,8 +119,8 @@ public class InputManager : MonoBehaviour
 
     public void OnThrowAttack(InputAction.CallbackContext context)
     {
-        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
-            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+        if (!(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+            GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
 
         if (context.canceled)
@@ -138,17 +148,17 @@ public class InputManager : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (GameManager.Instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
         if (context.started)
         {
-            if (GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.getToggle())
+            if (GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.getToggle())
             {
-                GameManager.instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(false);
+                GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(false);
             }
 
-            if (GameManager.instance.cInteraction != null)
-            GameManager.instance.interActionEvent();
+            if (GameManager.Instance.cInteraction != null)
+            GameManager.Instance.interActionEvent();
 
 
 
@@ -157,20 +167,20 @@ public class InputManager : MonoBehaviour
 
     public void OnOption(InputAction.CallbackContext context)
     {
-        if (GameManager.instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
+        if (GameManager.Instance.eGameState != GameManager.E_GAMESTATE.E_INGAME) return;
 
         if (context.started)
         {
-            GameManager.instance.cUIManager.cUI_Option.toggle(!GameManager.instance.cUIManager.cUI_Option.isToggle);
+            GameManager.Instance.cUIManager.cUI_Option.toggle(!GameManager.Instance.cUIManager.cUI_Option.isToggle);
         }
     }
 
 
 
-    private void Update()
+    public void updateProcesses()
     {
-        if (!(GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
-            GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
+        if (m_cPlayer == null || !(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME ||
+    GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_CLEAR))
             return;
 
         if (m_cPlayer.isControl && isPushAttack)
@@ -178,5 +188,4 @@ public class InputManager : MonoBehaviour
             m_cPlayer.attack();
         }
     }
-
 }

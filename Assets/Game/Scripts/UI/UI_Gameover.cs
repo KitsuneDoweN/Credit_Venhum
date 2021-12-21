@@ -16,12 +16,12 @@ public class UI_Gameover : UI_View
 
     public void gameContinue()
     {
-        GameManager.instance.LoadEvent();
+        GameManager.Instance.LoadEvent();
     }
 
     public void goTiltle()
     {
-        GameManager.instance.goTitle();
+        GameManager.Instance.goTitle();
     }
 
 }

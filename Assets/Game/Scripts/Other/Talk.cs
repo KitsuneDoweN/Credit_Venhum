@@ -24,8 +24,8 @@ public class Talk : MonoBehaviour
     {
         m_bToggle = true;
 
-        GameManager.instance.cStageManager.cPlayer.stop();
-        GameManager.instance.cStageManager.cPlayer.isControl = false;
+        GameManager.Instance.cStageManager.cPlayer.stop();
+        GameManager.Instance.cStageManager.cPlayer.isControl = false;
 
 
 
@@ -33,11 +33,11 @@ public class Talk : MonoBehaviour
         {
             m_bToggle = false;
             m_nIndex = 0;
-            GameManager.instance.cStageManager.cPlayer.isControl = true;
+            GameManager.Instance.cStageManager.cPlayer.isControl = true;
         }
            
 
-        GameManager.instance.cUIManager.cUI_Talk.toggle(m_bToggle);
+        GameManager.Instance.cUIManager.cUI_Talk.toggle(m_bToggle);
 
         if (!m_bToggle)
         {
@@ -47,7 +47,7 @@ public class Talk : MonoBehaviour
 
 
         TalkData cData = m_cTalkDatas[m_nIndex];
-        GameManager.instance.cUIManager.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);
+        GameManager.Instance.cUIManager.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);
 
         m_nIndex++;
 

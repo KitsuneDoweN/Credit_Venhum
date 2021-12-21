@@ -8,19 +8,29 @@ namespace FMODUnity
 {
     public class PlatformDefault : Platform
     {
+        public const string ConstIdentifier = "default";
+
         public PlatformDefault()
         {
             Identifier = ConstIdentifier;
         }
 
-        public const string ConstIdentifier = "default";
-
         public override string DisplayName { get { return "Default"; } }
-        public override void DeclareUnityMappings(Settings settings) { }
+        public override void DeclareRuntimePlatforms(Settings settings) { }
 #if UNITY_EDITOR
+        public override IEnumerable<BuildTarget> GetBuildTargets()
+        {
+            yield break;
+        }
+
         public override Legacy.Platform LegacyIdentifier { get { return Legacy.Platform.Default; } }
 
-        protected override IEnumerable<string> GetRelativeBinaryPaths(BuildTarget buildTarget, bool allVariants, string suffix)
+        protected override BinaryAssetFolderInfo GetBinaryAssetFolder(BuildTarget buildTarget)
+        {
+            return null;
+        }
+
+        protected override IEnumerable<FileRecord> GetBinaryFiles(BuildTarget buildTarget, bool allVariants, string suffix)
         {
             yield break;
         }

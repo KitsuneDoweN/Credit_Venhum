@@ -18,12 +18,12 @@ public class UI_Title : UI_View
 
     public void gameStart()
     {
-        GameManager.instance.goIngame();
+        GameManager.Instance.goIngame();
     }
 
     public void option()
     {
-        GameManager.instance.cUIManager.cUI_Option.toggle(true);
+        GameManager.Instance.cUIManager.cUI_Option.toggle(true);
     }
 
 

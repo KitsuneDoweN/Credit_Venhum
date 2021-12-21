@@ -21,7 +21,7 @@ public class UnitTalk : MonoBehaviour
         if(collision.tag == "Player")
         {
             m_bToggle = true;
-            GameManager.instance.cInteraction = m_cInteraction;
+            GameManager.Instance.cInteraction = m_cInteraction;
         }
     }
 
@@ -30,7 +30,7 @@ public class UnitTalk : MonoBehaviour
         if (collision.tag == "Player")
         {
             m_bToggle = false;
-            GameManager.instance.cInteraction = null;
+            GameManager.Instance.cInteraction = null;
         }
     }
 
@@ -43,7 +43,7 @@ public class UnitTalk : MonoBehaviour
     {
         m_cTalk = cTalk;
         if(m_bToggle)
-            GameManager.instance.cInteraction = m_cInteraction; ;
+            GameManager.Instance.cInteraction = m_cInteraction; ;
     }
 
 }

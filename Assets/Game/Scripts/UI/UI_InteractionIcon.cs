@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_InteractionIcon : MonoBehaviour
+public class UI_InteractionIcon : MonoBehaviour, IUpdate
 {
     [SerializeField] private Image m_icon;
     
@@ -23,6 +23,18 @@ public class UI_InteractionIcon : MonoBehaviour
         }
     }
 
+    public void init()
+    {
+        UpdateManager.Instance.addProcesses(this);
+    }
+
+    public string id
+    {
+        get
+        {
+            return gameObject.name;
+        }
+    }
 
     public void drawOn(Vector3 v3GamePos)
     {
@@ -41,12 +53,12 @@ public class UI_InteractionIcon : MonoBehaviour
     private void draw()
     {
         m_icon.rectTransform.anchoredPosition =
-            GameManager.instance.cStageManager.cCameraManager.mainCam.WorldToScreenPoint(v3DrawGamePos);
+            GameManager.Instance.cStageManager.cCameraManager.mainCam.WorldToScreenPoint(v3DrawGamePos);
     }
 
-    private void Update()
+    public void  updateProcesses()
     {
-        if (m_bDraw && GameManager.instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
+        if (m_bDraw && GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
             draw();
     }
 }

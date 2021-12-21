@@ -20,7 +20,7 @@ public class AreaManager : MonoBehaviour
 
         for (int i = 0; i < m_cAreaEnemys.Length; i++)
         {
-            if (GameManager.instance.nClearGrogress > m_cAreaEnemys[i].nClear)
+            if (GameManager.Instance.nClearGrogress > m_cAreaEnemys[i].nClear)
             {
                 m_cAreaEnemys[i].skip();
             }

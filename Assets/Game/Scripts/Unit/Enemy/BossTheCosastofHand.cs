@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class BossTheCosastofHand : UnitBase
+public class BossTheCosastofHand : UnitBase, IUpdate
 {
     private enum E_BossState
     {
@@ -151,6 +151,13 @@ public class BossTheCosastofHand : UnitBase
         }
     }
 
+    public string id
+    {
+        get
+        {
+            return gameObject.name;
+        }
+    }
 
     [SerializeField]
     private int nBerserkerHp;
@@ -257,7 +264,7 @@ public class BossTheCosastofHand : UnitBase
 
         isControl = false;
 
-
+        UpdateManager.Instance.addProcesses(this);
 
        
     }
@@ -270,8 +277,8 @@ public class BossTheCosastofHand : UnitBase
         isMoveAble = false;
 
 
-        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(true);
-        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(true);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
 
 
         eBossState = E_BossState.E_WAIT;
@@ -281,7 +288,7 @@ public class BossTheCosastofHand : UnitBase
     {
         base.hit(unit, cAttackData);
 
-        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
 
         if (!isBerserkerMode && nHP <= nBerserkerHp)
         {
@@ -540,24 +547,15 @@ public class BossTheCosastofHand : UnitBase
 
 
 
-        GameManager.instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(false);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(false);
 
         m_srModel.sprite = m_BrokenSprite;
 
-        GameManager.instance.eGameState = GameManager.E_GAMESTATE.E_CLEAR;
+        GameManager.Instance.eGameState = GameManager.E_GAMESTATE.E_CLEAR;
+
+        UpdateManager.Instance.removeProcesses(this);
     }
 
-
-
-
-
-    private void Update()
-    {
-        if (!isControl)
-            return;
-
-        m_delAI[(int)eBossState]();
-    }
 
     private void handIdleAnimation()
     {
@@ -592,5 +590,11 @@ public class BossTheCosastofHand : UnitBase
         }
     }
 
+    public void updateProcesses()
+    {
+        if (!isControl)
+            return;
 
+        m_delAI[(int)eBossState]();
+    }
 }

@@ -29,11 +29,11 @@ public class SecondaryWeaponUIConnetter : MonoBehaviour
         while (m_cWeapon.cCoolTime.isCoolTime)
         {
             fFillAmount = m_cWeapon.cCoolTime.fTick / m_cWeapon.cWeaponData.fCoolTime;
-            GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(
+            GameManager.Instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(
                 UI_PlayerInfo.E_INFO.E_SECONDARYWEAPON, fFillAmount);
             yield return null;
         }
-        GameManager.instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(
     UI_PlayerInfo.E_INFO.E_SECONDARYWEAPON, 1.0f);
         m_ieCoolTimeEvent = null;
     }

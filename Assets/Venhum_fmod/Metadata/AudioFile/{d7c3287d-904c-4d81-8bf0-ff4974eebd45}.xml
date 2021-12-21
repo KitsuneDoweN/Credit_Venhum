@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d7c3287d-904c-4d81-8bf0-ff4974eebd45}">
+		<property name="assetPath">
+			<value>Metal Weapon Swing 1_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b72444b-a930-4f94-879f-3a6d74318e23}</destination>
+		</relationship>
+	</object>
+</objects>
