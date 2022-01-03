@@ -48,13 +48,6 @@ public class UnitEnemyBase : UnitBase
         }
     }
 
-    private void Start()
-    {
-        m_navAgent.speed = m_cStatus.fSpeed;
-        m_navAgent.updateRotation = false;
-        m_navAgent.updateUpAxis = false;
-    }
-
 
     public override void init()
     {
@@ -64,6 +57,10 @@ public class UnitEnemyBase : UnitBase
         isMoveAble = true;
         isLookAble = true;
 
+
+        m_navAgent.speed = m_cStatus.fSpeed;
+        m_navAgent.updateRotation = false;
+        m_navAgent.updateUpAxis = false;
 
 
         m_cGripWeapon = cGrip.GetComponentInChildren<WeaponBase>();

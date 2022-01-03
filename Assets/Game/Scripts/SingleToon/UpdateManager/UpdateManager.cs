@@ -7,11 +7,12 @@ public class UpdateManager : SingleToon<UpdateManager>
 {
     private Dictionary<string,IUpdate> m_updateProcessesDictionAry = new Dictionary<string, IUpdate>();
 
-    public void Awake()
+
+    private void Awake()
     {
         init();
-
     }
+
 
     private void Update()
     {

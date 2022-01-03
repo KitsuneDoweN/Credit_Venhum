@@ -468,7 +468,7 @@ MonoBehaviour:
     m_nMaxStiffness: 0
   m_srModel: {fileID: 5689073691698327755}
   m_cUnitGrip: {fileID: 5689073691861872048}
-  m_cDash: {fileID: 0}
+  m_cDash: {fileID: 5583092193409438726}
   m_cAnimation: {fileID: 5689073691426790765}
   m_cImfect: {fileID: 5689073691426790766}
   m_nDefaultlayer: 7

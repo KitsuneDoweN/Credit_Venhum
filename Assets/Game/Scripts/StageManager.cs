@@ -35,10 +35,8 @@ public class StageManager : MonoBehaviour
 
     public void init()
     {
-        
-
         m_cPlayer.init();
-        cAreaManager.init();
+        //cAreaManager.init();
         m_cCameraManager.init(m_cPlayer.transform);
 
     }

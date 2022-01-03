@@ -201,11 +201,11 @@ public class GameManager : SingleToon<GameManager>
 
         bgmSound.play();
 
-        cUIManager.cUI_FadeInOut.toggle(true);
-        cUIManager.cUI_FadeInOut.draw(true);
+        cUIManager.cUI_FadeInOut.toggle(false);
+        //cUIManager.cUI_FadeInOut.draw(true);
 
-        cStageManager.cPlayer.isControl = false;
-        cStageManager.cDirectionTalk.directionStart();
+        cStageManager.cPlayer.isControl = true;
+       // cStageManager.cDirectionTalk.directionStart();
     }
 
 

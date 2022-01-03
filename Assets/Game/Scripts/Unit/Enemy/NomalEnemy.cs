@@ -66,6 +66,11 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
 
     private string m_id;
 
+    private void Start()
+    {
+        init();
+    }
+
 
     public override void init()
     {
