@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class NomalEnemy : UnitEnemyBase , IUpdate
+public class NomalEnemy : UnitEnemyBase, IUpdate
 {
     [SerializeField]
     private float m_fSerchRange;
@@ -24,6 +24,9 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
     private float m_fWallSensorDistance;
     [SerializeField]
     private LayerMask m_wallLayer;
+
+
+
 
     private enum E_EnemyState
     {
@@ -49,10 +52,6 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
     private delegate void EnemyEvent();
     private EnemyEvent[] m_delAI;
 
-
-
-
-
     private float m_fTrackingTime;
     private float m_fStiffnessTime;
 
@@ -64,19 +63,12 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
     [SerializeField]
     private bool m_bAttackingLook;
 
-    private string m_id;
-
-    private void Start()
-    {
-        init();
-    }
+    
 
 
     public override void init()
     {
         base.init();
-
-       
 
 
         m_cGripWeapon.init(this);
@@ -87,15 +79,12 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
         cGrip.gripUpdate(v2LookDir);
 
 
-
         m_bDelayImfect = false;
 
         m_cSerchIcon.init();
 
         m_v2RecallPoint = v2UnitPos;
 
-
-        isControl = false;
 
         m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
 
@@ -115,8 +104,10 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
         eEnemyState = E_EnemyState.E_WAIT;
 
 
-        m_id = gameObject.name;
+        isControl = false;
 
+
+        
         UpdateManager.Instance.addProcesses(this);
     }
 
@@ -127,12 +118,12 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
 
         isControl = false;
         gameObject.layer = 11;
-        m_cSerchIcon.die();
+        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_DIE);
         cAnimation.die();
         cGripWeapon.attackDrawHit(Vector2.zero, false);
 
 
-        UpdateManager.Instance.removeProcesses(this);
+        Invoke("spawnDisable", 1.0f);
     }
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
@@ -316,7 +307,7 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
     {
         get
         {
-            return m_id;
+            return gameObject.name;
         }
 
     }
@@ -438,4 +429,30 @@ public class NomalEnemy : UnitEnemyBase , IUpdate
 
         m_delAI[(int)eEnemyState]();
     }
+
+
+
+    private void OnDestroy()
+    {
+        UpdateManager.Instance.removeProcesses(this);
+    }
+
+    protected override void spawnDisable()
+    {
+        base.spawnDisable();
+    }
+
+    public override void handleSpawn(Spawner cSpawner)
+    {
+        base.handleSpawn(cSpawner);
+        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
+        gameObject.layer = 6;
+        m_cGripWeapon.reset();
+
+
+        eEnemyState = E_EnemyState.E_WAIT;
+    }
+
+
+
 }

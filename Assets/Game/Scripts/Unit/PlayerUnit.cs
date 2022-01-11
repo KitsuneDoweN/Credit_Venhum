@@ -44,7 +44,7 @@ public class PlayerUnit : UnitBase , IUpdate
         {
             base.fStamina = value;
             float fFillAmount = fStamina / m_cStatus.fMaxStamina;
-            Debug.Log(fStamina + "  " + m_cStatus.fMaxStamina);
+            //Debug.Log(fStamina + "  " + m_cStatus.fMaxStamina);
             GameManager.Instance.cUIManager.cUI_InGame.cUI_PlayerInfo.draw(UI_PlayerInfo.E_INFO.E_STATMINA, fFillAmount);
         }
         get
@@ -85,6 +85,7 @@ public class PlayerUnit : UnitBase , IUpdate
         isMoveAble = true;
         isLookAble = true;
 
+        
         UpdateManager.Instance.addProcesses(this);
     }
 
@@ -133,6 +134,10 @@ public class PlayerUnit : UnitBase , IUpdate
         {
             cGripWeapon.reset();
             stop();
+
+            godMode();
+
+
 
             if (unit.cGripWeapon.cWeaponData.eType == WeaponData.E_Type.E_ALMOST)
             {
@@ -251,5 +256,10 @@ public class PlayerUnit : UnitBase , IUpdate
             return;
 
         movementUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        UpdateManager.Instance.removeProcesses(this);
     }
 }

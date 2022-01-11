@@ -59,4 +59,9 @@ public class Utility
 
         return fResult;
     }
+
+    public static float convertObjectData(object value)
+    {
+        return float.Parse(value.ToString());
+    }
 }

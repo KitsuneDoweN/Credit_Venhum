@@ -18,17 +18,20 @@ public class UpdateManager : SingleToon<UpdateManager>
     {
         foreach(IUpdate update in m_updateProcessesDictionAry.Values)
         {
+            
             update.updateProcesses();
         }
     }
 
     public void addProcesses(IUpdate processes)
     {
+        Debug.Log("Update Processes " + processes.id);
         m_updateProcessesDictionAry.Add(processes.id, processes);
     }
 
     public void removeProcesses(IUpdate processes)
     {
+        Debug.Log("Remove Processes " + processes.id);
         m_updateProcessesDictionAry.Remove(processes.id);
     }
 

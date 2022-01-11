@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManger : MonoBehaviour
+public class CameraManger : MonoBehaviour, IUpdate
 {
     [SerializeField]
     private CameraClamp m_CamClamp;
@@ -54,6 +54,8 @@ public class CameraManger : MonoBehaviour
     private E_CameraState m_eState;
 
 
+
+
     public void init(Transform target)
     {
         m_delCameraEvent = new CameraEvent[(int)E_CameraState.E_TOTAL];
@@ -83,6 +85,7 @@ public class CameraManger : MonoBehaviour
 
 
 
+        UpdateManager.Instance.addProcesses(this);
     }
 
 
@@ -111,11 +114,6 @@ public class CameraManger : MonoBehaviour
        
     }
 
-    private void FixedUpdate()
-    {
-        if(GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
-        m_delCameraEvent[(int)m_eState]();
-    }
 
 
     private void setPos(Vector2 v2Pos)
@@ -219,11 +217,32 @@ public class CameraManger : MonoBehaviour
 
     }
 
+    public void updateProcesses()
+    {
+        if (GameManager.Instance.eGameState == GameManager.E_GAMESTATE.E_INGAME)
+            m_delCameraEvent[(int)m_eState]();
+    }
+
+
+
     public Camera mainCam
     {
         get
         {
             return m_camCamera;
         }
+    }
+
+    public string id
+    {
+        get
+        {
+            return gameObject.name;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        UpdateManager.Instance.removeProcesses(this);
     }
 }

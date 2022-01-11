@@ -981,6 +981,64 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &6641128072572915148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312456338367259236}
+  - component: {fileID: 2802579205069731477}
+  - component: {fileID: 7609932200879413573}
+  m_Layer: 0
+  m_Name: SaveManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &312456338367259236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641128072572915148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7262706217792234200}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2802579205069731477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641128072572915148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa37b52758a091f4e989d22840e86194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cPlayerSaveData: {fileID: 7609932200879413573}
+--- !u!114 &7609932200879413573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641128072572915148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9d87e16428a07469d1ac353e48970a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_strFileName: PlayerSaveData
 --- !u!1 &7262706216259079927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,6 +4563,7 @@ Transform:
   - {fileID: 7262706218186834208}
   - {fileID: 7262706216630042638}
   - {fileID: 8078297450313723480}
+  - {fileID: 312456338367259236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4523,6 +4582,7 @@ MonoBehaviour:
   m_UIManager: {fileID: 7262706216630042626}
   m_cInputManager: {fileID: 7262706218186834210}
   m_cBgmSound: {fileID: 8771994128234526759}
+  m_cSaveManager: {fileID: 2802579205069731477}
   m_bTestGame: 1
 --- !u!1 &7262706217822666261
 GameObject:

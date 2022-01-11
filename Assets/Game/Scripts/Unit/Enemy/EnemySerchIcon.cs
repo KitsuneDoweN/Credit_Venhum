@@ -6,7 +6,7 @@ public class EnemySerchIcon : MonoBehaviour
 {
     public enum E_type
     { 
-        E_NONE = -1, E_ON, E_OFF
+        E_NONE = -1, E_ON, E_OFF, E_DIE
     }
 
 
@@ -17,22 +17,31 @@ public class EnemySerchIcon : MonoBehaviour
 
     public void drawIcon(E_type eType)
     {
+        if(eType == E_type.E_DIE)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        gameObject.SetActive(true);
+
         if (m_goDraw != null)
             m_goDraw.SetActive(false);
 
         m_goDraw = m_goIcons[(int)eType];
 
         m_goDraw.SetActive(true);
+
+
+
     }
 
-    public void die()
-    {
-        gameObject.SetActive(false);
-    }
+
 
     public void init()
     {
-        foreach(GameObject go in m_goIcons)
+
+
+        foreach (GameObject go in m_goIcons)
         {
             go.SetActive(false);
         }

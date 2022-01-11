@@ -208,6 +208,10 @@ public class UnitBase : MonoBehaviour
 
     public Vector2 v2UnitPos
     {
+        set
+        {
+            transform.position = value;
+        }
         get
         {
             return (Vector2)transform.position;
@@ -404,6 +408,11 @@ public class UnitBase : MonoBehaviour
         {
             return m_cStatus.nHp;
         }
+    }
+
+    public void resetStatus()
+    {
+        m_cStatus.init();
     }
 
 

@@ -11,7 +11,7 @@ public class GameManager : SingleToon<GameManager>
     [SerializeField] private UIManager m_UIManager;
     [SerializeField] private InputManager m_cInputManager;
     [SerializeField] private OneSound m_cBgmSound;
-
+    [SerializeField] private SaveManger m_cSaveManager;
 
     private StageManager m_cStageManger;
 
@@ -24,6 +24,7 @@ public class GameManager : SingleToon<GameManager>
     private string m_id;
 
 
+
     public enum E_GAMESTATE
     {
         E_NONE = -1, E_TITLE, E_LODE, E_INGAME, E_OVER, E_CLEAR, E_TOTAL,
@@ -32,12 +33,23 @@ public class GameManager : SingleToon<GameManager>
 
     private E_GAMESTATE m_eGameState;
 
-    private enum E_GAMESCENE
+    public enum E_GAMESCENE
     {
-        E_NONE = -1, E_TITLE, E_STAGE_0
+        E_NONE = -1, E_TITLE, E_STAGE_CITY, E_STAGE_DUGGEN_BEGINE,
+        E_STAGE_DUGGEN_LOOPTYPE0, E_STAGE_DUGGEN_LOOPTYPE1,
+        E_STAGE_DUGGEN_ROOST, E_STAGE_DUGGEN_BOSSROOM
     }
 
     private E_GAMESCENE m_eNextGameScene;
+
+    private int m_nStage;
+    public int nStage
+    {
+        get
+        {
+            return m_nStage;
+        }
+    }
 
 
     public E_GAMESTATE eGameState
@@ -98,7 +110,7 @@ public class GameManager : SingleToon<GameManager>
         m_cBgmSound.init();
         cUIManager.init();
         m_cInputManager.init();
-
+        m_cSaveManager.init();
 
         if (!m_bTestGame)
             eGameState = E_GAMESTATE.E_TITLE;
@@ -155,6 +167,12 @@ public class GameManager : SingleToon<GameManager>
         cUIManager.cUI_Title.toggle(true);
     }
 
+    public void NextStage(E_GAMESCENE eStage)
+    {
+        m_eNextGameScene = eStage;
+        eGameState = E_GAMESTATE.E_LODE;
+    }
+
     public void LoadEvent()
     {
         StartCoroutine(loadProcess());
@@ -170,6 +188,8 @@ public class GameManager : SingleToon<GameManager>
 
         AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eNextGameScene, LoadSceneMode.Single);
         yield return sceneLoadAsync;
+
+
 
         yield return new WaitForSeconds(1.0f);
 
@@ -191,6 +211,7 @@ public class GameManager : SingleToon<GameManager>
     }
 
 
+
     protected void inGameEvent()
     {
         cUIManager.allClear();
@@ -202,10 +223,10 @@ public class GameManager : SingleToon<GameManager>
         bgmSound.play();
 
         cUIManager.cUI_FadeInOut.toggle(false);
-        //cUIManager.cUI_FadeInOut.draw(true);
+        
 
         cStageManager.cPlayer.isControl = true;
-       // cStageManager.cDirectionTalk.directionStart();
+       
     }
 
 
@@ -251,7 +272,15 @@ public class GameManager : SingleToon<GameManager>
 
     public void goIngame()
     {
-        m_eNextGameScene = E_GAMESCENE.E_STAGE_0;
+        int nStage = cSaveManager.getStage();
+
+        if (nStage == 0)
+            m_eNextGameScene = E_GAMESCENE.E_STAGE_CITY;
+        else
+        {
+            m_eNextGameScene = E_GAMESCENE.E_STAGE_DUGGEN_ROOST;
+        }
+
         eGameState = E_GAMESTATE.E_LODE;
     }
 
@@ -329,8 +358,17 @@ public class GameManager : SingleToon<GameManager>
         }
     }
 
+    public SaveManger cSaveManager
+    {
+        get
+        {
+            return m_cSaveManager;
+        }
+    }
 
-
-
+    public bool isPlayerDataLoad()
+    {
+        return nStage == cSaveManager.getStage();
+    }
 
 }

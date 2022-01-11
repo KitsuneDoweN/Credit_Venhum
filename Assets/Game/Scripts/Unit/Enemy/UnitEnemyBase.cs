@@ -20,6 +20,9 @@ public class UnitEnemyBase : UnitBase
 
     [SerializeField] private UnityEvent m_dieEvent;
 
+    protected Spawner m_cSpawneSpawner;
+
+
 
 
     public override Vector2 v2Velocity
@@ -67,11 +70,6 @@ public class UnitEnemyBase : UnitBase
         m_cGripWeapon.init(this);
 
         cGrip.init(cGripWeapon.cWeaponData.fGripRange);
-
-
-
-
-
         cAnimation.init();
     }
 
@@ -81,10 +79,9 @@ public class UnitEnemyBase : UnitBase
         base.hit(unit, cAttackDatas);
     }
 
-    public virtual void handleSpawn()
-    {
-        init();
-    }
+
+
+
 
     protected bool isStop
     {
@@ -94,8 +91,11 @@ public class UnitEnemyBase : UnitBase
         }
     }
 
+    public string id => throw new System.NotImplementedException();
+
     protected virtual void navTrackingStop()
     {
+        Debug.Log(gameObject.name);
         m_navAgent.isStopped = true;
 
         v2NextMoveDir = Vector2.zero;
@@ -167,5 +167,29 @@ public class UnitEnemyBase : UnitBase
         movementUpdate();
     }
 
+    private void OnDisable()
+    {
+        isControl = false;
+        setTarget(null);
+        navTrackingStop();
+    }
+
+    protected virtual void spawnDisable()
+    {
+        gameObject.SetActive(false);
+        GameManager.Instance.cStageManager.cStageObjectPool.returnObject(gameObject);
+        m_cSpawneSpawner.unitDie();
+    }
+
+    public virtual void handleSpawn(Spawner cSpawner)
+    {
+        m_cSpawneSpawner = cSpawner;
+        resetStatus();
+
+        isMoveAble = true;
+        isLookAble = true;
+
+        isControl = true;
+    }
 
 }
