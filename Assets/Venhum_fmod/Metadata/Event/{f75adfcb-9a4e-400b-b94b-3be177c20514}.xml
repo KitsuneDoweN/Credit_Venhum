@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.01.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{f75adfcb-9a4e-400b-b94b-3be177c20514}">
 		<property name="name">
 			<value>Music</value>
@@ -36,6 +36,7 @@
 		</relationship>
 		<relationship name="banks">
 			<destination>{ba8a44b1-1577-4704-8e59-6ba9fffd3173}</destination>
+			<destination>{21ef6766-c4c9-41e3-950e-b0f50a815be9}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{f1a3fbdf-5ecd-42fc-a13f-62c7d0333690}">
@@ -59,7 +60,7 @@
 			<destination>{048c03b7-8e6f-4e90-bbf9-59b728ab5aac}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0943252b-4a6b-4449-bd09-cf6948719033}</destination>
+			<destination>{fb2aeeba-5110-4cf1-81b2-7be06b8c5a07}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{139ac718-0d33-4f4a-be24-cb1c1fb06394}" />

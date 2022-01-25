@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class UnitSound : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    [SerializeField]
-    private string m_strHit;
 
-    [FMODUnity.EventRef]
     [SerializeField]
-    private string m_strDeath;
+    private FMODUnity.EventReference m_strHit;
 
-    [FMODUnity.EventRef]
     [SerializeField]
-    private string[] m_strAttack;
+    private FMODUnity.EventReference m_strDeath;
 
-    [FMODUnity.EventRef]
     [SerializeField]
-    private string m_strFootStep;
+    private FMODUnity.EventReference[] m_strAttack;
+
+    [SerializeField]
+    private FMODUnity.EventReference m_strFootStep;
 
     private FMOD.Studio.EventInstance[] m_attack;
 

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
-public class BossTheCosastofHand : UnitBase, IUpdate
+public class BossTheCosastofHand : UnitBossBase, IUpdate
 {
     private enum E_BossState
     {
@@ -122,8 +123,6 @@ public class BossTheCosastofHand : UnitBase, IUpdate
 
     private float m_fTick;
 
-    private UnitBase m_cPlayer;
-
     private Tween m_attackTween;
 
     private Vector2 m_v2GripReturnPoint;
@@ -168,8 +167,7 @@ public class BossTheCosastofHand : UnitBase, IUpdate
     private Vector2 m_v2HandColliderSizeDefault;
 
 
-    [SerializeField]
-    private Sprite m_bossIcon;
+
 
 
     [SerializeField]
@@ -184,10 +182,7 @@ public class BossTheCosastofHand : UnitBase, IUpdate
     private SpriteRenderer m_srGirpWeapon;
 
 
-    private void Start()
-    {
-        init();
-    }
+
 
     private void attackTimeSetting()
     {
@@ -269,17 +264,9 @@ public class BossTheCosastofHand : UnitBase, IUpdate
        
     }
 
-    public void HandleWakeUp(UnitBase cPlayer)
+    public override void handleWakeUp(UnitBase cPlayer)
     {
-        m_cPlayer = cPlayer;
-        isControl = true;
-        isLookAble = true;
-        isMoveAble = false;
-
-
-        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.toggle(true);
-        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
-
+        base.handleWakeUp(cPlayer);
 
         eBossState = E_BossState.E_WAIT;
     }
@@ -288,7 +275,7 @@ public class BossTheCosastofHand : UnitBase, IUpdate
     {
         base.hit(unit, cAttackData);
 
-        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp);
+        GameManager.Instance.cUIManager.cUI_InGame.cUI_BossHp.draw(m_bossIcon, nHP, m_cStatus.nMaxHp, m_cStatus.strName);
 
         if (!isBerserkerMode && nHP <= nBerserkerHp)
         {
@@ -551,10 +538,13 @@ public class BossTheCosastofHand : UnitBase, IUpdate
 
         m_srModel.sprite = m_BrokenSprite;
 
-        GameManager.Instance.eGameState = GameManager.E_GAMESTATE.E_CLEAR;
+        m_cdeathProducion.productionAction();
 
-        UpdateManager.Instance.removeProcesses(this);
+
+
     }
+
+    
 
 
     private void handIdleAnimation()
@@ -596,5 +586,10 @@ public class BossTheCosastofHand : UnitBase, IUpdate
             return;
 
         m_delAI[(int)eBossState]();
+    }
+
+    private void OnDestroy()
+    {
+        UpdateManager.Instance.removeProcesses(this);
     }
 }

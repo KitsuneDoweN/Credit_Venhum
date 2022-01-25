@@ -6,6 +6,7 @@ public class SpawnEntity
 {
     [SerializeField]
     private string m_strEntityID;
+    [SerializeField]
     private int m_nAmount;
 
     public string strEntiyID

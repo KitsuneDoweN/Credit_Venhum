@@ -322,7 +322,6 @@ public class UnitBase : MonoBehaviour
         set
         {
             cStatus.fStamina = value;
-            cStatus.fStamina = Mathf.Clamp(fStamina, 0.0f, cStatus.fMaxStamina);
 
             if (cStatus.fStamina < cStatus.fMaxStamina)
             {
@@ -415,6 +414,16 @@ public class UnitBase : MonoBehaviour
         m_cStatus.init();
     }
 
-
+    public virtual float fSpeed
+    {
+        set
+        {
+            m_cStatus.fSpeed = value;
+        }
+        get
+        {
+            return m_cStatus.fSpeed;
+        }
+    }
 
 }

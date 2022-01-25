@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 [Serializable]
 public class Status
 {
@@ -14,7 +13,7 @@ public class Status
     {
         set
         {
-            m_nHp = value;
+            m_nHp = Mathf.Clamp(value, 0, m_nMaxHp);
         }
 
         get
@@ -72,6 +71,8 @@ public class Status
 
     [SerializeField] private int m_nMaxStiffness;
 
+    [SerializeField] private string m_strName;
+
     private int m_nCurrentStiffness;
 
 
@@ -112,7 +113,7 @@ public class Status
     {
         set
         {
-            m_fStamina = value;
+            m_fStamina = Mathf.Clamp(value, 0.0f, m_fMaxStamina);
         }
         get
         {
@@ -148,7 +149,8 @@ public class Status
     {
         set
         {
-            m_nCurrentStiffness = value;
+            m_nCurrentStiffness = Mathf.Clamp(value, 0, m_nMaxStiffness);
+
         }
         get
         {
@@ -172,6 +174,14 @@ public class Status
         get
         {
             return m_fGodTime;
+        }
+    }
+
+    public string strName
+    {
+        get
+        {
+            return m_strName;
         }
     }
 

@@ -46,4 +46,8 @@ public class SpawnData
         m_nWave = nWave;
     }
 
+    public void setIndex(int nIndex)
+    {
+        m_nSpawnIndex = nIndex;
+    }
 }

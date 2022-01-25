@@ -10,7 +10,7 @@ public class BossRoom : MonoBehaviour
     [SerializeField]
     private float m_fZoom;
     [SerializeField]
-    private BossTheCosastofHand m_cBoss;
+    private UnitBossBase m_cBoss;
 
     public bool isRoomIn
     {
@@ -25,16 +25,20 @@ public class BossRoom : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+
+    public void init()
     {
         m_bRoomIn = false;
+        m_cBoss.init();
     }
+
+
 
     public void roomIn(UnitBase unit)
     {
         GameManager.Instance.cStageManager.cCameraManager.setStatePivot(m_trPivot, m_fZoom);
         isRoomIn = true;
-        m_cBoss.HandleWakeUp(unit);
+        m_cBoss.handleWakeUp(unit);
     }
 
 

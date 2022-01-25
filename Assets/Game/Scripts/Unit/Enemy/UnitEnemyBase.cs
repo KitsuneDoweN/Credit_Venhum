@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class UnitEnemyBase : UnitBase
+public class UnitEnemyBase : UnitBase, I_SpawnObject
 {
 
     [SerializeField] private NavMeshAgent m_navAgent;
@@ -22,7 +22,11 @@ public class UnitEnemyBase : UnitBase
 
     protected Spawner m_cSpawneSpawner;
 
-
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    private float m_fItemDropProbability;
+    [SerializeField]
+    private List<string> m_DropItemIDList;
 
 
     public override Vector2 v2Velocity
@@ -95,7 +99,6 @@ public class UnitEnemyBase : UnitBase
 
     protected virtual void navTrackingStop()
     {
-        Debug.Log(gameObject.name);
         m_navAgent.isStopped = true;
 
         v2NextMoveDir = Vector2.zero;
@@ -176,20 +179,40 @@ public class UnitEnemyBase : UnitBase
 
     protected virtual void spawnDisable()
     {
-        gameObject.SetActive(false);
-        GameManager.Instance.cStageManager.cStageObjectPool.returnObject(gameObject);
-        m_cSpawneSpawner.unitDie();
+        m_cImfect.stop();
+        returnToObjectTool();
     }
 
-    public virtual void handleSpawn(Spawner cSpawner)
+    public virtual void handleSpawn(Spawner cSpawner, UnitBase cTargetUnit)
     {
         m_cSpawneSpawner = cSpawner;
+        m_cTargetUnit = cTargetUnit;
+
         resetStatus();
 
         isMoveAble = true;
         isLookAble = true;
 
         isControl = true;
+
     }
+
+    public void returnToObjectTool()
+    {
+        gameObject.SetActive(false);
+        GameManager.Instance.cStageManager.cStageObjectPool.returnObject(gameObject);
+        m_cSpawneSpawner.unitDie();
+    }
+
+    protected void dropEvent()
+    {
+        if(Random.Range(0.0f, 1.0f) <= m_fItemDropProbability)
+        {
+            int nRandomIndex = (int)Random.Range(0, m_DropItemIDList.Count);
+            GameObject goDropItem =  GameManager.Instance.cStageManager.cStageObjectPool.spawnObject(m_DropItemIDList[nRandomIndex]);
+            goDropItem.transform.position = v2UnitPos;
+        }
+    }
+
 
 }

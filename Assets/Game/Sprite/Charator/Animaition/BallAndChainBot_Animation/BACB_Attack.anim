@@ -37,6 +37,10 @@ AnimationClip:
       value: {fileID: -5569035362507985257, guid: 1a429fff34814fc419c70f6d310a473f, type: 3}
     - time: 1
       value: {fileID: -5789285544991574940, guid: 1a429fff34814fc419c70f6d310a473f, type: 3}
+    - time: 1.0833334
+      value: {fileID: 8793639957104055765, guid: 568ed0b48dd0a6048915c22085a842e1, type: 3}
+    - time: 1.4166666
+      value: {fileID: 8793639957104055765, guid: 568ed0b48dd0a6048915c22085a842e1, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -65,12 +69,14 @@ AnimationClip:
     - {fileID: 1372099006290288469, guid: 1a429fff34814fc419c70f6d310a473f, type: 3}
     - {fileID: -5569035362507985257, guid: 1a429fff34814fc419c70f6d310a473f, type: 3}
     - {fileID: -5789285544991574940, guid: 1a429fff34814fc419c70f6d310a473f, type: 3}
+    - {fileID: 8793639957104055765, guid: 568ed0b48dd0a6048915c22085a842e1, type: 3}
+    - {fileID: 8793639957104055765, guid: 568ed0b48dd0a6048915c22085a842e1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0833334
+    m_StopTime: 1.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -92,6 +98,13 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: freshImfect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: soundAttackPlayOnce
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -125,15 +138,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: attackEnd
+  - time: 1.4166666
+    functionName: attackEndEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: attackEndEvent
+  - time: 1.4166666
+    functionName: attackEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

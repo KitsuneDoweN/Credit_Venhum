@@ -7,7 +7,7 @@ public class UI_Ingame : UI_View
     [SerializeField]
     private UI_PlayerInfo m_cUI_PlayerInfo;
     [SerializeField]
-    private UI_BossHp m_cUI_BossHp;
+    private UI_BossInfo m_cUI_BossHp;
 
 
     [SerializeField]
@@ -48,7 +48,7 @@ public class UI_Ingame : UI_View
         }
     }
 
-    public UI_BossHp cUI_BossHp
+    public UI_BossInfo cUI_BossHp
     {
         get
         {

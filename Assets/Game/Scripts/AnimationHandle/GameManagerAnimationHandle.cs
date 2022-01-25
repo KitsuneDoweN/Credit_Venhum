@@ -6,6 +6,6 @@ public class GameManagerAnimationHandle : MonoBehaviour
 {
     public void gameover()
     {
-        GameManager.Instance.eGameState = GameManager.E_GAMESTATE.E_OVER;
+        GameManager.Instance.gameover();
     }
 }

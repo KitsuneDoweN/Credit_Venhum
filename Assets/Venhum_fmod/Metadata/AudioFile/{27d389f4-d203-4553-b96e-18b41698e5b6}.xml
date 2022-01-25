@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{27d389f4-d203-4553-b96e-18b41698e5b6}">
+		<property name="assetPath">
+			<value>deerclops_iceattack_small_1.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.73142857142857143</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b72444b-a930-4f94-879f-3a6d74318e23}</destination>
+		</relationship>
+	</object>
+</objects>

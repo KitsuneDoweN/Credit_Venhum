@@ -13,8 +13,6 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
     [SerializeField]
     private float m_fAttakWaitTime;
 
-    [SerializeField]
-    private EnemySerchIcon m_cSerchIcon;
 
     private bool m_bDelayImfect;
 
@@ -31,15 +29,11 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
     private enum E_EnemyState
     {
         E_NONE,
-        E_WAIT,
         E_TRACKING,
 
         E_ATTACK,
         E_ATTACKINGSTOP,
         E_ATTACKINGLOOK,
-
-        E_STIFFNESS,
-        E_RECALL,
         
         E_DIE,
 
@@ -63,7 +57,6 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
     [SerializeField]
     private bool m_bAttackingLook;
 
-    
 
 
     public override void init()
@@ -79,9 +72,10 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         cGrip.gripUpdate(v2LookDir);
 
 
+
         m_bDelayImfect = false;
 
-        m_cSerchIcon.init();
+
 
         m_v2RecallPoint = v2UnitPos;
 
@@ -89,19 +83,19 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         m_delAI = new EnemyEvent[(int)E_EnemyState.E_TOTAL];
 
         m_delAI[(int)E_EnemyState.E_NONE] = noneEvent;
-        m_delAI[(int)E_EnemyState.E_WAIT] = waitEvent;
+
         m_delAI[(int)E_EnemyState.E_TRACKING] = trackingEvent;
 
         m_delAI[(int)E_EnemyState.E_ATTACK] = attackEvent;
         m_delAI[(int)E_EnemyState.E_ATTACKINGSTOP] = attackingStop;
         m_delAI[(int)E_EnemyState.E_ATTACKINGLOOK] = attackingLook;
 
-        m_delAI[(int)E_EnemyState.E_STIFFNESS] = stiffnessEvent;
-        m_delAI[(int)E_EnemyState.E_RECALL] = recallEvent;
+
+
         m_delAI[(int)E_EnemyState.E_DIE] = dieEvent;
 
 
-        eEnemyState = E_EnemyState.E_WAIT;
+        eEnemyState = E_EnemyState.E_NONE;
 
 
         isControl = false;
@@ -118,12 +112,13 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
 
         isControl = false;
         gameObject.layer = 11;
-        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_DIE);
+
         cAnimation.die();
         cGripWeapon.attackDrawHit(Vector2.zero, false);
 
+        dropEvent();
 
-        Invoke("spawnDisable", 1.0f);
+        Invoke("spawnDisable", 3.0f);
     }
 
     public override void hit(UnitBase unit, WeaponAttackData cAttackData)
@@ -143,24 +138,13 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         m_cSound.hitPlayOnce();
 
 
-        if(cStatus.nCurrentStiffness >= cStatus.nMaxStiffness)
-        {
-            cGripWeapon.reset();
-            eEnemyState = E_EnemyState.E_STIFFNESS;
-            cStatus.nCurrentStiffness = 0;
-        }
+        cAnimation.hit();
+        cGripWeapon.reset();
 
+        Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
+        v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
 
-        if (eEnemyState == E_EnemyState.E_WAIT || eEnemyState == E_EnemyState.E_TRACKING)
-        {
-            cAnimation.hit();
-            cGripWeapon.reset();
-
-            Vector2 v2UnitToHitUnitDir = v2UnitPos - unit.v2UnitPos;
-            v2UnitToHitUnitDir = v2UnitToHitUnitDir.normalized;
-
-            knockBack(v2UnitToHitUnitDir, 10, 0.1f, false);
-        }
+        knockBack(v2UnitToHitUnitDir, 10, 0.1f, false);
 
 
 
@@ -172,7 +156,7 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         isMoveAble = true;
         isLookAble = true;
 
-        eEnemyState = E_EnemyState.E_WAIT;
+        eEnemyState = E_EnemyState.E_TRACKING;
     }
 
     public void attackEndEvent()
@@ -239,23 +223,12 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
 
 
 
-            if (m_eEnemyState == E_EnemyState.E_WAIT)
-            {
-                setTarget(null);
-                navTrackingStop();
-            }
-
             if(m_eEnemyState == E_EnemyState.E_ATTACK)
             {
                 navTrackingStop();
             }
 
-            if(m_eEnemyState == E_EnemyState.E_STIFFNESS)
-            {
-                m_cAnimation.trigger("stiffness");
-                navTrackingStop();
-                m_fStiffnessTime = .0f;
-            }
+
 
 
             if(m_eEnemyState == E_EnemyState.E_TRACKING)
@@ -265,11 +238,7 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
                 m_fTrackingTime = .0f;
             }
 
-            if(m_eEnemyState == E_EnemyState.E_RECALL)
-            {
-                navTrackingReStart();
-                goPoint(m_v2RecallPoint);
-            }
+
 
             if(m_eEnemyState == E_EnemyState.E_DIE)
             {
@@ -283,25 +252,7 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         }
 
     }
-    protected override int nStiffness
-    {
-        set
-        {
-            base.nStiffness = value;
 
-
-            if(nStiffness >= cStatus.nMaxStiffness)
-            {
-                eEnemyState = E_EnemyState.E_STIFFNESS;
-                nStiffness = 0;
-            }
-
-        }
-        get
-        {
-            return base.nStiffness;
-        }
-    }
 
     public string id
     {
@@ -325,7 +276,7 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         }
 
         eEnemyState = E_EnemyState.E_TRACKING;
-        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_ON);
+
 
     }
 
@@ -333,27 +284,8 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
 
     private void trackingEvent()
     {
-
-        if(cTargetUnit == null || wallChack())
-        {
-            eEnemyState = E_EnemyState.E_RECALL;
-            m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
+        if (cTargetUnit == null)
             return;
-        }
-        else if(!inRange(m_fSerchRange))
-        {
-            navTrackingStop();
-            m_fTrackingTime += Time.deltaTime;
-            if(m_fTrackingTime >= 3.0f)
-            {
-                eEnemyState = E_EnemyState.E_RECALL;
-                m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
-            }
-            return;
-        }
-        m_fTrackingTime = .0f;
-
-
 
         setTargetDestination();
        // m_cSound.footStepPlayOnce();
@@ -368,29 +300,8 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
     }
 
 
-    private void stiffnessEvent()
-    {
-        m_fStiffnessTime += Time.deltaTime;
 
-        if (m_fStiffnessTime >= 1.0f)
-        {
-            isMoveAble = true;
-            isLookAble = true;
 
-            eEnemyState = E_EnemyState.E_TRACKING;
-            m_srModel.color = Color.white;
-            m_cAnimation.trigger("movement");
-
-            return;
-        }
-            
-    }
-
-    private void recallEvent()
-    {
-        if (Vector2.Distance(v2UnitPos, m_v2RecallPoint) <= 0.1f)
-            eEnemyState = E_EnemyState.E_WAIT;
-    }
 
 
     private void OnDrawGizmos()
@@ -442,16 +353,18 @@ public class NomalEnemy : UnitEnemyBase, IUpdate
         base.spawnDisable();
     }
 
-    public override void handleSpawn(Spawner cSpawner)
+    public override void handleSpawn(Spawner cSpawner, UnitBase cTargetUnit)
     {
-        base.handleSpawn(cSpawner);
-        m_cSerchIcon.drawIcon(EnemySerchIcon.E_type.E_OFF);
+        base.handleSpawn(cSpawner, cTargetUnit);
+
         gameObject.layer = 6;
         m_cGripWeapon.reset();
 
 
-        eEnemyState = E_EnemyState.E_WAIT;
+        eEnemyState = E_EnemyState.E_TRACKING;
     }
+
+
 
 
 

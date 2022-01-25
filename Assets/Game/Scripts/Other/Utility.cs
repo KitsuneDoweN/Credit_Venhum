@@ -60,8 +60,14 @@ public class Utility
         return fResult;
     }
 
-    public static float convertObjectData(object value)
+    public static float convertObjectToFloat(object value)
     {
         return float.Parse(value.ToString());
     }
+
+    public static int convertObjectToInt(object value)
+    {
+        return int.Parse(value.ToString());
+    }
+
 }

@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class Talk : MonoBehaviour
 {
-    [SerializeField] TalkData[] m_cTalkDatas;
+    [SerializeField]
+    private int m_nTalkID;
+
+    [SerializeField] List<TalkData> m_talkDataList;
     [SerializeField]
     private UnityEvent m_TalkEndEvent;
 
@@ -15,6 +18,7 @@ public class Talk : MonoBehaviour
 
     public void init()
     {
+        m_talkDataList = TalkMasterManager.Instance.getTalkDataList(m_nTalkID);
         m_nIndex = 0;
         m_bToggle = false;
     }
@@ -29,7 +33,7 @@ public class Talk : MonoBehaviour
 
 
 
-        if (m_nIndex >= m_cTalkDatas.Length)
+        if (m_nIndex >= m_talkDataList.Count)
         {
             m_bToggle = false;
             m_nIndex = 0;
@@ -46,7 +50,7 @@ public class Talk : MonoBehaviour
         }
 
 
-        TalkData cData = m_cTalkDatas[m_nIndex];
+        TalkData cData = m_talkDataList[m_nIndex];
         GameManager.Instance.cUIManager.cUI_Talk.draw(cData.strName ,cData.strTalk,cData.sprite);
 
         m_nIndex++;

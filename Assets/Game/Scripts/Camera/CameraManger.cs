@@ -83,7 +83,7 @@ public class CameraManger : MonoBehaviour, IUpdate
 
         setStateTrackingUnit(GameManager.Instance.cStageManager.cPlayer);
 
-
+        processedBounds();
 
         UpdateManager.Instance.addProcesses(this);
     }

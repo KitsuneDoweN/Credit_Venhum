@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 4801080752785565486}
   - component: {fileID: 4801080752785565487}
   - component: {fileID: 4801080752785565484}
+  - component: {fileID: 486038206}
   m_Layer: 9
   m_Name: Barricade
   m_TagString: Untagged
@@ -213,12 +214,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cInteraction: {fileID: 4801080752785565484}
-  m_strInteraction: ' '
+  m_strInteraction: "\uBC14\uB9AC\uCF00\uC774\uD2B8\uAC00 \uC5F4\uB838\uC2B5\uB2C8\uB2E4."
   m_offSprite: {fileID: 2203468854987907051, guid: 3dfea8e7c2593624eb6f5dd720b000b5, type: 3}
   m_srModel: {fileID: 4801080752587285692}
   m_baricadeCollider:
   - {fileID: 4801080752785565486}
   - {fileID: 4801080752785565481}
+  m_cStageEvent: {fileID: 486038206}
 --- !u!114 &4801080752785565484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,4 +248,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 486038206}
+        m_TargetAssemblyTypeName: StageEvent, Assembly-CSharp
+        m_MethodName: eventClear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_trIcon: {fileID: 4801080751426005893}
+--- !u!114 &486038206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801080752785565485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953ea0536f42d0842aaa555ee1f567f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nEventIndex: 0

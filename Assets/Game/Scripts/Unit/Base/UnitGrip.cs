@@ -24,6 +24,8 @@ public class UnitGrip : MonoBehaviour
     {
         Vector3 v3GripVector = (Vector3)(v2Dir * m_fDistance);
 
+
+
         transform.localPosition = (Vector3)m_v2LocalPivot;
 
         transform.localPosition += v3GripVector;
@@ -37,6 +39,7 @@ public class UnitGrip : MonoBehaviour
     }
 
     
+
 
 
 

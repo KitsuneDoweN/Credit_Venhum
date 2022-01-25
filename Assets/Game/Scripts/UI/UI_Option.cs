@@ -12,8 +12,10 @@ public class UI_Option : UI_View
     private FMOD.Studio.VCA m_vacMaster;
     //BGM
     private FMOD.Studio.VCA m_vacMusic;
-    //
+    //SFX
     private FMOD.Studio.VCA m_vacSFX;
+
+
 
     private string m_strMaster;
     private string m_strMusic;
@@ -125,7 +127,7 @@ public class UI_Option : UI_View
         }
         else
         {
-            GameManager.Instance.resume();
+            GameManager.Instance.pose();
         }
     }
 
@@ -148,5 +150,16 @@ public class UI_Option : UI_View
         m_vacSFX.getVolume(out m_fSFX_Volume);
     }
 
+
+
+    public void onExit()
+    {
+        GameManager.Instance.exitGame();
+    }
+
+    public void onTitle()
+    {
+        GameManager.Instance.goTitle();
+    }
 
 }

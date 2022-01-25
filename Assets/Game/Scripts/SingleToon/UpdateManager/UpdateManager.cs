@@ -16,24 +16,43 @@ public class UpdateManager : SingleToon<UpdateManager>
 
     private void Update()
     {
+        
         foreach(IUpdate update in m_updateProcessesDictionAry.Values)
         {
-            
+            //Debug.Log("My update " + update.id);
             update.updateProcesses();
         }
+        
     }
 
     public void addProcesses(IUpdate processes)
     {
-        Debug.Log("Update Processes " + processes.id);
+
+
+        StartCoroutine(addProcessesCoroutine(processes));
+    }
+
+    private IEnumerator addProcessesCoroutine(IUpdate processes)
+    {
+        yield return null;
+       // Debug.Log("Update Processes " + processes.id);
         m_updateProcessesDictionAry.Add(processes.id, processes);
     }
 
     public void removeProcesses(IUpdate processes)
     {
-        Debug.Log("Remove Processes " + processes.id);
+       // Debug.Log("Remove Processes " + processes.id);
+        m_updateProcessesDictionAry.Remove(processes.id);
+        //StartCoroutine(removeProcessesCoroutine(processes));
+    }
+
+    private IEnumerator removeProcessesCoroutine(IUpdate processes)
+    {
+        yield return null;
+       // Debug.Log("Remove Processes " + processes.id);
         m_updateProcessesDictionAry.Remove(processes.id);
     }
+
 
 
 }

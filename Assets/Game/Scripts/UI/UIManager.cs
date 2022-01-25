@@ -15,8 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UI_Option m_cUI_Option;
     [SerializeField] private UI_FadeInOut m_cUI_FadeInOut;
     [SerializeField] private UI_Talk m_cUI_Talk;
-
-
+    [SerializeField] private UI_Save m_cUI_Save;
     public void init()
     {
         m_cUI_Ingame.init();
@@ -28,6 +27,8 @@ public class UIManager : MonoBehaviour
         m_cUI_Option.init();
         m_cUI_FadeInOut.init();
         m_cUI_Talk.init();
+        m_cUI_Save.init();
+
     }
 
     public UI_Talk cUI_Talk
@@ -101,6 +102,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public UI_Save cUI_Save
+    {
+        get
+        {
+            return m_cUI_Save;
+        }
+    }
+
+
+
     public void ingameStart()
     {
         cUI_InGame.ingameStart();
@@ -115,6 +126,7 @@ public class UIManager : MonoBehaviour
         cUI_Gameover.toggle(false);
         cUI_GameClear.toggle(false);
         cUI_Dynamic.toggle(false);
+        cUI_Option.toggle(false);
     }
 
 

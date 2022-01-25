@@ -17,7 +17,16 @@ public class Barricade : MonoBehaviour
     [SerializeField]
     private BoxCollider2D[] m_baricadeCollider;
 
+    [SerializeField]
+    private StageEvent m_cStageEvent;
 
+    private void Start()
+    {
+        if (m_cStageEvent != null && m_cStageEvent.isEventClear)
+        {
+            offEvent(true);
+        }
+    }
 
     public void eventOn()
     {
@@ -49,14 +58,14 @@ public class Barricade : MonoBehaviour
         if (bSkip)
             return;
       
-        GameManager.Instance.nClearGrogress++;
-
-
-
-
-
         GameManager.Instance.cInteraction = null;
         GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.toggle(true);
         GameManager.Instance.cUIManager.cUI_InGame.cUI_InteractionText.draw(m_strInteraction);
+        gameObject.SetActive(false);
+    }
+
+    public void SetActive(bool bValue)
+    {
+        gameObject.SetActive(bValue);
     }
 }

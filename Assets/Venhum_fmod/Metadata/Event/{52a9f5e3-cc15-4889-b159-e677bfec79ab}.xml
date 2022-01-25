@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.01.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{52a9f5e3-cc15-4889-b159-e677bfec79ab}">
 		<property name="name">
 			<value>gun atk</value>
@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{3ae5a9a1-34f2-4dbe-a08b-70cb52844f31}">
 		<relationship name="modules">
-			<destination>{ee808423-fb6d-4ec0-92c7-a43deae95db2}</destination>
 			<destination>{98171769-50ee-405c-b255-9b0e665743b4}</destination>
+			<destination>{ee808423-fb6d-4ec0-92c7-a43deae95db2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6062f603-5060-4df2-953d-3068a3efae31}">

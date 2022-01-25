@@ -163,6 +163,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296264427, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048742373331454889, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7262706216335040860, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -557,8 +565,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cPlayer: {fileID: 2074333508}
   m_cCameraManager: {fileID: 1429982895}
-  m_cDirectionTalk: {fileID: 1295383786}
-  m_cAreaManager: {fileID: 0}
+  m_cStageEventManager: {fileID: 0}
+  m_cObjectPoolData: {fileID: 0}
+  m_cEnemyWaveSpawnManager: {fileID: 0}
+  m_cBossRoom: {fileID: 0}
+  m_cBGM: {fileID: 1929795835}
 --- !u!4 &298554856
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,6 +2489,92 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1035973533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035973537}
+  - component: {fileID: 1035973536}
+  - component: {fileID: 1035973535}
+  - component: {fileID: 1035973534}
+  m_Layer: 0
+  m_Name: NextStage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1035973534
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035973533}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1035973535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035973533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e82155daa3f46a48b09a9cbddb9637c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_eNextScene: 5
+  m_bClearStage: 0
+--- !u!114 &1035973536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035973533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ce5dca2a26c4644b85ef65429c2a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cNextStage: {fileID: 1035973535}
+--- !u!4 &1035973537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035973533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.52, y: 7.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1117804052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,133 +2696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7ee1787c00a9a4b87048be1346ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cTalkDatas:
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: '  '
-    m_strTalk: "\"SIS \uC911\uC559\uAD00\uB9AC\uAD6D\uC5D0\uC11C \uC804\uB2EC\uD569\uB2C8\uB2E4.
-      \uBCA0\uB124\uB515\uD2B8 \uC2A4\uCF67 \uACBD\uC704, \uB7F0\uB358 7\uC778 \uC2E4\uC885
-      \uC0AC\uAC74 \uAD00\uB828 \uD30C\uACAC\uC744 \uBA85\uD569\uB2C8\uB2E4. \uC704\uCE58\uB294
-      Devon\uC8FC VenHum\uC785\uB2C8\uB2E4.\""
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: '  '
-    m_strTalk: "\"\uC0AC\uAC74\uC5D0 \uB300\uD574 \uC870\uC0AC \uBC0F \uC99D....\uC9D1\uC73C....\uBCF4...\uB0B4.....\""
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: 
-    m_strTalk: "\uB07C\uC774\uC775!"
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: 
-    m_strTalk: "\uCFF5!"
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: 
-    m_strTalk: "\uCEAC\uC544\uC545!"
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: 
-    m_strTalk: "\uD0D5!"
-  - m_sprite: {fileID: -4186688701819983962, guid: 892eb01c1c4d7ba459843ee1eedb2bb0, type: 3}
-    m_strName: 
-    m_strTalk: "\uCEAC\uC544\uC545!!!"
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uC73C\uC73D..."
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uC5EC\uAE34 \uC5B4\uB514\uC9C0?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uC77C\uC5B4\uB0AC\uC5B4\uC694?"
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uB204\uAD6C...?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uD06C\uB9AC\uC2A4 \uD3A0\uB9AC\uC2A4, BBS \uC2E0\uBB38\uC0AC \uC18C\uC18D
-      \uAE30\uC790\uC785\uB2C8\uB2E4."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uBCA0\uB124\uB515\uD2B8 \uC2A4\uCF67, \uADF8\uCABD \uC774\uB984
-      \uB9DE\uC8E0? SIS\uBA74, \uACBD\uCC30 \uC18C\uC18D\uC774\uACE0?"
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uB098\uB97C \uC5B4\uB5BB\uAC8C \uC544\uB294\uAC70\uC8E0?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uADF8\uCABD\uC774 \uAE30\uC808\uD55C \uC0AC\uC774\uC5D0 \uC9C0\uAC11
-      \uC880 \uD655\uC778\uD588\uC5B4\uC694. "
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: ...
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uC77C\uB2E8 \uC0C1\uD669 \uC124\uBA85 \uC880 \uD574\uC904\uB798\uC694?
-      \uADF8\uCABD\uC774 \uB0A0 \uAD6C\uD55C\uAC70\uC5D0\uC694?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uB124, \uB2F9\uC2E0\uC774 \uC774 \uB9C8\uC744 \uAC00\uAE4C\uC774
-      \uC62C \uB54C \uCC28\uAC00 \uACE0\uC7A5 \uB0AC\uC744\uAC70\uACE0, \uAD34\uC0DD\uBA85\uCCB4\uB4E4\uC774
-      \uB2F9\uC2E0\uC744 \uB36E\uCCE4\uACE0, \uB2F9\uC2E0\uC740 \uADF8\uB4E4\uC744
-      \uC81C\uC555 \uD6C4 \uC0AC\uACE0 \uCDA9\uACA9\uC73C\uB85C \uAE30\uC808\uD588\uC8E0."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uC800\uB294 \uD070 \uC18C\uB9AC\uAC00 \uB0AC\uAE38\uB798 \uC774\uCABD\uC73C\uB85C
-      \uC654\uB2E4\uAC00 \uC4F0\uB7EC\uC9C4 \uB2F9\uC2E0\uC744 \uBC1C\uACAC\uD588\uC5B4\uC694."
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uAD34\uBB3C? \uADF8\uB7EC\uACE0 \uBCF4\uB2C8 \uC800 \uAD34\uBB3C\uB4E4\uC740
-      \uBB50\uC8E0? \uADF8\uB9AC\uACE0 \uADF8\uCABD\uC740 \uADF8\uAC78 \uC5B4\uB5BB\uAC8C
-      \uC54C\uC8E0?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uB7F0\uB358 7\uC778 \uC2E4\uC885 \uC0AC\uAC74 \uCDE8\uC7AC \uB54C\uBB38\uC5D0
-      \uC774\uACF3\uC5D0 \uC624\uAC8C \uB418\uC5C8\uC5B4\uC694. \uC628 \uC9C0 \uD55C
-      3\uC77C \uC9C0\uB0AC\uAD6C\uC694."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uD558\uC9C0\uB9CC \uC774\uACF3\uC5D0 \uBB54\uAC00 \uBB38\uC81C\uAC00
-      \uC788\uC5B4\uC694. \uC774 \uB9C8\uC744\uC744 \uBC97\uC5B4\uB0A0 \uC218 \uC5C6\uC5B4\uC694."
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uBB34\uC2A8 \uC18C\uB9AC\uC9C0?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uB9C8\uC744\uC744 \uB098\uC640\uC11C \uC232\uC744 \uAC77\uB2E4\uBCF4\uBA74
-      \uB2E4\uC2DC \uC774 \uB9C8\uC744\uB85C \uC624\uAC8C \uB418\uC694. \uD45C\uC2DD\uC744
-      \uB0A8\uAE30\uBA74\uC11C \uC218\uC2ED \uBC88\uC744 \uBC18\uBCF5\uD588\uB294\uB370
-      \uB9C8\uCC2C\uAC00\uC9C0\uC5D0\uC694."
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uBB34\uC2A8 \uB9D0\uB3C4 \uC548\uB418\uB294 \uC18C\uB9B4..."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uADF8\uBFD0\uB9CC\uC774 \uC544\uB2C8\uC5D0\uC694. \uC800 \uAD34\uBB3C\uB4E4
-      \uB54C\uBB38\uC5D0 \uB9C8\uC744\uC744 \uD568\uBD80\uB85C \uB3CC\uC544\uB2E4\uB2D0
-      \uC218\uB3C4 \uC5C6\uC5B4\uC694. "
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uC9C0\uAE08 \uC0C1\uD669\uC774 \uC5B4\uB5BB\uAC8C \uB3CC\uC544\uAC00\uB294\uC9C0
-      \uD558\uB098\uB3C4 \uC54C \uC218\uAC00 \uC5C6\uAD70. \uC77C\uB2E8 \uC6C0\uC9C1\uC5EC
-      \uBD10\uC57C\uACA0\uC2B5\uB2C8\uB2E4. "
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uC7A0\uAE50! \uADF8\uCABD\uC5D0 \uAD34\uBB3C\uC774 \uC788\uC5B4\uC694."
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uC544\uAE4C \uADF8\uB188\uB4E4\uC774\uB77C\uBA74 \uCC98\uB9AC\uB294
-      \uAC00\uB2A5\uD574\uC694."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uBB34\uAE30\uB3C4 \uC5C6\uC774\uC694? \uB188\uB4E4\uC5D0\uAC8C \uCD1D\uAC19\uC740
-      \uAC74 \uD1B5\uD558\uC9C0 \uC54A\uC544\uC694. \uC544\uAE4C \uBD24\uC796\uC544\uC694. "
-  - m_sprite: {fileID: 21300000, guid: e963d808f4f59be4f84be6f2ed6c4bed, type: 3}
-    m_strName: "\uBCA0\uB124\uB515\uD2B8"
-    m_strTalk: "\uADF8\uB7FC \uC5B4\uCA4C\uC790\uB294 \uAC81\uB2C8\uAE4C? \uADF8\uB0E5
-      \uC774\uB300\uB85C \uC788\uC790\uACE0\uC694?"
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uAE30\uB2E4\uB824\uBD10\uC694. \uC800\uBC88\uC5D0 \uC4F8\uB9CC\uD55C
-      \uAC78 \uC8FC\uC6E0\uC5B4\uC694."
-  - m_sprite: {fileID: 21300000, guid: 9be73e1f9d643e54694e31558d962037, type: 3}
-    m_strName: "\uD06C\uB9AC\uC0AC"
-    m_strTalk: "\uC790\uC694. \uB2F9\uC2E0\uC774\uB77C\uBA74 \uC4F8 \uC218 \uC788\uC744\uAC70\uC5D0\uC694."
+  m_nTalkID: 0
+  m_talkDataList: []
   m_TalkEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3928,8 +3900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487d19ccfc8f94b45b2728e6f4fc853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_v2Center: {x: 15.5, y: 41}
-  m_v2Size: {x: 128, y: 85.5}
+  m_v2Center: {x: -17.6, y: -0.3}
+  m_v2Size: {x: 19.14, y: 24}
 --- !u!224 &1879188842 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 937595498481092252, guid: 2caedf95acf06444088736f7d73884a5, type: 3}
@@ -7824,6 +7796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929795834}
+  - component: {fileID: 1929795835}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -7845,6 +7818,25 @@ Transform:
   m_Father: {fileID: 298554856}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929795835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929795833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6fa73e325132a478860918d71d4b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soundReference:
+    Guid:
+      Data1: -145039413
+      Data2: 1074502222
+      Data3: -516207687
+      Data4: 335921783
+    Path: event:/music/Music
 --- !u!1 &2011954106
 GameObject:
   m_ObjectHideFlags: 0
@@ -8573,3 +8565,104 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &6535644124650684737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6535644124650684738}
+  - component: {fileID: 6535644124650684739}
+  m_Layer: 0
+  m_Name: StageSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6535644124650684738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535644124650684737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6535644125232991312}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6535644124650684739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535644124650684737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6fa73e325132a478860918d71d4b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soundReference:
+    Guid:
+      Data1: -145039413
+      Data2: 1074502222
+      Data3: -516207687
+      Data4: 335921783
+    Path: event:/music/Music
+--- !u!4 &6535644125232991312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535644125232991326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6535644124650684738}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6535644125232991326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6535644125232991312}
+  - component: {fileID: 6535644125232991327}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &6535644125232991327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535644125232991326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7021895c88be146be9767fee0e2bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cPlayer: {fileID: 2074333508}
+  m_cCameraManager: {fileID: 1429982895}
+  m_cStageEventManager: {fileID: 0}
+  m_cObjectPoolData: {fileID: 0}
+  m_cEnemyWaveSpawnManager: {fileID: 0}
+  m_cBossRoom: {fileID: 0}
+  m_cBGM: {fileID: 6535644124650684739}

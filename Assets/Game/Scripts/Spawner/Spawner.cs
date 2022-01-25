@@ -76,7 +76,7 @@ public class Spawner : MonoBehaviour, IUpdate
 
         UnitEnemyBase cEnemy = entity.GetComponent<UnitEnemyBase>();
 
-        cEnemy.handleSpawn(this);
+        cEnemy.handleSpawn(this, GameManager.Instance.cStageManager.cPlayer);
 
     }
 
@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour, IUpdate
     public void unitDie()
     {
         m_nSpawnEntityDieCount++;
-        if (m_nSpawnEntityDieCount == m_nSpawnEntityCount && isSpawnEntity())
+        if (m_nSpawnEntityDieCount == m_nSpawnEntityCount && !isSpawnEntity())
             m_cStageSpawnManager.spawnerEntitiyAllClear();
     }
 

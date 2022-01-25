@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8979778395069791577
+--- !u!114 &-8510877700342169654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,526 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/death
+  m_Name: event:/monster/Boss/Hand/slash
   m_EditorClassIdentifier: 
-  Path: event:/Player/death
-  Guid:
-    Data1: -496964442
-    Data2: 1314861310
-    Data3: -1413726530
-    Data4: -2063116355
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2080
---- !u!114 &-8445450855289363077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/hit/mode
-  m_EditorClassIdentifier: 
-  Name: mode
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3463243826
-    data2: 35940986
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-8397182415451338929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Venhum_fmod/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637756987616798637
-  FileSizes:
-  - Name: Desktop
-    Value: 80864
-  Exists: 1
---- !u!114 &-6315148705526421332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/melee/mode
-  m_EditorClassIdentifier: 
-  Name: mode
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 3463243826
-    data2: 35940986
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-4998310558837705778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/BGM.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Venhum_fmod/Build/Desktop/BGM.bank
-  Name: BGM
-  StudioPath: bank:/BGM
-  lastModified: 637756987616779082
-  FileSizes:
-  - Name: Desktop
-    Value: 5599456
-  Exists: 1
---- !u!114 &-4424422835399222501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/Boss/death
-  m_EditorClassIdentifier: 
-  Path: event:/monster/Boss/death
-  Guid:
-    Data1: -1887440775
-    Data2: 1101485181
-    Data3: -1147957328
-    Data4: 6327060
-  Banks:
-  - {fileID: -8397182415451338929}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 4201
---- !u!114 &-4349140350714024646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/hit
-  m_EditorClassIdentifier: 
-  Path: event:/monster/hit
-  Guid:
-    Data1: -739074273
-    Data2: 1296442827
-    Data3: -1209882193
-    Data4: -1694943079
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -8445450855289363077}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-3517004508600004383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/Boss/slash
-  m_EditorClassIdentifier: 
-  Path: event:/monster/Boss/slash
+  Path: event:/monster/Boss/Hand/slash
   Guid:
     Data1: -93284448
     Data2: 1236217365
     Data3: -408588123
     Data4: 1209766491
   Banks:
-  - {fileID: 7406586002062633342}
+  - {fileID: -3077206537360564294}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 1175
---- !u!114 &-3066061419449371873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/Boss/hit
-  m_EditorClassIdentifier: 
-  Path: event:/monster/Boss/hit
-  Guid:
-    Data1: -1516708967
-    Data2: 1199551525
-    Data3: -1591917142
-    Data4: 688031180
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 329
---- !u!114 &-2755657771093383500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/death
-  m_EditorClassIdentifier: 
-  Path: event:/monster/death
-  Guid:
-    Data1: 1265084072
-    Data2: 1323240754
-    Data3: -168365150
-    Data4: -278847582
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2363
---- !u!114 &-2286103237539424001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/melee
-  m_EditorClassIdentifier: 
-  Path: event:/Player/melee
-  Guid:
-    Data1: -1420652307
-    Data2: 1100023648
-    Data3: -742658942
-    Data4: 1280550513
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -6315148705526421332}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-1655212113736560998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/UI/button
-  m_EditorClassIdentifier: 
-  Path: event:/UI/button
-  Guid:
-    Data1: 312240020
-    Data2: 1116197426
-    Data3: 284890528
-    Data4: 1701494323
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 4000
---- !u!114 &-855518670582964783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music/ending
-  m_EditorClassIdentifier: 
-  Name: ending
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 90829440
-    data2: 682586425
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-586889468129246436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/gun atk
-  m_EditorClassIdentifier: 
-  Path: event:/monster/gun atk
-  Guid:
-    Data1: 1386870243
-    Data2: 1216990229
-    Data3: 2011584945
-    Data4: -1418072897
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2100
---- !u!114 &-502034319945297580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/get hit
-  m_EditorClassIdentifier: 
-  Path: event:/Player/get hit
-  Guid:
-    Data1: -1036393114
-    Data2: 1095279414
-    Data3: -1990660985
-    Data4: -777191625
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 5532521031594384478}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-160271007275092519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/Boss/groundpound
-  m_EditorClassIdentifier: 
-  Path: event:/monster/Boss/groundpound
-  Guid:
-    Data1: 1802335858
-    Data2: 1152517149
-    Data3: 1797030061
-    Data4: 2003911979
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 1097
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 2071452685578444909}
-  - {fileID: -4998310558837705778}
-  - {fileID: -8397182415451338929}
-  - {fileID: 7406586002062633342}
-  EditorEvents:
-  - {fileID: 4489968904150822963}
-  - {fileID: -4424422835399222501}
-  - {fileID: -4349140350714024646}
-  - {fileID: 9054576826263813714}
-  - {fileID: 3697951041495648378}
-  - {fileID: 258251127407401329}
-  - {fileID: 4691533821420697471}
-  - {fileID: -502034319945297580}
-  - {fileID: -160271007275092519}
-  - {fileID: 5094701774269239699}
-  - {fileID: -1655212113736560998}
-  - {fileID: -3066061419449371873}
-  - {fileID: -3517004508600004383}
-  - {fileID: -8979778395069791577}
-  - {fileID: -2755657771093383500}
-  - {fileID: 5183457772410369799}
-  - {fileID: -586889468129246436}
-  - {fileID: -2286103237539424001}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -8397182415451338929}
-  StringsBanks:
-  - {fileID: 2071452685578444909}
-  cacheTime: 637756987616857262
-  cacheVersion: 10
---- !u!114 &258251127407401329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Throw
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Throw
-  Guid:
-    Data1: -1349343916
-    Data2: 1105410510
-    Data3: 1054552473
-    Data4: -81346844
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 420
---- !u!114 &2071452685578444909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Venhum_fmod/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637756987616808409
-  FileSizes:
-  - Name: Desktop
-    Value: 2112
-  Exists: 1
---- !u!114 &3697951041495648378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/footsteps
-  m_EditorClassIdentifier: 
-  Path: event:/Player/footsteps
-  Guid:
-    Data1: 624306000
-    Data2: 1286622048
-    Data3: 1158929042
-    Data4: 595775091
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 192
---- !u!114 &4489968904150822963
+--- !u!114 &-8152239795414955198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -548,16 +46,17 @@ MonoBehaviour:
     Data3: -516207687
     Data4: 335921783
   Banks:
-  - {fileID: -4998310558837705778}
+  - {fileID: -2741143617364813895}
+  - {fileID: -1131709278223088365}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -855518670582964783}
-  MinDistance: 0
-  MaxDistance: 0
+  - {fileID: 5048371393884880711}
+  MinDistance: 1
+  MaxDistance: 20
   Length: 471745
---- !u!114 &4691533821420697471
+--- !u!114 &-5573274670176514711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,78 +66,314 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/axe atk
+  m_Name: event:/Player/footsteps
   m_EditorClassIdentifier: 
-  Path: event:/monster/axe atk
+  Path: event:/Player/footsteps
   Guid:
-    Data1: -953684135
-    Data2: 1218225140
-    Data3: -1227455050
-    Data4: -263172577
+    Data1: 624306000
+    Data2: 1286622048
+    Data3: 1158929042
+    Data4: 595775091
   Banks:
-  - {fileID: 7406586002062633342}
+  - {fileID: -3077206537360564294}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2613
---- !u!114 &5094701774269239699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/footsteps
-  m_EditorClassIdentifier: 
-  Path: event:/monster/footsteps
-  Guid:
-    Data1: 1243565192
-    Data2: 1335432828
-    Data3: -1257768811
-    Data4: -1544063219
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 585
---- !u!114 &5183457772410369799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/death3d
-  m_EditorClassIdentifier: 
-  Path: event:/monster/death3d
-  Guid:
-    Data1: 2027449022
-    Data2: 1151251315
-    Data3: 131432599
-    Data4: -815144349
-  Banks:
-  - {fileID: 7406586002062633342}
-  IsStream: 0
-  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3120
---- !u!114 &5532521031594384478
+  Length: 192
+--- !u!114 &-4335708969874388810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/BlueWitch/BlueWitch_Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/BlueWitch/BlueWitch_Hurt
+  Guid:
+    Data1: -2093765393
+    Data2: 1236980021
+    Data3: -560819024
+    Data4: 170746608
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 359
+--- !u!114 &-3077206537360564294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Venhum_fmod/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 637786419368990484
+  FileSizes:
+  - Name: Desktop
+    Value: 636064
+  Exists: 1
+--- !u!114 &-2741143617364813895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BGM.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Venhum_fmod/Build/Desktop/BGM.bank
+  Name: BGM
+  StudioPath: bank:/BGM
+  lastModified: 637786419368170288
+  FileSizes:
+  - Name: Desktop
+    Value: 5599488
+  Exists: 1
+--- !u!114 &-2600668994674401899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/Hand/death
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/Hand/death
+  Guid:
+    Data1: -1887440775
+    Data2: 1101485181
+    Data3: -1147957328
+    Data4: 6327060
+  Banks:
+  - {fileID: -1131709278223088365}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4201
+--- !u!114 &-2186685352777787902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Venhum_fmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637786419369410563
+  FileSizes:
+  - Name: Desktop
+    Value: 2340
+  Exists: 1
+--- !u!114 &-1576434239423930985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/BlueWitch/BlueWitch_Teleport
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/BlueWitch/BlueWitch_Teleport
+  Guid:
+    Data1: 791473341
+    Data2: 1191614744
+    Data3: 393124257
+    Data4: -982135370
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 640
+--- !u!114 &-1502704599878957779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/hit
+  m_EditorClassIdentifier: 
+  Path: event:/monster/hit
+  Guid:
+    Data1: -739074273
+    Data2: 1296442827
+    Data3: -1209882193
+    Data4: -1694943079
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5881985476068731993}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1131709278223088365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Venhum_fmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637786419369390563
+  FileSizes:
+  - Name: Desktop
+    Value: 5679808
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -2186685352777787902}
+  - {fileID: -2741143617364813895}
+  - {fileID: -1131709278223088365}
+  - {fileID: -3077206537360564294}
+  EditorEvents:
+  - {fileID: -8152239795414955198}
+  - {fileID: -1502704599878957779}
+  - {fileID: -5573274670176514711}
+  - {fileID: 186562028115312792}
+  - {fileID: 8819999194171010842}
+  - {fileID: 6314257085421221793}
+  - {fileID: 4588806640812163889}
+  - {fileID: 3841057872371027401}
+  - {fileID: 7012995105854540205}
+  - {fileID: 7258204099544916567}
+  - {fileID: 3817635365376416286}
+  - {fileID: 9080421796014298768}
+  - {fileID: 6527140345605963470}
+  - {fileID: -2600668994674401899}
+  - {fileID: 2388936708688710208}
+  - {fileID: 2529805853445917273}
+  - {fileID: 136484434666718568}
+  - {fileID: 7319046935226571687}
+  - {fileID: -8510877700342169654}
+  - {fileID: -1576434239423930985}
+  - {fileID: 7514918113016931217}
+  - {fileID: -4335708969874388810}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -1131709278223088365}
+  StringsBanks:
+  - {fileID: -2186685352777787902}
+  cacheTime: 637786419369410563
+  cacheVersion: 10
+--- !u!114 &136484434666718568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/Hand/groundpound
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/Hand/groundpound
+  Guid:
+    Data1: 1802335858
+    Data2: 1152517149
+    Data3: 1797030061
+    Data4: 2003911979
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1097
+--- !u!114 &186562028115312792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Throw
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Throw
+  Guid:
+    Data1: -1349343916
+    Data2: 1105410510
+    Data3: 1054552473
+    Data4: -81346844
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 420
+--- !u!114 &835639358871454630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -662,27 +397,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &7406586002062633342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Venhum_fmod/Build/Desktop/SFX.bank
-  Name: SFX
-  StudioPath: bank:/SFX
-  lastModified: 637756987616857262
-  FileSizes:
-  - Name: Desktop
-    Value: 598976
-  Exists: 1
---- !u!114 &9054576826263813714
+--- !u!114 &2388936708688710208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -692,20 +407,418 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/monster/Boss/punch
+  m_Name: event:/monster/Boss/Hand/punch
   m_EditorClassIdentifier: 
-  Path: event:/monster/Boss/punch
+  Path: event:/monster/Boss/Hand/punch
   Guid:
     Data1: 1053568306
     Data2: 1132246586
     Data3: 84434571
     Data4: -1289063857
   Banks:
-  - {fileID: 7406586002062633342}
+  - {fileID: -3077206537360564294}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 757
+--- !u!114 &2529805853445917273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/BlueWitch/BlueWitch_IceAttack
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/BlueWitch/BlueWitch_IceAttack
+  Guid:
+    Data1: -365718419
+    Data2: 1144356369
+    Data3: 1707838338
+    Data4: -1351088983
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 731
+--- !u!114 &3817635365376416286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/death3d
+  m_EditorClassIdentifier: 
+  Path: event:/monster/death3d
+  Guid:
+    Data1: 2027449022
+    Data2: 1151251315
+    Data3: 131432599
+    Data4: -815144349
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3120
+--- !u!114 &3841057872371027401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/button
+  m_EditorClassIdentifier: 
+  Path: event:/UI/button
+  Guid:
+    Data1: 312240020
+    Data2: 1116197426
+    Data3: 284890528
+    Data4: 1701494323
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
+--- !u!114 &4588806640812163889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/monster/footsteps
+  Guid:
+    Data1: 1243565192
+    Data2: 1335432828
+    Data3: -1257768811
+    Data4: -1544063219
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 585
+--- !u!114 &4759918828453441065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/melee/mode
+  m_EditorClassIdentifier: 
+  Name: mode
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3463243826
+    data2: 35940986
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &5048371393884880711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/ending
+  m_EditorClassIdentifier: 
+  Name: ending
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 90829440
+    data2: 682586425
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &5881985476068731993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/hit/mode
+  m_EditorClassIdentifier: 
+  Name: mode
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 3463243826
+    data2: 35940986
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &6314257085421221793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/get hit
+  m_EditorClassIdentifier: 
+  Path: event:/Player/get hit
+  Guid:
+    Data1: -1036393114
+    Data2: 1095279414
+    Data3: -1990660985
+    Data4: -777191625
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 835639358871454630}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6527140345605963470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/melee
+  m_EditorClassIdentifier: 
+  Path: event:/Player/melee
+  Guid:
+    Data1: -1420652307
+    Data2: 1100023648
+    Data3: -742658942
+    Data4: 1280550513
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4759918828453441065}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7012995105854540205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/death
+  m_EditorClassIdentifier: 
+  Path: event:/Player/death
+  Guid:
+    Data1: -496964442
+    Data2: 1314861310
+    Data3: -1413726530
+    Data4: -2063116355
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2080
+--- !u!114 &7258204099544916567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/death
+  m_EditorClassIdentifier: 
+  Path: event:/monster/death
+  Guid:
+    Data1: 1265084072
+    Data2: 1323240754
+    Data3: -168365150
+    Data4: -278847582
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2363
+--- !u!114 &7319046935226571687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Boss/Hand/hit
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Boss/Hand/hit
+  Guid:
+    Data1: -1516708967
+    Data2: 1199551525
+    Data3: -1591917142
+    Data4: 688031180
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 329
+--- !u!114 &7514918113016931217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/Skeleton/Skeleton_Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/monster/Skeleton/Skeleton_Hurt
+  Guid:
+    Data1: 226147285
+    Data2: 1162678698
+    Data3: 1494807955
+    Data4: -1316313715
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &8819999194171010842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/axe atk
+  m_EditorClassIdentifier: 
+  Path: event:/monster/axe atk
+  Guid:
+    Data1: -953684135
+    Data2: 1218225140
+    Data3: -1227455050
+    Data4: -263172577
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2613
+--- !u!114 &9080421796014298768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/monster/gun atk
+  m_EditorClassIdentifier: 
+  Path: event:/monster/gun atk
+  Guid:
+    Data1: 1386870243
+    Data2: 1216990229
+    Data3: 2011584945
+    Data4: -1418072897
+  Banks:
+  - {fileID: -3077206537360564294}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2100

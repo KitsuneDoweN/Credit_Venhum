@@ -9,8 +9,13 @@ public class StageObjectPool :MonoBehaviour
     private Dictionary<string, int> m_spawnObjectCountDictionary = new Dictionary<string, int>();
     
     private Dictionary<string, ObjectPoolMaxSpawnData> m_maxObjectPoolDataDictionary = new Dictionary<string, ObjectPoolMaxSpawnData>();
+   
 
     private List<string> m_spawnObjectKeyList = new List<string>();
+
+    [SerializeField]
+    private List<SpawnEntity> m_sceneObjectPoolData;
+
 
     public void init(int nStage)
     {
@@ -18,11 +23,43 @@ public class StageObjectPool :MonoBehaviour
         settingSpawnAtOnce(nStage);
         setttingSpawnObject();
 
+
+        if (m_sceneObjectPoolData != null && m_sceneObjectPoolData.Count > 0)
+        {
+            setttingSceneObjectPool();
+        }
+
+
+    }
+
+    private void setttingSceneObjectPool()
+    {
+        foreach(SpawnEntity entity in m_sceneObjectPoolData)
+        {
+            if (!m_maxObjectPoolDataDictionary.ContainsKey(entity.strEntiyID))
+            {
+                ObjectPoolMaxSpawnData newSpawnData = new ObjectPoolMaxSpawnData();
+                newSpawnData.spawnObject = Resources.Load(entity.strEntiyID) as GameObject;
+                newSpawnData.nSpawnCountAtOnce = entity.nAmount;
+
+
+                m_maxObjectPoolDataDictionary.Add(entity.strEntiyID, newSpawnData);
+            }
+                
+
+            for (int i = 0; i < entity.nAmount; i++)
+            {
+                addSpawnObject(entity.strEntiyID);
+            }
+        }
     }
 
     private void settingSpawnAtOnce(int nStage)
     {
         List<SpawnData> spawnDataList = MasterStageEnemySpawnDataManger.Instance.getStageSpawnData(nStage);
+        if (spawnDataList == null)
+            return;
+
 
         Dictionary<string, ObjectPoolMaxSpawnData> objectPoolDataDictionary = new Dictionary<string, ObjectPoolMaxSpawnData>();
 
@@ -61,7 +98,8 @@ public class StageObjectPool :MonoBehaviour
                 }
                 i++;
             }
-            else
+
+            if(i == spawnDataList.Count || nWave != spawnDataList[i].nWave )
             {
                 if (m_maxObjectPoolDataDictionary == null)
                 {
@@ -127,7 +165,12 @@ public class StageObjectPool :MonoBehaviour
 
     private void addSpawnObject(string strKey) 
     {
-        
+        Debug.Log("Create Object " + strKey);
+
+        if (!m_spawnObjectDictionary.ContainsKey(strKey))
+        {
+            m_spawnObjectDictionary.Add(strKey, new List<GameObject>());
+        }
 
         GameObject goObj = Instantiate(m_maxObjectPoolDataDictionary[strKey].spawnObject);
         goObj.transform.parent = transform;
@@ -142,7 +185,6 @@ public class StageObjectPool :MonoBehaviour
         }
 
         goObj.SetActive(false);
-
 
         m_spawnObjectDictionary[strKey].Add(goObj);
 

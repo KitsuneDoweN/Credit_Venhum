@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.01.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d3f29f1f-25cb-4d46-afa9-e2b79938f99a}">
 		<property name="name">
 			<value>hit</value>
@@ -86,11 +86,11 @@
 	<object class="ParameterProxy" id="{605a4006-7ce7-46eb-b220-7b327b57fe1d}">
 		<relationship name="modules">
 			<destination>{45f36c1c-36d8-4c1c-8c2c-e41f3611ed7c}</destination>
-			<destination>{bb1a0afc-8f96-471c-ae4a-bc6c27acfe26}</destination>
 			<destination>{bcb2ab73-30ee-4806-a8a5-9637859dd105}</destination>
+			<destination>{bb1a0afc-8f96-471c-ae4a-bc6c27acfe26}</destination>
 			<destination>{dd55a6f3-6025-45de-9398-79fdb977ff7f}</destination>
-			<destination>{f689730a-a912-4ec1-9347-324e32c33416}</destination>
 			<destination>{b5163ad8-61bf-4407-8807-49db41f30901}</destination>
+			<destination>{f689730a-a912-4ec1-9347-324e32c33416}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{92ed372d-bcf6-4fe4-be83-85041318a383}</destination>

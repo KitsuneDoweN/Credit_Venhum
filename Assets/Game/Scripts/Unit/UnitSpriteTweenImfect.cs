@@ -14,13 +14,14 @@ public class UnitSpriteTweenImfect : MonoBehaviour
     [SerializeField] private Color m_dieColor;
 
     [SerializeField] private Color m_freshColor;
+    [SerializeField] protected Color m_hellingColor;
 
 
     [SerializeField] private float m_fHitTick;
     [SerializeField] private float m_fGodTick;
     [SerializeField] private float m_fdieTime;
     [SerializeField] private float m_fFreshTick;
-
+    [SerializeField] private float m_fHellingTick; 
 
     public void init(SpriteRenderer model)
     {
@@ -63,6 +64,16 @@ public class UnitSpriteTweenImfect : MonoBehaviour
         play();
     }
 
+    public void hellingImfect()
+    {
+        stop();
+        m_imfectTween = m_model.DOColor(m_hellingColor, m_fHellingTick).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
+        {
+            m_model.color = Color.white;
+        });
+        play();
+    }
+
 
 
     private void play()
@@ -75,7 +86,6 @@ public class UnitSpriteTweenImfect : MonoBehaviour
         Utility.KillTween(m_imfectTween);
         m_model.color = Color.white;
     }
-
 
 
 }

@@ -94,6 +94,7 @@ public class WeaponThrow : WeaponBase
     public override void reset()
     {
         base.reset();
+        isDrawHitLine = false;
     }
 
 

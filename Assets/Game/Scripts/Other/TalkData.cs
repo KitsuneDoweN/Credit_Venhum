@@ -37,4 +37,11 @@ public class TalkData
             return m_strName;
         }
     }
+
+    public void init(Sprite sprite, string strName, string strTalk)
+    {
+        m_sprite = sprite;
+        m_strName = strName;
+        m_strTalk = strTalk;
+    }
 }

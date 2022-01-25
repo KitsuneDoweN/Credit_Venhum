@@ -9,6 +9,7 @@ public class WeaponMelee : WeaponBase
     [SerializeField] private int m_nAttackLayer;
     [SerializeField] private float m_fMovePower;
     [SerializeField] private float m_fAttackActionTime;
+    [SerializeField] private bool m_bFixVertical;
 
     public override void init(UnitBase unitBase)
     {
@@ -33,6 +34,15 @@ public class WeaponMelee : WeaponBase
 
         cUnit.isMoveAble = false;
         cUnit.isLookAble = false;
+
+        if (m_bFixVertical)
+        {
+            float fFixX = 1.0f;
+            if(cUnit.v2LookDir.x < 0.0f)
+                fFixX *= -1.0f;
+
+            cUnit.cGrip.gripUpdate(new Vector2(fFixX, .0f));
+        }
 
 
         attackAnimation();

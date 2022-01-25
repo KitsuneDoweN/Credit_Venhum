@@ -13,17 +13,18 @@ public abstract class SingleToon<T> : MonoBehaviour where T : SingleToon<T>
         }
     }
 
-    protected virtual void init()
+    protected virtual bool init()
     {
         if(Instance != null)
         {
             Debug.LogError("overlap SingleToon " + this.ToString());
             Destroy(gameObject);
-            return;
+            return false;
         }
 
         m_instance = this as T;
         DontDestroyOnLoad(gameObject);
+        return true;
     }
 
 

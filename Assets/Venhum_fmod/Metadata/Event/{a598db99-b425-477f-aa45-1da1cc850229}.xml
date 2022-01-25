@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.01.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a598db99-b425-477f-aa45-1da1cc850229}">
 		<property name="name">
 			<value>hit</value>
@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{e3843f88-788a-446c-b1fb-7fe5d63ccdce}</destination>
+			<destination>{69fbd16a-4df5-45ac-b67b-c094984c2b17}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{77cfcb4d-360d-4874-8c38-5ccd67d02640}</destination>
@@ -53,7 +53,7 @@
 			<destination>{6a32eee7-3d1a-4896-aad5-53faec39d3de}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0943252b-4a6b-4449-bd09-cf6948719033}</destination>
+			<destination>{29ad7bf0-3ea6-44f8-b4a0-a1c5c229089e}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{7a589d73-7b1e-40c1-a48d-39b6e2a72e05}" />

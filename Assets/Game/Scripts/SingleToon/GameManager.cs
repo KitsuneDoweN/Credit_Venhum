@@ -10,7 +10,6 @@ public class GameManager : SingleToon<GameManager>
 
     [SerializeField] private UIManager m_UIManager;
     [SerializeField] private InputManager m_cInputManager;
-    [SerializeField] private OneSound m_cBgmSound;
     [SerializeField] private SaveManger m_cSaveManager;
 
     private StageManager m_cStageManger;
@@ -21,9 +20,8 @@ public class GameManager : SingleToon<GameManager>
 
     [SerializeField] private bool m_bTestGame;
 
-    private string m_id;
 
-
+    private UnityEvent m_clearEvent;
 
     public enum E_GAMESTATE
     {
@@ -33,34 +31,26 @@ public class GameManager : SingleToon<GameManager>
 
     private E_GAMESTATE m_eGameState;
 
+    [SerializeField]
     public enum E_GAMESCENE
     {
         E_NONE = -1, E_TITLE, E_STAGE_CITY, E_STAGE_DUGGEN_BEGINE,
         E_STAGE_DUGGEN_LOOPTYPE0, E_STAGE_DUGGEN_LOOPTYPE1,
-        E_STAGE_DUGGEN_ROOST, E_STAGE_DUGGEN_BOSSROOM
+        E_STAGE_DUGGEN_ROOST, E_STAGE_DUGGEN_BOSSROOM, E_RANDOM_DUGGEN
     }
 
-    private E_GAMESCENE m_eNextGameScene;
+    private E_GAMESCENE m_eScene;
 
-    private int m_nStage;
-    public int nStage
-    {
-        get
-        {
-            return m_nStage;
-        }
-    }
+
 
 
     public E_GAMESTATE eGameState
     {
-        set
+        private set
         {
             m_eGameState = value;
-
             m_delGameEvent[(int)m_eGameState]();
         }
-
         get
         {
             return m_eGameState;
@@ -70,12 +60,11 @@ public class GameManager : SingleToon<GameManager>
     private delegate void gameEvent();
     private gameEvent[] m_delGameEvent;
 
-    private string m_strClearGrogress = "ClearGrogress";
+    private int m_nStage;
 
 
 
-
-    private void Awake()
+    private void Start()
     {
         init();
 
@@ -83,13 +72,12 @@ public class GameManager : SingleToon<GameManager>
 
 
 
-    protected override void init()
+    protected override bool init()
     {
-        base.init();
+        bool bOverlap =  !base.init();
 
-        m_id = "GameManger";
-
-        nClearGrogress = 0;
+        if (bOverlap)
+            return false;
 
 
 
@@ -97,7 +85,6 @@ public class GameManager : SingleToon<GameManager>
 
 
         m_delGameEvent = new gameEvent[(int)E_GAMESTATE.E_TOTAL];
-
 
         m_delGameEvent[(int)E_GAMESTATE.E_TITLE] = titleEvet;
         m_delGameEvent[(int)E_GAMESTATE.E_INGAME] = inGameEvent;
@@ -107,18 +94,24 @@ public class GameManager : SingleToon<GameManager>
 
 
 
-        m_cBgmSound.init();
+        
         cUIManager.init();
         m_cInputManager.init();
         m_cSaveManager.init();
+
+
+
+
 
         if (!m_bTestGame)
             eGameState = E_GAMESTATE.E_TITLE;
         else
             eGameState = E_GAMESTATE.E_INGAME;
+
+        return true;
     }
 
-
+    
 
 
 
@@ -144,9 +137,9 @@ public class GameManager : SingleToon<GameManager>
 
 
 
-    public void gameOver()
+    public void gameover()
     {
-
+        eGameState = E_GAMESTATE.E_OVER;
     }
 
 
@@ -167,9 +160,12 @@ public class GameManager : SingleToon<GameManager>
         cUIManager.cUI_Title.toggle(true);
     }
 
-    public void NextStage(E_GAMESCENE eStage)
+    public void NextStage(E_GAMESCENE eStage, bool bClearStage)
     {
-        m_eNextGameScene = eStage;
+        m_eScene = eStage;
+        if (bClearStage)
+            m_nStage++;
+
         eGameState = E_GAMESTATE.E_LODE;
     }
 
@@ -186,21 +182,12 @@ public class GameManager : SingleToon<GameManager>
         cUIManager.cUI_GameLoading.startLoadAnimaiton();
 
 
-        AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eNextGameScene, LoadSceneMode.Single);
+        AsyncOperation sceneLoadAsync = SceneManager.LoadSceneAsync((int)m_eScene, LoadSceneMode.Single);
         yield return sceneLoadAsync;
 
 
 
-        yield return new WaitForSeconds(1.0f);
-
-        cUIManager.cUI_GameLoading.stopLoadAnimation();
-
-        cUIManager.cUI_GameLoading.toggle(false);
-
-
-
-
-        if (m_eNextGameScene == E_GAMESCENE.E_TITLE)
+        if (m_eScene == E_GAMESCENE.E_TITLE)
         {
             eGameState = E_GAMESTATE.E_TITLE;
             yield break;
@@ -208,7 +195,16 @@ public class GameManager : SingleToon<GameManager>
 
         eGameState = E_GAMESTATE.E_INGAME;
 
+        yield return null;
+
+        cUIManager.cUI_GameLoading.stopLoadAnimation();
+
+        cUIManager.cUI_GameLoading.toggle(false);
+
+
     }
+
+
 
 
 
@@ -220,7 +216,6 @@ public class GameManager : SingleToon<GameManager>
 
         cUIManager.ingameStart();
 
-        bgmSound.play();
 
         cUIManager.cUI_FadeInOut.toggle(false);
         
@@ -233,29 +228,12 @@ public class GameManager : SingleToon<GameManager>
 
     private void gameOverEvent()
     {
-        bgmSound.stop();
         m_UIManager.cUI_Gameover.toggle(true);
         Invoke("goIngame", 1.0f);
     }
 
     private void gameClearEvent()
     {
-        bgmSound.stop();
-        StartCoroutine(clearEventCoroutine(0.1f, 0.5f));
-
-    }
-
-    private IEnumerator clearEventCoroutine(float fTimeScale , float fTime)
-    {
-        Time.timeScale = fTimeScale;
-
-        yield return new WaitForSecondsRealtime(fTime);
-        Time.timeScale = 1.0f;
-        yield return new WaitForSeconds(10.0f);
-
-
-        cStageManager.cPlayer.stop();
-        cStageManager.cPlayer.isControl = false;
 
         cUIManager.cUI_GameClear.toggle(true);
         Invoke("goTitle", 3.0f);
@@ -263,25 +241,38 @@ public class GameManager : SingleToon<GameManager>
 
 
 
+
     public void goTitle()
     {
-        m_eNextGameScene = E_GAMESCENE.E_TITLE;
+        
+        if(m_eGameState == E_GAMESTATE.E_TITLE)
+        {
+            cUIManager.cUI_Option.toggle(false);
+            return;
+        }
+
+        cUIManager.allClear();
+        m_eScene = E_GAMESCENE.E_TITLE;
         eGameState = E_GAMESTATE.E_LODE;
     }
 
 
     public void goIngame()
     {
-        int nStage = cSaveManager.getStage();
-
-        if (nStage == 0)
-            m_eNextGameScene = E_GAMESCENE.E_STAGE_CITY;
-        else
-        {
-            m_eNextGameScene = E_GAMESCENE.E_STAGE_DUGGEN_ROOST;
-        }
+        m_nStage = cSaveManager.getStage();
+        m_eScene = cSaveManager.getSenceID();
 
         eGameState = E_GAMESTATE.E_LODE;
+    }
+
+    public void gameOver()
+    {
+
+    }
+
+    public void gameClear()
+    {
+        eGameState = E_GAMESTATE.E_CLEAR;
     }
 
 
@@ -311,7 +302,7 @@ public class GameManager : SingleToon<GameManager>
 
     public void pause()
     {
-        if (m_eGameState != E_GAMESTATE.E_INGAME)
+        if (eGameState != E_GAMESTATE.E_INGAME)
             return;
 
         Time.timeScale = 0;
@@ -320,10 +311,11 @@ public class GameManager : SingleToon<GameManager>
         cStageManager.cPlayer.isControl = false;
     }
 
-    public void resume()
+    public void pose()
     {
-        if (m_eGameState != E_GAMESTATE.E_INGAME)
+        if (eGameState != E_GAMESTATE.E_INGAME || cStageManager == null)
             return;
+
 
         Time.timeScale = 1;
 
@@ -338,25 +330,8 @@ public class GameManager : SingleToon<GameManager>
 
 
 
-    public int nClearGrogress
-    {
-        set
-        {
-            PlayerPrefs.SetInt(m_strClearGrogress, value);
-        }
-        get
-        {
-            return PlayerPrefs.GetInt(m_strClearGrogress);
-        }
-    }
 
-    public OneSound bgmSound
-    {
-        get
-        {
-            return m_cBgmSound;
-        }
-    }
+
 
     public SaveManger cSaveManager
     {
@@ -366,9 +341,31 @@ public class GameManager : SingleToon<GameManager>
         }
     }
 
+    public int nStage
+    {
+        get
+        {
+            return m_nStage;
+        }
+    }
+
+    public GameManager.E_GAMESCENE eScene
+    {
+        get
+        {
+            return m_eScene;
+        }
+    }
+
+
     public bool isPlayerDataLoad()
     {
-        return nStage == cSaveManager.getStage();
+        return (m_eScene == cSaveManager.getSenceID() && nStage == cSaveManager.getStage());
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
     }
 
 }

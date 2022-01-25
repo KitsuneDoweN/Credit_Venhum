@@ -43,12 +43,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3c0e626df089e4392bc1a203d1dce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_strHit: event:/Player/get hit
-  m_strDeath: event:/Player/death
+  m_strHit:
+    Guid:
+      Data1: -1036393114
+      Data2: 1095279414
+      Data3: -1990660985
+      Data4: -777191625
+    Path: event:/Player/get hit
+  m_strDeath:
+    Guid:
+      Data1: -496964442
+      Data2: 1314861310
+      Data3: -1413726530
+      Data4: -2063116355
+    Path: event:/Player/death
   m_strAttack:
-  - event:/Player/melee
-  - event:/Player/Throw
-  m_strFootStep: event:/Player/footsteps
+  - Guid:
+      Data1: -1420652307
+      Data2: 1100023648
+      Data3: -742658942
+      Data4: 1280550513
+    Path: event:/Player/melee
+  - Guid:
+      Data1: -1349343916
+      Data2: 1105410510
+      Data3: 1054552473
+      Data4: -81346844
+    Path: event:/Player/Throw
+  m_strFootStep:
+    Guid:
+      Data1: 624306000
+      Data2: 1286622048
+      Data3: 1158929042
+      Data4: 595775091
+    Path: event:/Player/footsteps
 --- !u!1 &5689073691015574314
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +133,7 @@ MonoBehaviour:
   m_nAttackLayer: 30
   m_fMovePower: 12
   m_fAttackActionTime: 0.1
+  m_bFixVertical: 0
 --- !u!61 &5689073691015574319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -466,6 +495,7 @@ MonoBehaviour:
     m_fDushStamina: 20
     m_fGodTime: 2
     m_nMaxStiffness: 0
+    m_strName: 
   m_srModel: {fileID: 5689073691698327755}
   m_cUnitGrip: {fileID: 5689073691861872048}
   m_cDash: {fileID: 5583092193409438726}
@@ -507,10 +537,12 @@ MonoBehaviour:
   m_godColor: {r: 1, g: 0, b: 0.78845596, a: 1}
   m_dieColor: {r: 0, g: 0, b: 0, a: 0}
   m_freshColor: {r: 0, g: 0, b: 0, a: 0}
+  m_hellingColor: {r: 0.075834274, g: 1, b: 0, a: 1}
   m_fHitTick: 0.01
   m_fGodTick: 0.01
   m_fdieTime: 0
   m_fFreshTick: 0
+  m_fHellingTick: 0.05
 --- !u!114 &5583092193409438726
 MonoBehaviour:
   m_ObjectHideFlags: 0

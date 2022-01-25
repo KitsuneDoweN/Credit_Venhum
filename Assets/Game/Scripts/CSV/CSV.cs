@@ -11,7 +11,7 @@ public class CSV : MonoBehaviour
     [SerializeField]
     private string m_strFileName;
 
-    private Dictionary<string, List<object>> m_dataList = new Dictionary<string, List<object>>();
+    private List<Dictionary<string, object>> m_dataList = new List<Dictionary<string, object>>();
 
     private List<string> m_dataIDList = new List<string>();
 
@@ -22,8 +22,17 @@ public class CSV : MonoBehaviour
 
     private string m_strResourcePath;
 
+    private string m_strPath ;
 
+    public string strPath
+    {
+        get
+        {
+            return m_strPath;
+        }
+    }
 
+    private string m_strBasePath;
 
 
     public void init()
@@ -35,6 +44,8 @@ public class CSV : MonoBehaviour
             Debug.LogError("Not Find File Data : " + m_strFileName);
         }
 
+        m_strPath = m_strResourcePath + m_strFileName + ".csv";
+        m_strBasePath = "Base" + m_strFileName;
 
         loadData(m_strFileName);
 
@@ -42,14 +53,14 @@ public class CSV : MonoBehaviour
     }
 
 
-    public void setData(string strID, int nIndex, object data)
+    public void setData(int nIndex, string strID, object data)
     {
-        m_dataList[strID][nIndex] = data;
+        m_dataList[nIndex][strID] = data;
     }
 
-    public object getData(string strID, int nIndex)
+    public object getData(int nIndex , string strID)
     {
-        return m_dataList[strID][nIndex];
+        return m_dataList[nIndex][strID];
     }
 
 
@@ -83,7 +94,7 @@ public class CSV : MonoBehaviour
             nIDIndex = 0;
             while (nIDIndex < m_dataIDList.Count)
             {
-                strSaveData.Append(m_dataList[m_dataIDList[nIDIndex]][nDataListIndex].ToString());
+                strSaveData.Append(m_dataList[nDataListIndex][m_dataIDList[nIDIndex]].ToString());
                 strSaveData.Append(m_strDelimiter);
 
                 nIDIndex++;
@@ -97,8 +108,10 @@ public class CSV : MonoBehaviour
         }
 
         string strFinalSaveData = CryptoAES256.encrypt(strSaveData.ToString());
+        //string strFinalSaveData = strSaveData.ToString();
 
-        using(StreamWriter sw = new StreamWriter(m_strResourcePath + m_strFileName + ".csv"))
+
+        using (StreamWriter sw = new StreamWriter(m_strPath, false,System.Text.Encoding.Default))
         {
             sw.Write(strFinalSaveData);
             sw.Close();
@@ -111,17 +124,35 @@ public class CSV : MonoBehaviour
         int nData;
         float fData;
 
-        TextAsset cryptoData = Resources.Load(strFileName) as TextAsset;
-
-        Debug.Log(cryptoData.text);
 
 
-        // string strSaveData = CryptoAES256.decrypt(cryptoData.text);
+        string cryptoData;
 
-        string strSaveData = cryptoData.text;
+
+
+        if (!File.Exists(m_strPath))
+        {
+            TextAsset asset = Resources.Load<TextAsset>(m_strBasePath);
+            cryptoData = asset.text;
+        }
+        else
+        {
+            using (StreamReader sr = new StreamReader(m_strPath))
+            {
+                cryptoData = sr.ReadLine();
+            }
+        }
+
+
+
+
+
+
+        string strSaveData = CryptoAES256.decrypt(cryptoData);
+
 
         var strlines = Regex.Split(strSaveData, m_strLineSprlitRe);
-        
+
         if (strlines.Length <= 1)
         {
             Debug.LogError("NO CSV Data");
@@ -130,13 +161,12 @@ public class CSV : MonoBehaviour
 
         var strHaders = Regex.Split(strlines[0], m_strSplitRe);
 
-        foreach(string strHader in strHaders)
+        foreach (string strHader in strHaders)
         {
             if (strHader == "")
                 continue;
 
             m_dataIDList.Add(strHader);
-            m_dataList.Add(strHader, new List<object>());
         }
 
         for (int i = 1; i < strlines.Length; i++)
@@ -147,7 +177,7 @@ public class CSV : MonoBehaviour
 
             if (strValues.Length == 0 || strValues[0] == "") continue;
 
-            
+            m_dataList.Add(new Dictionary<string, object>());
 
             for (int j = 0; j < strHaders.Length && j < strValues.Length; j++)
             {
@@ -164,27 +194,35 @@ public class CSV : MonoBehaviour
                     finalValue = fData;
                 }
 
-                m_dataList[strHaders[j]].Add(finalValue);
+                m_dataList[i - 1][m_dataIDList[j]] = finalValue;
             }
-            
+
         }
-        //drawAllData();
+        drawAllData();
     }
 
     private void drawAllData()
     {
-        Debug.Log("===========================");
-        Debug.Log("Draw All Data");
+
+        string data = "Draw All Data\n";
         foreach (string id in m_dataIDList)
         {
-            Debug.Log("----------------------------------");
-            Debug.Log("ID " + id  + " Datas");
-            for (int i = 0; i < m_dataList[id].Count; i++)
-            {
-                Debug.Log(m_dataList[id][i]);
-            }
+            data += id + "\t";
         }
-        Debug.Log("===========================");
+        data += "\n";
+
+        for (int i = 0; i < m_dataList.Count; i++)
+        {
+            foreach (string id in m_dataIDList)
+            {
+                data += m_dataList[i][id].ToString() + " \t";
+            }
+            data += "\n";
+        }
+
+        Debug.Log(data);
+        
+
 
     }
 

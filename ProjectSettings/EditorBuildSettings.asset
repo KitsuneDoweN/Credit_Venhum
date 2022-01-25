@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/City.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Game/Scenes/DungeonEntrance.unity
+    guid: a3d3111810edde246970e1aeac2b62a9
+  - enabled: 1
     path: Assets/Game/Scenes/DungeonStageType0.unity
     guid: 2b2a99a50377efd4aae1bde12d9dcf93
+  - enabled: 1
+    path: Assets/Game/Scenes/DungeonStageType1.unity
+    guid: 3558d1fcf541f9940bc1b102711f53ce
+  - enabled: 1
+    path: Assets/Game/Scenes/DungeonRoost.unity
+    guid: 5f237c2b30df5cb47ae17379cc135547
+  - enabled: 1
+    path: Assets/Game/Scenes/DungeonStageBoss.unity
+    guid: fd21f8cadd07c564a80c38ab6b478f87
   m_configObjects: {}
